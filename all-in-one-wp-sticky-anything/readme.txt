@@ -4,7 +4,7 @@ Tags: sticky header, sticky menu, sticky anything, fixed sidebar, sticky sidebar
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,9 @@ Sometimes, we stuck making any section sticky in Elementor page builder. Because
 
 Don’t worry about the extra loading time, it will not cause any issue with site’s speed. We have developed the most lightweight technology, and it is optimized for the best speed score. All you need to do is download it and install. After that simply activate the plugin and make sticky anything.
 
+== ▶️ VIDEO OVERVIEW ==
+https://youtu.be/Y2IEuGCVu0Y
+
 
 = 🔥 Features of All-in-One WP Sticky Anything =
 * **📌 Any Element Can Be Made Sticky**: The user can make any element sticky by using this plugin. When you want to create an element sticky, just pick CSS class name, class id, or CSS selector.
@@ -31,8 +34,8 @@ After that, enter the CSS selector for your sidebar element (e.g. .sidebar or #s
 📝 The exact selectors you need depend on your active theme, so be sure to inspect your site using your browser’s developer tools to find the correct class or ID. Once set, the plugin will keep your sidebar fixed in view as users scroll.
 * **⏱️ Quick to Set Up**: It doesn’t require any pro skills to download and install the plugin. You can download itself and install it on your WordPress dashboard.
 * **⚡ Blazing Fast**: Make anything sticky element in one or less time.
-* **Works with Everything**: All-in-One Sticky Plugin is compatible with most common themes, page builder’s plugin. We have tested it for many times and perfected it for you. It is perfectly working in Elementor page builder.
-* **Easy to use**: There are no complex settings for using it. You just pick class name or id and place it into fields and save it. There are other ways to sticky just use sticky class.
+* **🌍 Works with Everything**: All-in-One Sticky Plugin is compatible with most common themes, page builder’s plugin. We have tested it for many times and perfected it for you. It is perfectly working in Elementor page builder.
+* **🔑 Easy to use**: There are no complex settings for using it. You just pick class name or id and place it into fields and save it. There are other ways to sticky just use sticky class.
 
 = 🌟 Benefits of All-in-One WP Sticky Anything =
 * The sticky sidebar will help your visitors navigate easily
@@ -97,6 +100,9 @@ Please use the support forum.
 
 
 == Changelog ==
+
+= 1.0.5 (20-08-2025) =
+* **New:** New Option to Fix Sticky Header.
 
 = 1.0.4 (22-04-2025) =
 * **Fix:** Fix close icon.

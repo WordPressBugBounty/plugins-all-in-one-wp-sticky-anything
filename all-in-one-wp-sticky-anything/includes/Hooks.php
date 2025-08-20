@@ -2,7 +2,7 @@
 
 namespace AI1WPSA;
 
-defined( 'ABSPATH' ) || exit();
+defined('ABSPATH') || exit();
 
 class Hooks {
 
@@ -12,7 +12,8 @@ class Hooks {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action('wp_print_styles', array( $this, 'render_custom_css'));
+		add_action('wp_print_styles', array($this, 'render_custom_css'));
+		add_action('wp_print_styles', array($this, 'render_fix_sticky_css'));
 	}
 
 	/**
@@ -20,15 +21,25 @@ class Hooks {
 	 *
 	 * @return void
 	 */
-	public function render_custom_css(){
-	$css = ai1wpsa_get_settings( 'customCss' );
-	if ( ! empty( $css ) ) {
-		echo '<style type="text/css">' . $css . '</style>';
+	public function render_custom_css() {
+		$css = ai1wpsa_get_settings('customCss');
+		if (! empty($css)) {
+			echo '<style type="text/css">' . $css . '</style>';
+		}
 	}
+
+	public function render_fix_sticky_css() {
+		$fix_default_sticky = ai1wpsa_get_settings('fixDefaultSticky');
+		// convert to boolean
+		$fix_default_sticky = filter_var($fix_default_sticky, FILTER_VALIDATE_BOOLEAN);
+		
+		if ($fix_default_sticky === true) {
+			echo '<style type="text/css">.ai1wpsa-fix-sticky.sticky{position: fixed !important;width: 100% !important;}</style>';
+		}
 	}
 
 	public static function instance() {
-		if ( null === self::$instance ) {
+		if (null === self::$instance) {
 			self::$instance = new self;
 		}
 

@@ -35,7 +35,12 @@ class Enqueue {
 			'wp-util',
 		], AI1WPSA_VERSION, true);
 
-		wp_enqueue_script('ai1wpsa-stickr');
+		$fix_default_sticky = ai1wpsa_get_settings('fixDefaultSticky', false);
+		$fix_default_sticky = filter_var($fix_default_sticky, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+
+		if (empty($fix_default_sticky) || $fix_default_sticky === false || $fix_default_sticky === '0') {
+			wp_enqueue_script('ai1wpsa-stickr');
+		}
 
 		$sticky_sidebar = ai1wpsa_get_settings('stickySidebar');
 

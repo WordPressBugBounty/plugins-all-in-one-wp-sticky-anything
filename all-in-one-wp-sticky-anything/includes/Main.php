@@ -105,10 +105,14 @@ final class Main {
         if (($current_time - $install_time) < $three_days) return;
         ?>
         <div class="notice notice-large is-dismissible ai1wpsa-review-notice notice-info">
-            <p><?php printf(
+            <p>
+                <?php
+                /* translators: %s: plugin name */
+                printf(
                     esc_html__('Hey, we noticed you have been using %s for more than 3 days now - that\'s awesome!', 'all-in-one-wp-sticky-anything'),
                     '<b>WP Sticky Anything</b>'
-                ); ?>
+                );
+                ?>
             </p>
             <p>
                 <?php echo esc_html__('Could you please do us a BIG favor and give it a rating on WordPress.org to help us do more great work and boost our motivation?', 'all-in-one-wp-sticky-anything') ?>
