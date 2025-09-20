@@ -33,7 +33,7 @@ class Hooks {
 		// convert to boolean
 		$fix_default_sticky = filter_var($fix_default_sticky, FILTER_VALIDATE_BOOLEAN);
 		
-		if ($fix_default_sticky === true) {
+		if ($fix_default_sticky === true || is_plugin_active('elementor/elementor.php')) {
 			echo '<style type="text/css">.ai1wpsa-fix-sticky.sticky{position: fixed !important;width: 100% !important;}</style>';
 		}
 	}

@@ -37,6 +37,7 @@ final class Main {
         include_once AI1WPSA_INCLUDES . '/Enqueue.php';
         include_once AI1WPSA_INCLUDES . '/Hooks.php';
         include_once AI1WPSA_INCLUDES . '/Ajax.php';
+        include_once AI1WPSA_INCLUDES . '/Elementor.php';
         include_once AI1WPSA_INCLUDES . '/functions.php';
 
         if (is_admin()) {
