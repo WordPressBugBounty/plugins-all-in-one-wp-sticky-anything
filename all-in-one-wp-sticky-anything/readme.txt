@@ -4,7 +4,7 @@ Tags: sticky header, sticky menu, sticky anything, fixed sidebar, sticky sidebar
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,8 +46,11 @@ After that, enter the CSS selector for your sidebar element (e.g. .sidebar or #s
 Just use sticky class to sticky anything.
 Example: `<div class="sticky">I am stikcy</div>`
 
+https://youtu.be/HoqbZcAFYFE
+
 Open any page with Elementor → Select a container or section → Go to the **Advanced Tab** → **Sticky Anything** → Enable Sticky Settings.
 
+= Credits =
 Plugin integrates magnificent [Theia Sticky Sidebar][https://github.com/WeCodePixels/theia-sticky-sidebar] v1.7.0 javascript code (Released under the MIT license, Copyright 2013-2016 WeCodePixels and other contributors) with WordPress.
 
 There are lots of features coming soon. We are updating it regularly. If you fetch any kind of problem just use the support feature. We will update solving you issues as soon as possible.
@@ -105,6 +108,9 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.0.7 (26-09-2025) =
+* **Fix:** Astra theme compatibility.
+
 = 1.0.6 (20-09-2025) =
 * **New:** Introduce Elementor Page Builder Sticky Option.
 

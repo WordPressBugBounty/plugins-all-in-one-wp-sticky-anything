@@ -3,7 +3,7 @@
  * Plugin Name:       All-in-One WP Sticky Anything
  * Plugin URI:        https://wordpress.org/plugins/all-in-one-all-in-one-wp-sticky-anything
  * Description:       All-in-One WP Sticky Anything plugin will make stick to the side of page after when scrolled up & down.
- * Version:           1.0.6
+ * Version:           1.0.7
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Monzur Alam
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 }
 
 /** define constants */
-define( 'AI1WPSA_VERSION', '1.0.6' );
+define( 'AI1WPSA_VERSION', '1.0.7' );
 define( 'AI1WPSA_FILE', __FILE__ );
 define( 'AI1WPSA_PATH', dirname( AI1WPSA_FILE ) );
 define( 'AI1WPSA_INCLUDES', AI1WPSA_PATH . '/includes' );
