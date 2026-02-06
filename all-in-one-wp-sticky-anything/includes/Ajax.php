@@ -61,7 +61,7 @@ class Ajax {
             wp_send_json_error(__('You do not have permission to get tables', 'all-in-one-wp-sticky-anything'));
         }
 
-        $data = ! empty($_POST['data']) ? array_map('sanitize_text_field', $_POST['data']) : [];
+        $data = ! empty($_POST['data']) ? ai1wpsa_sanitize_array(wp_unslash($_POST['data'])) : [];
 
         if (empty($data)) {
             wp_send_json_error();
@@ -88,7 +88,7 @@ class Ajax {
             wp_send_json_error(__('You do not have permission to get tables', 'all-in-one-wp-sticky-anything'));
         }
 
-        $action = sanitize_text_field($_POST['data']) ?? 'later';
+        $action = sanitize_text_field(wp_unslash($_POST['data'])) ?? 'later';
 
         if ($action === 'done') {
             update_option('ai1wpsa_review_dismissed', true);

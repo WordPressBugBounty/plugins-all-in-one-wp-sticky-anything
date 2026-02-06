@@ -1,52 +1,103 @@
-=== WP Sticky Anything – Sticky Menu & Sticky Header, Sticky Sidebar ===
+=== All-in-One Sticky Anything – Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent ===
 Contributors: monzuralam
-Tags: sticky header, sticky menu, sticky anything, fixed sidebar, sticky sidebar
+Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
-Tested up to: 6.8
-Requires PHP: 5.6
-Stable tag: 1.0.7
+Tested up to: 6.9
+Requires PHP: 7.4
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WP Sticky Anything on Scroll plugin allows to you make any elements sticky or sticky Header and Sticky Sidebar on your website. It also works in Elementor page builder.
+All-in-One Sticky Anything easily creates fixed widgets, sticky elements, sticky header, menu, sidebar, social icons & cookie consent on your website.
 
 
 == Description ==
 
-= WP Sticky Anything – Sticky Menu & Sticky Header and Sticky Sidebar =
+== All-in-One Sticky Anything – Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent ==
 
-WP Sticky Anything on Scroll plugin allows to you make any elements sticky or sticky Header and Sticky Sidebar on your website. It also works in Elementor page builder.
+All-in-One Sticky Anything on Scroll allows you to make any element sticky on your website, including sticky headers, sidebars, social icons, and cookie consent notices. The plugin also works seamlessly with the Elementor page builder.
 
-Sometimes, we stuck making any section sticky in Elementor page builder. Because Sticky is a pro feature in Elementor, not everyone can afford it. Most of the people doesn’t have that kind o budget to buy Elementor pro for this type of tasks. All-in-One WP Sticky Anything plugin offers a free WordPress plugin that helps to make any element sticky in Elementor.
+Sometimes, creating sticky sections in Elementor can be challenging because the sticky feature is only available in Elementor Pro. Not everyone can afford Elementor Pro just for this functionality. Many users have limited budgets and need a free alternative. The All-in-One Sticky Anything plugin provides a free WordPress solution that enables you to make any element sticky in Elementor without upgrading to the Pro version.
 
-Don’t worry about the extra loading time, it will not cause any issue with site’s speed. We have developed the most lightweight technology, and it is optimized for the best speed score. All you need to do is download it and install. After that simply activate the plugin and make sticky anything.
+This plugin is perfect for creating sticky headers, fixed navigation menus, floating sidebars, persistent social media icons, and cookie consent notices that remain visible as users scroll through your site.
+
+You don’t need to worry about performance or loading speed. The plugin is built with lightweight and optimized code to ensure excellent speed and performance. Simply download, install, and activate the plugin to start making any element sticky with ease.
 
 == ▶️ VIDEO OVERVIEW ==
 https://youtu.be/Y2IEuGCVu0Y
 
 
-= 🔥 Features of All-in-One WP Sticky Anything =
-* **📌 Any Element Can Be Made Sticky**: The user can make any element sticky by using this plugin. When you want to create an element sticky, just pick CSS class name, class id, or CSS selector.
-* **🔝 Z-index**: If other elements on the page overlap or peek through your sticky element, you can easily adjust the Z-index to ensure it stays on top.
-* **✏️ Custom CSS**: All-in-One Sticky Anything allows you to customize the appearance of the website using custom CSS.
-* **📍 Sticky Sidebar**: Want your sidebar to stay visible while scrolling? You can enable this feature by going to Settings → Sticky Sidebar and switching on “Enable Sticky Sidebar.”
+== 🔥 Key Features of All-in-One Sticky Anything ==
+* **🎯 Fixed Widget**
+* **🎯 Sticky Header & Menu**
+* **📌 Any Element Can Be Made Sticky**
+* **📍 Sticky Sidebar**
+* **📱 Sticky Social Icons**
+* **🍪 Sticky Cookie Consent (New ⚡)**
+* **✏️ Custom CSS**
+* **⏱️ Quick to Set Up**
+* **⚡ Blazing Fast**
+* **🌍 Works with Everything**
+* **🔑 Easy to use**
+
+== 📖 Feature Details ==
+
+** 🎯 Fixed Widget **
+Make any widget in your sidebar a fixed widget. The fixed widget will stay visible while visitors scroll through your content. Works with any theme and any widget classic or block widget.
+
+**🎯 Sticky Header & Menu**
+Create fixed navigation headers and menus that stay at the top while visitors scroll. Boost navigation accessibility and keep your branding always visible. Works with any theme's header or custom navigation menus.
+
+**📌 Any Element Can Be Made Sticky**
+ The user can make any element sticky by using this plugin. When you want to create an element sticky, just pick CSS class name, class id, or CSS selector.
+
+**📍 Sticky Sidebar**
+Want your sidebar to stay visible while scrolling? You can enable this feature by going to Settings → Sticky Sidebar and switching on “Enable Sticky Sidebar.”
 After that, enter the CSS selector for your sidebar element (e.g. .sidebar or #sidebar-area) and the container element that wraps your main content (e.g. .site-content or .main-wrapper).
 📝 The exact selectors you need depend on your active theme, so be sure to inspect your site using your browser’s developer tools to find the correct class or ID. Once set, the plugin will keep your sidebar fixed in view as users scroll.
-* **⏱️ Quick to Set Up**: It doesn’t require any pro skills to download and install the plugin. You can download itself and install it on your WordPress dashboard.
-* **⚡ Blazing Fast**: Make anything sticky element in one or less time.
-* **🌍 Works with Everything**: All-in-One Sticky Plugin is compatible with most common themes, page builder’s plugin. We have tested it for many times and perfected it for you. It is perfectly working in Elementor page builder.
-* **🔑 Easy to use**: There are no complex settings for using it. You just pick class name or id and place it into fields and save it. There are other ways to sticky just use sticky class.
 
-= 🌟 Benefits of All-in-One WP Sticky Anything =
-* The sticky sidebar will help your visitors navigate easily
-* Allow your visitors find page they were looking for and reduce bounce rate
-* User Experience Improvement
+**📱 Sticky Social Icons**
+Keep your social media icons always visible to visitors! Enable the “Sticky Social Icons” option in the plugin settings, add your icons, and configure their position. This is perfect for boosting engagement and making your social links easily accessible while users scroll.
 
-= 📘 How to use ? =
+**🍪 Sticky Cookie Consent (New ⚡)**
+Keep your cookie notice visible and compliant at all times! Enable the “Sticky Cookie Consent” option in the plugin settings, customize your consent message, and choose its position on the screen. This ensures visitors can easily review and manage their cookie preferences while browsing your site, helping you stay transparent and compliant as users scroll.
+
+**✏️ Custom CSS**
+All-in-One Sticky Anything allows you to customize the appearance of the website using custom CSS.
+
+**⏱️ Quick to Set Up**
+It doesn’t require any pro skills to download and install the plugin. You can download itself and install it on your WordPress dashboard.
+
+**⚡ Blazing Fast**
+Make anything sticky element in one or less time.
+
+**🌍 Works with Everything**
+All-in-One Sticky Plugin is compatible with most common themes, page builder’s plugin. We have tested it for many times and perfected it for you. It is perfectly working in Elementor page builder.
+
+**🔑 Easy to use**
+There are no complex settings for using it. You just pick class name or id and place it into fields and save it. There are other ways to sticky just use sticky class.
+
+== 🌟 Benefits of All-in-One Sticky Anything ==
+* **Reduce Bounce Rate** – Keep navigation accessible at all times
+* **Improve User Experience** – Visitors find what they need faster
+* **Boost Social Engagement** – Social buttons always within reach
+* **Stay Compliant** – Cookie notices remain visible for legal requirements
+
+== 📘 How to use ? ==
 Just use sticky class to sticky anything.
 Example: `<div class="sticky">I am stikcy</div>`
 
-https://youtu.be/HoqbZcAFYFE
+= Create Sticky Header in Astra Theme - 3 Easy Method =
+
+[youtube https://youtu.be/AoaESe5hKJY]
+
+= Create Sticky Header in Neve Theme - 3 Easy Method =
+
+[youtube https://youtu.be/k4XrAjqK98A]
+
+= Create Sticky Header in Elementor =
+
+[youtube https://youtu.be/HoqbZcAFYFE]
 
 Open any page with Elementor → Select a container or section → Go to the **Advanced Tab** → **Sticky Anything** → Enable Sticky Settings.
 
@@ -57,8 +108,8 @@ There are lots of features coming soon. We are updating it regularly. If you fet
 
 == Installation ==
 
-1. Install All-in-One WP Sticky Anything by uploading the `All-in-One WP Sticky Anything` zip file to the `/wp-content/plugins/` directory. 
-2. Activate All-in-One WP Sticky Anything through the `Plugins` menu in WordPress.
+1. Install All-in-One Sticky Anything by uploading the `All-in-One Sticky Anything` zip file to the `/wp-content/plugins/` directory. 
+2. Activate All-in-One Sticky Anything through the `Plugins` menu in WordPress.
 
 == Screenshots ==
 1. General Settings
@@ -68,6 +119,13 @@ There are lots of features coming soon. We are updating it regularly. If you fet
 
 
 == Frequently Asked Questions ==
+
+= How do I make my header sticky/menu? =
+
+There are three easy methods:
+Method 1 (Simplest): Add the class "sticky" to your header element
+Method 2 (Settings Panel): Go to Dashboard → Sticky Anything → General Settings → Enter your header's CSS selector (e.g., .site-header or #masthead) → Save
+Method 3 (Customizer - Supported Themes): Go to Appearance → Customize → Sticky Anything → Sticky Header → Enable
 
 = Can I make multiple elements sticky? =
 
@@ -85,7 +143,7 @@ Yes.
 
 To configure the sticky sidebar, go to your WordPress Dashboard, navigate to ‘Sticky Anything’ > ‘Settings’, and then select ‘Sticky Sidebar’.
 
-= Will All-in-One WP Sticky Anything slow down my website? =
+= Will All-in-One Sticky Anything slow down my website? =
 
 No.
 
@@ -100,6 +158,18 @@ The "Sticky Class" you need depends on the theme you're using. To find it, right
 = Where can I find the Sticky Anything settings on Elementor? =  
 Inside Elementor Editor → Select any container → Go to **Advanced Tab** → Scroll to **Sticky Anything** section.
 
+= Which themes support the Sticky Header perfectly on the customizer? =
+Popular classic themes such as Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra provide seamless Sticky Header compatibility.
+
+= How to make sticky header via Customizer? =
+Dashboard → Appearance → Customize → Sticky Anything → Sticky Header -> Enable & set z-index.
+
+= Can I create sticky social icons ? =
+Yes.
+
+= Can I customize the cookie consent message and styling? =
+Yes, absolutely. You can customize the message text, button labels and colors through the plugin settings.
+
 = I need more help please! =
 
 Please use the support forum.
@@ -108,6 +178,20 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.1.1 (06-02-2026) =
+* **New:** Introduce Fixed Widget.
+* **Fix:** Settings sync across multiple devices.
+
+= 1.1.0 (24-12-2025) =
+* **New:** Introduce Sticky Cookie Consent.
+* **Update:** WordPress 6.9 Compatibility.
+
+= 1.0.9 (21-11-2025) =
+* **New:** Introduce Sticky Social Icons.
+
+= 1.0.8 (23-10-2025) =
+* **New:** Introduce Customizer support for Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra themes.
+
 = 1.0.7 (26-09-2025) =
 * **Fix:** Astra theme compatibility.
 

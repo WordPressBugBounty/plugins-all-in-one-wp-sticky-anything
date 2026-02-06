@@ -34,6 +34,7 @@ final class Main {
      *
      */
     public function includes() {
+        include_once AI1WPSA_INCLUDES . '/Customizer.php';
         include_once AI1WPSA_INCLUDES . '/Enqueue.php';
         include_once AI1WPSA_INCLUDES . '/Hooks.php';
         include_once AI1WPSA_INCLUDES . '/Ajax.php';
@@ -80,7 +81,7 @@ final class Main {
 
         foreach ($notices as $notice) { ?>
             <div class="notice notice-large is-dismissible wpforms-extended-admin-notice notice-<?php echo esc_attr($notice['class']); ?>">
-                <?php esc_html_e($notice['message'], 'all-in-one-wp-sticky-anything'); ?>
+                <?php echo esc_html($notice['message']); ?>
             </div>
         <?php
             update_option(sanitize_key('ai1wpsa_notices'), []);
@@ -108,8 +109,8 @@ final class Main {
         <div class="notice notice-large is-dismissible ai1wpsa-review-notice notice-info">
             <p>
                 <?php
-                /* translators: %s: plugin name */
                 printf(
+                    /* translators: %s: plugin name */
                     esc_html__('Hey, we noticed you have been using %s for more than 3 days now - that\'s awesome!', 'all-in-one-wp-sticky-anything'),
                     '<b>WP Sticky Anything</b>'
                 );
