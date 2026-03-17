@@ -29,6 +29,7 @@ class Enqueue {
 		wp_register_style('ai1wpsa-bootstrap-icons', AI1WPSA_ASSETS . '/vendor/bootstrap-icons/bootstrap-icons.min.css', [], '1.13.1');
 		wp_register_style('ai1wpsa-remixicon', AI1WPSA_ASSETS . '/vendor/remixicon/remixicon.min.css', [], '4.7.0');
 		wp_register_style('ai1wpsa-lineicon', AI1WPSA_ASSETS . '/vendor/lineicon/lineicons.min.css', [], '5.0.0');
+		wp_register_style('ai1wpsa-click-to-call', AI1WPSA_ASSETS . '/vendor/click-to-call/click-to-call.min.css', [], '1.0.0');
 		wp_register_style('ai1wpsa-frontend', AI1WPSA_ASSETS . '/css/frontend.min.css', [], AI1WPSA_VERSION);
 
 		// fix default sticky
@@ -68,6 +69,10 @@ class Enqueue {
 			'jquery',
 		], AI1WPSA_VERSION, true);
 
+		wp_register_script('ai1wpsa-click-to-call', AI1WPSA_ASSETS . '/vendor/click-to-call/click-to-call.min.js', [
+			'jquery',
+		], '1.0', true);
+
 		wp_register_script('ai1wpsa-frontend', AI1WPSA_ASSETS . '/js/frontend.min.js', [
 			'jquery',
 			'wp-plupload',
@@ -87,6 +92,14 @@ class Enqueue {
 			wp_enqueue_script('ai1wpsa-theia');
 		}
 
+		// click to call 
+		$click_to_call = ai1wpsa_get_settings('clicktoCall', false);
+
+		if(filter_var($click_to_call, FILTER_VALIDATE_BOOLEAN)){
+			wp_enqueue_style('ai1wpsa-click-to-call');
+			wp_enqueue_script('ai1wpsa-click-to-call');
+		}
+
 		wp_enqueue_script('ai1wpsa-frontend');
 
 		wp_localize_script('ai1wpsa-frontend', 'ai1wpsa', $this->get_localize_data());
@@ -104,9 +117,9 @@ class Enqueue {
 	 */
 	public function admin_scripts($hook) {
 		// Only load on our plugin settings page
-		if ('toplevel_page_all-in-one-wp-sticky-anything' !== $hook && 'sticky-anything_page_sticky-anything-getting-started' !== $hook) {
-			return;
-		}
+		// if ('toplevel_page_all-in-one-wp-sticky-anything' !== $hook && 'sticky-anything_page_sticky-anything-getting-started' !== $hook) {
+		// 	return;
+		// }
 
 		// Styles
 		$style_deps = array('wp-components',);
@@ -179,11 +192,11 @@ class Enqueue {
 	public function get_localize_data($hook = null) {
 
 		// Fetch the saved settings
-		$stickyData = get_option('ai1wpsa_settings');
+		$settings = get_option('ai1wpsa_settings');
 
 		// if not an array make it one
-		if (!is_array($stickyData)) {
-			$stickyData = [];
+		if (!is_array($settings)) {
+			$settings = [];
 		}
 
 		$ai1wpsa_sticky_header 	= get_option('ai1wpsa_sticky_header');
@@ -191,15 +204,15 @@ class Enqueue {
 
 		// customizer settings
 		if ($ai1wpsa_sticky_header) {
-			$stickyData['stickyHeader'] = $ai1wpsa_sticky_header;
-			$stickyData['stickyCIndex'] = $ai1wpsa_z_index;
+			$settings['stickyHeader'] = $ai1wpsa_sticky_header;
+			$settings['stickyCIndex'] = $ai1wpsa_z_index;
 		}
 
 		$data = [
 			'nonce'     	=> wp_create_nonce('ai1wpsa'),
 			'isPro'     	=> false,
 			'isLoggedIn'	=> is_user_logged_in(),
-			'stickyData' 	=> $stickyData,
+			'settings' 		=> $settings,
 		];
 
 		if (is_admin()) {

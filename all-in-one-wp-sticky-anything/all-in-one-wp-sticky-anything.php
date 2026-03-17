@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       All-in-One Sticky Anything – Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent
+ * Plugin Name:       All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent
  * Plugin URI:        https://wordpress.org/plugins/all-in-one-all-in-one-wp-sticky-anything
- * Description:       All-in-One Sticky Anything easily creates fixed widgets, sticky elements, sticky header, menu, sidebar, social icons & cookie consent on your website.
- * Version:           1.1.1
+ * Description:       All-in-One Sticky Anything easily creates click to call, fixed widgets, sticky elements, sticky header, menu, sidebar, social icons & cookie consent on your website.
+ * Version:           1.1.2
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            Monzur Alam
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 }
 
 /** define constants */
-define( 'AI1WPSA_VERSION', '1.1.1' );
+define( 'AI1WPSA_VERSION', '1.1.2' );
 define( 'AI1WPSA_FILE', __FILE__ );
 define( 'AI1WPSA_PATH', dirname( AI1WPSA_FILE ) );
 define( 'AI1WPSA_INCLUDES', AI1WPSA_PATH . '/includes' );

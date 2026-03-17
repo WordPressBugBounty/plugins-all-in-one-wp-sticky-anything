@@ -70,6 +70,7 @@ class Ajax {
 
         update_option('ai1wpsa_settings', $data);
         wp_send_json_success('Success');
+        wp_die();
     }
 
     /**

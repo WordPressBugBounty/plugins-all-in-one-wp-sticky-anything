@@ -212,12 +212,11 @@
 }
 .settings-content .settings-field {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 15px;
+  margin-bottom: 0;
   background: #fff;
   border-radius: 0px;
-  padding: 20px 20px;
+  padding: 10px;
   border-bottom: 1px solid #eee;
 }
 .settings-content .settings-field:last-child {
@@ -351,6 +350,211 @@
 .settings-content .settings-field-content .ai1wpsa-radio-group + .ai1wpsa-upload-btn {
   margin-bottom: 8px;
 }
+.settings-content .settings-field-content .ai1wpsa-animation-group {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #004bcb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container + p {
+  margin: 0;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.ripple .click-to-call {
+  animation: ctc-ripple 1.8s ease-out infinite;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.heartbeat .click-to-call {
+  animation: ctc-heartbeat 1.4s ease-in-out infinite;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.bounce .click-to-call {
+  animation: ctc-bounce 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.swing .click-to-call {
+  animation: ctc-swing 2s ease-in-out infinite;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.tada .click-to-call {
+  animation: ctc-tada 2.4s ease-in-out infinite;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.sonar .click-to-call::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(84, 84, 216, 0.7);
+  animation: ctc-sonar 1.6s ease-out infinite;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.rotate .click-to-call {
+  animation: ctc-spin 3s linear infinite;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.spin .click-to-call {
+  animation: ctc-spin 3s linear infinite;
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call-container.blob .click-to-call {
+  animation: ctc-blob 5s ease-in-out infinite;
+}
+@keyframes ctc-ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(84, 84, 216, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(84, 84, 216, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(84, 84, 216, 0);
+  }
+}
+@keyframes ctc-heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.16);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+@keyframes ctc-bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  30% {
+    transform: translateY(-14px) scale(0.95, 1.05);
+  }
+  50% {
+    transform: translateY(0) scale(1.08, 0.94);
+  }
+  65% {
+    transform: translateY(-6px) scale(0.98, 1.02);
+  }
+  80% {
+    transform: translateY(0) scale(1.02, 0.98);
+  }
+}
+@keyframes ctc-swing {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  10% {
+    transform: rotate(12deg);
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(7deg);
+  }
+  70% {
+    transform: rotate(-5deg);
+  }
+  90% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes ctc-tada {
+  0%, 100% {
+    transform: scale(1) rotate(0);
+  }
+  5% {
+    transform: scale(0.95) rotate(-3deg);
+  }
+  10%, 20%, 30% {
+    transform: scale(1.06) rotate(3deg);
+  }
+  15%, 25% {
+    transform: scale(1.06) rotate(-3deg);
+  }
+  35% {
+    transform: scale(1.06) rotate(0);
+  }
+  40% {
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes ctc-sonar {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+@keyframes ctc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ctc-blob {
+  0%, 100% {
+    border-radius: 60% 40% 55% 45%/50% 60% 40% 50%;
+  }
+  20% {
+    border-radius: 45% 55% 40% 60%/60% 40% 55% 45%;
+  }
+  40% {
+    border-radius: 55% 45% 60% 40%/45% 55% 45% 55%;
+  }
+  60% {
+    border-radius: 40% 60% 50% 50%/55% 45% 60% 40%;
+  }
+  80% {
+    border-radius: 50% 50% 45% 55%/40% 60% 50% 50%;
+  }
+}
+.settings-content .settings-field-content .ai1wpsa-animation-group button .click-to-call svg {
+  width: 14px;
+  height: 14px;
+  fill: #fff;
+}
+.settings-content .settings-field-content .ai1wpsa-schedules-wrap .ai1wpsa-schedule-table {
+  border: 1px solid #eaeaea;
+  border-collapse: collapse;
+}
+.settings-content .settings-field-content .ai1wpsa-schedules-wrap .ai1wpsa-schedule-table th,
+.settings-content .settings-field-content .ai1wpsa-schedules-wrap .ai1wpsa-schedule-table td {
+  border-bottom: 1px solid #eaeaea;
+  padding: 8px 10px;
+  text-align: left;
+}
+.settings-content .settings-field-content .ai1wpsa-schedules-wrap .ai1wpsa-schedule-table th {
+  background: #d9e5f7;
+  font-weight: 600;
+}
+.settings-content .settings-field-content .ai1wpsa-schedules-wrap .ai1wpsa-schedule-table td .components-base-control .components-base-control__field {
+  margin: 0;
+}
+.settings-content .settings-field-content .ai1wpsa-schedules-wrap .ai1wpsa-schedule-table td .components-base-control .components-base-control__field input {
+  width: -moz-max-content !important;
+  width: max-content !important;
+}
+.settings-content .settings-field-content .ai1wpsa-text-control.pro input {
+  opacity: 0.5;
+  pointer-events: none;
+}
 .settings-content .settings-field-content .ai1wpsa-number-control {
   height: 45px;
 }
@@ -398,14 +602,6 @@
   height: 32px;
   padding: 10px;
 }
-.settings-content .settings-field-content .icon-list-item .actions button.duplicate {
-  background-color: #004bcb;
-  color: #fff;
-}
-.settings-content .settings-field-content .icon-list-item .actions button.delete {
-  background-color: red;
-  color: #fff;
-}
 .settings-content .settings-field-content .ai1wpsa-cookie-consent-layout {
   display: flex;
   align-items: center;
@@ -430,6 +626,70 @@
 .settings-content .settings-field-content.disabled .components-form-toggle {
   opacity: 0.5;
 }
+.settings-content .ai1wpsa-phone-number-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.settings-content .ai1wpsa-phone-number-table th,
+.settings-content .ai1wpsa-phone-number-table td {
+  border: 0;
+  padding: 8px;
+  text-align: left;
+  text-transform: uppercase;
+}
+.settings-content .ai1wpsa-phone-number-table th:first-child,
+.settings-content .ai1wpsa-phone-number-table td:first-child {
+  padding-left: 0;
+}
+.settings-content .ai1wpsa-phone-number-table th .components-text-control__input,
+.settings-content .ai1wpsa-phone-number-table td .components-text-control__input {
+  width: 100% !important;
+}
+.settings-content .ai1wpsa-phone-number-table th.actions,
+.settings-content .ai1wpsa-phone-number-table td.actions {
+  display: flex;
+  gap: 10px;
+}
+.settings-content .ai1wpsa-phone-number-table th.actions .ai1wpsa-btn,
+.settings-content .ai1wpsa-phone-number-table td.actions .ai1wpsa-btn {
+  width: 32px;
+  height: 32px;
+  padding: 10px;
+  border: none;
+}
+.settings-content .ai1wpsa-phone-number-table th {
+  background-color: transparent;
+}
+.settings-content-group {
+  background: rgba(0, 75, 203, 0.1);
+  border: 1px solid #dcdcde;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+  margin-bottom: 20px;
+  overflow: hidden;
+  animation: cardIn 0.3s ease both;
+}
+.settings-content-group:last-child {
+  margin-bottom: 0;
+}
+.settings-content-group .header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 20px;
+  border-bottom: 1px solid #dcdcde;
+  background: rgba(0, 75, 203, 0.05);
+}
+.settings-content-group .header h3,
+.settings-content-group .header .icon {
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.settings-content-group .settings-field {
+  padding: 10px 20px;
+}
 
 .ai1wpsa-btn {
   display: inline-flex;
@@ -449,6 +709,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   gap: 5px;
+}
+.ai1wpsa-btn.duplicate {
+  background-color: #004bcb;
+  color: #fff;
+}
+.ai1wpsa-btn.delete {
+  background-color: red;
+  color: #fff;
 }
 
 .ai1wpsa-getting-started-wrap .ai1wpsa-app-header {

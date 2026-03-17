@@ -29,7 +29,7 @@ class Hooks {
 	public function render_custom_css() {
 		$css = ai1wpsa_get_settings('customCss');
 		if (! empty($css)) {
-			echo '<style type="text/css">' . $css . '</style>';
+			echo '<style type="text/css">' . esc_attr($css) . '</style>';
 		}
 	}
 
@@ -97,7 +97,7 @@ class Hooks {
 ?>
 			<style>
 				.ai1wpsa-social-icons {
-					<?php echo implode("\n\t", $css_vars); ?>
+					<?php echo esc_attr(implode("\n\t", $css_vars)); ?>
 				}
 			</style>
 			<div class="ai1wpsa-social-icons <?php echo esc_attr($position); ?>">
@@ -204,7 +204,7 @@ class Hooks {
 		?>
 		<style>
 			.ai1wpsa-cookie-consent {
-				<?php echo implode("\n\t", $css_vars); ?>
+				<?php echo esc_attr(implode("\n\t", $css_vars)); ?>
 			}
 		</style>
 		<div id="ai1wpsa-cookie-consent" class="ai1wpsa-cookie-consent <?php echo esc_attr($position); ?>">
