@@ -8578,6 +8578,658 @@ function ClickToCall() {
     place: "right"
   })));
 }
+;// ./src/js/components/Settings/StickyToc.js
+function StickyToc_typeof(o) { "@babel/helpers - typeof"; return StickyToc_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, StickyToc_typeof(o); }
+function StickyToc_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function StickyToc_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? StickyToc_ownKeys(Object(t), !0).forEach(function (r) { StickyToc_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : StickyToc_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function StickyToc_defineProperty(e, r, t) { return (r = StickyToc_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function StickyToc_toPropertyKey(t) { var i = StickyToc_toPrimitive(t, "string"); return "symbol" == StickyToc_typeof(i) ? i : i + ""; }
+function StickyToc_toPrimitive(t, r) { if ("object" != StickyToc_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != StickyToc_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function StickyToc_toConsumableArray(r) { return StickyToc_arrayWithoutHoles(r) || StickyToc_iterableToArray(r) || StickyToc_unsupportedIterableToArray(r) || StickyToc_nonIterableSpread(); }
+function StickyToc_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function StickyToc_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return StickyToc_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? StickyToc_arrayLikeToArray(r, a) : void 0; } }
+function StickyToc_iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function StickyToc_arrayWithoutHoles(r) { if (Array.isArray(r)) return StickyToc_arrayLikeToArray(r); }
+function StickyToc_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+
+var StickyToc_useContext = wp.element.useContext;
+var StickyToc_wp$components = wp.components,
+  StickyToc_Button = StickyToc_wp$components.Button,
+  StickyToc_ButtonGroup = StickyToc_wp$components.ButtonGroup,
+  StickyToc_FormToggle = StickyToc_wp$components.FormToggle,
+  StickyToc_TextControl = StickyToc_wp$components.TextControl,
+  RangeControl = StickyToc_wp$components.RangeControl,
+  StickyToc_SelectControl = StickyToc_wp$components.SelectControl;
+
+
+
+
+// ─── Preset catalogue ────────────────────────────────────────────────────────
+// Maps each SmartTOC preset to its display label, layout type and pro flag.
+
+var INLINE_PRESET_OPTIONS = [{
+  label: wp.i18n.__('Card', 'all-in-one-wp-sticky-anything'),
+  value: 'card',
+  pro: false
+}, {
+  label: wp.i18n.__('Simple', 'all-in-one-wp-sticky-anything'),
+  value: 'simple',
+  pro: false
+}, {
+  label: wp.i18n.__('Steps', 'all-in-one-wp-sticky-anything'),
+  value: 'steps',
+  pro: true
+}, {
+  label: wp.i18n.__('Banner', 'all-in-one-wp-sticky-anything'),
+  value: 'banner',
+  pro: true
+}, {
+  label: wp.i18n.__('Pills', 'all-in-one-wp-sticky-anything'),
+  value: 'pills',
+  pro: true
+}, {
+  label: wp.i18n.__('Sticky Inline', 'all-in-one-wp-sticky-anything'),
+  value: 'sticky-inline',
+  pro: true
+}, {
+  label: wp.i18n.__('Accordion', 'all-in-one-wp-sticky-anything'),
+  value: 'accordion',
+  pro: true
+}, {
+  label: wp.i18n.__('Two Column', 'all-in-one-wp-sticky-anything'),
+  value: 'two-column',
+  pro: true
+}, {
+  label: wp.i18n.__('Tracker', 'all-in-one-wp-sticky-anything'),
+  value: 'tracker',
+  pro: true
+}, {
+  label: wp.i18n.__('Tabs', 'all-in-one-wp-sticky-anything'),
+  value: 'tabs',
+  pro: true
+}, {
+  label: wp.i18n.__('Ghost', 'all-in-one-wp-sticky-anything'),
+  value: 'ghost',
+  pro: true
+}];
+var PRESET_OPTIONS = [{
+  label: wp.i18n.__('Default', 'all-in-one-wp-sticky-anything'),
+  value: 'default',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Glass', 'all-in-one-wp-sticky-anything'),
+  value: 'glass',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Dark', 'all-in-one-wp-sticky-anything'),
+  value: 'dark',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Minimal', 'all-in-one-wp-sticky-anything'),
+  value: 'minimal',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Neon', 'all-in-one-wp-sticky-anything'),
+  value: 'neon',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Frosted Dark', 'all-in-one-wp-sticky-anything'),
+  value: 'frosted-dark',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Newspaper', 'all-in-one-wp-sticky-anything'),
+  value: 'newspaper',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Outline', 'all-in-one-wp-sticky-anything'),
+  value: 'outline',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Slideout', 'all-in-one-wp-sticky-anything'),
+  value: 'slideout',
+  type: 'sidebar',
+  pro: true
+}, {
+  label: wp.i18n.__('Top Nav', 'all-in-one-wp-sticky-anything'),
+  value: 'topnav',
+  type: 'topnav',
+  pro: true
+}];
+
+// Sidebar presets use left/right; topnav uses top/bottom.
+var SIDEBAR_POSITIONS = [{
+  label: wp.i18n.__('Right', 'all-in-one-wp-sticky-anything'),
+  value: 'right'
+}, {
+  label: wp.i18n.__('Left', 'all-in-one-wp-sticky-anything'),
+  value: 'left'
+}];
+var TOPNAV_POSITIONS = [{
+  label: wp.i18n.__('Top', 'all-in-one-wp-sticky-anything'),
+  value: 'top'
+}, {
+  label: wp.i18n.__('Bottom', 'all-in-one-wp-sticky-anything'),
+  value: 'bottom'
+}];
+var HEADING_LEVELS = ['h2', 'h3', 'h4'];
+function StickyToc() {
+  var _ai1wpsa = ai1wpsa,
+    isPro = _ai1wpsa.isPro,
+    postTypes = _ai1wpsa.postTypes;
+  var _useContext = StickyToc_useContext(Contexts_SettingsContext),
+    data = _useContext.data,
+    setData = _useContext.setData;
+
+  // ── Destructure all SmartTOC-mapped settings with sensible defaults ──────
+  var _ref = data || {},
+    _ref$stickyToc = _ref.stickyToc,
+    stickyToc = _ref$stickyToc === void 0 ? false : _ref$stickyToc,
+    _ref$stickyTocPostTyp = _ref.stickyTocPostTypes,
+    stickyTocPostTypes = _ref$stickyTocPostTyp === void 0 ? ['post'] : _ref$stickyTocPostTyp,
+    _ref$stickyTocTitle = _ref.stickyTocTitle,
+    stickyTocTitle = _ref$stickyTocTitle === void 0 ? 'Table of Contents' : _ref$stickyTocTitle,
+    _ref$stickyTocTarget = _ref.stickyTocTarget,
+    stickyTocTarget = _ref$stickyTocTarget === void 0 ? 'body .entry-content' : _ref$stickyTocTarget,
+    _ref$stickyTocMinHead = _ref.stickyTocMinHeadings,
+    stickyTocMinHeadings = _ref$stickyTocMinHead === void 0 ? 2 : _ref$stickyTocMinHead,
+    _ref$stickyTocHeading = _ref.stickyTocHeadingLevels,
+    stickyTocHeadingLevels = _ref$stickyTocHeading === void 0 ? ['h2', 'h3'] : _ref$stickyTocHeading,
+    _ref$stickyTocMaxDept = _ref.stickyTocMaxDepth,
+    stickyTocMaxDepth = _ref$stickyTocMaxDept === void 0 ? 3 : _ref$stickyTocMaxDept,
+    _ref$stickyTocShowNum = _ref.stickyTocShowNumbers,
+    stickyTocShowNumbers = _ref$stickyTocShowNum === void 0 ? true : _ref$stickyTocShowNum,
+    _ref$stickyTocScrollO = _ref.stickyTocScrollOffset,
+    stickyTocScrollOffset = _ref$stickyTocScrollO === void 0 ? 80 : _ref$stickyTocScrollO,
+    _ref$stickyTocShowInl = _ref.stickyTocShowInline,
+    stickyTocShowInline = _ref$stickyTocShowInl === void 0 ? true : _ref$stickyTocShowInl,
+    _ref$stickyTocInlineP = _ref.stickyTocInlinePreset,
+    stickyTocInlinePreset = _ref$stickyTocInlineP === void 0 ? 'card' : _ref$stickyTocInlineP,
+    _ref$stickyTocStartCo = _ref.stickyTocStartCollapsed,
+    stickyTocStartCollapsed = _ref$stickyTocStartCo === void 0 ? false : _ref$stickyTocStartCo,
+    _ref$stickyTocSidebar = _ref.stickyTocSidebar,
+    stickyTocSidebar = _ref$stickyTocSidebar === void 0 ? false : _ref$stickyTocSidebar,
+    _ref$stickyTocSidebar2 = _ref.stickyTocSidebarPreset,
+    stickyTocSidebarPreset = _ref$stickyTocSidebar2 === void 0 ? 'default' : _ref$stickyTocSidebar2,
+    _ref$stickyTocSidebar3 = _ref.stickyTocSidebarPosition,
+    stickyTocSidebarPosition = _ref$stickyTocSidebar3 === void 0 ? 'right' : _ref$stickyTocSidebar3,
+    _ref$stickyTocSidebar4 = _ref.stickyTocSidebarEdgeGap,
+    stickyTocSidebarEdgeGap = _ref$stickyTocSidebar4 === void 0 ? 24 : _ref$stickyTocSidebar4,
+    _ref$stickyTocSidebar5 = _ref.stickyTocSidebarShowProgress,
+    stickyTocSidebarShowProgress = _ref$stickyTocSidebar5 === void 0 ? false : _ref$stickyTocSidebar5,
+    _ref$stickyTocShowPro = _ref.stickyTocShowProgressBar,
+    stickyTocShowProgressBar = _ref$stickyTocShowPro === void 0 ? false : _ref$stickyTocShowPro,
+    _ref$stickyTocScrollB = _ref.stickyTocScrollBehavior,
+    stickyTocScrollBehavior = _ref$stickyTocScrollB === void 0 ? 'smooth' : _ref$stickyTocScrollB,
+    _ref$stickyTocAccentC = _ref.stickyTocAccentColor,
+    stickyTocAccentColor = _ref$stickyTocAccentC === void 0 ? '#004bcb' : _ref$stickyTocAccentC,
+    _ref$stickyTocBgColor = _ref.stickyTocBgColor,
+    stickyTocBgColor = _ref$stickyTocBgColor === void 0 ? '#ffffff' : _ref$stickyTocBgColor,
+    _ref$stickyTocRadius = _ref.stickyTocRadius,
+    stickyTocRadius = _ref$stickyTocRadius === void 0 ? 0 : _ref$stickyTocRadius;
+
+  // Derived helpers
+  var isTopnav = stickyTocSidebarPreset === 'topnav';
+  var positionOpts = isTopnav ? TOPNAV_POSITIONS : SIDEBAR_POSITIONS;
+
+  /** Toggle a heading level in/out of the array. */
+  var toggleHeadingLevel = function toggleHeadingLevel(level) {
+    var current = stickyTocHeadingLevels || [];
+    var next = current.includes(level) ? current.filter(function (l) {
+      return l !== level;
+    }) : [].concat(StickyToc_toConsumableArray(current), [level]).sort();
+    // Always keep at least one level selected.
+    if (!next.length) return;
+    setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+      stickyTocHeadingLevels: next
+    }));
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-settings-content-header"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "dashicons dashicons-sticky"
+  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Sticky Table of Contents Settings', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-content"
+  }, /*#__PURE__*/React.createElement(Group, {
+    icon: "\u2699\uFE0F",
+    title: wp.i18n.__('General', 'all-in-one-wp-sticky-anything')
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Table of Contents', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
+    checked: stickyToc,
+    onChange: function onChange() {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyToc: !stickyToc
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Enable or disable the table of contents.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('TOC Post Type', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_ButtonGroup, null, postTypes.map(function (pt) {
+    return /*#__PURE__*/React.createElement(StickyToc_Button, {
+      key: pt.value,
+      isPrimary: stickyTocPostTypes.includes(pt.value),
+      onClick: function onClick() {
+        var updated = stickyTocPostTypes.includes(pt.value) ? stickyTocPostTypes.filter(function (v) {
+          return v !== pt.value;
+        }) : [].concat(StickyToc_toConsumableArray(stickyTocPostTypes), [pt.value]);
+        setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+          stickyTocPostTypes: updated
+        }));
+      }
+    }, pt.label);
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Heading text shown in both the inline block and the sidebar.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Progress Bar', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
+    checked: stickyTocShowProgressBar,
+    disabled: !isPro,
+    className: !isPro ? 'pro' : '',
+    onChange: function onChange() {
+      if (!isPro) {
+        return;
+      }
+      setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocShowProgressBar: !stickyTocShowProgressBar
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Display a thin reading-progress bar pinned to the very top of the page.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('TOC Title', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_TextControl, {
+    value: stickyTocTitle,
+    onChange: function onChange(val) {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocTitle: val
+      }));
+    },
+    placeholder: "Table of Contents"
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Heading text shown in both the inline block and the sidebar.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Content Selector', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_TextControl, {
+    value: stickyTocTarget,
+    onChange: function onChange(val) {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocTarget: val
+      }));
+    },
+    placeholder: "article, .post-content, .entry-content, main"
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('CSS selector of the article wrapper table of contents will scan for headings.', 'all-in-one-wp-sticky-anything'))))), /*#__PURE__*/React.createElement(Group, {
+    icon: "\uD83D\uDCDD",
+    title: wp.i18n.__('Content Parsing', 'all-in-one-wp-sticky-anything')
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Heading Levels', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_ButtonGroup, null, HEADING_LEVELS.map(function (level) {
+    return /*#__PURE__*/React.createElement(StickyToc_Button, {
+      key: level,
+      isPrimary: stickyTocHeadingLevels.includes(level),
+      onClick: function onClick() {
+        return toggleHeadingLevel(level);
+      }
+    }, level.toUpperCase());
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Which heading tags table of contents will detect. At least one must be selected.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Max Depth', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_ButtonGroup, null, [{
+    label: wp.i18n.__('H2 Only', 'all-in-one-wp-sticky-anything'),
+    value: 1
+  }, {
+    label: wp.i18n.__('H2 + H3', 'all-in-one-wp-sticky-anything'),
+    value: 2
+  }, {
+    label: wp.i18n.__('H2 + H3 + H4', 'all-in-one-wp-sticky-anything'),
+    value: 3
+  }].map(function (opt) {
+    return /*#__PURE__*/React.createElement(StickyToc_Button, {
+      key: opt.value,
+      isPrimary: stickyTocMaxDepth === opt.value,
+      onClick: function onClick() {
+        return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+          stickyTocMaxDepth: opt.value
+        }));
+      }
+    }, opt.label);
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Maximum nesting depth visible in the TOC. Deeper headings are still given IDs but are hidden.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Minimum Headings', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_TextControl, {
+    type: "number",
+    className: "ai1wpsa-text-control",
+    value: stickyTocMinHeadings,
+    onChange: function onChange(val) {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocMinHeadings: val
+      }));
+    },
+    min: 1,
+    max: 10
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Minimum number of headings required before any TOC is rendered.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Section Numbers', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
+    checked: stickyTocShowNumbers,
+    onChange: function onChange() {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocShowNumbers: !stickyTocShowNumbers
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Prepend nested numbers (e.g. "1.", "1.2.") before each TOC link.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Scroll Offset (px)', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_TextControl, {
+    type: "number",
+    className: "ai1wpsa-text-control",
+    value: stickyTocScrollOffset,
+    onChange: function onChange(val) {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocScrollOffset: val
+      }));
+    },
+    min: 0,
+    max: 200
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Pixels subtracted from the scroll position to account for a sticky header.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Scroll Behaviour', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_ButtonGroup, null, [{
+    label: wp.i18n.__('Smooth', 'all-in-one-wp-sticky-anything'),
+    value: 'smooth'
+  }, {
+    label: wp.i18n.__('Instant', 'all-in-one-wp-sticky-anything'),
+    value: 'auto'
+  }].map(function (opt) {
+    return /*#__PURE__*/React.createElement(StickyToc_Button, {
+      key: opt.value,
+      isPrimary: stickyTocScrollBehavior === opt.value,
+      onClick: function onClick() {
+        return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+          stickyTocScrollBehavior: opt.value
+        }));
+      }
+    }, opt.label);
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Animation style when clicking a TOC link.', 'all-in-one-wp-sticky-anything'))))), /*#__PURE__*/React.createElement(Group, {
+    icon: "\uD83D\uDCC4",
+    title: wp.i18n.__('Inline TOC Block', 'all-in-one-wp-sticky-anything')
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Show Inline Block', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
+    checked: stickyTocShowInline,
+    onChange: function onChange() {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocShowInline: !stickyTocShowInline
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Inject a collapsible TOC block inside the article content (above the first paragraph).', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Preset', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "widget-style-options"
+  }, /*#__PURE__*/React.createElement(StickyToc_ButtonGroup, null, INLINE_PRESET_OPTIONS.map(function (option, index) {
+    return /*#__PURE__*/React.createElement(StickyToc_Button, {
+      key: index,
+      isPrimary: stickyTocInlinePreset === option.value,
+      disabled: option.pro && !isPro,
+      className: option.pro && !isPro ? 'pro' : '',
+      onClick: function onClick() {
+        if (option.pro && !isPro) return;
+        setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+          stickyTocInlinePreset: option.value
+        }));
+      }
+    }, option.label);
+  }))), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Preset for the inline TOC block.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Start Collapsed', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
+    checked: stickyTocStartCollapsed,
+    onChange: function onChange() {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocStartCollapsed: !stickyTocStartCollapsed
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Open the inline block collapsed by default. Visitors can expand it on click.', 'all-in-one-wp-sticky-anything'))))), /*#__PURE__*/React.createElement(Group, {
+    icon: "\uD83D\uDCCC",
+    title: wp.i18n.__('Sticky Sidebar & Topnav', 'all-in-one-wp-sticky-anything')
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Sticky', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
+    checked: stickyTocSidebar,
+    onChange: function onChange() {
+      setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocSidebar: !stickyTocSidebar
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Sticky sidebar or topnav.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Preset', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "widget-style-options"
+  }, /*#__PURE__*/React.createElement(StickyToc_ButtonGroup, null, PRESET_OPTIONS.map(function (option, index) {
+    return /*#__PURE__*/React.createElement(StickyToc_Button, {
+      key: index,
+      disabled: option.pro && !isPro,
+      className: option.pro && !isPro ? 'pro' : '',
+      variant: stickyTocSidebarPreset === option.value ? 'primary' : '',
+      onClick: function onClick() {
+        if (option.pro && !isPro) return;
+        // When switching to/from topnav, reset position to a sensible default.
+        var nextPosition = option.type === 'topnav' ? 'top' : 'right';
+        setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+          stickyTocSidebarPreset: option.value,
+          stickyTocSidebarPosition: nextPosition
+        }));
+      }
+    }, option.label);
+  }))), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Visual style for the sticky sidebar. Choosing "Top Nav" switches to a floating navigation chip.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Position', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_ButtonGroup, null, positionOpts.map(function (opt) {
+    return /*#__PURE__*/React.createElement(StickyToc_Button, {
+      key: opt.value,
+      isPrimary: stickyTocSidebarPosition === opt.value,
+      onClick: function onClick() {
+        return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+          stickyTocSidebarPosition: opt.value
+        }));
+      }
+    }, opt.label);
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, isTopnav ? wp.i18n.__('Pin the topnav chip to the top or bottom of the viewport.', 'all-in-one-wp-sticky-anything') : wp.i18n.__('Pin the sidebar to the left or right side of the viewport.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Edge Gap (px)', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_TextControl, {
+    type: "number",
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
+    disabled: !isPro,
+    value: stickyTocSidebarEdgeGap,
+    onChange: function onChange(val) {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocSidebarEdgeGap: val
+      }));
+    },
+    min: 0,
+    max: 100
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Distance in pixels between the sidebar / topnav and the viewport edge.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Progress Bar', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
+    checked: stickyTocSidebarShowProgress,
+    disabled: !isPro,
+    className: !isPro ? 'pro' : '',
+    onChange: function onChange() {
+      if (!isPro) {
+        return;
+      }
+      setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocSidebarShowProgress: !stickyTocSidebarShowProgress
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Show a mini reading-progress bar inside the sidebar header.', 'all-in-one-wp-sticky-anything'))))), /*#__PURE__*/React.createElement(Group, {
+    icon: "\uD83C\uDFA8",
+    title: wp.i18n.__('Theme & Styling', 'all-in-one-wp-sticky-anything')
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Accent Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+    value: stickyTocAccentColor,
+    onChange: function onChange(color) {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocAccentColor: color
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Primary accent colour used for active links, progress bar, and highlights (CSS var --stoc-color).', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+    value: stickyTocBgColor,
+    onChange: function onChange(color) {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocBgColor: color
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Widget background colour (CSS var --stoc-color-bg). Leave as-is to follow the active preset.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Border Radius (px)', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyToc_TextControl, {
+    type: "number",
+    className: "ai1wpsa-text-control",
+    value: stickyTocRadius,
+    onChange: function onChange(val) {
+      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+        stickyTocRadius: val
+      }));
+    },
+    min: 0,
+    max: 100
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Border radius of the widget (CSS var --stoc-border-radius).', 'all-in-one-wp-sticky-anything'))))), !isPro && /*#__PURE__*/React.createElement(M, {
+    anchorSelect: ".pro",
+    variant: "warning",
+    content: wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything'),
+    place: "right"
+  })));
+}
 ;// ./src/js/components/Settings/Content.js
 function Content_slicedToArray(r, e) { return Content_arrayWithHoles(r) || Content_iterableToArrayLimit(r, e) || Content_unsupportedIterableToArray(r, e) || Content_nonIterableRest(); }
 function Content_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8585,6 +9237,7 @@ function Content_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typ
 function Content_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function Content_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function Content_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 
 
@@ -8631,6 +9284,10 @@ function Content() {
     id: 'sticky-cookie-consent',
     title: wp.i18n.__('Sticky Cookie Consent', 'all-in-one-wp-sticky-anything'),
     icon: 'dashicons dashicons-privacy'
+  }, {
+    id: 'sticky-toc',
+    title: wp.i18n.__('Sticky Table of Content', 'all-in-one-wp-sticky-anything'),
+    icon: 'dashicons dashicons-sticky'
   },
   // {
   //   id: 'announcement',
@@ -8662,7 +9319,7 @@ function Content() {
     }, /*#__PURE__*/React.createElement("i", {
       className: icon
     }), title);
-  })), tab === 'general' && /*#__PURE__*/React.createElement(General, null), tab === 'fixed-widget' && /*#__PURE__*/React.createElement(FixedWidget, null), tab === 'click-to-call' && /*#__PURE__*/React.createElement(ClickToCall, null), tab === 'sticky-sidebar' && /*#__PURE__*/React.createElement(StickySidebar, null), tab === 'sticky-social-icons' && /*#__PURE__*/React.createElement(StickySocial, null), tab === 'sticky-cookie-consent' && /*#__PURE__*/React.createElement(StickyCookieConsent, null), tab === 'announcement' && /*#__PURE__*/React.createElement(AnnouncementBar, null), tab === 'css' && /*#__PURE__*/React.createElement(Css, null), tab === 'tools' && /*#__PURE__*/React.createElement(Tools, null));
+  })), tab === 'general' && /*#__PURE__*/React.createElement(General, null), tab === 'fixed-widget' && /*#__PURE__*/React.createElement(FixedWidget, null), tab === 'click-to-call' && /*#__PURE__*/React.createElement(ClickToCall, null), tab === 'sticky-sidebar' && /*#__PURE__*/React.createElement(StickySidebar, null), tab === 'sticky-social-icons' && /*#__PURE__*/React.createElement(StickySocial, null), tab === 'sticky-cookie-consent' && /*#__PURE__*/React.createElement(StickyCookieConsent, null), tab === 'sticky-toc' && /*#__PURE__*/React.createElement(StickyToc, null), tab === 'announcement' && /*#__PURE__*/React.createElement(AnnouncementBar, null), tab === 'css' && /*#__PURE__*/React.createElement(Css, null), tab === 'tools' && /*#__PURE__*/React.createElement(Tools, null));
 }
 ;// ./src/js/includes/functions.js
 function functions_slicedToArray(r, e) { return functions_arrayWithHoles(r) || functions_iterableToArrayLimit(r, e) || functions_unsupportedIterableToArray(r, e) || functions_nonIterableRest(); }
@@ -8727,6 +9384,7 @@ function Settings() {
     stickySidebarHeight: false,
     stickyDisableOn: [],
     clicktoCall: false,
+    stickyToc: false,
     customCss: ''
   };
   var _useState = Settings_useState(((_ai1wpsa = ai1wpsa) === null || _ai1wpsa === void 0 ? void 0 : _ai1wpsa.settings) || initData),
@@ -8880,6 +9538,12 @@ function BasicUsage() {
     "class": "settings-row bg-9"
   }, /*#__PURE__*/React.createElement("div", {
     "class": "settings-col"
+  }, /*#__PURE__*/React.createElement("h2", null, wp.i18n.__('Sticky Table of Content (TOC) ⚡')), /*#__PURE__*/React.createElement("p", null, wp.i18n.__('Display a sticky table of contents to help users navigate your content.', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, wp.i18n.__('1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Table of Contents.', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("li", null, wp.i18n.__('2. Enable the "Table of Contents" option.', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("li", null, wp.i18n.__('3. Enable the "Sticky" option.', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("li", null, wp.i18n.__('4. Customize the table of contents settings to your preference.', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("li", null, wp.i18n.__('5. Click the "Save" button at the top to apply your changes.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-col"
+  })), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-row bg-9"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "settings-col"
   }, /*#__PURE__*/React.createElement("h2", null, wp.i18n.__('Sticky Element')), /*#__PURE__*/React.createElement("p", null, wp.i18n.__('You can make any sticky element or sidebar easily on your WordPress website by All-in-one WP Sticky Anyting. Integration is super easy. You need add a class on your target element. ex: sticky.', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
     "class": "settings-col"
   })), /*#__PURE__*/React.createElement("div", {
@@ -8899,6 +9563,10 @@ function BasicUsage() {
 ;// ./src/js/components/GettingStarted/Changelog.js
 function Changelog() {
   var logs = [{
+    version: 'v1.1.3',
+    date: '23-04-2026',
+    "new": [wp.i18n.__('Introduce Sticky Table of Contents(toc).', 'all-in-one-wp-sticky-anything')]
+  }, {
     version: 'v1.1.2',
     date: '18-03-2026',
     "new": [wp.i18n.__('Introduce Click to Call.', 'all-in-one-wp-sticky-anything')]
@@ -9103,6 +9771,11 @@ function Introduction() {
     icon: 'dashicons-privacy',
     title: wp.i18n.__('Sticky Cookie Consent', 'all-in-one-wp-sticky-anything'),
     desc: wp.i18n.__('Make your cookie consent banner sticky to ensure compliance and visibility.', 'all-in-one-wp-sticky-anything')
+  }, {
+    id: 'sticky-toc',
+    icon: 'dashicons-list-view',
+    title: wp.i18n.__('Sticky Table of Contents', 'all-in-one-wp-sticky-anything'),
+    desc: wp.i18n.__('Display a sticky table of contents to help users navigate your content.', 'all-in-one-wp-sticky-anything')
   }];
   return /*#__PURE__*/React.createElement("div", {
     className: "ai1wpsa-settings-content"

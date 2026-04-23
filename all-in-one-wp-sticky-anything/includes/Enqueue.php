@@ -30,6 +30,7 @@ class Enqueue {
 		wp_register_style('ai1wpsa-remixicon', AI1WPSA_ASSETS . '/vendor/remixicon/remixicon.min.css', [], '4.7.0');
 		wp_register_style('ai1wpsa-lineicon', AI1WPSA_ASSETS . '/vendor/lineicon/lineicons.min.css', [], '5.0.0');
 		wp_register_style('ai1wpsa-click-to-call', AI1WPSA_ASSETS . '/vendor/click-to-call/click-to-call.min.css', [], '1.0.0');
+		wp_register_style('ai1wpsa-toc', AI1WPSA_ASSETS . '/vendor/toc/toc.min.css', [], '1.0.0');
 		wp_register_style('ai1wpsa-frontend', AI1WPSA_ASSETS . '/css/frontend.min.css', [], AI1WPSA_VERSION);
 
 		// fix default sticky
@@ -73,6 +74,8 @@ class Enqueue {
 			'jquery',
 		], '1.0', true);
 
+		wp_register_script('ai1wpsa-toc', AI1WPSA_ASSETS . '/vendor/toc/toc.min.js', [], '1.0', true);
+
 		wp_register_script('ai1wpsa-frontend', AI1WPSA_ASSETS . '/js/frontend.min.js', [
 			'jquery',
 			'wp-plupload',
@@ -95,9 +98,18 @@ class Enqueue {
 		// click to call 
 		$click_to_call = ai1wpsa_get_settings('clicktoCall', false);
 
-		if(filter_var($click_to_call, FILTER_VALIDATE_BOOLEAN)){
+		if (filter_var($click_to_call, FILTER_VALIDATE_BOOLEAN)) {
 			wp_enqueue_style('ai1wpsa-click-to-call');
 			wp_enqueue_script('ai1wpsa-click-to-call');
+		}
+
+		// table of contents
+		$sticky_toc = ai1wpsa_get_settings('stickyToc', false);
+		$sticky_toc_post_types = (array) ai1wpsa_get_settings('stickyTocPostTypes', ['post']);
+
+		if (filter_var($sticky_toc, FILTER_VALIDATE_BOOLEAN) && is_singular($sticky_toc_post_types)) {
+			wp_enqueue_style('ai1wpsa-toc');
+			wp_enqueue_script('ai1wpsa-toc');
 		}
 
 		wp_enqueue_script('ai1wpsa-frontend');

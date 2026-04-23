@@ -4,7 +4,7 @@ Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,8 @@ https://youtu.be/Y2IEuGCVu0Y
 * **📌 Any Element Can Be Made Sticky**
 * **📍 Sticky Sidebar**
 * **📱 Sticky Social Icons**
-* **🍪 Sticky Cookie Consent (New ⚡)**
+* **🍪 Sticky Cookie Consent**
+* **🍪 Sticky Table of Contents (New ⚡)**
 * **✏️ Custom CSS**
 * **⏱️ Quick to Set Up**
 * **⚡ Blazing Fast**
@@ -65,8 +66,19 @@ After that, enter the CSS selector for your sidebar element (e.g. .sidebar or #s
 **📱 Sticky Social Icons**
 Keep your social media icons always visible to visitors! Enable the “Sticky Social Icons” option in the plugin settings, add your icons, and configure their position. This is perfect for boosting engagement and making your social links easily accessible while users scroll.
 
-**🍪 Sticky Cookie Consent (New ⚡)**
+**🍪 Sticky Cookie Consent**
 Keep your cookie notice visible and compliant at all times! Enable the “Sticky Cookie Consent” option in the plugin settings, customize your consent message, and choose its position on the screen. This ensures visitors can easily review and manage their cookie preferences while browsing your site, helping you stay transparent and compliant as users scroll.
+
+**📑 Sticky Table of Contents (New ⚡)**
+Add a simple and effective Table of Contents to your posts and pages. The TOC is automatically generated from your headings, helping visitors quickly navigate through your content.
+
+This feature is perfect for bloggers and content creators who want to improve readability and structure without any complex setup.
+
+* Automatically generate TOC from headings (H1–H4)
+* Display TOC inside your content
+* Choose supported post types (posts, pages, etc.)
+* Lightweight and fast
+* Works with most themes.
 
 **✏️ Custom CSS**
 All-in-One Sticky Anything allows you to customize the appearance of the website using custom CSS.
@@ -200,6 +212,9 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.1.3 (23-04-2026) =
+* **New:** Introduce Sticky Table of Contents(toc).
+
 = 1.1.2 (18-03-2026) =
 * **New:** Introduce Click to Call.
 

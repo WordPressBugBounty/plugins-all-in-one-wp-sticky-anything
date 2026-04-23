@@ -2,11 +2,20 @@
 ;
 (function ($) {
   var app = {
-    init: function init() {},
-    ready: function ready() {
+    init: function init() {
       var _ai1wpsa = ai1wpsa,
-        settings = _ai1wpsa.settings,
-        isLoggedIn = _ai1wpsa.isLoggedIn;
+        settings = _ai1wpsa.settings;
+      var stickyToc = settings.stickyToc;
+
+      // Sticky Table of Content
+      if (!!stickyToc) {
+        app.handleStickyToc();
+      }
+    },
+    ready: function ready() {
+      var _ai1wpsa2 = ai1wpsa,
+        settings = _ai1wpsa2.settings,
+        isLoggedIn = _ai1wpsa2.isLoggedIn;
       var stickyClass = settings.stickyClass,
         stickyZIndex = settings.stickyZIndex,
         fixDefaultSticky = settings.fixDefaultSticky,
@@ -71,8 +80,8 @@
       }
     },
     handleFixDefaultSticky: function handleFixDefaultSticky() {
-      var _ai1wpsa2 = ai1wpsa,
-        settings = _ai1wpsa2.settings;
+      var _ai1wpsa3 = ai1wpsa,
+        settings = _ai1wpsa3.settings;
       var stickyClass = settings.stickyClass;
       var header = $(stickyClass);
       if (!header.length) return;
@@ -90,8 +99,8 @@
       });
     },
     handleCustomizerStickyHeader: function handleCustomizerStickyHeader() {
-      var _ai1wpsa3;
-      var _ref = ((_ai1wpsa3 = ai1wpsa) === null || _ai1wpsa3 === void 0 ? void 0 : _ai1wpsa3.settings) || {},
+      var _ai1wpsa4;
+      var _ref = ((_ai1wpsa4 = ai1wpsa) === null || _ai1wpsa4 === void 0 ? void 0 : _ai1wpsa4.settings) || {},
         stickyCIndex = _ref.stickyCIndex;
       var element = $('header.site-header, header#site-header, header.header, header#header, header#zak-masthead');
       if (!element.length) return;
@@ -115,8 +124,8 @@
     },
     handleStickySidebar: function handleStickySidebar() {
       var _$;
-      var _ai1wpsa4 = ai1wpsa,
-        settings = _ai1wpsa4.settings;
+      var _ai1wpsa5 = ai1wpsa,
+        settings = _ai1wpsa5.settings;
       var stickySidebarElement = settings.stickySidebarElement,
         stickySidebarContainer = settings.stickySidebarContainer,
         StickySidebarMarginTop = settings.StickySidebarMarginTop,
@@ -213,8 +222,8 @@
           return;
         }
         if ($(window).scrollTop() > widgetOffset) {
-          var _ai1wpsa$settings$fix, _ai1wpsa5;
-          var topOffset = parseInt((_ai1wpsa$settings$fix = (_ai1wpsa5 = ai1wpsa) === null || _ai1wpsa5 === void 0 || (_ai1wpsa5 = _ai1wpsa5.settings) === null || _ai1wpsa5 === void 0 ? void 0 : _ai1wpsa5.fixedWidgetTopOffset) !== null && _ai1wpsa$settings$fix !== void 0 ? _ai1wpsa$settings$fix : 100, 10);
+          var _ai1wpsa$settings$fix, _ai1wpsa6;
+          var topOffset = parseInt((_ai1wpsa$settings$fix = (_ai1wpsa6 = ai1wpsa) === null || _ai1wpsa6 === void 0 || (_ai1wpsa6 = _ai1wpsa6.settings) === null || _ai1wpsa6 === void 0 ? void 0 : _ai1wpsa6.fixedWidgetTopOffset) !== null && _ai1wpsa$settings$fix !== void 0 ? _ai1wpsa$settings$fix : 100, 10);
           widgetData.forEach(function (item) {
             item.el.css({
               position: 'fixed',
@@ -236,8 +245,8 @@
       });
     },
     handleClicktoCall: function handleClicktoCall() {
-      var _ai1wpsa$settings, _ai1wpsa6;
-      var _ref2 = (_ai1wpsa$settings = (_ai1wpsa6 = ai1wpsa) === null || _ai1wpsa6 === void 0 ? void 0 : _ai1wpsa6.settings) !== null && _ai1wpsa$settings !== void 0 ? _ai1wpsa$settings : {},
+      var _ai1wpsa$settings, _ai1wpsa7;
+      var _ref2 = (_ai1wpsa$settings = (_ai1wpsa7 = ai1wpsa) === null || _ai1wpsa7 === void 0 ? void 0 : _ai1wpsa7.settings) !== null && _ai1wpsa$settings !== void 0 ? _ai1wpsa$settings : {},
         _ref2$clicktoCall = _ref2.clicktoCall,
         clicktoCall = _ref2$clicktoCall === void 0 ? false : _ref2$clicktoCall,
         _ref2$clicktoCallPosi = _ref2.clicktoCallPosition,
@@ -330,6 +339,81 @@
         badge: clicktoCallBadge ? clicktoCallBadgeCount : 0,
         schedule: clicktoCallSchedules
       });
+    },
+    handleStickyToc: function handleStickyToc() {
+      var _ai1wpsa8 = ai1wpsa,
+        settings = _ai1wpsa8.settings;
+      var _settings$stickyTocTi = settings.stickyTocTitle,
+        stickyTocTitle = _settings$stickyTocTi === void 0 ? 'Table of Contents' : _settings$stickyTocTi,
+        _settings$stickyTocTa = settings.stickyTocTarget,
+        stickyTocTarget = _settings$stickyTocTa === void 0 ? 'body .entry-content' : _settings$stickyTocTa,
+        _settings$stickyTocMi = settings.stickyTocMinHeadings,
+        stickyTocMinHeadings = _settings$stickyTocMi === void 0 ? 2 : _settings$stickyTocMi,
+        _settings$stickyTocHe = settings.stickyTocHeadingLevels,
+        stickyTocHeadingLevels = _settings$stickyTocHe === void 0 ? ['h2', 'h3'] : _settings$stickyTocHe,
+        _settings$stickyTocMa = settings.stickyTocMaxDepth,
+        stickyTocMaxDepth = _settings$stickyTocMa === void 0 ? 3 : _settings$stickyTocMa,
+        _settings$stickyTocSh = settings.stickyTocShowNumbers,
+        stickyTocShowNumbers = _settings$stickyTocSh === void 0 ? true : _settings$stickyTocSh,
+        _settings$stickyTocSc = settings.stickyTocScrollOffset,
+        stickyTocScrollOffset = _settings$stickyTocSc === void 0 ? 80 : _settings$stickyTocSc,
+        _settings$stickyTocSh2 = settings.stickyTocShowInline,
+        stickyTocShowInline = _settings$stickyTocSh2 === void 0 ? true : _settings$stickyTocSh2,
+        _settings$stickyTocIn = settings.stickyTocInlinePreset,
+        stickyTocInlinePreset = _settings$stickyTocIn === void 0 ? 'card' : _settings$stickyTocIn,
+        _settings$stickyTocSt = settings.stickyTocStartCollapsed,
+        stickyTocStartCollapsed = _settings$stickyTocSt === void 0 ? false : _settings$stickyTocSt,
+        _settings$stickyTocSi = settings.stickyTocSidebar,
+        stickyTocSidebar = _settings$stickyTocSi === void 0 ? false : _settings$stickyTocSi,
+        _settings$stickyTocSi2 = settings.stickyTocSidebarPreset,
+        stickyTocSidebarPreset = _settings$stickyTocSi2 === void 0 ? 'default' : _settings$stickyTocSi2,
+        _settings$stickyTocSi3 = settings.stickyTocSidebarPosition,
+        stickyTocSidebarPosition = _settings$stickyTocSi3 === void 0 ? 'right' : _settings$stickyTocSi3,
+        _settings$stickyTocSi4 = settings.stickyTocSidebarEdgeGap,
+        stickyTocSidebarEdgeGap = _settings$stickyTocSi4 === void 0 ? 24 : _settings$stickyTocSi4,
+        _settings$stickyTocSi5 = settings.stickyTocSidebarShowProgress,
+        stickyTocSidebarShowProgress = _settings$stickyTocSi5 === void 0 ? false : _settings$stickyTocSi5,
+        _settings$stickyTocSh3 = settings.stickyTocShowProgressBar,
+        stickyTocShowProgressBar = _settings$stickyTocSh3 === void 0 ? false : _settings$stickyTocSh3,
+        _settings$stickyTocSc2 = settings.stickyTocScrollBehavior,
+        stickyTocScrollBehavior = _settings$stickyTocSc2 === void 0 ? 'smooth' : _settings$stickyTocSc2,
+        _settings$stickyTocAc = settings.stickyTocAccentColor,
+        stickyTocAccentColor = _settings$stickyTocAc === void 0 ? '#004bcb' : _settings$stickyTocAc,
+        _settings$stickyTocBg = settings.stickyTocBgColor,
+        stickyTocBgColor = _settings$stickyTocBg === void 0 ? '#ffffff' : _settings$stickyTocBg,
+        _settings$stickyTocRa = settings.stickyTocRadius,
+        stickyTocRadius = _settings$stickyTocRa === void 0 ? 0 : _settings$stickyTocRa;
+      new SmartTOC({
+        target: stickyTocTarget,
+        minHeadings: stickyTocMinHeadings,
+        title: stickyTocTitle,
+        scrollOffset: stickyTocScrollOffset,
+        headingLevels: stickyTocHeadingLevels,
+        maxDepth: stickyTocMaxDepth,
+        showNumbers: stickyTocShowNumbers,
+        inline: {
+          show: stickyTocShowInline,
+          preset: stickyTocInlinePreset,
+          collapsed: stickyTocStartCollapsed,
+          injectInto: 'auto'
+        },
+        sidebar: {
+          enabled: stickyTocSidebar,
+          preset: stickyTocSidebarPreset,
+          position: stickyTocSidebarPosition,
+          edgeGap: stickyTocSidebarEdgeGap,
+          progress: stickyTocSidebarShowProgress
+        },
+        showProgressBar: stickyTocShowProgressBar,
+        vars: {
+          '--stoc-color': stickyTocAccentColor,
+          '--stoc-color-bg': stickyTocBgColor,
+          '--stoc-radius': "".concat(stickyTocRadius, "px")
+        },
+        scrollBehavior: stickyTocScrollBehavior,
+        onInit: null,
+        onActivate: null
+      }).init();
     }
   };
   app.init();

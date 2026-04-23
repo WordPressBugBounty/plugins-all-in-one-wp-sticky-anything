@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent 1.1.2\n"
+"Project-Id-Version: All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent 1.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/all-in-one-wp-sticky-anything-pro\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-17T19:59:50+00:00\n"
+"POT-Creation-Date: 2026-04-23T02:10:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: all-in-one-wp-sticky-anything\n"
@@ -42,8 +42,8 @@ msgstr ""
 
 #: includes/Admin.php:29
 #: assets/js/admin.js:139
-#: assets/js/admin.js:9210
-#: assets/js/admin.js:9213
+#: assets/js/admin.js:9883
+#: assets/js/admin.js:9886
 msgid "All-in-One WP Sticky Anything"
 msgstr ""
 
@@ -87,7 +87,7 @@ msgid "Settings to configure Sticky Anything on your website."
 msgstr ""
 
 #: includes/Customizer.php:33
-#: assets/js/admin.js:9089
+#: assets/js/admin.js:9757
 msgid "Sticky Header"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 
 #: includes/Customizer.php:75
 #: includes/Elementor.php:51
-#: assets/js/admin.js:8950
+#: assets/js/admin.js:9618
 msgid "Z-Index"
 msgstr ""
 
@@ -126,8 +126,8 @@ msgstr ""
 
 #: includes/Hooks.php:260
 #: assets/js/admin.js:7596
-#: assets/js/admin.js:8620
-#: assets/js/admin.js:9079
+#: assets/js/admin.js:9273
+#: assets/js/admin.js:9747
 #: assets/js/block-editor.js:40
 msgid "Fixed Widget"
 msgstr ""
@@ -208,8 +208,8 @@ msgid "Sticky Sidebar Settings"
 msgstr ""
 
 #: assets/js/admin.js:281
-#: assets/js/admin.js:8624
-#: assets/js/admin.js:9094
+#: assets/js/admin.js:9277
+#: assets/js/admin.js:9762
 msgid "Sticky Sidebar"
 msgstr ""
 
@@ -322,8 +322,8 @@ msgid "Visit Support Forum"
 msgstr ""
 
 #: assets/js/admin.js:539
-#: assets/js/admin.js:8642
-#: assets/js/admin.js:8950
+#: assets/js/admin.js:9299
+#: assets/js/admin.js:9618
 msgid "Custom CSS"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgid "Write your custom CSS here."
 msgstr ""
 
 #: assets/js/admin.js:567
-#: assets/js/admin.js:8646
+#: assets/js/admin.js:9303
 msgid "Tools"
 msgstr ""
 
@@ -393,15 +393,18 @@ msgstr ""
 #: assets/js/admin.js:2917
 #: assets/js/admin.js:7262
 #: assets/js/admin.js:7967
+#: assets/js/admin.js:9120
 msgid "Position"
 msgstr ""
 
 #: assets/js/admin.js:2930
+#: assets/js/admin.js:8716
 msgid "Top"
 msgstr ""
 
 #: assets/js/admin.js:2941
 #: assets/js/admin.js:3285
+#: assets/js/admin.js:8719
 msgid "Bottom"
 msgstr ""
 
@@ -522,10 +525,12 @@ msgid "Posts Page"
 msgstr ""
 
 #: assets/js/admin.js:3279
+#: assets/js/admin.js:8712
 msgid "Left"
 msgstr ""
 
 #: assets/js/admin.js:3282
+#: assets/js/admin.js:8709
 msgid "Right"
 msgstr ""
 
@@ -4657,8 +4662,8 @@ msgid "Sticky Social Icons Settings"
 msgstr ""
 
 #: assets/js/admin.js:6813
-#: assets/js/admin.js:8628
-#: assets/js/admin.js:9099
+#: assets/js/admin.js:9281
+#: assets/js/admin.js:9767
 msgid "Sticky Social Icons"
 msgstr ""
 
@@ -4674,6 +4679,7 @@ msgstr ""
 #: assets/js/admin.js:6866
 #: assets/js/admin.js:7283
 #: assets/js/admin.js:8577
+#: assets/js/admin.js:9229
 msgid "Pro Feature"
 msgstr ""
 
@@ -4783,8 +4789,8 @@ msgid "Sticky Cookie Consent Settings"
 msgstr ""
 
 #: assets/js/admin.js:7213
-#: assets/js/admin.js:8632
-#: assets/js/admin.js:9104
+#: assets/js/admin.js:9285
+#: assets/js/admin.js:9772
 msgid "Sticky Cookie Consent"
 msgstr ""
 
@@ -4838,6 +4844,7 @@ msgstr ""
 
 #: assets/js/admin.js:7446
 #: assets/js/admin.js:8152
+#: assets/js/admin.js:9196
 msgid "Background Color"
 msgstr ""
 
@@ -4960,10 +4967,12 @@ msgid "Inline"
 msgstr ""
 
 #: assets/js/admin.js:7791
+#: assets/js/admin.js:8611
 msgid "Card"
 msgstr ""
 
 #: assets/js/admin.js:7796
+#: assets/js/admin.js:8661
 msgid "Glass"
 msgstr ""
 
@@ -5048,13 +5057,14 @@ msgid "Click to Call Settings"
 msgstr ""
 
 #: assets/js/admin.js:7888
-#: assets/js/admin.js:8612
+#: assets/js/admin.js:8804
+#: assets/js/admin.js:9265
 msgid "General"
 msgstr ""
 
 #: assets/js/admin.js:7893
-#: assets/js/admin.js:8616
-#: assets/js/admin.js:9074
+#: assets/js/admin.js:9269
+#: assets/js/admin.js:9742
 msgid "Click to Call"
 msgstr ""
 
@@ -5087,6 +5097,7 @@ msgid "ex: Call Now"
 msgstr ""
 
 #: assets/js/admin.js:8071
+#: assets/js/admin.js:9176
 msgid "Theme & Styling"
 msgstr ""
 
@@ -5259,366 +5270,675 @@ msgstr ""
 msgid "Set the schedules of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8748
-msgid "Settings saved successfully."
+#: assets/js/admin.js:8615
+msgid "Simple"
 msgstr ""
 
-#: assets/js/admin.js:8759
-msgid "Settings Reset successfully."
+#: assets/js/admin.js:8619
+msgid "Steps"
 msgstr ""
 
-#: assets/js/admin.js:8817
-#: assets/js/admin.js:9173
-msgid "Basic Usage"
+#: assets/js/admin.js:8623
+msgid "Banner"
 msgstr ""
 
-#: assets/js/admin.js:8823
-msgid "You can easily create a click-to-call button using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
+#: assets/js/admin.js:8627
+msgid "Pills"
 msgstr ""
 
-#: assets/js/admin.js:8823
-msgid "1. Log in to your WordPress dashboard."
+#: assets/js/admin.js:8631
+msgid "Sticky Inline"
 msgstr ""
 
-#: assets/js/admin.js:8823
-msgid "2. From the left menu, go to Sticky Anything → Click to Call."
+#: assets/js/admin.js:8635
+msgid "Accordion"
 msgstr ""
 
-#: assets/js/admin.js:8823
-msgid "3. Turn on the \"Click to Call\" option."
+#: assets/js/admin.js:8639
+msgid "Two Column"
 msgstr ""
 
-#: assets/js/admin.js:8823
-msgid "4. Enter your phone number and adjust the settings as needed."
+#: assets/js/admin.js:8643
+msgid "Tracker"
 msgstr ""
 
-#: assets/js/admin.js:8823
-msgid "5. Click the \"Save Changes\" button."
+#: assets/js/admin.js:8647
+msgid "Tabs"
 msgstr ""
 
-#: assets/js/admin.js:8823
-msgid "6. Visit your website to see the click-to-call button in action."
+#: assets/js/admin.js:8651
+msgid "Ghost"
 msgstr ""
 
-#: assets/js/admin.js:8829
-msgid "You can easily create a fixed (sticky) widget using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
+#: assets/js/admin.js:8656
+msgid "Default"
 msgstr ""
 
-#: assets/js/admin.js:8829
-msgid "1. Go to your WordPress Dashboard → Appearance → Widgets."
+#: assets/js/admin.js:8666
+msgid "Dark"
 msgstr ""
 
-#: assets/js/admin.js:8829
-msgid "2. If you are using the Block Editor, wrap the widget inside a Group block, then enable the Fixed Widget option from the Group settings in the right sidebar."
+#: assets/js/admin.js:8671
+msgid "Minimal"
 msgstr ""
 
-#: assets/js/admin.js:8829
-msgid "3. If you are using the Classic Editor, simply enable the Fixed Widget option and click the Save button."
+#: assets/js/admin.js:8676
+msgid "Neon"
 msgstr ""
 
-#: assets/js/admin.js:8829
-msgid "4. Your sidebar widget will now remain fixed while scrolling."
+#: assets/js/admin.js:8681
+msgid "Frosted Dark"
 msgstr ""
 
-#: assets/js/admin.js:8835
-msgid "You can make Sticky Header easily by All-in-one WP Sticky Anyting. You need to do some step for it."
+#: assets/js/admin.js:8686
+msgid "Newspaper"
 msgstr ""
 
-#: assets/js/admin.js:8835
-msgid "1. Go to WordPress Dashboard > Sticky Anything > Settings > General"
+#: assets/js/admin.js:8691
+msgid "Outline"
 msgstr ""
 
-#: assets/js/admin.js:8835
-msgid "2. In the \"Sticky Class\" field, enter the CSS selector of your header. Must you need to provide a valid css class or id selector. example: .header"
+#: assets/js/admin.js:8696
+msgid "Slideout"
 msgstr ""
 
-#: assets/js/admin.js:8835
-msgid "3. If sticky header z-index issue on scroll, then you need to configure the \"Z-index\" field. Write the max big integer value. ex: 9999999"
+#: assets/js/admin.js:8701
+msgid "Top Nav"
 msgstr ""
 
-#: assets/js/admin.js:8835
-msgid "4. Now you can click save button on the header."
+#: assets/js/admin.js:8800
+msgid "Sticky Table of Contents Settings"
 msgstr ""
 
-#: assets/js/admin.js:8841
-msgid "You can create a Sticky Header in Elementor without extra plugins. Just follow these steps:"
+#: assets/js/admin.js:8809
+msgid "Table of Contents"
 msgstr ""
 
-#: assets/js/admin.js:8841
-msgid "1. Open any page with Elementor editor."
+#: assets/js/admin.js:8820
+msgid "Enable or disable the table of contents."
 msgstr ""
 
-#: assets/js/admin.js:8841
-msgid "2. Select the container or section you want to make sticky."
-msgstr ""
-
-#: assets/js/admin.js:8841
-msgid "3. Go to the \"Advanced\" tab in the Elementor panel."
+#: assets/js/admin.js:8824
+msgid "TOC Post Type"
 msgstr ""
 
 #: assets/js/admin.js:8841
-msgid "4. Scroll down to the \"Sticky Anything\" section and enable the \"Sticky\" option."
-msgstr ""
-
-#: assets/js/admin.js:8841
-#: assets/js/admin.js:8856
-msgid "6. Adjust \"Z-index\" if needed to control the stacking order."
-msgstr ""
-
-#: assets/js/admin.js:8841
-msgid "7. Update/Publish the page to apply the changes."
-msgstr ""
-
-#: assets/js/admin.js:8856
-msgid "You can create a Sticky Header via Customizer without any hussle. Just follow these steps:"
-msgstr ""
-
-#: assets/js/admin.js:8856
-msgid "1. Navigate Appearance > Customize."
-msgstr ""
-
-#: assets/js/admin.js:8856
-msgid "2. Navigate to the \"Sticky Anything\" section."
-msgstr ""
-
-#: assets/js/admin.js:8856
-msgid "3. Navigate to the \"Sticky Header\" section."
-msgstr ""
-
-#: assets/js/admin.js:8856
-msgid "4. Enable the \"Sticky Header\" option."
-msgstr ""
-
-#: assets/js/admin.js:8856
-msgid "7. Click the Publish bytton on the customizer."
-msgstr ""
-
-#: assets/js/admin.js:8871
 #: assets/js/admin.js:8877
-msgid "You can make Sticky Social Icons easily by All-in-one WP Sticky Anyting. You need to do some step for it."
+msgid "Heading text shown in both the inline block and the sidebar."
 msgstr ""
 
-#: assets/js/admin.js:8871
-msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Social Icons."
+#: assets/js/admin.js:8845
+#: assets/js/admin.js:9158
+msgid "Progress Bar"
 msgstr ""
 
-#: assets/js/admin.js:8871
-msgid "2. Enable the \"Sticky Social Icons\" option."
+#: assets/js/admin.js:8861
+msgid "Display a thin reading-progress bar pinned to the very top of the page."
 msgstr ""
 
-#: assets/js/admin.js:8871
-msgid "3. Customize the social icons settings to your preference."
+#: assets/js/admin.js:8865
+msgid "TOC Title"
 msgstr ""
 
-#: assets/js/admin.js:8871
-msgid "4. Click \"Add Icon\" to insert social icons, then configure the icon and URL."
+#: assets/js/admin.js:8881
+msgid "Content Selector"
 msgstr ""
 
-#: assets/js/admin.js:8871
-#: assets/js/admin.js:8877
-msgid "5. Click the \"Save\" button at the top to apply your changes."
-msgstr ""
-
-#: assets/js/admin.js:8877
-msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Cookie Consent."
-msgstr ""
-
-#: assets/js/admin.js:8877
-msgid "2. Enable the \"Sticky Cookie Consent\" option."
-msgstr ""
-
-#: assets/js/admin.js:8877
-msgid "3. Customize the cookie consent message, button text & style."
-msgstr ""
-
-#: assets/js/admin.js:8883
-msgid "You can make any sticky element or sidebar easily on your WordPress website by All-in-one WP Sticky Anyting. Integration is super easy. You need add a class on your target element. ex: sticky."
-msgstr ""
-
-#: assets/js/admin.js:8889
-msgid "Setting up a sticky sidebar on your WordPress site is simple with the All-in-One WP Sticky Anything plugin. Just follow these steps to get started:"
-msgstr ""
-
-#: assets/js/admin.js:8889
-msgid "1. Go to your WordPress Dashboard. Navigate to: Sticky Anything > Settings > Sticky Sidebar."
-msgstr ""
-
-#: assets/js/admin.js:8889
-msgid "2. Enable the Sticky Sidebar. Toggle the option to enable the sticky sidebar functionality."
-msgstr ""
-
-#: assets/js/admin.js:8889
-msgid "3. Enter the Sidebar Selector. This is the class or ID of the sidebar you want to make sticky. Since it varies depending on your theme, right-click on your sidebar in the browser and select Inspect. Copy the relevant selector name (e.g., .sidebar or #secondary) and paste it into the Sidebar Selector field."
-msgstr ""
-
-#: assets/js/admin.js:8889
-msgid "4. Enter the Sidebar Container Selector. This is the outer container that holds the sidebar. Again, inspect the element in your browser and copy the correct selector. Paste it into the Sidebar Container Selector field."
-msgstr ""
-
-#: assets/js/admin.js:8889
-msgid "5. Adjust additonal settings based on your needs."
-msgstr ""
-
-#: assets/js/admin.js:8889
-msgid "6. Now you can click save button on the header."
+#: assets/js/admin.js:8893
+msgid "CSS selector of the article wrapper table of contents will scan for headings."
 msgstr ""
 
 #: assets/js/admin.js:8895
-msgid "If needed, add custom CSS to fine-tune the appearance and behavior of the sticky header. Your custom css need to paste on the Custom CSS box and Click Save button."
+msgid "Content Parsing"
 msgstr ""
 
-#: assets/js/admin.js:8904
-msgid "Introduce Click to Call."
+#: assets/js/admin.js:8900
+msgid "Heading Levels"
 msgstr ""
 
-#: assets/js/admin.js:8908
-msgid "Introduce Fixed Widget."
+#: assets/js/admin.js:8912
+msgid "Which heading tags table of contents will detect. At least one must be selected."
 msgstr ""
 
-#: assets/js/admin.js:8909
-msgid "Settings sync on the multiple devices."
+#: assets/js/admin.js:8916
+msgid "Max Depth"
 msgstr ""
 
-#: assets/js/admin.js:8913
-msgid "Introduce Sticky Cookie Consent."
-msgstr ""
-
-#: assets/js/admin.js:8914
-msgid "WordPress 6.9 Compatibility."
-msgstr ""
-
-#: assets/js/admin.js:8918
-msgid "Introduce Sticky Social Icons."
+#: assets/js/admin.js:8919
+msgid "H2 Only"
 msgstr ""
 
 #: assets/js/admin.js:8922
-msgid "Introduce Customizer support for Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra themes."
+msgid "H2 + H3"
 msgstr ""
 
-#: assets/js/admin.js:8926
-msgid "Astra theme compatibility."
+#: assets/js/admin.js:8925
+msgid "H2 + H3 + H4"
 msgstr ""
 
-#: assets/js/admin.js:8930
-msgid "Introduce Elementor Page Builder Sticky Option."
+#: assets/js/admin.js:8939
+msgid "Maximum nesting depth visible in the TOC. Deeper headings are still given IDs but are hidden."
 msgstr ""
 
-#: assets/js/admin.js:8934
-msgid "New Option to Fix Sticky Header."
+#: assets/js/admin.js:8943
+msgid "Minimum Headings"
 msgstr ""
 
-#: assets/js/admin.js:8938
-msgid "Fixed close icon."
+#: assets/js/admin.js:8958
+msgid "Minimum number of headings required before any TOC is rendered."
 msgstr ""
 
-#: assets/js/admin.js:8942
-msgid "Introduce Sticky Sidebar."
+#: assets/js/admin.js:8962
+msgid "Section Numbers"
 msgstr ""
 
-#: assets/js/admin.js:8946
-msgid "Migrate old data."
+#: assets/js/admin.js:8973
+msgid "Prepend nested numbers (e.g. \"1.\", \"1.2.\") before each TOC link."
 msgstr ""
 
-#: assets/js/admin.js:8950
-msgid "Reset Settings"
+#: assets/js/admin.js:8977
+msgid "Scroll Offset (px)"
 msgstr ""
 
-#: assets/js/admin.js:8951
-msgid "Improved Dashboard"
+#: assets/js/admin.js:8992
+msgid "Pixels subtracted from the scroll position to account for a sticky header."
 msgstr ""
 
-#: assets/js/admin.js:8955
-msgid "Initial Version"
+#: assets/js/admin.js:8996
+msgid "Scroll Behaviour"
 msgstr ""
 
-#: assets/js/admin.js:8965
-#: assets/js/admin.js:9181
-msgid "Changelog"
+#: assets/js/admin.js:8999
+msgid "Smooth"
 msgstr ""
 
-#: assets/js/admin.js:8967
-msgid "Check out the latest change logs."
+#: assets/js/admin.js:9002
+msgid "Instant"
 msgstr ""
 
-#: assets/js/admin.js:8981
-msgid "New Features"
+#: assets/js/admin.js:9016
+msgid "Animation style when clicking a TOC link."
 msgstr ""
 
-#: assets/js/admin.js:8989
-msgid "Fixs"
-msgstr ""
-
-#: assets/js/admin.js:8997
-msgid "Enhancements"
-msgstr ""
-
-#: assets/js/admin.js:9014
-msgid "Just use .sticky class."
-msgstr ""
-
-#: assets/js/admin.js:9017
-msgid "Open any page with Elementor → Select a container or section → Go to the `Advanced Tab` → `Sticky Anything` Settings."
-msgstr ""
-
-#: assets/js/admin.js:9020
-msgid "No."
+#: assets/js/admin.js:9018
+msgid "Inline TOC Block"
 msgstr ""
 
 #: assets/js/admin.js:9023
-msgid "Popular classic themes such as Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra provide seamless Sticky Header compatibility."
+msgid "Show Inline Block"
 msgstr ""
 
-#: assets/js/admin.js:9026
-msgid "Just remove class from settings."
+#: assets/js/admin.js:9034
+msgid "Inject a collapsible TOC block inside the article content (above the first paragraph)."
 msgstr ""
 
-#: assets/js/admin.js:9043
-#: assets/js/admin.js:9177
-msgid "Help"
+#: assets/js/admin.js:9038
+#: assets/js/admin.js:9094
+msgid "Preset"
 msgstr ""
 
-#: assets/js/admin.js:9064
-msgid "Please use the support forum."
+#: assets/js/admin.js:9057
+msgid "Preset for the inline TOC block."
 msgstr ""
 
-#: assets/js/admin.js:9075
-msgid "Add a click-to-call button to your website to make it more user-friendly."
+#: assets/js/admin.js:9061
+msgid "Start Collapsed"
 msgstr ""
 
-#: assets/js/admin.js:9080
-msgid "Easily make your sidebar widgets sticky to enhance user engagement and accessibility."
+#: assets/js/admin.js:9072
+msgid "Open the inline block collapsed by default. Visitors can expand it on click."
 msgstr ""
 
-#: assets/js/admin.js:9084
-msgid "Sticky Element"
+#: assets/js/admin.js:9074
+msgid "Sticky Sidebar & Topnav"
 msgstr ""
 
-#: assets/js/admin.js:9085
-msgid "Choose any element on your site to make it sticky as users scroll."
+#: assets/js/admin.js:9079
+msgid "Sticky"
 msgstr ""
 
 #: assets/js/admin.js:9090
+msgid "Sticky sidebar or topnav."
+msgstr ""
+
+#: assets/js/admin.js:9116
+msgid "Visual style for the sticky sidebar. Choosing \"Top Nav\" switches to a floating navigation chip."
+msgstr ""
+
+#: assets/js/admin.js:9134
+msgid "Pin the topnav chip to the top or bottom of the viewport."
+msgstr ""
+
+#: assets/js/admin.js:9134
+msgid "Pin the sidebar to the left or right side of the viewport."
+msgstr ""
+
+#: assets/js/admin.js:9138
+msgid "Edge Gap (px)"
+msgstr ""
+
+#: assets/js/admin.js:9154
+msgid "Distance in pixels between the sidebar / topnav and the viewport edge."
+msgstr ""
+
+#: assets/js/admin.js:9174
+msgid "Show a mini reading-progress bar inside the sidebar header."
+msgstr ""
+
+#: assets/js/admin.js:9181
+msgid "Accent Color"
+msgstr ""
+
+#: assets/js/admin.js:9192
+msgid "Primary accent colour used for active links, progress bar, and highlights (CSS var --stoc-color)."
+msgstr ""
+
+#: assets/js/admin.js:9207
+msgid "Widget background colour (CSS var --stoc-color-bg). Leave as-is to follow the active preset."
+msgstr ""
+
+#: assets/js/admin.js:9211
+msgid "Border Radius (px)"
+msgstr ""
+
+#: assets/js/admin.js:9226
+msgid "Border radius of the widget (CSS var --stoc-border-radius)."
+msgstr ""
+
+#: assets/js/admin.js:9289
+msgid "Sticky Table of Content"
+msgstr ""
+
+#: assets/js/admin.js:9406
+msgid "Settings saved successfully."
+msgstr ""
+
+#: assets/js/admin.js:9417
+msgid "Settings Reset successfully."
+msgstr ""
+
+#: assets/js/admin.js:9475
+#: assets/js/admin.js:9846
+msgid "Basic Usage"
+msgstr ""
+
+#: assets/js/admin.js:9481
+msgid "You can easily create a click-to-call button using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
+msgstr ""
+
+#: assets/js/admin.js:9481
+msgid "1. Log in to your WordPress dashboard."
+msgstr ""
+
+#: assets/js/admin.js:9481
+msgid "2. From the left menu, go to Sticky Anything → Click to Call."
+msgstr ""
+
+#: assets/js/admin.js:9481
+msgid "3. Turn on the \"Click to Call\" option."
+msgstr ""
+
+#: assets/js/admin.js:9481
+msgid "4. Enter your phone number and adjust the settings as needed."
+msgstr ""
+
+#: assets/js/admin.js:9481
+msgid "5. Click the \"Save Changes\" button."
+msgstr ""
+
+#: assets/js/admin.js:9481
+msgid "6. Visit your website to see the click-to-call button in action."
+msgstr ""
+
+#: assets/js/admin.js:9487
+msgid "You can easily create a fixed (sticky) widget using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
+msgstr ""
+
+#: assets/js/admin.js:9487
+msgid "1. Go to your WordPress Dashboard → Appearance → Widgets."
+msgstr ""
+
+#: assets/js/admin.js:9487
+msgid "2. If you are using the Block Editor, wrap the widget inside a Group block, then enable the Fixed Widget option from the Group settings in the right sidebar."
+msgstr ""
+
+#: assets/js/admin.js:9487
+msgid "3. If you are using the Classic Editor, simply enable the Fixed Widget option and click the Save button."
+msgstr ""
+
+#: assets/js/admin.js:9487
+msgid "4. Your sidebar widget will now remain fixed while scrolling."
+msgstr ""
+
+#: assets/js/admin.js:9493
+msgid "You can make Sticky Header easily by All-in-one WP Sticky Anyting. You need to do some step for it."
+msgstr ""
+
+#: assets/js/admin.js:9493
+msgid "1. Go to WordPress Dashboard > Sticky Anything > Settings > General"
+msgstr ""
+
+#: assets/js/admin.js:9493
+msgid "2. In the \"Sticky Class\" field, enter the CSS selector of your header. Must you need to provide a valid css class or id selector. example: .header"
+msgstr ""
+
+#: assets/js/admin.js:9493
+msgid "3. If sticky header z-index issue on scroll, then you need to configure the \"Z-index\" field. Write the max big integer value. ex: 9999999"
+msgstr ""
+
+#: assets/js/admin.js:9493
+msgid "4. Now you can click save button on the header."
+msgstr ""
+
+#: assets/js/admin.js:9499
+msgid "You can create a Sticky Header in Elementor without extra plugins. Just follow these steps:"
+msgstr ""
+
+#: assets/js/admin.js:9499
+msgid "1. Open any page with Elementor editor."
+msgstr ""
+
+#: assets/js/admin.js:9499
+msgid "2. Select the container or section you want to make sticky."
+msgstr ""
+
+#: assets/js/admin.js:9499
+msgid "3. Go to the \"Advanced\" tab in the Elementor panel."
+msgstr ""
+
+#: assets/js/admin.js:9499
+msgid "4. Scroll down to the \"Sticky Anything\" section and enable the \"Sticky\" option."
+msgstr ""
+
+#: assets/js/admin.js:9499
+#: assets/js/admin.js:9514
+msgid "6. Adjust \"Z-index\" if needed to control the stacking order."
+msgstr ""
+
+#: assets/js/admin.js:9499
+msgid "7. Update/Publish the page to apply the changes."
+msgstr ""
+
+#: assets/js/admin.js:9514
+msgid "You can create a Sticky Header via Customizer without any hussle. Just follow these steps:"
+msgstr ""
+
+#: assets/js/admin.js:9514
+msgid "1. Navigate Appearance > Customize."
+msgstr ""
+
+#: assets/js/admin.js:9514
+msgid "2. Navigate to the \"Sticky Anything\" section."
+msgstr ""
+
+#: assets/js/admin.js:9514
+msgid "3. Navigate to the \"Sticky Header\" section."
+msgstr ""
+
+#: assets/js/admin.js:9514
+msgid "4. Enable the \"Sticky Header\" option."
+msgstr ""
+
+#: assets/js/admin.js:9514
+msgid "7. Click the Publish bytton on the customizer."
+msgstr ""
+
+#: assets/js/admin.js:9529
+#: assets/js/admin.js:9535
+msgid "You can make Sticky Social Icons easily by All-in-one WP Sticky Anyting. You need to do some step for it."
+msgstr ""
+
+#: assets/js/admin.js:9529
+msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Social Icons."
+msgstr ""
+
+#: assets/js/admin.js:9529
+msgid "2. Enable the \"Sticky Social Icons\" option."
+msgstr ""
+
+#: assets/js/admin.js:9529
+msgid "3. Customize the social icons settings to your preference."
+msgstr ""
+
+#: assets/js/admin.js:9529
+msgid "4. Click \"Add Icon\" to insert social icons, then configure the icon and URL."
+msgstr ""
+
+#: assets/js/admin.js:9529
+#: assets/js/admin.js:9535
+#: assets/js/admin.js:9541
+msgid "5. Click the \"Save\" button at the top to apply your changes."
+msgstr ""
+
+#: assets/js/admin.js:9535
+msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Cookie Consent."
+msgstr ""
+
+#: assets/js/admin.js:9535
+msgid "2. Enable the \"Sticky Cookie Consent\" option."
+msgstr ""
+
+#: assets/js/admin.js:9535
+msgid "3. Customize the cookie consent message, button text & style."
+msgstr ""
+
+#: assets/js/admin.js:9541
+#: assets/js/admin.js:9778
+msgid "Display a sticky table of contents to help users navigate your content."
+msgstr ""
+
+#: assets/js/admin.js:9541
+msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Table of Contents."
+msgstr ""
+
+#: assets/js/admin.js:9541
+msgid "2. Enable the \"Table of Contents\" option."
+msgstr ""
+
+#: assets/js/admin.js:9541
+msgid "3. Enable the \"Sticky\" option."
+msgstr ""
+
+#: assets/js/admin.js:9541
+msgid "4. Customize the table of contents settings to your preference."
+msgstr ""
+
+#: assets/js/admin.js:9547
+msgid "You can make any sticky element or sidebar easily on your WordPress website by All-in-one WP Sticky Anyting. Integration is super easy. You need add a class on your target element. ex: sticky."
+msgstr ""
+
+#: assets/js/admin.js:9553
+msgid "Setting up a sticky sidebar on your WordPress site is simple with the All-in-One WP Sticky Anything plugin. Just follow these steps to get started:"
+msgstr ""
+
+#: assets/js/admin.js:9553
+msgid "1. Go to your WordPress Dashboard. Navigate to: Sticky Anything > Settings > Sticky Sidebar."
+msgstr ""
+
+#: assets/js/admin.js:9553
+msgid "2. Enable the Sticky Sidebar. Toggle the option to enable the sticky sidebar functionality."
+msgstr ""
+
+#: assets/js/admin.js:9553
+msgid "3. Enter the Sidebar Selector. This is the class or ID of the sidebar you want to make sticky. Since it varies depending on your theme, right-click on your sidebar in the browser and select Inspect. Copy the relevant selector name (e.g., .sidebar or #secondary) and paste it into the Sidebar Selector field."
+msgstr ""
+
+#: assets/js/admin.js:9553
+msgid "4. Enter the Sidebar Container Selector. This is the outer container that holds the sidebar. Again, inspect the element in your browser and copy the correct selector. Paste it into the Sidebar Container Selector field."
+msgstr ""
+
+#: assets/js/admin.js:9553
+msgid "5. Adjust additonal settings based on your needs."
+msgstr ""
+
+#: assets/js/admin.js:9553
+msgid "6. Now you can click save button on the header."
+msgstr ""
+
+#: assets/js/admin.js:9559
+msgid "If needed, add custom CSS to fine-tune the appearance and behavior of the sticky header. Your custom css need to paste on the Custom CSS box and Click Save button."
+msgstr ""
+
+#: assets/js/admin.js:9568
+msgid "Introduce Sticky Table of Contents(toc)."
+msgstr ""
+
+#: assets/js/admin.js:9572
+msgid "Introduce Click to Call."
+msgstr ""
+
+#: assets/js/admin.js:9576
+msgid "Introduce Fixed Widget."
+msgstr ""
+
+#: assets/js/admin.js:9577
+msgid "Settings sync on the multiple devices."
+msgstr ""
+
+#: assets/js/admin.js:9581
+msgid "Introduce Sticky Cookie Consent."
+msgstr ""
+
+#: assets/js/admin.js:9582
+msgid "WordPress 6.9 Compatibility."
+msgstr ""
+
+#: assets/js/admin.js:9586
+msgid "Introduce Sticky Social Icons."
+msgstr ""
+
+#: assets/js/admin.js:9590
+msgid "Introduce Customizer support for Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra themes."
+msgstr ""
+
+#: assets/js/admin.js:9594
+msgid "Astra theme compatibility."
+msgstr ""
+
+#: assets/js/admin.js:9598
+msgid "Introduce Elementor Page Builder Sticky Option."
+msgstr ""
+
+#: assets/js/admin.js:9602
+msgid "New Option to Fix Sticky Header."
+msgstr ""
+
+#: assets/js/admin.js:9606
+msgid "Fixed close icon."
+msgstr ""
+
+#: assets/js/admin.js:9610
+msgid "Introduce Sticky Sidebar."
+msgstr ""
+
+#: assets/js/admin.js:9614
+msgid "Migrate old data."
+msgstr ""
+
+#: assets/js/admin.js:9618
+msgid "Reset Settings"
+msgstr ""
+
+#: assets/js/admin.js:9619
+msgid "Improved Dashboard"
+msgstr ""
+
+#: assets/js/admin.js:9623
+msgid "Initial Version"
+msgstr ""
+
+#: assets/js/admin.js:9633
+#: assets/js/admin.js:9854
+msgid "Changelog"
+msgstr ""
+
+#: assets/js/admin.js:9635
+msgid "Check out the latest change logs."
+msgstr ""
+
+#: assets/js/admin.js:9649
+msgid "New Features"
+msgstr ""
+
+#: assets/js/admin.js:9657
+msgid "Fixs"
+msgstr ""
+
+#: assets/js/admin.js:9665
+msgid "Enhancements"
+msgstr ""
+
+#: assets/js/admin.js:9682
+msgid "Just use .sticky class."
+msgstr ""
+
+#: assets/js/admin.js:9685
+msgid "Open any page with Elementor → Select a container or section → Go to the `Advanced Tab` → `Sticky Anything` Settings."
+msgstr ""
+
+#: assets/js/admin.js:9688
+msgid "No."
+msgstr ""
+
+#: assets/js/admin.js:9691
+msgid "Popular classic themes such as Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra provide seamless Sticky Header compatibility."
+msgstr ""
+
+#: assets/js/admin.js:9694
+msgid "Just remove class from settings."
+msgstr ""
+
+#: assets/js/admin.js:9711
+#: assets/js/admin.js:9850
+msgid "Help"
+msgstr ""
+
+#: assets/js/admin.js:9732
+msgid "Please use the support forum."
+msgstr ""
+
+#: assets/js/admin.js:9743
+msgid "Add a click-to-call button to your website to make it more user-friendly."
+msgstr ""
+
+#: assets/js/admin.js:9748
+msgid "Easily make your sidebar widgets sticky to enhance user engagement and accessibility."
+msgstr ""
+
+#: assets/js/admin.js:9752
+msgid "Sticky Element"
+msgstr ""
+
+#: assets/js/admin.js:9753
+msgid "Choose any element on your site to make it sticky as users scroll."
+msgstr ""
+
+#: assets/js/admin.js:9758
 msgid "Keep your header visible while scrolling for better navigation and branding."
 msgstr ""
 
-#: assets/js/admin.js:9095
+#: assets/js/admin.js:9763
 msgid "Make your sidebar stay in view as visitors scroll through your content."
 msgstr ""
 
-#: assets/js/admin.js:9100
+#: assets/js/admin.js:9768
 msgid "Display your social media icons on your site and make them sticky as users scroll."
 msgstr ""
 
-#: assets/js/admin.js:9105
+#: assets/js/admin.js:9773
 msgid "Make your cookie consent banner sticky to ensure compliance and visibility."
 msgstr ""
 
-#: assets/js/admin.js:9113
-#: assets/js/admin.js:9169
+#: assets/js/admin.js:9777
+msgid "Sticky Table of Contents"
+msgstr ""
+
+#: assets/js/admin.js:9786
+#: assets/js/admin.js:9842
 msgid "Introduction"
 msgstr ""
 
-#: assets/js/admin.js:9213
+#: assets/js/admin.js:9886
 msgid "All-in-One WP Sticky Anything on Scroll plugin allows to you make any elements sticky or sticky Header on your website."
 msgstr ""
 
