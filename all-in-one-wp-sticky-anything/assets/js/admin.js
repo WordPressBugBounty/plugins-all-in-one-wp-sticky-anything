@@ -7097,6 +7097,21 @@ function StickySocial() {
     allowReset: true
   }))))));
 }
+;// ./src/js/includes/Group.js
+function Group(_ref) {
+  var _ref$icon = _ref.icon,
+    icon = _ref$icon === void 0 ? '⚙️' : _ref$icon,
+    _ref$title = _ref.title,
+    title = _ref$title === void 0 ? wp.i18n.__('Genaral', 'all-in-one-wp-sticky-anything') : _ref$title,
+    children = _ref.children;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "settings-content-group"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "header"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "icon"
+  }, icon), /*#__PURE__*/React.createElement("h3", null, title)), children);
+}
 ;// ./src/js/components/Settings/StickyCookieConsent.js
 function StickyCookieConsent_typeof(o) { "@babel/helpers - typeof"; return StickyCookieConsent_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, StickyCookieConsent_typeof(o); }
 function StickyCookieConsent_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -7124,6 +7139,48 @@ var StickyCookieConsent_wp$components = wp.components,
   StickyCookieConsent_TextareaControl = StickyCookieConsent_wp$components.TextareaControl;
 
 
+
+
+// ─── Layout Options ─────────────────────────────────────────────
+var LAYOUT_OPTIONS = [{
+  label: wp.i18n.__('Long Banner', 'all-in-one-wp-sticky-anything'),
+  value: 'long',
+  pro: false
+}, {
+  label: wp.i18n.__('Floating Banner', 'all-in-one-wp-sticky-anything'),
+  value: 'floating',
+  pro: true
+}, {
+  label: wp.i18n.__('Modal Banner', 'all-in-one-wp-sticky-anything'),
+  value: 'modal',
+  pro: true
+}];
+
+// ─── Position Options ───────────────────────────────────────────
+var POSITION_OPTIONS = [{
+  label: wp.i18n.__('Bottom Left', 'all-in-one-wp-sticky-anything'),
+  value: 'bottom-left',
+  pro: true
+}, {
+  label: wp.i18n.__('Bottom Right', 'all-in-one-wp-sticky-anything'),
+  value: 'bottom-right',
+  pro: true
+}];
+
+// ─── Device Options ─────────────────────────────────────────────
+var DEVICE_OPTIONS = [{
+  label: wp.i18n.__('All', 'all-in-one-wp-sticky-anything'),
+  value: 'all'
+}, {
+  label: wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything'),
+  value: 'desktop'
+}, {
+  label: wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything'),
+  value: 'tablet'
+}, {
+  label: wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'),
+  value: 'mobile'
+}];
 function StickyCookieConsent() {
   var _ai1wpsa = ai1wpsa,
     isPro = _ai1wpsa.isPro;
@@ -7141,8 +7198,14 @@ function StickyCookieConsent() {
     stickyCookieConsentDevice = _ref$stickyCookieCons4 === void 0 ? 'all' : _ref$stickyCookieCons4,
     _ref$stickyCookieCons5 = _ref.stickyCookieConsentMessage,
     stickyCookieConsentMessage = _ref$stickyCookieCons5 === void 0 ? wp.i18n.__('We use cookies to improve your experience on our site. By using our site, you consent to cookies.', 'all-in-one-wp-sticky-anything') : _ref$stickyCookieCons5,
-    _ref$stickyCookieCons6 = _ref.stickyCookieConsentButtons,
-    stickyCookieConsentButtons = _ref$stickyCookieCons6 === void 0 ? [{
+    _ref$stickyCookieCons6 = _ref.stickyCookieConsentExpires,
+    stickyCookieConsentExpires = _ref$stickyCookieCons6 === void 0 ? 90 : _ref$stickyCookieCons6,
+    _ref$stickyCookieCons7 = _ref.stickyCookieConsentRejectRedirect,
+    stickyCookieConsentRejectRedirect = _ref$stickyCookieCons7 === void 0 ? false : _ref$stickyCookieCons7,
+    _ref$stickyCookieCons8 = _ref.stickyCookieConsentRejectURL,
+    stickyCookieConsentRejectURL = _ref$stickyCookieCons8 === void 0 ? '' : _ref$stickyCookieCons8,
+    _ref$stickyCookieCons9 = _ref.stickyCookieConsentButtons,
+    stickyCookieConsentButtons = _ref$stickyCookieCons9 === void 0 ? [{
       id: 'accept',
       label: wp.i18n.__('Accept Button', 'all-in-one-wp-sticky-anything'),
       text: wp.i18n.__('Accept', 'all-in-one-wp-sticky-anything'),
@@ -7152,44 +7215,24 @@ function StickyCookieConsent() {
       label: wp.i18n.__('Reject Button', 'all-in-one-wp-sticky-anything'),
       text: wp.i18n.__('Reject', 'all-in-one-wp-sticky-anything'),
       status: true
-    }] : _ref$stickyCookieCons6,
-    _ref$stickyCookieCons7 = _ref.stickyCookieConsentCloseButton,
-    stickyCookieConsentCloseButton = _ref$stickyCookieCons7 === void 0 ? true : _ref$stickyCookieCons7,
-    _ref$stickyCookieCons8 = _ref.stickyCookieConsentBannerStyle,
-    stickyCookieConsentBannerStyle = _ref$stickyCookieCons8 === void 0 ? {
+    }] : _ref$stickyCookieCons9,
+    _ref$stickyCookieCons10 = _ref.stickyCookieConsentCloseButton,
+    stickyCookieConsentCloseButton = _ref$stickyCookieCons10 === void 0 ? true : _ref$stickyCookieCons10,
+    _ref$stickyCookieCons11 = _ref.stickyCookieConsentBannerStyle,
+    stickyCookieConsentBannerStyle = _ref$stickyCookieCons11 === void 0 ? {
       bgColor: '#fff',
       textColor: '#5c637e',
       fontSize: '16px'
-    } : _ref$stickyCookieCons8,
-    _ref$stickyCookieCons9 = _ref.stickyCookieConsentButtonStyle,
-    stickyCookieConsentButtonStyle = _ref$stickyCookieCons9 === void 0 ? {
+    } : _ref$stickyCookieCons11,
+    _ref$stickyCookieCons12 = _ref.stickyCookieConsentButtonStyle,
+    stickyCookieConsentButtonStyle = _ref$stickyCookieCons12 === void 0 ? {
       acceptBtnBg: '#004bcb',
       acceptTextColor: '#fff',
       rejectBtnBg: '#ffffff00',
       rejectTextColor: '#000'
-    } : _ref$stickyCookieCons9;
-  var layoutOptions = [{
-    label: wp.i18n.__('Long Banner', 'all-in-one-wp-sticky-anything'),
-    value: 'long',
-    pro: false
-  }, {
-    label: wp.i18n.__('Floating Banner', 'all-in-one-wp-sticky-anything'),
-    value: 'floating',
-    pro: true
-  }, {
-    label: wp.i18n.__('Modal Banner', 'all-in-one-wp-sticky-anything'),
-    value: 'modal',
-    pro: true
-  }];
-  var positionOptions = [{
-    label: wp.i18n.__('Bottom Left', 'all-in-one-wp-sticky-anything'),
-    value: 'bottom-left',
-    pro: true
-  }, {
-    label: wp.i18n.__('Bottom Right', 'all-in-one-wp-sticky-anything'),
-    value: 'bottom-right',
-    pro: true
-  }];
+    } : _ref$stickyCookieCons12;
+
+  // ─── Reorder Buttons ─────────────────────────────────────────
   var reorder = function reorder(list, startIndex, endIndex) {
     var result = StickyCookieConsent_toConsumableArray(list);
     var _result$splice = result.splice(startIndex, 1),
@@ -7201,17 +7244,20 @@ function StickyCookieConsent() {
   return /*#__PURE__*/React.createElement("div", {
     className: "ai1wpsa-settings-content"
   }, /*#__PURE__*/React.createElement("div", {
-    "class": "ai1wpsa-settings-content-header"
+    className: "ai1wpsa-settings-content-header"
   }, /*#__PURE__*/React.createElement("i", {
-    "class": "dashicons dashicons-welcome-widgets-menus"
+    className: "dashicons dashicons dashicons-privacy"
   }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Sticky Cookie Consent Settings', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
     className: "settings-content"
+  }, /*#__PURE__*/React.createElement(Group, {
+    icon: "\u2699\uFE0F",
+    title: wp.i18n.__('General', 'all-in-one-wp-sticky-anything')
   }, /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
+    className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
+    className: "settings-field-label"
   }, wp.i18n.__('Sticky Cookie Consent', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
+    className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyCookieConsent_FormToggle, {
     checked: stickyCookieConsent,
     onChange: function onChange() {
@@ -7222,14 +7268,14 @@ function StickyCookieConsent() {
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
   }, wp.i18n.__('Enable or disable the sticky cookie consent.', 'all-in-one-wp-sticky-anything')))), !!stickyCookieConsent && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
+    className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
+    className: "settings-field-label"
   }, wp.i18n.__('Layout', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
+    className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyCookieConsent_ButtonGroup, {
     className: "ai1wpsa-cookie-consent-layout"
-  }, layoutOptions.map(function (_ref2) {
+  }, LAYOUT_OPTIONS.map(function (_ref2) {
     var _ai1wpsa2;
     var label = _ref2.label,
       value = _ref2.value,
@@ -7238,13 +7284,15 @@ function StickyCookieConsent() {
       key: value,
       disabled: !!pro && !isPro,
       className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      isPrimary: stickyCookieConsentLayout === value,
       onClick: function onClick() {
-        if (!!pro && !isPro) return;
+        if (!!pro && !isPro) {
+          return;
+        }
         setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
           stickyCookieConsentLayout: value
         }));
-      },
-      variant: stickyCookieConsentLayout === value ? 'primary' : ''
+      }
     }, /*#__PURE__*/React.createElement("img", {
       src: ((_ai1wpsa2 = ai1wpsa) === null || _ai1wpsa2 === void 0 ? void 0 : _ai1wpsa2.pluginUrl) + "/assets/images/cookie-consent/".concat(value, ".png"),
       alt: label
@@ -7252,16 +7300,14 @@ function StickyCookieConsent() {
   })), !isPro && /*#__PURE__*/React.createElement(M, {
     anchorSelect: ".ai1wpsa-pro-feature",
     variant: "warning",
-    content: wp.i18n.__('Coming Soon', 'all-in-one-wp-sticky-anything')
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Select the layout of the sticky cookie consent.', 'all-in-one-wp-sticky-anything')))), stickyCookieConsentLayout === 'floating' && /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
+    content: wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything')
+  }))), stickyCookieConsentLayout === 'floating' && /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
+    className: "settings-field-label"
   }, wp.i18n.__('Position', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickyCookieConsent_ButtonGroup, null, positionOptions.map(function (_ref3) {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyCookieConsent_ButtonGroup, null, POSITION_OPTIONS.map(function (_ref3) {
     var label = _ref3.label,
       value = _ref3.value,
       pro = _ref3.pro;
@@ -7269,86 +7315,118 @@ function StickyCookieConsent() {
       key: value,
       disabled: !!pro && !isPro,
       className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      isPrimary: stickyCookieConsentPosition === value,
       onClick: function onClick() {
-        if (!!pro && !isPro) return;
+        if (!!pro && !isPro) {
+          return;
+        }
         setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
           stickyCookieConsentPosition: value
         }));
-      },
-      variant: stickyCookieConsentPosition === value ? 'primary' : ''
+      }
     }, label);
-  })), !isPro && /*#__PURE__*/React.createElement(M, {
-    anchorSelect: ".ai1wpsa-pro-feature",
-    variant: "warning",
-    content: wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything')
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Select the position of the sticky cookie consent.', 'all-in-one-wp-sticky-anything')))), isPro && /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
+  })))), isPro && /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
+    className: "settings-field-label"
   }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickyCookieConsent_ButtonGroup, null, /*#__PURE__*/React.createElement(StickyCookieConsent_Button, {
-    onClick: function onClick() {
-      if (!isPro) {
-        return;
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyCookieConsent_ButtonGroup, null, DEVICE_OPTIONS.map(function (_ref4) {
+    var label = _ref4.label,
+      value = _ref4.value;
+    return /*#__PURE__*/React.createElement(StickyCookieConsent_Button, {
+      key: value,
+      isPrimary: stickyCookieConsentDevice === value,
+      onClick: function onClick() {
+        if (!isPro) {
+          return;
+        }
+        setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
+          stickyCookieConsentDevice: value
+        }));
       }
-      setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
-        stickyCookieConsentDevice: 'all'
-      }));
-    },
-    variant: stickyCookieConsentDevice === 'all' ? 'primary' : ''
-  }, wp.i18n.__('All', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickyCookieConsent_Button, {
-    onClick: function onClick() {
-      if (!isPro) {
-        return;
-      }
-      setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
-        stickyCookieConsentDevice: 'desktop'
-      }));
-    },
-    variant: stickyCookieConsentDevice === 'desktop' ? 'primary' : ''
-  }, wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickyCookieConsent_Button, {
-    onClick: function onClick() {
-      if (!isPro) {
-        return;
-      }
-      setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
-        stickyCookieConsentDevice: 'tablet'
-      }));
-    },
-    variant: stickyCookieConsentDevice === 'tablet' ? 'primary' : ''
-  }, wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickyCookieConsent_Button, {
-    onClick: function onClick() {
-      if (!isPro) {
-        return;
-      }
-      setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
-        stickyCookieConsentDevice: 'mobile'
-      }));
-    },
-    variant: stickyCookieConsentDevice === 'mobile' ? 'primary' : ''
-  }, wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Set your desire z-index value for your target element.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
+    }, label);
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
+    className: "settings-field-label"
   }, wp.i18n.__('Message', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
+    className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyCookieConsent_TextareaControl, {
     value: stickyCookieConsentMessage,
     className: "ai1wpsa-textarea-control",
-    placeholder: wp.i18n.__('ex: We use cookies to improve your experience on our site.', 'all-in-one-wp-sticky-anything'),
     onChange: function onChange(value) {
       return setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
         stickyCookieConsentMessage: value
       }));
     }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Cookie Expiry (days)', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyCookieConsent_TextControl, {
+    value: stickyCookieConsentExpires,
+    className: "ai1wpsa-text-control",
+    onChange: function onChange(value) {
+      return setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
+        stickyCookieConsentExpires: value
+      }));
+    }
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Set your cookie consent message.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Set the number of days until the cookie consent expires.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Reject Redirect', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyCookieConsent_FormToggle, {
+    checked: stickyCookieConsentRejectRedirect,
+    onChange: function onChange() {
+      return setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
+        stickyCookieConsentRejectRedirect: !stickyCookieConsentRejectRedirect
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Redirect to a specific page/url when user reject cookie consent.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Reject Redirect URL', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyCookieConsent_TextControl, {
+    value: stickyCookieConsentRejectURL,
+    className: "ai1wpsa-text-control",
+    placeholder: "https://example.com",
+    onChange: function onChange(value) {
+      return setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
+        stickyCookieConsentRejectURL: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Write the URL you want to redirect when user reject cookie consent.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Close Button', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyCookieConsent_FormToggle, {
+    checked: stickyCookieConsentCloseButton,
+    onChange: function onChange() {
+      return setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
+        stickyCookieConsentCloseButton: !stickyCookieConsentCloseButton
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Show or hide the close button on the cookie consent banner.', 'all-in-one-wp-sticky-anything')))))), !!stickyCookieConsent && /*#__PURE__*/React.createElement(Group, {
+    icon: "\uD83D\uDD18",
+    title: wp.i18n.__('Buttons', 'all-in-one-wp-sticky-anything')
+  }, /*#__PURE__*/React.createElement("div", {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
@@ -7356,11 +7434,11 @@ function StickyCookieConsent() {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "ai1wpsa-cookie-consent-buttons"
-  }, stickyCookieConsentButtons.map(function (_ref4, index) {
-    var id = _ref4.id,
-      label = _ref4.label,
-      text = _ref4.text,
-      status = _ref4.status;
+  }, stickyCookieConsentButtons.map(function (_ref5, index) {
+    var id = _ref5.id,
+      label = _ref5.label,
+      text = _ref5.text,
+      status = _ref5.status;
     return /*#__PURE__*/React.createElement("div", {
       key: id,
       className: "ai1wpsa-button-row",
@@ -7416,27 +7494,15 @@ function StickyCookieConsent() {
     }));
   })), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Set your cookie consent buttons.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
+  }, wp.i18n.__('Set your cookie consent buttons.', 'all-in-one-wp-sticky-anything'))))), !!stickyCookieConsent && /*#__PURE__*/React.createElement(Group, {
+    icon: "\uD83C\uDFA8",
+    title: wp.i18n.__('Styles', 'all-in-one-wp-sticky-anything')
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Close Button', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickyCookieConsent_FormToggle, {
-    checked: stickyCookieConsentCloseButton,
-    onChange: function onChange() {
-      return setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
-        stickyCookieConsentCloseButton: !stickyCookieConsentCloseButton
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Enable or disable the close button on the cookie consent.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
+    className: "settings-field-label"
   }, wp.i18n.__('Banner Style', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
+    className: "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "settings-sub-field flex"
   }, /*#__PURE__*/React.createElement("div", {
@@ -7621,21 +7687,6 @@ function FixedWidget() {
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
   }, wp.i18n.__('Set the top offset when fixed the sticky widget. Example: 100. don\'t include px, rem, em etc.', 'all-in-one-wp-sticky-anything')))))));
-}
-;// ./src/js/includes/Group.js
-function Group(_ref) {
-  var _ref$icon = _ref.icon,
-    icon = _ref$icon === void 0 ? '⚙️' : _ref$icon,
-    _ref$title = _ref.title,
-    title = _ref$title === void 0 ? wp.i18n.__('Genaral', 'all-in-one-wp-sticky-anything') : _ref$title,
-    children = _ref.children;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "settings-content-group"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "header"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "icon"
-  }, icon), /*#__PURE__*/React.createElement("h3", null, title)), children);
 }
 ;// ./src/js/components/Settings/ClickToCall.js
 function ClickToCall_typeof(o) { "@babel/helpers - typeof"; return ClickToCall_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, ClickToCall_typeof(o); }
@@ -9563,6 +9614,11 @@ function BasicUsage() {
 ;// ./src/js/components/GettingStarted/Changelog.js
 function Changelog() {
   var logs = [{
+    version: 'v1.1.4',
+    date: '22-05-2026',
+    fix: [wp.i18n.__('Click to call button style.', 'all-in-one-wp-sticky-anything')],
+    enhancement: [wp.i18n.__('Expiry and Reject Redirect settings added on the Cookie Consent.', 'all-in-one-wp-sticky-anything')]
+  }, {
     version: 'v1.1.3',
     date: '23-04-2026',
     "new": [wp.i18n.__('Introduce Sticky Table of Contents(toc).', 'all-in-one-wp-sticky-anything')]

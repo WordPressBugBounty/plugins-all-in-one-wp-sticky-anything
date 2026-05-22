@@ -183,17 +183,30 @@
       });
     },
     handleStickyCookieConsentActions: function handleStickyCookieConsentActions(e) {
+      var _ai1wpsa6 = ai1wpsa,
+        settings = _ai1wpsa6.settings;
+      var _settings$stickyCooki = settings.stickyCookieConsentExpires,
+        stickyCookieConsentExpires = _settings$stickyCooki === void 0 ? 90 : _settings$stickyCooki,
+        _settings$stickyCooki2 = settings.stickyCookieConsentRejectRedirect,
+        stickyCookieConsentRejectRedirect = _settings$stickyCooki2 === void 0 ? false : _settings$stickyCooki2,
+        _settings$stickyCooki3 = settings.stickyCookieConsentRejectURL,
+        stickyCookieConsentRejectURL = _settings$stickyCooki3 === void 0 ? '' : _settings$stickyCooki3;
       e.preventDefault();
       var element = $(e.currentTarget);
       var isAccept = element === null || element === void 0 ? void 0 : element.hasClass('accept');
+      var isReject = element === null || element === void 0 ? void 0 : element.hasClass('reject');
       element.closest('.ai1wpsa-cookie-consent').hide();
+      if (isReject && stickyCookieConsentRejectRedirect && stickyCookieConsentRejectURL) {
+        window.location.href = stickyCookieConsentRejectURL;
+        return;
+      }
       var cookieData = {
         essential: true,
         statistics: isAccept ? true : false,
         marketing: isAccept ? true : false
       };
       var cookieValue = JSON.stringify(cookieData);
-      var expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+      var expires = new Date(Date.now() + stickyCookieConsentExpires * 24 * 60 * 60 * 1000).toUTCString();
       document.cookie = "ai1wpsa_preferences=".concat(cookieValue, "; expires=").concat(expires, "; path=/; SameSite=Lax");
     },
     handleFixedWidget: function handleFixedWidget() {
@@ -222,8 +235,8 @@
           return;
         }
         if ($(window).scrollTop() > widgetOffset) {
-          var _ai1wpsa$settings$fix, _ai1wpsa6;
-          var topOffset = parseInt((_ai1wpsa$settings$fix = (_ai1wpsa6 = ai1wpsa) === null || _ai1wpsa6 === void 0 || (_ai1wpsa6 = _ai1wpsa6.settings) === null || _ai1wpsa6 === void 0 ? void 0 : _ai1wpsa6.fixedWidgetTopOffset) !== null && _ai1wpsa$settings$fix !== void 0 ? _ai1wpsa$settings$fix : 100, 10);
+          var _ai1wpsa$settings$fix, _ai1wpsa7;
+          var topOffset = parseInt((_ai1wpsa$settings$fix = (_ai1wpsa7 = ai1wpsa) === null || _ai1wpsa7 === void 0 || (_ai1wpsa7 = _ai1wpsa7.settings) === null || _ai1wpsa7 === void 0 ? void 0 : _ai1wpsa7.fixedWidgetTopOffset) !== null && _ai1wpsa$settings$fix !== void 0 ? _ai1wpsa$settings$fix : 100, 10);
           widgetData.forEach(function (item) {
             item.el.css({
               position: 'fixed',
@@ -245,8 +258,8 @@
       });
     },
     handleClicktoCall: function handleClicktoCall() {
-      var _ai1wpsa$settings, _ai1wpsa7;
-      var _ref2 = (_ai1wpsa$settings = (_ai1wpsa7 = ai1wpsa) === null || _ai1wpsa7 === void 0 ? void 0 : _ai1wpsa7.settings) !== null && _ai1wpsa$settings !== void 0 ? _ai1wpsa$settings : {},
+      var _ai1wpsa$settings, _ai1wpsa8;
+      var _ref2 = (_ai1wpsa$settings = (_ai1wpsa8 = ai1wpsa) === null || _ai1wpsa8 === void 0 ? void 0 : _ai1wpsa8.settings) !== null && _ai1wpsa$settings !== void 0 ? _ai1wpsa$settings : {},
         _ref2$clicktoCall = _ref2.clicktoCall,
         clicktoCall = _ref2$clicktoCall === void 0 ? false : _ref2$clicktoCall,
         _ref2$clicktoCallPosi = _ref2.clicktoCallPosition,
@@ -341,8 +354,8 @@
       });
     },
     handleStickyToc: function handleStickyToc() {
-      var _ai1wpsa8 = ai1wpsa,
-        settings = _ai1wpsa8.settings;
+      var _ai1wpsa9 = ai1wpsa,
+        settings = _ai1wpsa9.settings;
       var _settings$stickyTocTi = settings.stickyTocTitle,
         stickyTocTitle = _settings$stickyTocTi === void 0 ? 'Table of Contents' : _settings$stickyTocTi,
         _settings$stickyTocTa = settings.stickyTocTarget,

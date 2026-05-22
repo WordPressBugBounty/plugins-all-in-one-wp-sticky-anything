@@ -1,10 +1,10 @@
-=== All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent ===
+=== All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu & Sidebar ===
 Contributors: monzuralam
 Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ All-in-One Sticky Anything easily creates click to call, fixed widgets, sticky e
 
 == Description ==
 
-== All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent ==
+== All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu & Sidebar ==
 
 All-in-One Sticky Anything on Scroll allows you to make any element sticky on your website, including click to call, sticky headers, sidebars, social icons, and cookie consent notices. The plugin also works seamlessly with the Elementor page builder.
 
@@ -212,6 +212,10 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.1.4 (22-05-2026) =
+* **Fix:** Click to call button style.
+* **Update:** Expiry and Reject Redirect settings added on the Cookie Consent.
+
 = 1.1.3 (23-04-2026) =
 * **New:** Introduce Sticky Table of Contents(toc).
 

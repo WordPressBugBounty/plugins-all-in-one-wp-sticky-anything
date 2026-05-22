@@ -2,21 +2,21 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent 1.1.3\n"
+"Project-Id-Version: All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu & Sidebar 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/all-in-one-wp-sticky-anything-pro\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-23T02:10:07+00:00\n"
+"POT-Creation-Date: 2026-05-22T03:03:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: all-in-one-wp-sticky-anything\n"
 
 #. Plugin Name of the plugin
 #: all-in-one-wp-sticky-anything.php
-msgid "All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu, Sidebar, Social Icons & Cookie Consent"
+msgid "All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu & Sidebar"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -42,8 +42,8 @@ msgstr ""
 
 #: includes/Admin.php:29
 #: assets/js/admin.js:139
-#: assets/js/admin.js:9883
-#: assets/js/admin.js:9886
+#: assets/js/admin.js:9939
+#: assets/js/admin.js:9942
 msgid "All-in-One WP Sticky Anything"
 msgstr ""
 
@@ -87,7 +87,7 @@ msgid "Settings to configure Sticky Anything on your website."
 msgstr ""
 
 #: includes/Customizer.php:33
-#: assets/js/admin.js:9757
+#: assets/js/admin.js:9813
 msgid "Sticky Header"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 
 #: includes/Customizer.php:75
 #: includes/Elementor.php:51
-#: assets/js/admin.js:9618
+#: assets/js/admin.js:9674
 msgid "Z-Index"
 msgstr ""
 
@@ -110,24 +110,24 @@ msgid "Enable"
 msgstr ""
 
 #: includes/Hooks.php:139
-#: assets/js/admin.js:7143
+#: assets/js/admin.js:7200
 msgid "We use cookies to improve your experience on our site. By using our site, you consent to cookies."
 msgstr ""
 
 #: includes/Hooks.php:144
-#: assets/js/admin.js:7148
+#: assets/js/admin.js:7211
 msgid "Accept"
 msgstr ""
 
 #: includes/Hooks.php:150
-#: assets/js/admin.js:7153
+#: assets/js/admin.js:7216
 msgid "Reject"
 msgstr ""
 
 #: includes/Hooks.php:260
-#: assets/js/admin.js:7596
-#: assets/js/admin.js:9273
-#: assets/js/admin.js:9747
+#: assets/js/admin.js:7662
+#: assets/js/admin.js:9324
+#: assets/js/admin.js:9803
 #: assets/js/block-editor.js:40
 msgid "Fixed Widget"
 msgstr ""
@@ -199,7 +199,6 @@ msgstr ""
 
 #: assets/js/admin.js:228
 #: assets/js/admin.js:372
-#: assets/js/admin.js:7334
 msgid "Set your desire z-index value for your target element."
 msgstr ""
 
@@ -208,8 +207,8 @@ msgid "Sticky Sidebar Settings"
 msgstr ""
 
 #: assets/js/admin.js:281
-#: assets/js/admin.js:9277
-#: assets/js/admin.js:9762
+#: assets/js/admin.js:9328
+#: assets/js/admin.js:9818
 msgid "Sticky Sidebar"
 msgstr ""
 
@@ -243,35 +242,35 @@ msgstr ""
 
 #: assets/js/admin.js:328
 #: assets/js/admin.js:6915
-#: assets/js/admin.js:7290
-#: assets/js/admin.js:7908
+#: assets/js/admin.js:7332
+#: assets/js/admin.js:7959
 msgid "Device"
 msgstr ""
 
 #: assets/js/admin.js:340
 #: assets/js/admin.js:3300
-#: assets/js/admin.js:7302
-#: assets/js/admin.js:7922
+#: assets/js/admin.js:7172
+#: assets/js/admin.js:7973
 msgid "All"
 msgstr ""
 
 #: assets/js/admin.js:350
 #: assets/js/admin.js:3303
-#: assets/js/admin.js:7312
-#: assets/js/admin.js:7935
+#: assets/js/admin.js:7175
+#: assets/js/admin.js:7986
 msgid "Desktop"
 msgstr ""
 
 #: assets/js/admin.js:360
-#: assets/js/admin.js:7322
-#: assets/js/admin.js:7948
+#: assets/js/admin.js:7178
+#: assets/js/admin.js:7999
 msgid "Tablet"
 msgstr ""
 
 #: assets/js/admin.js:370
 #: assets/js/admin.js:3307
-#: assets/js/admin.js:7332
-#: assets/js/admin.js:7961
+#: assets/js/admin.js:7181
+#: assets/js/admin.js:8012
 msgid "Mobile"
 msgstr ""
 
@@ -322,8 +321,8 @@ msgid "Visit Support Forum"
 msgstr ""
 
 #: assets/js/admin.js:539
-#: assets/js/admin.js:9299
-#: assets/js/admin.js:9618
+#: assets/js/admin.js:9350
+#: assets/js/admin.js:9674
 msgid "Custom CSS"
 msgstr ""
 
@@ -336,7 +335,7 @@ msgid "Write your custom CSS here."
 msgstr ""
 
 #: assets/js/admin.js:567
-#: assets/js/admin.js:9303
+#: assets/js/admin.js:9354
 msgid "Tools"
 msgstr ""
 
@@ -376,7 +375,7 @@ msgstr ""
 
 #: assets/js/admin.js:2863
 #: assets/js/admin.js:2867
-#: assets/js/admin.js:7338
+#: assets/js/admin.js:7353
 msgid "Message"
 msgstr ""
 
@@ -391,20 +390,20 @@ msgid "Button URL"
 msgstr ""
 
 #: assets/js/admin.js:2917
-#: assets/js/admin.js:7262
-#: assets/js/admin.js:7967
-#: assets/js/admin.js:9120
+#: assets/js/admin.js:7308
+#: assets/js/admin.js:8018
+#: assets/js/admin.js:9171
 msgid "Position"
 msgstr ""
 
 #: assets/js/admin.js:2930
-#: assets/js/admin.js:8716
+#: assets/js/admin.js:8767
 msgid "Top"
 msgstr ""
 
 #: assets/js/admin.js:2941
 #: assets/js/admin.js:3285
-#: assets/js/admin.js:8719
+#: assets/js/admin.js:8770
 msgid "Bottom"
 msgstr ""
 
@@ -525,12 +524,12 @@ msgid "Posts Page"
 msgstr ""
 
 #: assets/js/admin.js:3279
-#: assets/js/admin.js:8712
+#: assets/js/admin.js:8763
 msgid "Left"
 msgstr ""
 
 #: assets/js/admin.js:3282
-#: assets/js/admin.js:8709
+#: assets/js/admin.js:8760
 msgid "Right"
 msgstr ""
 
@@ -4662,8 +4661,8 @@ msgid "Sticky Social Icons Settings"
 msgstr ""
 
 #: assets/js/admin.js:6813
-#: assets/js/admin.js:9281
-#: assets/js/admin.js:9767
+#: assets/js/admin.js:9332
+#: assets/js/admin.js:9823
 msgid "Sticky Social Icons"
 msgstr ""
 
@@ -4677,9 +4676,9 @@ msgstr ""
 
 #: assets/js/admin.js:6846
 #: assets/js/admin.js:6866
-#: assets/js/admin.js:7283
-#: assets/js/admin.js:8577
-#: assets/js/admin.js:9229
+#: assets/js/admin.js:7303
+#: assets/js/admin.js:8628
+#: assets/js/admin.js:9280
 msgid "Pro Feature"
 msgstr ""
 
@@ -4729,7 +4728,7 @@ msgid "Enter URL"
 msgstr ""
 
 #: assets/js/admin.js:7017
-#: assets/js/admin.js:8069
+#: assets/js/admin.js:8120
 msgid "Add New"
 msgstr ""
 
@@ -4738,7 +4737,7 @@ msgid "Icon Menu Background Color"
 msgstr ""
 
 #: assets/js/admin.js:7036
-#: assets/js/admin.js:8167
+#: assets/js/admin.js:8218
 msgid "Icon Color"
 msgstr ""
 
@@ -4754,1191 +4753,1209 @@ msgstr ""
 msgid "Icon Background Hover Color"
 msgstr ""
 
-#: assets/js/admin.js:7147
-msgid "Accept Button"
-msgstr ""
-
-#: assets/js/admin.js:7152
-msgid "Reject Button"
-msgstr ""
-
-#: assets/js/admin.js:7172
-msgid "Long Banner"
-msgstr ""
-
-#: assets/js/admin.js:7176
-msgid "Floating Banner"
-msgstr ""
-
-#: assets/js/admin.js:7180
-msgid "Modal Banner"
-msgstr ""
-
-#: assets/js/admin.js:7185
-#: assets/js/admin.js:7841
-msgid "Bottom Left"
-msgstr ""
-
-#: assets/js/admin.js:7189
-#: assets/js/admin.js:7844
-msgid "Bottom Right"
-msgstr ""
-
-#: assets/js/admin.js:7207
-msgid "Sticky Cookie Consent Settings"
-msgstr ""
-
-#: assets/js/admin.js:7213
-#: assets/js/admin.js:9285
-#: assets/js/admin.js:9772
-msgid "Sticky Cookie Consent"
-msgstr ""
-
-#: assets/js/admin.js:7224
-msgid "Enable or disable the sticky cookie consent."
-msgstr ""
-
-#: assets/js/admin.js:7228
-msgid "Layout"
-msgstr ""
-
-#: assets/js/admin.js:7255
-msgid "Coming Soon"
-msgstr ""
-
-#: assets/js/admin.js:7258
-msgid "Select the layout of the sticky cookie consent."
-msgstr ""
-
-#: assets/js/admin.js:7286
-msgid "Select the position of the sticky cookie consent."
-msgstr ""
-
-#: assets/js/admin.js:7343
-msgid "ex: We use cookies to improve your experience on our site."
-msgstr ""
-
-#: assets/js/admin.js:7351
-msgid "Set your cookie consent message."
-msgstr ""
-
-#: assets/js/admin.js:7355
-msgid "Buttons"
-msgstr ""
-
-#: assets/js/admin.js:7419
-msgid "Set your cookie consent buttons."
-msgstr ""
-
-#: assets/js/admin.js:7423
-msgid "Close Button"
-msgstr ""
-
-#: assets/js/admin.js:7434
-msgid "Enable or disable the close button on the cookie consent."
-msgstr ""
-
-#: assets/js/admin.js:7438
-msgid "Banner Style"
-msgstr ""
-
-#: assets/js/admin.js:7446
-#: assets/js/admin.js:8152
-#: assets/js/admin.js:9196
-msgid "Background Color"
-msgstr ""
-
-#: assets/js/admin.js:7461
-msgid "Text Color"
-msgstr ""
-
-#: assets/js/admin.js:7476
-msgid "Font Size"
-msgstr ""
-
-#: assets/js/admin.js:7479
-msgid "16px"
-msgstr ""
-
-#: assets/js/admin.js:7491
-msgid "Button Style"
-msgstr ""
-
-#: assets/js/admin.js:7499
-msgid "Accept Button Background Color"
-msgstr ""
-
-#: assets/js/admin.js:7514
-msgid "Accept Button Text Color"
-msgstr ""
-
-#: assets/js/admin.js:7531
-msgid "Reject Button Background Color"
-msgstr ""
-
-#: assets/js/admin.js:7546
-msgid "Reject Button Text Color"
-msgstr ""
-
-#: assets/js/admin.js:7590
-msgid "Fixed Widget Settings"
-msgstr ""
-
-#: assets/js/admin.js:7607
-msgid "Enable or disable the fixed widget."
-msgstr ""
-
-#: assets/js/admin.js:7611
-msgid "Fixed Widget Top Offset"
-msgstr ""
-
-#: assets/js/admin.js:7615
-msgid "ex: 100"
-msgstr ""
-
-#: assets/js/admin.js:7623
-msgid "Set the top offset when fixed the sticky widget. Example: 100. don't include px, rem, em etc."
-msgstr ""
-
-#: assets/js/admin.js:7630
+#: assets/js/admin.js:7105
 msgid "Genaral"
 msgstr ""
 
-#: assets/js/admin.js:7679
-msgid "Support"
+#: assets/js/admin.js:7146
+msgid "Long Banner"
 msgstr ""
 
-#: assets/js/admin.js:7705
-msgid "Call Us Now"
+#: assets/js/admin.js:7150
+msgid "Floating Banner"
 msgstr ""
 
-#: assets/js/admin.js:7707
-msgid "We're available!"
+#: assets/js/admin.js:7154
+msgid "Modal Banner"
 msgstr ""
 
-#: assets/js/admin.js:7709
-msgid "Reach Us Directly"
+#: assets/js/admin.js:7161
+#: assets/js/admin.js:7892
+msgid "Bottom Left"
 msgstr ""
 
-#: assets/js/admin.js:7711
-msgid "Choose how you'd like to connect"
+#: assets/js/admin.js:7165
+#: assets/js/admin.js:7895
+msgid "Bottom Right"
 msgstr ""
 
-#: assets/js/admin.js:7713
-msgid "We're online – call now"
+#: assets/js/admin.js:7210
+msgid "Accept Button"
 msgstr ""
 
-#: assets/js/admin.js:7715
-msgid "Currently closed"
+#: assets/js/admin.js:7215
+msgid "Reject Button"
 msgstr ""
 
-#: assets/js/admin.js:7717
-msgid "We're currently closed. See our hours below."
+#: assets/js/admin.js:7250
+msgid "Sticky Cookie Consent Settings"
 msgstr ""
 
-#: assets/js/admin.js:7719
-msgid "Response within 1 business day."
-msgstr ""
-
-#: assets/js/admin.js:7761
-msgid "Popup"
-msgstr ""
-
-#: assets/js/admin.js:7766
-msgid "Slide Panel"
-msgstr ""
-
-#: assets/js/admin.js:7771
-#: assets/js/admin.js:8262
-msgid "Badge"
-msgstr ""
-
-#: assets/js/admin.js:7776
-msgid "Dock"
-msgstr ""
-
-#: assets/js/admin.js:7781
-msgid "Toolbar"
-msgstr ""
-
-#: assets/js/admin.js:7786
-#: assets/js/admin.js:8090
-msgid "Inline"
-msgstr ""
-
-#: assets/js/admin.js:7791
-#: assets/js/admin.js:8611
-msgid "Card"
-msgstr ""
-
-#: assets/js/admin.js:7796
-#: assets/js/admin.js:8661
-msgid "Glass"
-msgstr ""
-
-#: assets/js/admin.js:7801
-msgid "Neumorphic"
-msgstr ""
-
-#: assets/js/admin.js:7806
-msgid "Skeuomorphic"
-msgstr ""
-
-#: assets/js/admin.js:7811
-msgid "Soft UI"
-msgstr ""
-
-#: assets/js/admin.js:7816
-msgid "High Contrast"
-msgstr ""
-
-#: assets/js/admin.js:7821
-msgid "Shadow UI"
-msgstr ""
-
-#: assets/js/admin.js:7826
-msgid "Flat"
-msgstr ""
-
-#: assets/js/admin.js:7832
-msgid "Top Left"
-msgstr ""
-
-#: assets/js/admin.js:7835
-msgid "Top Right"
-msgstr ""
-
-#: assets/js/admin.js:7838
-msgid "Top Center"
-msgstr ""
-
-#: assets/js/admin.js:7847
-msgid "Bottom Center"
-msgstr ""
-
-#: assets/js/admin.js:7851
-msgid "None"
-msgstr ""
-
-#: assets/js/admin.js:7854
-msgid "Ripple"
-msgstr ""
-
-#: assets/js/admin.js:7857
-msgid "Heartbeat"
-msgstr ""
-
-#: assets/js/admin.js:7860
-msgid "Bounce"
-msgstr ""
-
-#: assets/js/admin.js:7863
-msgid "Swing"
-msgstr ""
-
-#: assets/js/admin.js:7866
-msgid "Tada"
-msgstr ""
-
-#: assets/js/admin.js:7869
-msgid "Sonar"
-msgstr ""
-
-#: assets/js/admin.js:7872
-msgid "Rotate"
-msgstr ""
-
-#: assets/js/admin.js:7875
-msgid "Blob"
-msgstr ""
-
-#: assets/js/admin.js:7884
-msgid "Click to Call Settings"
-msgstr ""
-
-#: assets/js/admin.js:7888
-#: assets/js/admin.js:8804
-#: assets/js/admin.js:9265
+#: assets/js/admin.js:7254
+#: assets/js/admin.js:7939
+#: assets/js/admin.js:8855
+#: assets/js/admin.js:9316
 msgid "General"
 msgstr ""
 
-#: assets/js/admin.js:7893
-#: assets/js/admin.js:9269
-#: assets/js/admin.js:9742
+#: assets/js/admin.js:7259
+#: assets/js/admin.js:9336
+#: assets/js/admin.js:9828
+msgid "Sticky Cookie Consent"
+msgstr ""
+
+#: assets/js/admin.js:7270
+msgid "Enable or disable the sticky cookie consent."
+msgstr ""
+
+#: assets/js/admin.js:7274
+msgid "Layout"
+msgstr ""
+
+#: assets/js/admin.js:7367
+msgid "Cookie Expiry (days)"
+msgstr ""
+
+#: assets/js/admin.js:7379
+msgid "Set the number of days until the cookie consent expires."
+msgstr ""
+
+#: assets/js/admin.js:7383
+msgid "Reject Redirect"
+msgstr ""
+
+#: assets/js/admin.js:7394
+msgid "Redirect to a specific page/url when user reject cookie consent."
+msgstr ""
+
+#: assets/js/admin.js:7398
+msgid "Reject Redirect URL"
+msgstr ""
+
+#: assets/js/admin.js:7411
+msgid "Write the URL you want to redirect when user reject cookie consent."
+msgstr ""
+
+#: assets/js/admin.js:7415
+msgid "Close Button"
+msgstr ""
+
+#: assets/js/admin.js:7426
+msgid "Show or hide the close button on the cookie consent banner."
+msgstr ""
+
+#: assets/js/admin.js:7428
+#: assets/js/admin.js:7433
+msgid "Buttons"
+msgstr ""
+
+#: assets/js/admin.js:7497
+msgid "Set your cookie consent buttons."
+msgstr ""
+
+#: assets/js/admin.js:7499
+msgid "Styles"
+msgstr ""
+
+#: assets/js/admin.js:7504
+msgid "Banner Style"
+msgstr ""
+
+#: assets/js/admin.js:7512
+#: assets/js/admin.js:8203
+#: assets/js/admin.js:9247
+msgid "Background Color"
+msgstr ""
+
+#: assets/js/admin.js:7527
+msgid "Text Color"
+msgstr ""
+
+#: assets/js/admin.js:7542
+msgid "Font Size"
+msgstr ""
+
+#: assets/js/admin.js:7545
+msgid "16px"
+msgstr ""
+
+#: assets/js/admin.js:7557
+msgid "Button Style"
+msgstr ""
+
+#: assets/js/admin.js:7565
+msgid "Accept Button Background Color"
+msgstr ""
+
+#: assets/js/admin.js:7580
+msgid "Accept Button Text Color"
+msgstr ""
+
+#: assets/js/admin.js:7597
+msgid "Reject Button Background Color"
+msgstr ""
+
+#: assets/js/admin.js:7612
+msgid "Reject Button Text Color"
+msgstr ""
+
+#: assets/js/admin.js:7656
+msgid "Fixed Widget Settings"
+msgstr ""
+
+#: assets/js/admin.js:7673
+msgid "Enable or disable the fixed widget."
+msgstr ""
+
+#: assets/js/admin.js:7677
+msgid "Fixed Widget Top Offset"
+msgstr ""
+
+#: assets/js/admin.js:7681
+msgid "ex: 100"
+msgstr ""
+
+#: assets/js/admin.js:7689
+msgid "Set the top offset when fixed the sticky widget. Example: 100. don't include px, rem, em etc."
+msgstr ""
+
+#: assets/js/admin.js:7730
+msgid "Support"
+msgstr ""
+
+#: assets/js/admin.js:7756
+msgid "Call Us Now"
+msgstr ""
+
+#: assets/js/admin.js:7758
+msgid "We're available!"
+msgstr ""
+
+#: assets/js/admin.js:7760
+msgid "Reach Us Directly"
+msgstr ""
+
+#: assets/js/admin.js:7762
+msgid "Choose how you'd like to connect"
+msgstr ""
+
+#: assets/js/admin.js:7764
+msgid "We're online – call now"
+msgstr ""
+
+#: assets/js/admin.js:7766
+msgid "Currently closed"
+msgstr ""
+
+#: assets/js/admin.js:7768
+msgid "We're currently closed. See our hours below."
+msgstr ""
+
+#: assets/js/admin.js:7770
+msgid "Response within 1 business day."
+msgstr ""
+
+#: assets/js/admin.js:7812
+msgid "Popup"
+msgstr ""
+
+#: assets/js/admin.js:7817
+msgid "Slide Panel"
+msgstr ""
+
+#: assets/js/admin.js:7822
+#: assets/js/admin.js:8313
+msgid "Badge"
+msgstr ""
+
+#: assets/js/admin.js:7827
+msgid "Dock"
+msgstr ""
+
+#: assets/js/admin.js:7832
+msgid "Toolbar"
+msgstr ""
+
+#: assets/js/admin.js:7837
+#: assets/js/admin.js:8141
+msgid "Inline"
+msgstr ""
+
+#: assets/js/admin.js:7842
+#: assets/js/admin.js:8662
+msgid "Card"
+msgstr ""
+
+#: assets/js/admin.js:7847
+#: assets/js/admin.js:8712
+msgid "Glass"
+msgstr ""
+
+#: assets/js/admin.js:7852
+msgid "Neumorphic"
+msgstr ""
+
+#: assets/js/admin.js:7857
+msgid "Skeuomorphic"
+msgstr ""
+
+#: assets/js/admin.js:7862
+msgid "Soft UI"
+msgstr ""
+
+#: assets/js/admin.js:7867
+msgid "High Contrast"
+msgstr ""
+
+#: assets/js/admin.js:7872
+msgid "Shadow UI"
+msgstr ""
+
+#: assets/js/admin.js:7877
+msgid "Flat"
+msgstr ""
+
+#: assets/js/admin.js:7883
+msgid "Top Left"
+msgstr ""
+
+#: assets/js/admin.js:7886
+msgid "Top Right"
+msgstr ""
+
+#: assets/js/admin.js:7889
+msgid "Top Center"
+msgstr ""
+
+#: assets/js/admin.js:7898
+msgid "Bottom Center"
+msgstr ""
+
+#: assets/js/admin.js:7902
+msgid "None"
+msgstr ""
+
+#: assets/js/admin.js:7905
+msgid "Ripple"
+msgstr ""
+
+#: assets/js/admin.js:7908
+msgid "Heartbeat"
+msgstr ""
+
+#: assets/js/admin.js:7911
+msgid "Bounce"
+msgstr ""
+
+#: assets/js/admin.js:7914
+msgid "Swing"
+msgstr ""
+
+#: assets/js/admin.js:7917
+msgid "Tada"
+msgstr ""
+
+#: assets/js/admin.js:7920
+msgid "Sonar"
+msgstr ""
+
+#: assets/js/admin.js:7923
+msgid "Rotate"
+msgstr ""
+
+#: assets/js/admin.js:7926
+msgid "Blob"
+msgstr ""
+
+#: assets/js/admin.js:7935
+msgid "Click to Call Settings"
+msgstr ""
+
+#: assets/js/admin.js:7944
+#: assets/js/admin.js:9320
+#: assets/js/admin.js:9798
 msgid "Click to Call"
 msgstr ""
 
-#: assets/js/admin.js:7904
+#: assets/js/admin.js:7955
 msgid "Enable or disable the sticky click to call."
 msgstr ""
 
-#: assets/js/admin.js:7963
+#: assets/js/admin.js:8014
 msgid "Select the device to show the click to call widget."
 msgstr ""
 
-#: assets/js/admin.js:7981
+#: assets/js/admin.js:8032
 msgid "Select the position of the click to call widget."
 msgstr ""
 
-#: assets/js/admin.js:7988
+#: assets/js/admin.js:8039
 msgid "Phone Number"
 msgstr ""
 
-#: assets/js/admin.js:7988
+#: assets/js/admin.js:8039
 msgid "Add multiple lines with labels"
 msgstr ""
 
-#: assets/js/admin.js:7998
+#: assets/js/admin.js:8049
 msgid "ex: +8801512345678"
 msgstr ""
 
-#: assets/js/admin.js:8009
+#: assets/js/admin.js:8060
 msgid "ex: Call Now"
 msgstr ""
 
-#: assets/js/admin.js:8071
-#: assets/js/admin.js:9176
+#: assets/js/admin.js:8122
+#: assets/js/admin.js:9227
 msgid "Theme & Styling"
 msgstr ""
 
-#: assets/js/admin.js:8076
+#: assets/js/admin.js:8127
 msgid "Widget Type"
 msgstr ""
 
-#: assets/js/admin.js:8102
+#: assets/js/admin.js:8153
 msgid "Launcher"
 msgstr ""
 
-#: assets/js/admin.js:8104
+#: assets/js/admin.js:8155
 msgid "Select the widget type."
 msgstr ""
 
-#: assets/js/admin.js:8108
+#: assets/js/admin.js:8159
 msgid "Widget Style"
 msgstr ""
 
-#: assets/js/admin.js:8148
+#: assets/js/admin.js:8199
 msgid "Select a widget style. The chosen style will apply when multiple phone numbers."
 msgstr ""
 
-#: assets/js/admin.js:8163
+#: assets/js/admin.js:8214
 msgid "Set the background color of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8178
+#: assets/js/admin.js:8229
 msgid "Set the icon color of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8185
+#: assets/js/admin.js:8236
 msgid "Animation"
 msgstr ""
 
-#: assets/js/admin.js:8215
+#: assets/js/admin.js:8266
 msgid "Select the animation for the widget appearance."
 msgstr ""
 
-#: assets/js/admin.js:8217
+#: assets/js/admin.js:8268
 msgid "Timing & Badges"
 msgstr ""
 
-#: assets/js/admin.js:8222
+#: assets/js/admin.js:8273
 msgid "Auto Open"
 msgstr ""
 
-#: assets/js/admin.js:8238
+#: assets/js/admin.js:8289
 msgid "Make the widget open automatically."
 msgstr ""
 
-#: assets/js/admin.js:8242
+#: assets/js/admin.js:8293
 msgid "Auto Open Delay"
 msgstr ""
 
-#: assets/js/admin.js:8258
+#: assets/js/admin.js:8309
 msgid "Set the auto open delay in seconds."
 msgstr ""
 
-#: assets/js/admin.js:8278
+#: assets/js/admin.js:8329
 msgid "Show a badge on the widget."
 msgstr ""
 
-#: assets/js/admin.js:8282
+#: assets/js/admin.js:8333
 msgid "Badge Count"
 msgstr ""
 
-#: assets/js/admin.js:8298
+#: assets/js/admin.js:8349
 msgid "Set the badge count."
 msgstr ""
 
-#: assets/js/admin.js:8302
+#: assets/js/admin.js:8353
 msgid "Show Chip"
 msgstr ""
 
-#: assets/js/admin.js:8318
+#: assets/js/admin.js:8369
 msgid "Show a chip (text) on the widget top."
 msgstr ""
 
-#: assets/js/admin.js:8322
+#: assets/js/admin.js:8373
 msgid "Show Chip Dot"
 msgstr ""
 
-#: assets/js/admin.js:8338
+#: assets/js/admin.js:8389
 msgid "Show an online/offline dot inside the chip based on the availability."
 msgstr ""
 
-#: assets/js/admin.js:8340
+#: assets/js/admin.js:8391
 msgid "Labels"
 msgstr ""
 
-#: assets/js/admin.js:8345
+#: assets/js/admin.js:8396
 msgid "CTA Text"
 msgstr ""
 
-#: assets/js/admin.js:8356
+#: assets/js/admin.js:8407
 msgid "Set the CTA text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8360
+#: assets/js/admin.js:8411
 msgid "Tooltip Text"
 msgstr ""
 
-#: assets/js/admin.js:8376
+#: assets/js/admin.js:8427
 msgid "Set the tooltip text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8380
+#: assets/js/admin.js:8431
 msgid "Title Text"
 msgstr ""
 
-#: assets/js/admin.js:8396
+#: assets/js/admin.js:8447
 msgid "Set the title text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8400
+#: assets/js/admin.js:8451
 msgid "Subtitle Text"
 msgstr ""
 
-#: assets/js/admin.js:8416
+#: assets/js/admin.js:8467
 msgid "Set the subtitle text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8420
+#: assets/js/admin.js:8471
 msgid "Online Message Text"
 msgstr ""
 
-#: assets/js/admin.js:8436
+#: assets/js/admin.js:8487
 msgid "Set the online message text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8440
+#: assets/js/admin.js:8491
 msgid "Closed Message Text"
 msgstr ""
 
-#: assets/js/admin.js:8456
+#: assets/js/admin.js:8507
 msgid "Set the closed message text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8460
+#: assets/js/admin.js:8511
 msgid "Offline Message Text"
 msgstr ""
 
-#: assets/js/admin.js:8476
+#: assets/js/admin.js:8527
 msgid "Set the offline message text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8480
+#: assets/js/admin.js:8531
 msgid "Footer Text"
 msgstr ""
 
-#: assets/js/admin.js:8496
+#: assets/js/admin.js:8547
 msgid "Set the footer text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8498
-#: assets/js/admin.js:8523
+#: assets/js/admin.js:8549
+#: assets/js/admin.js:8574
 msgid "Schedules"
 msgstr ""
 
-#: assets/js/admin.js:8503
+#: assets/js/admin.js:8554
 msgid "Show Hours"
 msgstr ""
 
-#: assets/js/admin.js:8519
+#: assets/js/admin.js:8570
 msgid "Enable or disable the show hours when schedules time not available."
 msgstr ""
 
-#: assets/js/admin.js:8574
+#: assets/js/admin.js:8625
 msgid "Set the schedules of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8615
+#: assets/js/admin.js:8666
 msgid "Simple"
 msgstr ""
 
-#: assets/js/admin.js:8619
+#: assets/js/admin.js:8670
 msgid "Steps"
 msgstr ""
 
-#: assets/js/admin.js:8623
+#: assets/js/admin.js:8674
 msgid "Banner"
 msgstr ""
 
-#: assets/js/admin.js:8627
+#: assets/js/admin.js:8678
 msgid "Pills"
 msgstr ""
 
-#: assets/js/admin.js:8631
+#: assets/js/admin.js:8682
 msgid "Sticky Inline"
 msgstr ""
 
-#: assets/js/admin.js:8635
+#: assets/js/admin.js:8686
 msgid "Accordion"
 msgstr ""
 
-#: assets/js/admin.js:8639
+#: assets/js/admin.js:8690
 msgid "Two Column"
 msgstr ""
 
-#: assets/js/admin.js:8643
+#: assets/js/admin.js:8694
 msgid "Tracker"
 msgstr ""
 
-#: assets/js/admin.js:8647
+#: assets/js/admin.js:8698
 msgid "Tabs"
 msgstr ""
 
-#: assets/js/admin.js:8651
+#: assets/js/admin.js:8702
 msgid "Ghost"
 msgstr ""
 
-#: assets/js/admin.js:8656
+#: assets/js/admin.js:8707
 msgid "Default"
 msgstr ""
 
-#: assets/js/admin.js:8666
+#: assets/js/admin.js:8717
 msgid "Dark"
 msgstr ""
 
-#: assets/js/admin.js:8671
+#: assets/js/admin.js:8722
 msgid "Minimal"
 msgstr ""
 
-#: assets/js/admin.js:8676
+#: assets/js/admin.js:8727
 msgid "Neon"
 msgstr ""
 
-#: assets/js/admin.js:8681
+#: assets/js/admin.js:8732
 msgid "Frosted Dark"
 msgstr ""
 
-#: assets/js/admin.js:8686
+#: assets/js/admin.js:8737
 msgid "Newspaper"
 msgstr ""
 
-#: assets/js/admin.js:8691
+#: assets/js/admin.js:8742
 msgid "Outline"
 msgstr ""
 
-#: assets/js/admin.js:8696
+#: assets/js/admin.js:8747
 msgid "Slideout"
 msgstr ""
 
-#: assets/js/admin.js:8701
+#: assets/js/admin.js:8752
 msgid "Top Nav"
 msgstr ""
 
-#: assets/js/admin.js:8800
+#: assets/js/admin.js:8851
 msgid "Sticky Table of Contents Settings"
 msgstr ""
 
-#: assets/js/admin.js:8809
+#: assets/js/admin.js:8860
 msgid "Table of Contents"
 msgstr ""
 
-#: assets/js/admin.js:8820
+#: assets/js/admin.js:8871
 msgid "Enable or disable the table of contents."
 msgstr ""
 
-#: assets/js/admin.js:8824
+#: assets/js/admin.js:8875
 msgid "TOC Post Type"
 msgstr ""
 
-#: assets/js/admin.js:8841
-#: assets/js/admin.js:8877
+#: assets/js/admin.js:8892
+#: assets/js/admin.js:8928
 msgid "Heading text shown in both the inline block and the sidebar."
 msgstr ""
 
-#: assets/js/admin.js:8845
-#: assets/js/admin.js:9158
+#: assets/js/admin.js:8896
+#: assets/js/admin.js:9209
 msgid "Progress Bar"
 msgstr ""
 
-#: assets/js/admin.js:8861
+#: assets/js/admin.js:8912
 msgid "Display a thin reading-progress bar pinned to the very top of the page."
 msgstr ""
 
-#: assets/js/admin.js:8865
+#: assets/js/admin.js:8916
 msgid "TOC Title"
 msgstr ""
 
-#: assets/js/admin.js:8881
+#: assets/js/admin.js:8932
 msgid "Content Selector"
 msgstr ""
 
-#: assets/js/admin.js:8893
+#: assets/js/admin.js:8944
 msgid "CSS selector of the article wrapper table of contents will scan for headings."
 msgstr ""
 
-#: assets/js/admin.js:8895
+#: assets/js/admin.js:8946
 msgid "Content Parsing"
 msgstr ""
 
-#: assets/js/admin.js:8900
+#: assets/js/admin.js:8951
 msgid "Heading Levels"
 msgstr ""
 
-#: assets/js/admin.js:8912
+#: assets/js/admin.js:8963
 msgid "Which heading tags table of contents will detect. At least one must be selected."
 msgstr ""
 
-#: assets/js/admin.js:8916
+#: assets/js/admin.js:8967
 msgid "Max Depth"
 msgstr ""
 
-#: assets/js/admin.js:8919
+#: assets/js/admin.js:8970
 msgid "H2 Only"
 msgstr ""
 
-#: assets/js/admin.js:8922
+#: assets/js/admin.js:8973
 msgid "H2 + H3"
 msgstr ""
 
-#: assets/js/admin.js:8925
+#: assets/js/admin.js:8976
 msgid "H2 + H3 + H4"
 msgstr ""
 
-#: assets/js/admin.js:8939
+#: assets/js/admin.js:8990
 msgid "Maximum nesting depth visible in the TOC. Deeper headings are still given IDs but are hidden."
 msgstr ""
 
-#: assets/js/admin.js:8943
+#: assets/js/admin.js:8994
 msgid "Minimum Headings"
 msgstr ""
 
-#: assets/js/admin.js:8958
+#: assets/js/admin.js:9009
 msgid "Minimum number of headings required before any TOC is rendered."
 msgstr ""
 
-#: assets/js/admin.js:8962
+#: assets/js/admin.js:9013
 msgid "Section Numbers"
 msgstr ""
 
-#: assets/js/admin.js:8973
+#: assets/js/admin.js:9024
 msgid "Prepend nested numbers (e.g. \"1.\", \"1.2.\") before each TOC link."
 msgstr ""
 
-#: assets/js/admin.js:8977
+#: assets/js/admin.js:9028
 msgid "Scroll Offset (px)"
 msgstr ""
 
-#: assets/js/admin.js:8992
+#: assets/js/admin.js:9043
 msgid "Pixels subtracted from the scroll position to account for a sticky header."
 msgstr ""
 
-#: assets/js/admin.js:8996
+#: assets/js/admin.js:9047
 msgid "Scroll Behaviour"
 msgstr ""
 
-#: assets/js/admin.js:8999
+#: assets/js/admin.js:9050
 msgid "Smooth"
 msgstr ""
 
-#: assets/js/admin.js:9002
+#: assets/js/admin.js:9053
 msgid "Instant"
 msgstr ""
 
-#: assets/js/admin.js:9016
+#: assets/js/admin.js:9067
 msgid "Animation style when clicking a TOC link."
 msgstr ""
 
-#: assets/js/admin.js:9018
+#: assets/js/admin.js:9069
 msgid "Inline TOC Block"
 msgstr ""
 
-#: assets/js/admin.js:9023
+#: assets/js/admin.js:9074
 msgid "Show Inline Block"
 msgstr ""
 
-#: assets/js/admin.js:9034
+#: assets/js/admin.js:9085
 msgid "Inject a collapsible TOC block inside the article content (above the first paragraph)."
 msgstr ""
 
-#: assets/js/admin.js:9038
-#: assets/js/admin.js:9094
+#: assets/js/admin.js:9089
+#: assets/js/admin.js:9145
 msgid "Preset"
 msgstr ""
 
-#: assets/js/admin.js:9057
+#: assets/js/admin.js:9108
 msgid "Preset for the inline TOC block."
 msgstr ""
 
-#: assets/js/admin.js:9061
+#: assets/js/admin.js:9112
 msgid "Start Collapsed"
 msgstr ""
 
-#: assets/js/admin.js:9072
+#: assets/js/admin.js:9123
 msgid "Open the inline block collapsed by default. Visitors can expand it on click."
 msgstr ""
 
-#: assets/js/admin.js:9074
+#: assets/js/admin.js:9125
 msgid "Sticky Sidebar & Topnav"
 msgstr ""
 
-#: assets/js/admin.js:9079
+#: assets/js/admin.js:9130
 msgid "Sticky"
 msgstr ""
 
-#: assets/js/admin.js:9090
+#: assets/js/admin.js:9141
 msgid "Sticky sidebar or topnav."
 msgstr ""
 
-#: assets/js/admin.js:9116
+#: assets/js/admin.js:9167
 msgid "Visual style for the sticky sidebar. Choosing \"Top Nav\" switches to a floating navigation chip."
 msgstr ""
 
-#: assets/js/admin.js:9134
+#: assets/js/admin.js:9185
 msgid "Pin the topnav chip to the top or bottom of the viewport."
 msgstr ""
 
-#: assets/js/admin.js:9134
+#: assets/js/admin.js:9185
 msgid "Pin the sidebar to the left or right side of the viewport."
 msgstr ""
 
-#: assets/js/admin.js:9138
+#: assets/js/admin.js:9189
 msgid "Edge Gap (px)"
 msgstr ""
 
-#: assets/js/admin.js:9154
+#: assets/js/admin.js:9205
 msgid "Distance in pixels between the sidebar / topnav and the viewport edge."
 msgstr ""
 
-#: assets/js/admin.js:9174
+#: assets/js/admin.js:9225
 msgid "Show a mini reading-progress bar inside the sidebar header."
 msgstr ""
 
-#: assets/js/admin.js:9181
+#: assets/js/admin.js:9232
 msgid "Accent Color"
 msgstr ""
 
-#: assets/js/admin.js:9192
+#: assets/js/admin.js:9243
 msgid "Primary accent colour used for active links, progress bar, and highlights (CSS var --stoc-color)."
 msgstr ""
 
-#: assets/js/admin.js:9207
+#: assets/js/admin.js:9258
 msgid "Widget background colour (CSS var --stoc-color-bg). Leave as-is to follow the active preset."
 msgstr ""
 
-#: assets/js/admin.js:9211
+#: assets/js/admin.js:9262
 msgid "Border Radius (px)"
 msgstr ""
 
-#: assets/js/admin.js:9226
+#: assets/js/admin.js:9277
 msgid "Border radius of the widget (CSS var --stoc-border-radius)."
 msgstr ""
 
-#: assets/js/admin.js:9289
+#: assets/js/admin.js:9340
 msgid "Sticky Table of Content"
 msgstr ""
 
-#: assets/js/admin.js:9406
+#: assets/js/admin.js:9457
 msgid "Settings saved successfully."
 msgstr ""
 
-#: assets/js/admin.js:9417
+#: assets/js/admin.js:9468
 msgid "Settings Reset successfully."
 msgstr ""
 
-#: assets/js/admin.js:9475
-#: assets/js/admin.js:9846
+#: assets/js/admin.js:9526
+#: assets/js/admin.js:9902
 msgid "Basic Usage"
 msgstr ""
 
-#: assets/js/admin.js:9481
+#: assets/js/admin.js:9532
 msgid "You can easily create a click-to-call button using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
 msgstr ""
 
-#: assets/js/admin.js:9481
+#: assets/js/admin.js:9532
 msgid "1. Log in to your WordPress dashboard."
 msgstr ""
 
-#: assets/js/admin.js:9481
+#: assets/js/admin.js:9532
 msgid "2. From the left menu, go to Sticky Anything → Click to Call."
 msgstr ""
 
-#: assets/js/admin.js:9481
+#: assets/js/admin.js:9532
 msgid "3. Turn on the \"Click to Call\" option."
 msgstr ""
 
-#: assets/js/admin.js:9481
+#: assets/js/admin.js:9532
 msgid "4. Enter your phone number and adjust the settings as needed."
 msgstr ""
 
-#: assets/js/admin.js:9481
+#: assets/js/admin.js:9532
 msgid "5. Click the \"Save Changes\" button."
 msgstr ""
 
-#: assets/js/admin.js:9481
+#: assets/js/admin.js:9532
 msgid "6. Visit your website to see the click-to-call button in action."
 msgstr ""
 
-#: assets/js/admin.js:9487
+#: assets/js/admin.js:9538
 msgid "You can easily create a fixed (sticky) widget using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
 msgstr ""
 
-#: assets/js/admin.js:9487
+#: assets/js/admin.js:9538
 msgid "1. Go to your WordPress Dashboard → Appearance → Widgets."
 msgstr ""
 
-#: assets/js/admin.js:9487
+#: assets/js/admin.js:9538
 msgid "2. If you are using the Block Editor, wrap the widget inside a Group block, then enable the Fixed Widget option from the Group settings in the right sidebar."
 msgstr ""
 
-#: assets/js/admin.js:9487
+#: assets/js/admin.js:9538
 msgid "3. If you are using the Classic Editor, simply enable the Fixed Widget option and click the Save button."
 msgstr ""
 
-#: assets/js/admin.js:9487
+#: assets/js/admin.js:9538
 msgid "4. Your sidebar widget will now remain fixed while scrolling."
 msgstr ""
 
-#: assets/js/admin.js:9493
+#: assets/js/admin.js:9544
 msgid "You can make Sticky Header easily by All-in-one WP Sticky Anyting. You need to do some step for it."
 msgstr ""
 
-#: assets/js/admin.js:9493
+#: assets/js/admin.js:9544
 msgid "1. Go to WordPress Dashboard > Sticky Anything > Settings > General"
 msgstr ""
 
-#: assets/js/admin.js:9493
+#: assets/js/admin.js:9544
 msgid "2. In the \"Sticky Class\" field, enter the CSS selector of your header. Must you need to provide a valid css class or id selector. example: .header"
 msgstr ""
 
-#: assets/js/admin.js:9493
+#: assets/js/admin.js:9544
 msgid "3. If sticky header z-index issue on scroll, then you need to configure the \"Z-index\" field. Write the max big integer value. ex: 9999999"
 msgstr ""
 
-#: assets/js/admin.js:9493
+#: assets/js/admin.js:9544
 msgid "4. Now you can click save button on the header."
 msgstr ""
 
-#: assets/js/admin.js:9499
+#: assets/js/admin.js:9550
 msgid "You can create a Sticky Header in Elementor without extra plugins. Just follow these steps:"
 msgstr ""
 
-#: assets/js/admin.js:9499
+#: assets/js/admin.js:9550
 msgid "1. Open any page with Elementor editor."
 msgstr ""
 
-#: assets/js/admin.js:9499
+#: assets/js/admin.js:9550
 msgid "2. Select the container or section you want to make sticky."
 msgstr ""
 
-#: assets/js/admin.js:9499
+#: assets/js/admin.js:9550
 msgid "3. Go to the \"Advanced\" tab in the Elementor panel."
 msgstr ""
 
-#: assets/js/admin.js:9499
+#: assets/js/admin.js:9550
 msgid "4. Scroll down to the \"Sticky Anything\" section and enable the \"Sticky\" option."
 msgstr ""
 
-#: assets/js/admin.js:9499
-#: assets/js/admin.js:9514
+#: assets/js/admin.js:9550
+#: assets/js/admin.js:9565
 msgid "6. Adjust \"Z-index\" if needed to control the stacking order."
 msgstr ""
 
-#: assets/js/admin.js:9499
+#: assets/js/admin.js:9550
 msgid "7. Update/Publish the page to apply the changes."
 msgstr ""
 
-#: assets/js/admin.js:9514
+#: assets/js/admin.js:9565
 msgid "You can create a Sticky Header via Customizer without any hussle. Just follow these steps:"
 msgstr ""
 
-#: assets/js/admin.js:9514
+#: assets/js/admin.js:9565
 msgid "1. Navigate Appearance > Customize."
 msgstr ""
 
-#: assets/js/admin.js:9514
+#: assets/js/admin.js:9565
 msgid "2. Navigate to the \"Sticky Anything\" section."
 msgstr ""
 
-#: assets/js/admin.js:9514
+#: assets/js/admin.js:9565
 msgid "3. Navigate to the \"Sticky Header\" section."
 msgstr ""
 
-#: assets/js/admin.js:9514
+#: assets/js/admin.js:9565
 msgid "4. Enable the \"Sticky Header\" option."
 msgstr ""
 
-#: assets/js/admin.js:9514
+#: assets/js/admin.js:9565
 msgid "7. Click the Publish bytton on the customizer."
 msgstr ""
 
-#: assets/js/admin.js:9529
-#: assets/js/admin.js:9535
+#: assets/js/admin.js:9580
+#: assets/js/admin.js:9586
 msgid "You can make Sticky Social Icons easily by All-in-one WP Sticky Anyting. You need to do some step for it."
 msgstr ""
 
-#: assets/js/admin.js:9529
+#: assets/js/admin.js:9580
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Social Icons."
 msgstr ""
 
-#: assets/js/admin.js:9529
+#: assets/js/admin.js:9580
 msgid "2. Enable the \"Sticky Social Icons\" option."
 msgstr ""
 
-#: assets/js/admin.js:9529
+#: assets/js/admin.js:9580
 msgid "3. Customize the social icons settings to your preference."
 msgstr ""
 
-#: assets/js/admin.js:9529
+#: assets/js/admin.js:9580
 msgid "4. Click \"Add Icon\" to insert social icons, then configure the icon and URL."
 msgstr ""
 
-#: assets/js/admin.js:9529
-#: assets/js/admin.js:9535
-#: assets/js/admin.js:9541
+#: assets/js/admin.js:9580
+#: assets/js/admin.js:9586
+#: assets/js/admin.js:9592
 msgid "5. Click the \"Save\" button at the top to apply your changes."
 msgstr ""
 
-#: assets/js/admin.js:9535
+#: assets/js/admin.js:9586
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Cookie Consent."
 msgstr ""
 
-#: assets/js/admin.js:9535
+#: assets/js/admin.js:9586
 msgid "2. Enable the \"Sticky Cookie Consent\" option."
 msgstr ""
 
-#: assets/js/admin.js:9535
+#: assets/js/admin.js:9586
 msgid "3. Customize the cookie consent message, button text & style."
 msgstr ""
 
-#: assets/js/admin.js:9541
-#: assets/js/admin.js:9778
+#: assets/js/admin.js:9592
+#: assets/js/admin.js:9834
 msgid "Display a sticky table of contents to help users navigate your content."
 msgstr ""
 
-#: assets/js/admin.js:9541
+#: assets/js/admin.js:9592
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Table of Contents."
 msgstr ""
 
-#: assets/js/admin.js:9541
+#: assets/js/admin.js:9592
 msgid "2. Enable the \"Table of Contents\" option."
 msgstr ""
 
-#: assets/js/admin.js:9541
+#: assets/js/admin.js:9592
 msgid "3. Enable the \"Sticky\" option."
 msgstr ""
 
-#: assets/js/admin.js:9541
+#: assets/js/admin.js:9592
 msgid "4. Customize the table of contents settings to your preference."
 msgstr ""
 
-#: assets/js/admin.js:9547
+#: assets/js/admin.js:9598
 msgid "You can make any sticky element or sidebar easily on your WordPress website by All-in-one WP Sticky Anyting. Integration is super easy. You need add a class on your target element. ex: sticky."
 msgstr ""
 
-#: assets/js/admin.js:9553
+#: assets/js/admin.js:9604
 msgid "Setting up a sticky sidebar on your WordPress site is simple with the All-in-One WP Sticky Anything plugin. Just follow these steps to get started:"
 msgstr ""
 
-#: assets/js/admin.js:9553
+#: assets/js/admin.js:9604
 msgid "1. Go to your WordPress Dashboard. Navigate to: Sticky Anything > Settings > Sticky Sidebar."
 msgstr ""
 
-#: assets/js/admin.js:9553
+#: assets/js/admin.js:9604
 msgid "2. Enable the Sticky Sidebar. Toggle the option to enable the sticky sidebar functionality."
 msgstr ""
 
-#: assets/js/admin.js:9553
+#: assets/js/admin.js:9604
 msgid "3. Enter the Sidebar Selector. This is the class or ID of the sidebar you want to make sticky. Since it varies depending on your theme, right-click on your sidebar in the browser and select Inspect. Copy the relevant selector name (e.g., .sidebar or #secondary) and paste it into the Sidebar Selector field."
 msgstr ""
 
-#: assets/js/admin.js:9553
+#: assets/js/admin.js:9604
 msgid "4. Enter the Sidebar Container Selector. This is the outer container that holds the sidebar. Again, inspect the element in your browser and copy the correct selector. Paste it into the Sidebar Container Selector field."
 msgstr ""
 
-#: assets/js/admin.js:9553
+#: assets/js/admin.js:9604
 msgid "5. Adjust additonal settings based on your needs."
 msgstr ""
 
-#: assets/js/admin.js:9553
+#: assets/js/admin.js:9604
 msgid "6. Now you can click save button on the header."
 msgstr ""
 
-#: assets/js/admin.js:9559
+#: assets/js/admin.js:9610
 msgid "If needed, add custom CSS to fine-tune the appearance and behavior of the sticky header. Your custom css need to paste on the Custom CSS box and Click Save button."
 msgstr ""
 
-#: assets/js/admin.js:9568
+#: assets/js/admin.js:9619
+msgid "Click to call button style."
+msgstr ""
+
+#: assets/js/admin.js:9620
+msgid "Expiry and Reject Redirect settings added on the Cookie Consent."
+msgstr ""
+
+#: assets/js/admin.js:9624
 msgid "Introduce Sticky Table of Contents(toc)."
 msgstr ""
 
-#: assets/js/admin.js:9572
+#: assets/js/admin.js:9628
 msgid "Introduce Click to Call."
 msgstr ""
 
-#: assets/js/admin.js:9576
+#: assets/js/admin.js:9632
 msgid "Introduce Fixed Widget."
 msgstr ""
 
-#: assets/js/admin.js:9577
+#: assets/js/admin.js:9633
 msgid "Settings sync on the multiple devices."
 msgstr ""
 
-#: assets/js/admin.js:9581
+#: assets/js/admin.js:9637
 msgid "Introduce Sticky Cookie Consent."
 msgstr ""
 
-#: assets/js/admin.js:9582
+#: assets/js/admin.js:9638
 msgid "WordPress 6.9 Compatibility."
 msgstr ""
 
-#: assets/js/admin.js:9586
+#: assets/js/admin.js:9642
 msgid "Introduce Sticky Social Icons."
 msgstr ""
 
-#: assets/js/admin.js:9590
+#: assets/js/admin.js:9646
 msgid "Introduce Customizer support for Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra themes."
 msgstr ""
 
-#: assets/js/admin.js:9594
+#: assets/js/admin.js:9650
 msgid "Astra theme compatibility."
 msgstr ""
 
-#: assets/js/admin.js:9598
+#: assets/js/admin.js:9654
 msgid "Introduce Elementor Page Builder Sticky Option."
 msgstr ""
 
-#: assets/js/admin.js:9602
+#: assets/js/admin.js:9658
 msgid "New Option to Fix Sticky Header."
 msgstr ""
 
-#: assets/js/admin.js:9606
+#: assets/js/admin.js:9662
 msgid "Fixed close icon."
 msgstr ""
 
-#: assets/js/admin.js:9610
+#: assets/js/admin.js:9666
 msgid "Introduce Sticky Sidebar."
 msgstr ""
 
-#: assets/js/admin.js:9614
+#: assets/js/admin.js:9670
 msgid "Migrate old data."
 msgstr ""
 
-#: assets/js/admin.js:9618
+#: assets/js/admin.js:9674
 msgid "Reset Settings"
 msgstr ""
 
-#: assets/js/admin.js:9619
+#: assets/js/admin.js:9675
 msgid "Improved Dashboard"
 msgstr ""
 
-#: assets/js/admin.js:9623
+#: assets/js/admin.js:9679
 msgid "Initial Version"
 msgstr ""
 
-#: assets/js/admin.js:9633
-#: assets/js/admin.js:9854
+#: assets/js/admin.js:9689
+#: assets/js/admin.js:9910
 msgid "Changelog"
 msgstr ""
 
-#: assets/js/admin.js:9635
+#: assets/js/admin.js:9691
 msgid "Check out the latest change logs."
 msgstr ""
 
-#: assets/js/admin.js:9649
+#: assets/js/admin.js:9705
 msgid "New Features"
 msgstr ""
 
-#: assets/js/admin.js:9657
+#: assets/js/admin.js:9713
 msgid "Fixs"
 msgstr ""
 
-#: assets/js/admin.js:9665
+#: assets/js/admin.js:9721
 msgid "Enhancements"
 msgstr ""
 
-#: assets/js/admin.js:9682
+#: assets/js/admin.js:9738
 msgid "Just use .sticky class."
 msgstr ""
 
-#: assets/js/admin.js:9685
+#: assets/js/admin.js:9741
 msgid "Open any page with Elementor → Select a container or section → Go to the `Advanced Tab` → `Sticky Anything` Settings."
 msgstr ""
 
-#: assets/js/admin.js:9688
+#: assets/js/admin.js:9744
 msgid "No."
 msgstr ""
 
-#: assets/js/admin.js:9691
+#: assets/js/admin.js:9747
 msgid "Popular classic themes such as Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra provide seamless Sticky Header compatibility."
 msgstr ""
 
-#: assets/js/admin.js:9694
+#: assets/js/admin.js:9750
 msgid "Just remove class from settings."
 msgstr ""
 
-#: assets/js/admin.js:9711
-#: assets/js/admin.js:9850
+#: assets/js/admin.js:9767
+#: assets/js/admin.js:9906
 msgid "Help"
 msgstr ""
 
-#: assets/js/admin.js:9732
+#: assets/js/admin.js:9788
 msgid "Please use the support forum."
 msgstr ""
 
-#: assets/js/admin.js:9743
+#: assets/js/admin.js:9799
 msgid "Add a click-to-call button to your website to make it more user-friendly."
 msgstr ""
 
-#: assets/js/admin.js:9748
+#: assets/js/admin.js:9804
 msgid "Easily make your sidebar widgets sticky to enhance user engagement and accessibility."
 msgstr ""
 
-#: assets/js/admin.js:9752
+#: assets/js/admin.js:9808
 msgid "Sticky Element"
 msgstr ""
 
-#: assets/js/admin.js:9753
+#: assets/js/admin.js:9809
 msgid "Choose any element on your site to make it sticky as users scroll."
 msgstr ""
 
-#: assets/js/admin.js:9758
+#: assets/js/admin.js:9814
 msgid "Keep your header visible while scrolling for better navigation and branding."
 msgstr ""
 
-#: assets/js/admin.js:9763
+#: assets/js/admin.js:9819
 msgid "Make your sidebar stay in view as visitors scroll through your content."
 msgstr ""
 
-#: assets/js/admin.js:9768
+#: assets/js/admin.js:9824
 msgid "Display your social media icons on your site and make them sticky as users scroll."
 msgstr ""
 
-#: assets/js/admin.js:9773
+#: assets/js/admin.js:9829
 msgid "Make your cookie consent banner sticky to ensure compliance and visibility."
 msgstr ""
 
-#: assets/js/admin.js:9777
+#: assets/js/admin.js:9833
 msgid "Sticky Table of Contents"
 msgstr ""
 
-#: assets/js/admin.js:9786
 #: assets/js/admin.js:9842
+#: assets/js/admin.js:9898
 msgid "Introduction"
 msgstr ""
 
-#: assets/js/admin.js:9886
+#: assets/js/admin.js:9942
 msgid "All-in-One WP Sticky Anything on Scroll plugin allows to you make any elements sticky or sticky Header on your website."
 msgstr ""
 
