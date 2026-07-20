@@ -29,6 +29,11 @@
   box-shadow: none !important;
 }
 
+.ai1wpsa-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .bg-10 {
   background-color: #e8f0ff;
 }

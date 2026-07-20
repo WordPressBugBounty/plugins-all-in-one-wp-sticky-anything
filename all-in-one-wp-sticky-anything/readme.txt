@@ -4,7 +4,7 @@ Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -212,6 +212,9 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.1.5 (21-07-2026) =
+* **New:** Delete Data on Uninstall.
+
 = 1.1.4 (22-05-2026) =
 * **Fix:** Click to call button style.
 * **Update:** Expiry and Reject Redirect settings added on the Cookie Consent.

@@ -23,7 +23,8 @@
         stickySidebar = settings.stickySidebar,
         stickyCookieConsent = settings.stickyCookieConsent,
         fixedWidget = settings.fixedWidget,
-        clicktoCall = settings.clicktoCall;
+        clicktoCall = settings.clicktoCall,
+        stickyForms = settings.stickyForms;
       var topOffset = isLoggedIn ? 32 : 0;
       var elementorStickyHeader = $('.elementor-element.ai1wpsa-yes');
       if (!fixDefaultSticky) {
@@ -77,6 +78,11 @@
       // Click to Call
       if (!!clicktoCall) {
         app.handleClicktoCall();
+      }
+
+      // Sticky Forms
+      if (!!stickyForms) {
+        app.handleStickyForms();
       }
     },
     handleFixDefaultSticky: function handleFixDefaultSticky() {
@@ -427,7 +433,8 @@
         onInit: null,
         onActivate: null
       }).init();
-    }
+    },
+    handleStickyForms: function handleStickyForms() {}
   };
   app.init();
   $(document).ready(app.ready);

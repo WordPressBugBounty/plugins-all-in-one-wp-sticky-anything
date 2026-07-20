@@ -222,7 +222,7 @@ class Enqueue {
 
 		$data = [
 			'nonce'     	=> wp_create_nonce('ai1wpsa'),
-			'isPro'     	=> false,
+			'isPro'     	=> 1,
 			'isLoggedIn'	=> is_user_logged_in(),
 			'settings' 		=> $settings,
 		];
