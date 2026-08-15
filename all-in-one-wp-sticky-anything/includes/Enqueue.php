@@ -24,11 +24,6 @@ class Enqueue {
 
 	public function frontend_scripts() {
 		// frontend styles
-		wp_register_style('ai1wpsa-fontawesome', AI1WPSA_ASSETS . '/vendor/fontawesome/fontawesome.min.css', [], '7.1.0');
-		wp_register_style('ai1wpsa-fontawesome-brands', AI1WPSA_ASSETS . '/vendor/fontawesome/brands.min.css', [], '7.1.0');
-		wp_register_style('ai1wpsa-bootstrap-icons', AI1WPSA_ASSETS . '/vendor/bootstrap-icons/bootstrap-icons.min.css', [], '1.13.1');
-		wp_register_style('ai1wpsa-remixicon', AI1WPSA_ASSETS . '/vendor/remixicon/remixicon.min.css', [], '4.7.0');
-		wp_register_style('ai1wpsa-lineicon', AI1WPSA_ASSETS . '/vendor/lineicon/lineicons.min.css', [], '5.0.0');
 		wp_register_style('ai1wpsa-click-to-call', AI1WPSA_ASSETS . '/vendor/click-to-call/click-to-call.min.css', [], '1.0.0');
 		wp_register_style('ai1wpsa-toc', AI1WPSA_ASSETS . '/vendor/toc/toc.min.css', [], '1.0.0');
 		wp_register_style('ai1wpsa-frontend', AI1WPSA_ASSETS . '/css/frontend.min.css', [], AI1WPSA_VERSION);
@@ -42,16 +37,7 @@ class Enqueue {
 		// icon type
 		$icon_type = ai1wpsa_get_settings('stickySocialIconType', 'dashicons');
 
-		if ($icon_type === 'fontawesome') {
-			wp_enqueue_style('ai1wpsa-fontawesome');
-			wp_enqueue_style('ai1wpsa-fontawesome-brands');
-		} else if ($icon_type === 'bootstrap') {
-			wp_enqueue_style('ai1wpsa-bootstrap-icons');
-		} else if ($icon_type === 'remixicon') {
-			wp_enqueue_style('ai1wpsa-remixicon');
-		} else if ($icon_type === 'lineicon') {
-			wp_enqueue_style('ai1wpsa-lineicon');
-		} else {
+		if ($icon_type === 'dashicons') {
 			wp_enqueue_style('dashicons');
 		}
 
@@ -75,7 +61,7 @@ class Enqueue {
 		], '1.0', true);
 
 		wp_register_script('ai1wpsa-toc', AI1WPSA_ASSETS . '/vendor/toc/toc.min.js', [], '1.0', true);
-
+		
 		wp_register_script('ai1wpsa-frontend', AI1WPSA_ASSETS . '/js/frontend.min.js', [
 			'jquery',
 			'wp-plupload',
@@ -211,6 +197,11 @@ class Enqueue {
 			$settings = [];
 		}
 
+		// Downgrade any Premium-only values before this ever reaches the browser —
+		// several pro features (Click to Call, Sticky TOC, parts of Sticky Forms)
+		// are driven entirely client-side from this localized object.
+		$settings = ai1wpsa_sanitize_pro_settings($settings);
+
 		$ai1wpsa_sticky_header 	= get_option('ai1wpsa_sticky_header');
 		$ai1wpsa_z_index		= get_option('ai1wpsa_z_index', 9999);
 
@@ -222,20 +213,73 @@ class Enqueue {
 
 		$data = [
 			'nonce'     	=> wp_create_nonce('ai1wpsa'),
-			'isPro'     	=> 1,
+			'isPro'     	=> ai1wpsa_is_pro() ? true : false,
 			'isLoggedIn'	=> is_user_logged_in(),
 			'settings' 		=> $settings,
+			'ajaxUrl'		=> admin_url('admin-ajax.php'),
 		];
 
 		if (is_admin()) {
 			$data['homeUrl'] 	= home_url();
-			$data['ajaxUrl'] 	= admin_url('admin-ajax.php');
 			$data['pluginUrl'] 	= AI1WPSA_URL;
 			$data['adminUrl'] 	= admin_url();
+			$data['adminEmail'] = get_option('admin_email');
 			$data['postTypes'] 	= ai1wpsa_get_public_post_types();
+			$data['contactForms'] = $this->get_contact_forms();
 		}
 
 		return apply_filters('ai1wpsa_localize_data', $data, $hook);
+	}
+
+	/**
+	 * Fetch existing forms from supported third-party form plugins, keyed by
+	 * plugin slug, so the admin can pick a form instead of pasting a shortcode.
+	 *
+	 * @return array
+	 */
+	public function get_contact_forms() {
+		$forms = array(
+			'cf7'      => array(),
+			'wpforms'  => array(),
+		);
+
+		if (post_type_exists('wpcf7_contact_form')) {
+			$posts = get_posts(array(
+				'post_type'      => 'wpcf7_contact_form',
+				'posts_per_page' => -1,
+				'post_status'    => 'publish',
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+			));
+
+			foreach ($posts as $post) {
+				$forms['cf7'][] = array(
+					'id'        => $post->ID,
+					'title'     => get_the_title($post),
+					'shortcode' => sprintf('[contact-form-7 id="%d" title="%s"]', $post->ID, get_the_title($post)),
+				);
+			}
+		}
+
+		if (post_type_exists('wpforms')) {
+			$posts = get_posts(array(
+				'post_type'      => 'wpforms',
+				'posts_per_page' => -1,
+				'post_status'    => 'publish',
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+			));
+
+			foreach ($posts as $post) {
+				$forms['wpforms'][] = array(
+					'id'        => $post->ID,
+					'title'     => get_the_title($post),
+					'shortcode' => sprintf('[wpforms id="%d"]', $post->ID),
+				);
+			}
+		}
+
+		return $forms;
 	}
 
 	public static function instance() {

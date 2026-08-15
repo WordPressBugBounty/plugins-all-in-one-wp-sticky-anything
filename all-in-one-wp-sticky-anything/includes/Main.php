@@ -57,9 +57,6 @@ final class Main {
 
         add_action('admin_notices', [$this, 'review_notice'], 15);
 
-        // Localize our plugin
-        add_action('init', [$this, 'localization_setup']);
-
         // Plugin action links
         add_filter('plugin_action_links_' . plugin_basename(AI1WPSA_FILE), [$this, 'plugin_action_links']);
     }
@@ -140,17 +137,6 @@ final class Main {
             </div>
         </div>
 <?php
-    }
-
-    /**
-     * Initialize plugin for localization
-     *
-     * @return void
-     * @since 1.0.1
-     *
-     */
-    public function localization_setup() {
-        load_plugin_textdomain('all-in-one-wp-sticky-anything', false, dirname(plugin_basename(AI1WPSA_FILE)) . '/languages/');
     }
 
     /**

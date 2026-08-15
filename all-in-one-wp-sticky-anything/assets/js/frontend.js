@@ -19,40 +19,46 @@
       var stickyClass = settings.stickyClass,
         stickyZIndex = settings.stickyZIndex,
         fixDefaultSticky = settings.fixDefaultSticky,
+        stickyDisableMobile = settings.stickyDisableMobile,
         stickyHeader = settings.stickyHeader,
         stickySidebar = settings.stickySidebar,
         stickyCookieConsent = settings.stickyCookieConsent,
         fixedWidget = settings.fixedWidget,
-        clicktoCall = settings.clicktoCall,
-        stickyForms = settings.stickyForms;
+        clicktoCall = settings.clicktoCall;
       var topOffset = isLoggedIn ? 32 : 0;
       var elementorStickyHeader = $('.elementor-element.ai1wpsa-yes');
-      if (!fixDefaultSticky) {
-        jQuery('.sticky').stickr({
-          duration: 0,
-          offsetTop: 0,
-          offsetBottom: 30
-        });
-        jQuery(stickyClass).stickr({
-          duration: 0,
-          offsetTop: topOffset,
-          offsetBottom: 30,
-          closeButton: false
-        });
-      }
 
-      // Fix Sticky
-      if (!!fixDefaultSticky) {
-        app.handleFixDefaultSticky();
-      }
+      // Sticky header behavior is skipped entirely on mobile-sized screens when disabled.
+      var isMobileViewport = window.innerWidth <= 767;
+      var stickyHeaderEnabled = !(stickyDisableMobile && isMobileViewport);
+      if (stickyHeaderEnabled) {
+        if (!fixDefaultSticky) {
+          var $stickyDefault = jQuery('.sticky').stickr({
+            duration: 0,
+            offsetTop: 0,
+            offsetBottom: 30
+          });
+          var $stickyCustom = jQuery(stickyClass).stickr({
+            duration: 0,
+            offsetTop: topOffset,
+            offsetBottom: 30,
+            closeButton: false
+          });
+        }
 
-      // Customizer sticky
-      if (!!stickyHeader) {
-        app.handleCustomizerStickyHeader();
-      }
+        // Fix Sticky
+        if (!!fixDefaultSticky) {
+          app.handleFixDefaultSticky();
+        }
 
-      // set z-index
-      $(stickyClass).css('z-index', stickyZIndex);
+        // Customizer sticky
+        if (!!stickyHeader) {
+          app.handleCustomizerStickyHeader();
+        }
+
+        // set z-index
+        $(stickyClass).css('z-index', stickyZIndex);
+      }
 
       // Sticky Sidebar
       if (!!stickySidebar) {
@@ -68,6 +74,11 @@
       if (!!stickyCookieConsent) {
         app.handleStickyCookieConsentClose();
         $(document).on('click', '.ai1wpsa-cookie-consent .ai1wpsa-cookie-consent-button', app.handleStickyCookieConsentActions);
+
+        // Modal layout: lock page scroll while the backdrop is showing.
+        if ($('.ai1wpsa-cookie-consent-overlay').length) {
+          $('html').addClass('ai1wpsa-cookie-lock');
+        }
       }
 
       // Fixed Widget
@@ -78,11 +89,6 @@
       // Click to Call
       if (!!clicktoCall) {
         app.handleClicktoCall();
-      }
-
-      // Sticky Forms
-      if (!!stickyForms) {
-        app.handleStickyForms();
       }
     },
     handleFixDefaultSticky: function handleFixDefaultSticky() {
@@ -185,8 +191,14 @@
       var element = $('.ai1wpsa-cookie-consent button.close-button');
       if (!element.length) return;
       element.on('click', function () {
-        $(this).parent().hide();
+        app.dismissCookieConsent($(this).closest('.ai1wpsa-cookie-consent'));
       });
+    },
+    // Hides the banner (and its modal backdrop, if any) and releases the scroll lock.
+    dismissCookieConsent: function dismissCookieConsent(bannerEl) {
+      var overlay = bannerEl.closest('.ai1wpsa-cookie-consent-overlay');
+      (overlay.length ? overlay : bannerEl).hide();
+      $('html').removeClass('ai1wpsa-cookie-lock');
     },
     handleStickyCookieConsentActions: function handleStickyCookieConsentActions(e) {
       var _ai1wpsa6 = ai1wpsa,
@@ -201,7 +213,7 @@
       var element = $(e.currentTarget);
       var isAccept = element === null || element === void 0 ? void 0 : element.hasClass('accept');
       var isReject = element === null || element === void 0 ? void 0 : element.hasClass('reject');
-      element.closest('.ai1wpsa-cookie-consent').hide();
+      app.dismissCookieConsent(element.closest('.ai1wpsa-cookie-consent'));
       if (isReject && stickyCookieConsentRejectRedirect && stickyCookieConsentRejectURL) {
         window.location.href = stickyCookieConsentRejectURL;
         return;
@@ -433,8 +445,7 @@
         onInit: null,
         onActivate: null
       }).init();
-    },
-    handleStickyForms: function handleStickyForms() {}
+    }
   };
   app.init();
   $(document).ready(app.ready);

@@ -147,6 +147,70 @@ function Header() {
     className: "dashicons dashicons-saved"
   }), wp.i18n.__('Save', 'all-in-one-wp-sticky-anything'))));
 }
+;// ./src/js/includes/ProIcon.js
+function ProIcon() {
+  var _ai1wpsa = ai1wpsa,
+    isPro = _ai1wpsa.isPro;
+  if (!isPro) {
+    return /*#__PURE__*/React.createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: "24",
+      height: "24",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "#faac05",
+      strokeWidth: "2",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "class": "lucide lucide-crown-icon lucide-crown"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M5 21h14"
+    }));
+  }
+  return null;
+}
+;// ./src/js/includes/ProModal.js
+/**
+ * Pro-feature upgrade modal.
+ *
+ * Shown whenever a free-tier user interacts with a Premium-only control.
+ * Built on SweetAlert2 (already enqueued as `ai1wpsa-swal` alongside the
+ * admin bundle), matching the existing showNotification() toast helper in
+ * ./functions.js — no new dependency, same visual system. Styled as its
+ * own dark "premium unlock" card rather than a generic Swal alert — see
+ * .ai1wpsa-pro-modal in src/scss/components/_helpers.scss.
+ */
+
+var AI1WPSA_PREMIUM_URL = '#';
+function showProModal(message) {
+  var body = message || wp.i18n.__('Upgrade to PRO to unlock this and all PRO features.', 'all-in-one-wp-sticky-anything');
+  Swal.fire({
+    title: "<div class=\"ai1wpsa-pro-modal__stars\" aria-hidden=\"true\"><span>\u2728</span><span>\u2B50</span><span>\u2728</span><span>\u2B50</span><span>\u2728</span></div><div class=\"ai1wpsa-pro-modal__icon\">\uD83D\uDC8E</div>",
+    html: "\n            <h2 class=\"ai1wpsa-pro-modal__title\">".concat(wp.i18n.__('Unlock All Features!', 'all-in-one-wp-sticky-anything'), "</h2>\n            <p class=\"ai1wpsa-pro-modal__text\">").concat(body, "</p>\n        "),
+    showCancelButton: false,
+    showCloseButton: true,
+    confirmButtonText: wp.i18n.__('Upgrade Now', 'all-in-one-wp-sticky-anything'),
+    buttonsStyling: false,
+    customClass: {
+      container: 'ai1wpsa-swal ai1wpsa-pro-modal',
+      popup: 'ai1wpsa-pro-modal__popup',
+      confirmButton: 'ai1wpsa-pro-modal__cta',
+      closeButton: 'ai1wpsa-pro-modal__close'
+    },
+    didOpen: function didOpen(popup) {
+      // Set via textContent (not interpolated into the html string above)
+      // so a translated message is never treated as markup.
+      var text = popup.querySelector('.ai1wpsa-pro-modal__text');
+      if (text) text.textContent = body;
+    }
+  }).then(function (result) {
+    if (result.isConfirmed) {
+      window.open(AI1WPSA_PREMIUM_URL, '_blank', 'noopener');
+    }
+  });
+}
 ;// ./src/js/components/Settings/General.js
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -157,9 +221,30 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 var General_useContext = wp.element.useContext;
 var _wp$components = wp.components,
   FormToggle = _wp$components.FormToggle,
-  TextControl = _wp$components.TextControl;
+  TextControl = _wp$components.TextControl,
+  ButtonGroup = _wp$components.ButtonGroup,
+  Button = _wp$components.Button;
 
+
+
+
+// ─── Sticky Device Options ───────────────────────────────────────
+var STICKY_DEVICE_OPTIONS = [{
+  label: wp.i18n.__('All', 'all-in-one-wp-sticky-anything'),
+  value: 'all'
+}, {
+  label: wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything'),
+  value: 'desktop'
+}, {
+  label: wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything'),
+  value: 'tablet'
+}, {
+  label: wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'),
+  value: 'mobile'
+}];
 function General() {
+  var _ai1wpsa = ai1wpsa,
+    isPro = _ai1wpsa.isPro;
   var _useContext = General_useContext(Contexts_SettingsContext),
     data = _useContext.data,
     setData = _useContext.setData;
@@ -169,7 +254,9 @@ function General() {
     _ref$stickyZIndex = _ref.stickyZIndex,
     stickyZIndex = _ref$stickyZIndex === void 0 ? '' : _ref$stickyZIndex,
     _ref$fixDefaultSticky = _ref.fixDefaultSticky,
-    fixDefaultSticky = _ref$fixDefaultSticky === void 0 ? false : _ref$fixDefaultSticky;
+    fixDefaultSticky = _ref$fixDefaultSticky === void 0 ? false : _ref$fixDefaultSticky,
+    _ref$stickyDisableMob = _ref.stickyDisableMobile,
+    stickyDisableMobile = _ref$stickyDisableMob === void 0 ? false : _ref$stickyDisableMob;
   return /*#__PURE__*/React.createElement("div", {
     className: "ai1wpsa-settings-content"
   }, /*#__PURE__*/React.createElement("div", {
@@ -213,6 +300,26 @@ function General() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
+  }, wp.i18n.__('Disable Sticky on Mobile', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(FormToggle, {
+    checked: stickyDisableMobile,
+    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    onChange: function onChange() {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyDisableMobile: !stickyDisableMobile
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Turn off all sticky header behavior on mobile-sized screens.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
   }, wp.i18n.__('z-index', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(TextControl, {
@@ -236,8 +343,8 @@ function StickySidebar_toPropertyKey(t) { var i = StickySidebar_toPrimitive(t, "
 function StickySidebar_toPrimitive(t, r) { if ("object" != StickySidebar_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != StickySidebar_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var StickySidebar_useContext = wp.element.useContext;
 var StickySidebar_wp$components = wp.components,
-  Button = StickySidebar_wp$components.Button,
-  ButtonGroup = StickySidebar_wp$components.ButtonGroup,
+  StickySidebar_Button = StickySidebar_wp$components.Button,
+  StickySidebar_ButtonGroup = StickySidebar_wp$components.ButtonGroup,
   StickySidebar_FormToggle = StickySidebar_wp$components.FormToggle,
   StickySidebar_TextControl = StickySidebar_wp$components.TextControl;
 
@@ -327,7 +434,7 @@ function StickySidebar() {
     "class": "settings-field-label"
   }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ButtonGroup, null, /*#__PURE__*/React.createElement(Button, {
+  }, /*#__PURE__*/React.createElement(StickySidebar_ButtonGroup, null, /*#__PURE__*/React.createElement(StickySidebar_Button, {
     onClick: function onClick() {
       if (!isPro) {
         return;
@@ -337,7 +444,7 @@ function StickySidebar() {
       }));
     },
     variant: stickySidebarDevice === 'all' ? 'primary' : ''
-  }, wp.i18n.__('All', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(Button, {
+  }, wp.i18n.__('All', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
     onClick: function onClick() {
       if (!isPro) {
         return;
@@ -347,7 +454,7 @@ function StickySidebar() {
       }));
     },
     variant: stickySidebarDevice === 'desktop' ? 'primary' : ''
-  }, wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(Button, {
+  }, wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
     onClick: function onClick() {
       if (!isPro) {
         return;
@@ -357,7 +464,7 @@ function StickySidebar() {
       }));
     },
     variant: stickySidebarDevice === 'tablet' ? 'primary' : ''
-  }, wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(Button, {
+  }, wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
     onClick: function onClick() {
       if (!isPro) {
         return;
@@ -475,6 +582,8 @@ var TextareaControl = wp.components.TextareaControl;
 
 
 function Css() {
+  var _ai1wpsa = ai1wpsa,
+    isPro = _ai1wpsa.isPro;
   var _useContext = Css_useContext(Contexts_SettingsContext),
     data = _useContext.data,
     setData = _useContext.setData;
@@ -2826,7 +2935,6 @@ function AnnouncementBar() {
   var announcementBarNextId = announcementBars.reduce(function (maxId, item) {
     return Math.max(maxId, item.id);
   }, 0) + 1;
-  console.log(announcementBarNextId);
   return /*#__PURE__*/React.createElement("div", {
     className: "ai1wpsa-settings-content"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3227,6 +3335,8 @@ var StickySocial_wp$components = wp.components,
   StickySocial_FormToggle = StickySocial_wp$components.FormToggle,
   StickySocial_TextControl = StickySocial_wp$components.TextControl,
   StickySocial_SelectControl = StickySocial_wp$components.SelectControl;
+
+
 
 
 
@@ -6850,15 +6960,17 @@ function StickySocial() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Icons Type', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Icons Type', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickySocial_ButtonGroup, null, iconOptions.map(function (icon) {
     return /*#__PURE__*/React.createElement(StickySocial_Button, {
       key: icon.value,
-      disabled: icon.pro && !isPro,
-      className: icon.pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: icon.pro && !isPro ? 'ai1wpsa-disabled' : '',
       onClick: function onClick() {
-        if (icon.pro && !isPro) return;
+        if (icon.pro && !isPro) {
+          showProModal();
+          return;
+        }
         setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
           stickySocialIconType: icon.value
         }));
@@ -6875,15 +6987,17 @@ function StickySocial() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Icons Position', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Icons Position', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickySocial_ButtonGroup, null, positionOptions.map(function (pos) {
     return /*#__PURE__*/React.createElement(StickySocial_Button, {
       key: pos.value,
-      disabled: !isPro && !!pos.pro,
-      className: pos.pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: pos.pro && !isPro ? 'ai1wpsa-disabled' : '',
       onClick: function onClick() {
-        if (pos.pro && !isPro) return;
+        if (pos.pro && !isPro) {
+          showProModal();
+          return;
+        }
         setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
           stickySocialIconPosition: pos.value
         }));
@@ -6915,15 +7029,17 @@ function StickySocial() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Display Location', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Display Location', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickySocial_ButtonGroup, null, displayLocationOptions.map(function (display) {
     return /*#__PURE__*/React.createElement(StickySocial_Button, {
       key: display.value,
-      className: display.pro && !isPro ? 'ai1wpsa-pro-feature' : '',
-      disabled: display.pro && !isPro,
+      className: display.pro && !isPro ? 'ai1wpsa-disabled' : '',
       onClick: function onClick() {
-        if (!isPro) return;
+        if (display.pro && !isPro) {
+          showProModal();
+          return;
+        }
         setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
           stickySocialIconDisplay: display.value
         }));
@@ -6937,15 +7053,17 @@ function StickySocial() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickySocial_ButtonGroup, null, deviceOptions.map(function (device) {
     return /*#__PURE__*/React.createElement(StickySocial_Button, {
       key: device.value,
-      disabled: device.pro && !isPro,
-      className: device.pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: device.pro && !isPro ? 'ai1wpsa-disabled' : '',
       onClick: function onClick() {
-        if (!isPro) return;
+        if (device.pro && !isPro) {
+          showProModal();
+          return;
+        }
         setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
           stickySocialIconDevice: device.value
         }));
@@ -7073,13 +7191,14 @@ function StickySocial() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Icon Hover Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Icon Hover Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickySocialIconsIconHoverColor,
-    customClassName: "".concat(!isPro ? 'ai1wpsa-pro-feature' : ''),
+    customClassName: "".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
@@ -7106,13 +7225,14 @@ function StickySocial() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Icon Background Hover Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Icon Background Hover Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickySocialIconsIconHoverBgColor,
-    customClassName: "".concat(!isPro ? 'ai1wpsa-pro-feature' : ''),
+    customClassName: "".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
@@ -7162,6 +7282,8 @@ var StickyCookieConsent_wp$components = wp.components,
   StickyCookieConsent_FormToggle = StickyCookieConsent_wp$components.FormToggle,
   StickyCookieConsent_TextControl = StickyCookieConsent_wp$components.TextControl,
   StickyCookieConsent_TextareaControl = StickyCookieConsent_wp$components.TextareaControl;
+
+
 
 
 
@@ -7296,7 +7418,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Layout', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Layout', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyCookieConsent_ButtonGroup, {
     className: "ai1wpsa-cookie-consent-layout"
@@ -7307,11 +7429,11 @@ function StickyCookieConsent() {
       pro = _ref2.pro;
     return /*#__PURE__*/React.createElement(StickyCookieConsent_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-disabled' : '',
       isPrimary: stickyCookieConsentLayout === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7323,14 +7445,14 @@ function StickyCookieConsent() {
       alt: label
     }), /*#__PURE__*/React.createElement("span", null, label));
   })), !isPro && /*#__PURE__*/React.createElement(M, {
-    anchorSelect: ".ai1wpsa-pro-feature",
+    anchorSelect: ".ai1wpsa-disabled",
     variant: "warning",
     content: wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything')
   }))), stickyCookieConsentLayout === 'floating' && /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Position', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Position', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyCookieConsent_ButtonGroup, null, POSITION_OPTIONS.map(function (_ref3) {
     var label = _ref3.label,
@@ -7338,11 +7460,11 @@ function StickyCookieConsent() {
       pro = _ref3.pro;
     return /*#__PURE__*/React.createElement(StickyCookieConsent_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-disabled' : '',
       isPrimary: stickyCookieConsentPosition === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7350,20 +7472,22 @@ function StickyCookieConsent() {
         }));
       }
     }, label);
-  })))), isPro && /*#__PURE__*/React.createElement("div", {
+  })))), /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyCookieConsent_ButtonGroup, null, DEVICE_OPTIONS.map(function (_ref4) {
     var label = _ref4.label,
       value = _ref4.value;
     return /*#__PURE__*/React.createElement(StickyCookieConsent_Button, {
       key: value,
+      className: !isPro ? 'ai1wpsa-disabled' : '',
       isPrimary: stickyCookieConsentDevice === value,
       onClick: function onClick() {
         if (!isPro) {
+          showProModal();
           return;
         }
         setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7582,12 +7706,16 @@ function StickyCookieConsent() {
   }, wp.i18n.__('Button Style', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-style-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ai1wpsa-style-row__title"
+  }, wp.i18n.__('Accept Button', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     className: "settings-sub-field flex"
   }, /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Accept Button Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyCookieConsentButtonStyle.acceptBtnBg,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7602,7 +7730,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Accept Button Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyCookieConsentButtonStyle.acceptTextColor,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7613,13 +7741,17 @@ function StickyCookieConsent() {
     },
     allowReset: true,
     resetValue: "#ffffff"
-  }))), /*#__PURE__*/React.createElement("div", {
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-style-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ai1wpsa-style-row__title"
+  }, wp.i18n.__('Reject Button', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     className: "settings-sub-field flex"
   }, /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Reject Button Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyCookieConsentButtonStyle.rejectBtnBg,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7634,7 +7766,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Reject Button Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyCookieConsentButtonStyle.rejectTextColor,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7645,7 +7777,7 @@ function StickyCookieConsent() {
     },
     allowReset: true,
     resetValue: "#000"
-  }))))))));
+  })))))))));
 }
 ;// ./src/js/components/Settings/FixedWidget.js
 function FixedWidget_typeof(o) { "@babel/helpers - typeof"; return FixedWidget_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, FixedWidget_typeof(o); }
@@ -7734,6 +7866,8 @@ var ClickToCall_wp$components = wp.components,
   ClickToCall_FormToggle = ClickToCall_wp$components.FormToggle,
   ClickToCall_TextControl = ClickToCall_wp$components.TextControl,
   ClickToCall_TextareaControl = ClickToCall_wp$components.TextareaControl;
+
+
 
 
 
@@ -7981,37 +8115,40 @@ function ClickToCall() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_ButtonGroup, null, /*#__PURE__*/React.createElement(ClickToCall_Button, {
     onClick: function onClick() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
         clicktoCallDevice: 'all'
       }));
     },
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     variant: clicktoCallDevice === 'all' ? 'primary' : ''
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashicons dashicons-screenoptions"
-  }), wp.i18n.__('All', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ClickToCall_Button, {
-    className: !isPro ? 'pro' : '',
+  }), wp.i18n.__('All', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ClickToCall_Button, ClickToCall_defineProperty(ClickToCall_defineProperty({
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     onClick: function onClick() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
         clicktoCallDevice: 'desktop'
       }));
-    },
-    variant: clicktoCallDevice === 'desktop' ? 'primary' : ''
-  }, /*#__PURE__*/React.createElement("i", {
+    }
+  }, "className", !isPro ? 'ai1wpsa-disabled' : ''), "variant", clicktoCallDevice === 'desktop' ? 'primary' : ''), /*#__PURE__*/React.createElement("i", {
     className: "dashicons dashicons-desktop"
   }), wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ClickToCall_Button, {
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     onClick: function onClick() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8022,9 +8159,10 @@ function ClickToCall() {
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashicons dashicons-tablet"
   }), wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ClickToCall_Button, {
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     onClick: function onClick() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8093,11 +8231,11 @@ function ClickToCall() {
     })), /*#__PURE__*/React.createElement("td", {
       className: "actions"
     }, /*#__PURE__*/React.createElement(ClickToCall_Button, {
-      disabled: !isPro,
       className: "ai1wpsa-btn duplicate ".concat(!isPro ? 'pro' : ''),
       isPrimary: true,
       onClick: function onClick() {
         if (!isPro) {
+          showProModal();
           return;
         }
         var newPhones = ClickToCall_toConsumableArray(clicktoCallPhones);
@@ -8109,11 +8247,11 @@ function ClickToCall() {
     }, /*#__PURE__*/React.createElement("i", {
       className: "dashicons dashicons-admin-page"
     })), /*#__PURE__*/React.createElement(ClickToCall_Button, {
-      disabled: !isPro,
       className: "ai1wpsa-btn delete ".concat(!isPro ? 'pro' : ''),
       isSecondary: true,
       onClick: function onClick() {
         if (!isPro) {
+          showProModal();
           return;
         }
         var newPhones = ClickToCall_toConsumableArray(clicktoCallPhones);
@@ -8127,10 +8265,10 @@ function ClickToCall() {
     }))));
   }), /*#__PURE__*/React.createElement(ClickToCall_Button, {
     variant: "outline",
-    disabled: !isPro,
     className: "ai1wpsa-btn add-new ".concat(!isPro ? 'pro' : ''),
     onClick: function onClick() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8149,14 +8287,14 @@ function ClickToCall() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Widget Type', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Widget Type', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_ButtonGroup, null, /*#__PURE__*/React.createElement(ClickToCall_Button, {
-    disabled: !isPro,
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     isPrimary: clicktoCallStyleType === 'inline',
     onClick: function onClick() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8164,11 +8302,11 @@ function ClickToCall() {
       }));
     }
   }, wp.i18n.__('Inline', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ClickToCall_Button, {
-    disabled: !isPro,
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     isPrimary: clicktoCallStyleType === 'launcher',
     onClick: function onClick() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8181,7 +8319,7 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Widget Style', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Widget Style', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "widget-style-options"
@@ -8190,11 +8328,11 @@ function ClickToCall() {
   }).map(function (option, index) {
     return /*#__PURE__*/React.createElement(ClickToCall_Button, {
       key: index,
-      disabled: !isPro,
-      className: !isPro ? 'pro' : '',
+      className: !isPro ? 'ai1wpsa-disabled' : '',
       variant: clicktoCallStyle === option.value ? 'primary' : '',
       onClick: function onClick() {
         if (option.pro && !isPro) {
+          showProModal();
           return;
         }
         setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8207,11 +8345,11 @@ function ClickToCall() {
   }).map(function (option, index) {
     return /*#__PURE__*/React.createElement(ClickToCall_Button, {
       key: index,
-      disabled: !isPro,
-      className: !isPro ? 'pro' : '',
+      className: !isPro ? 'ai1wpsa-disabled' : '',
       variant: clicktoCallStyle === option.value ? 'primary' : '',
       onClick: function onClick() {
         if (option.pro && !isPro) {
+          showProModal();
           return;
         }
         setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8258,7 +8396,7 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Animation', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Animation', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_ButtonGroup, {
     className: "ai1wpsa-animation-group"
@@ -8267,10 +8405,11 @@ function ClickToCall() {
       value = _ref2.value;
     return /*#__PURE__*/React.createElement(ClickToCall_Button, {
       key: value,
-      className: "".concat(!isPro && value !== 'none' ? 'pro' : ''),
+      className: "".concat(!isPro && value !== 'none' ? 'ai1wpsa-disabled' : ''),
       variant: clicktoCallAnimation === value ? 'primary' : '',
       onClick: function onClick() {
         if (!isPro) {
+          showProModal();
           return;
         }
         setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8295,14 +8434,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Auto Open', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Auto Open', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_FormToggle, {
-    disabled: !isPro,
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     checked: clicktoCallAutoOpen,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8315,7 +8454,7 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Auto Open Delay', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Auto Open Delay', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
     disabled: !clicktoCallAutoOpen && !isPro,
@@ -8323,6 +8462,7 @@ function ClickToCall() {
     value: clicktoCallAutoOpenDelay,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8335,7 +8475,7 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Badge', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Badge', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_FormToggle, {
     disabled: !isPro,
@@ -8343,6 +8483,7 @@ function ClickToCall() {
     checked: clicktoCallBadge,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8355,7 +8496,7 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Badge Count', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Badge Count', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
     disabled: !clicktoCallBadge && !isPro,
@@ -8363,6 +8504,7 @@ function ClickToCall() {
     value: clicktoCallBadgeCount,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8375,14 +8517,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Show Chip', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Show Chip', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_FormToggle, {
-    disabled: !isPro,
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     checked: clicktoCallShowChip,
     onChange: function onChange() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8395,14 +8537,15 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Show Chip Dot', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Show Chip Dot', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_FormToggle, {
     disabled: !isPro,
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     checked: clicktoCallshowChipDot,
     onChange: function onChange() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8433,14 +8576,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Tooltip Text', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Tooltip Text', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
-    disabled: !isPro,
-    className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     value: clicktoCallTooltip,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8453,14 +8596,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Title Text', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Title Text', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
-    disabled: !isPro,
-    className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     value: clicktoCallTitle,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8473,14 +8616,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Subtitle Text', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Subtitle Text', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
-    disabled: !isPro,
     className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
     value: clicktoCallSubtitle,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8493,14 +8636,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Online Message Text', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Online Message Text', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
-    disabled: !isPro,
-    className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     value: clicktoCallOnlineMsg,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8513,14 +8656,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Closed Message Text', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Closed Message Text', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
-    disabled: !isPro,
-    className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     value: clicktoCallClosedMsg,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8533,14 +8676,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Offline Message Text', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Offline Message Text', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
-    disabled: !isPro,
-    className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     value: clicktoCallOfflineMsg,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8553,14 +8696,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Footer Text', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Footer Text', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_TextControl, {
-    disabled: !isPro,
-    className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     value: clicktoCallFooter,
     onChange: function onChange(value) {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8576,14 +8719,14 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Show Hours', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Show Hours', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(ClickToCall_FormToggle, {
-    disabled: !isPro,
     checked: clicktoCallshowHours,
-    className: "".concat(!isPro ? 'pro' : ''),
+    className: "".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8596,7 +8739,7 @@ function ClickToCall() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Schedules', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Schedules', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "ai1wpsa-schedules-wrap"
@@ -8609,9 +8752,12 @@ function ClickToCall() {
     }, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, day)), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(ClickToCall_FormToggle, {
       disabled: !isPro,
       checked: schedule === null || schedule === void 0 ? void 0 : schedule.on,
-      className: "".concat(!isPro ? 'pro' : ''),
+      className: "".concat(!isPro ? 'ai1wpsa-disabled' : ''),
       onChange: function onChange() {
-        if (!isPro) return;
+        if (!isPro) {
+          showProModal();
+          return;
+        }
         var newSchedules = ClickToCall_objectSpread({}, clicktoCallSchedules);
         newSchedules[day].on = !newSchedules[day].on;
         setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8623,7 +8769,11 @@ function ClickToCall() {
       className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
       value: schedule.open,
       onChange: function onChange(value) {
-        if (!isPro) return;
+        if (!isPro) {
+          showProModal();
+          return;
+        }
+        ;
         var newSchedules = ClickToCall_objectSpread({}, clicktoCallSchedules);
         newSchedules[day].open = value;
         setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8636,7 +8786,11 @@ function ClickToCall() {
       className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
       value: schedule.close,
       onChange: function onChange(value) {
-        if (!isPro) return;
+        if (!isPro) {
+          showProModal();
+          return;
+        }
+        ;
         var newSchedules = ClickToCall_objectSpread({}, clicktoCallSchedules);
         newSchedules[day].close = value;
         setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8676,6 +8830,8 @@ var StickyToc_wp$components = wp.components,
   StickyToc_TextControl = StickyToc_wp$components.TextControl,
   RangeControl = StickyToc_wp$components.RangeControl,
   StickyToc_SelectControl = StickyToc_wp$components.SelectControl;
+
+
 
 
 
@@ -8918,14 +9074,14 @@ function StickyToc() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Progress Bar', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Progress Bar', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
     checked: stickyTocShowProgressBar,
-    disabled: !isPro,
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
@@ -9111,7 +9267,7 @@ function StickyToc() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Preset', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Preset', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "widget-style-options"
@@ -9119,10 +9275,12 @@ function StickyToc() {
     return /*#__PURE__*/React.createElement(StickyToc_Button, {
       key: index,
       isPrimary: stickyTocInlinePreset === option.value,
-      disabled: option.pro && !isPro,
-      className: option.pro && !isPro ? 'pro' : '',
+      className: option.pro && !isPro ? 'ai1wpsa-disabled' : '',
       onClick: function onClick() {
-        if (option.pro && !isPro) return;
+        if (option.pro && !isPro) {
+          showProModal();
+          return;
+        }
         setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
           stickyTocInlinePreset: option.value
         }));
@@ -9167,18 +9325,21 @@ function StickyToc() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Preset', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Preset', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "widget-style-options"
   }, /*#__PURE__*/React.createElement(StickyToc_ButtonGroup, null, PRESET_OPTIONS.map(function (option, index) {
     return /*#__PURE__*/React.createElement(StickyToc_Button, {
       key: index,
-      disabled: option.pro && !isPro,
-      className: option.pro && !isPro ? 'pro' : '',
+      className: option.pro && !isPro ? 'ai1wpsa-disabled' : '',
       variant: stickyTocSidebarPreset === option.value ? 'primary' : '',
       onClick: function onClick() {
-        if (option.pro && !isPro) return;
+        if (option.pro && !isPro) {
+          showProModal();
+          return;
+        }
+
         // When switching to/from topnav, reset position to a sensible default.
         var nextPosition = option.type === 'topnav' ? 'top' : 'right';
         setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
@@ -9211,15 +9372,18 @@ function StickyToc() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Edge Gap (px)', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Edge Gap (px)', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyToc_TextControl, {
     type: "number",
-    className: "ai1wpsa-text-control ".concat(!isPro ? 'pro' : ''),
-    disabled: !isPro,
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     value: stickyTocSidebarEdgeGap,
     onChange: function onChange(val) {
-      return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
         stickyTocSidebarEdgeGap: val
       }));
     },
@@ -9231,14 +9395,14 @@ function StickyToc() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Progress Bar', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Progress Bar', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyToc_FormToggle, {
     checked: stickyTocSidebarShowProgress,
-    disabled: !isPro,
-    className: !isPro ? 'pro' : '',
+    className: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange() {
       if (!isPro) {
+        showProModal();
         return;
       }
       setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
@@ -9300,7 +9464,7 @@ function StickyToc() {
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
   }, wp.i18n.__('Border radius of the widget (CSS var --stoc-border-radius).', 'all-in-one-wp-sticky-anything'))))), !isPro && /*#__PURE__*/React.createElement(M, {
-    anchorSelect: ".pro",
+    anchorSelect: ".ai1wpsa-disabled",
     variant: "warning",
     content: wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything'),
     place: "right"
@@ -9336,11 +9500,13 @@ var StickyForms_wp$components = wp.components,
 
 
 
+
+
 // ─── Layout Options ─────────────────────────────────────────────
 var StickyForms_LAYOUT_OPTIONS = [{
   label: wp.i18n.__('Floating Button', 'all-in-one-wp-sticky-anything'),
   value: 'button',
-  pro: false
+  pro: true
 }, {
   label: wp.i18n.__('Sticky Bar', 'all-in-one-wp-sticky-anything'),
   value: 'bar',
@@ -9354,7 +9520,8 @@ var StickyForms_LAYOUT_OPTIONS = [{
 // ─── Position Options ───────────────────────────────────────────
 var StickyForms_POSITION_OPTIONS = [{
   label: wp.i18n.__('Bottom Left', 'all-in-one-wp-sticky-anything'),
-  value: 'bottom-left'
+  value: 'bottom-left',
+  pro: true
 }, {
   label: wp.i18n.__('Bottom Center', 'all-in-one-wp-sticky-anything'),
   value: 'bottom-center',
@@ -9382,28 +9549,41 @@ var StickyForms_DEVICE_OPTIONS = [{
 
 // ─── Exit-intent Frequency Options ──────────────────────────────
 var EXIT_FREQUENCY_OPTIONS = [{
-  label: wp.i18n.__('Every Session', 'all-in-one-wp-sticky-anything'),
+  label: wp.i18n.__('Once Per Session', 'all-in-one-wp-sticky-anything'),
   value: 'session',
   pro: true
 }, {
-  label: wp.i18n.__('Once Per Day', 'all-in-one-wp-sticky-anything'),
-  value: 'daily',
+  label: wp.i18n.__('Time Based', 'all-in-one-wp-sticky-anything'),
+  value: 'time-based',
   pro: true
 }, {
-  label: wp.i18n.__('Once Per Week', 'all-in-one-wp-sticky-anything'),
-  value: 'weekly',
+  label: wp.i18n.__('Always Show', 'all-in-one-wp-sticky-anything'),
+  value: 'always',
   pro: true
+}];
+
+// ─── Exit-intent Time Based Unit Options ────────────────────────
+var EXIT_FREQUENCY_UNIT_OPTIONS = [{
+  label: wp.i18n.__('Minutes', 'all-in-one-wp-sticky-anything'),
+  value: 'minutes'
+}, {
+  label: wp.i18n.__('Hours', 'all-in-one-wp-sticky-anything'),
+  value: 'hours'
+}, {
+  label: wp.i18n.__('Days', 'all-in-one-wp-sticky-anything'),
+  value: 'days'
 }];
 
 // ─── Form Type Options ──────────────────────────────────────────
 var FORM_TYPE_OPTIONS = [{
   label: wp.i18n.__('Default Form', 'all-in-one-wp-sticky-anything'),
   value: 'default',
-  pro: false
+  pro: true
 }, {
   label: wp.i18n.__('Contact Forms', 'all-in-one-wp-sticky-anything'),
   value: 'contact-forms',
-  pro: true
+  pro: true,
+  isComing: true
 }];
 
 // ─── Contact Form Plugin Options ────────────────────────────────
@@ -9422,7 +9602,8 @@ var CONTACT_FORM_PLUGIN_OPTIONS = [{
 }];
 var DISPLAY_FOR_OPTIONS = [{
   label: wp.i18n.__('All Visitors', 'all-in-one-wp-sticky-anything'),
-  value: 'all'
+  value: 'all',
+  pro: true
 }, {
   label: wp.i18n.__('Logged In Users', 'all-in-one-wp-sticky-anything'),
   value: 'logged-in',
@@ -9434,7 +9615,32 @@ var DISPLAY_FOR_OPTIONS = [{
 }];
 var DISPLAY_ON_OPTIONS = [{
   label: wp.i18n.__('Everywhere', 'all-in-one-wp-sticky-anything'),
-  value: 'everywhere'
+  value: 'everywhere',
+  pro: true
+}, {
+  label: wp.i18n.__('Homepage', 'all-in-one-wp-sticky-anything'),
+  value: 'home',
+  pro: true
+}, {
+  label: wp.i18n.__('Blog', 'all-in-one-wp-sticky-anything'),
+  value: 'blog',
+  pro: true
+}, {
+  label: wp.i18n.__('Single Posts', 'all-in-one-wp-sticky-anything'),
+  value: 'single-post',
+  pro: true
+}, {
+  label: wp.i18n.__('Pages', 'all-in-one-wp-sticky-anything'),
+  value: 'page',
+  pro: true
+}, {
+  label: wp.i18n.__('Archives', 'all-in-one-wp-sticky-anything'),
+  value: 'archive',
+  pro: true
+}, {
+  label: wp.i18n.__('Search Results', 'all-in-one-wp-sticky-anything'),
+  value: 'search',
+  pro: true
 }];
 var ATTENTION_EFFECTS_OPTIONS = [{
   label: wp.i18n.__('Pulse', 'all-in-one-wp-sticky-anything'),
@@ -9445,6 +9651,21 @@ var ATTENTION_EFFECTS_OPTIONS = [{
 }, {
   label: wp.i18n.__('Shake', 'all-in-one-wp-sticky-anything'),
   value: 'shake'
+}, {
+  label: wp.i18n.__('Tada', 'all-in-one-wp-sticky-anything'),
+  value: 'tada'
+}, {
+  label: wp.i18n.__('Wobble', 'all-in-one-wp-sticky-anything'),
+  value: 'wobble'
+}, {
+  label: wp.i18n.__('Flash', 'all-in-one-wp-sticky-anything'),
+  value: 'flash'
+}, {
+  label: wp.i18n.__('Heartbeat', 'all-in-one-wp-sticky-anything'),
+  value: 'heartbeat'
+}, {
+  label: wp.i18n.__('Swing', 'all-in-one-wp-sticky-anything'),
+  value: 'swing'
 }];
 
 // Placeholder shortcode text shown per selected contact form plugin
@@ -9455,7 +9676,11 @@ var CONTACT_FORM_PLUGIN_PLACEHOLDERS = {
 };
 function StickyFloatingForms() {
   var _ai1wpsa = ai1wpsa,
-    isPro = _ai1wpsa.isPro;
+    isPro = _ai1wpsa.isPro,
+    _ai1wpsa$contactForms = _ai1wpsa.contactForms,
+    contactForms = _ai1wpsa$contactForms === void 0 ? {} : _ai1wpsa$contactForms,
+    _ai1wpsa$adminEmail = _ai1wpsa.adminEmail,
+    adminEmail = _ai1wpsa$adminEmail === void 0 ? '' : _ai1wpsa$adminEmail;
   var _useContext = StickyForms_useContext(Contexts_SettingsContext),
     data = _useContext.data,
     setData = _useContext.setData;
@@ -9468,55 +9693,87 @@ function StickyFloatingForms() {
     stickyFloatingFormsPosition = _ref$stickyFloatingFo3 === void 0 ? 'bottom-right' : _ref$stickyFloatingFo3,
     _ref$stickyFloatingFo4 = _ref.stickyFloatingFormsDevice,
     stickyFloatingFormsDevice = _ref$stickyFloatingFo4 === void 0 ? 'all' : _ref$stickyFloatingFo4,
-    _ref$stickyFloatingFo5 = _ref.stickyFloatingFormsButtonText,
-    stickyFloatingFormsButtonText = _ref$stickyFloatingFo5 === void 0 ? wp.i18n.__('Contact Us', 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo5,
-    _ref$stickyFloatingFo6 = _ref.stickyFloatingFormsModalTitle,
-    stickyFloatingFormsModalTitle = _ref$stickyFloatingFo6 === void 0 ? wp.i18n.__('Send us a Message', 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo6,
-    _ref$stickyFloatingFo7 = _ref.stickyFloatingFormsModalSubtitle,
-    stickyFloatingFormsModalSubtitle = _ref$stickyFloatingFo7 === void 0 ? wp.i18n.__("Fill out the form below and we'll get back to you.", 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo7,
-    _ref$stickyFloatingFo8 = _ref.stickyFloatingFormsTeaserMessage,
-    stickyFloatingFormsTeaserMessage = _ref$stickyFloatingFo8 === void 0 ? wp.i18n.__('👋 Have a question? We usually reply within the hour.', 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo8,
-    _ref$stickyFloatingFo9 = _ref.stickyFloatingFormsFormType,
-    stickyFloatingFormsFormType = _ref$stickyFloatingFo9 === void 0 ? 'default' : _ref$stickyFloatingFo9,
-    _ref$stickyFloatingFo10 = _ref.stickyFloatingFormsFormPlugin,
-    stickyFloatingFormsFormPlugin = _ref$stickyFloatingFo10 === void 0 ? 'cf7' : _ref$stickyFloatingFo10,
-    _ref$stickyFloatingFo11 = _ref.stickyFloatingFormsShortcode,
-    stickyFloatingFormsShortcode = _ref$stickyFloatingFo11 === void 0 ? '' : _ref$stickyFloatingFo11,
-    _ref$stickyFloatingFo12 = _ref.stickyFloatingFormsHoneypot,
-    stickyFloatingFormsHoneypot = _ref$stickyFloatingFo12 === void 0 ? false : _ref$stickyFloatingFo12,
-    _ref$stickyFloatingFo13 = _ref.stickyFloatingFormsSuccessMessage,
-    stickyFloatingFormsSuccessMessage = _ref$stickyFloatingFo13 === void 0 ? wp.i18n.__('Thanks for reaching out. Someone from our team will get back to you within the hour.', 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo13,
-    _ref$stickyFloatingFo14 = _ref.stickyFloatingFormsCloseButton,
-    stickyFloatingFormsCloseButton = _ref$stickyFloatingFo14 === void 0 ? true : _ref$stickyFloatingFo14,
-    _ref$stickyFloatingFo15 = _ref.stickyFloatingFormsExitIntent,
-    stickyFloatingFormsExitIntent = _ref$stickyFloatingFo15 === void 0 ? true : _ref$stickyFloatingFo15,
-    _ref$stickyFloatingFo16 = _ref.stickyFloatingFormsExitFrequency,
-    stickyFloatingFormsExitFrequency = _ref$stickyFloatingFo16 === void 0 ? 'daily' : _ref$stickyFloatingFo16,
-    _ref$stickyFloatingFo17 = _ref.stickyFloatingFormsReduceMotion,
-    stickyFloatingFormsReduceMotion = _ref$stickyFloatingFo17 === void 0 ? true : _ref$stickyFloatingFo17,
-    _ref$stickyFloatingFo18 = _ref.stickyFloatingFormsDisplayFor,
-    stickyFloatingFormsDisplayFor = _ref$stickyFloatingFo18 === void 0 ? 'all' : _ref$stickyFloatingFo18,
-    _ref$stickyFloatingFo19 = _ref.stickyFloatingFormsDisplayOn,
-    stickyFloatingFormsDisplayOn = _ref$stickyFloatingFo19 === void 0 ? 'everywhere' : _ref$stickyFloatingFo19,
-    _ref$stickyFloatingFo20 = _ref.stickyFloatingFormsAttentionEffect,
-    stickyFloatingFormsAttentionEffect = _ref$stickyFloatingFo20 === void 0 ? false : _ref$stickyFloatingFo20,
-    _ref$stickyFloatingFo21 = _ref.stickyFloatingFormsAttentionEffectType,
-    stickyFloatingFormsAttentionEffectType = _ref$stickyFloatingFo21 === void 0 ? 'pulse' : _ref$stickyFloatingFo21,
-    _ref$stickyFloatingFo22 = _ref.stickyFloatingFormsUnreadBadge,
-    stickyFloatingFormsUnreadBadge = _ref$stickyFloatingFo22 === void 0 ? false : _ref$stickyFloatingFo22,
-    _ref$stickyFloatingFo23 = _ref.stickyFloatingFormsWidgetStyle,
-    stickyFloatingFormsWidgetStyle = _ref$stickyFloatingFo23 === void 0 ? {
-      bgColor: '#1b4332',
+    _ref$stickyFloatingFo5 = _ref.stickyFloatingFormsHideOnScroll,
+    stickyFloatingFormsHideOnScroll = _ref$stickyFloatingFo5 === void 0 ? false : _ref$stickyFloatingFo5,
+    _ref$stickyFloatingFo6 = _ref.stickyFloatingFormsButtonText,
+    stickyFloatingFormsButtonText = _ref$stickyFloatingFo6 === void 0 ? wp.i18n.__('Contact Us', 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo6,
+    _ref$stickyFloatingFo7 = _ref.stickyFloatingFormsModalTitle,
+    stickyFloatingFormsModalTitle = _ref$stickyFloatingFo7 === void 0 ? wp.i18n.__('Send us a Message', 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo7,
+    _ref$stickyFloatingFo8 = _ref.stickyFloatingFormsModalSubtitle,
+    stickyFloatingFormsModalSubtitle = _ref$stickyFloatingFo8 === void 0 ? wp.i18n.__("Fill out the form below and we'll get back to you.", 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo8,
+    _ref$stickyFloatingFo9 = _ref.stickyFloatingFormsTeaserMessage,
+    stickyFloatingFormsTeaserMessage = _ref$stickyFloatingFo9 === void 0 ? wp.i18n.__('👋 Have a question? We usually reply within the hour.', 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo9,
+    _ref$stickyFloatingFo10 = _ref.stickyFloatingFormsFormType,
+    stickyFloatingFormsFormType = _ref$stickyFloatingFo10 === void 0 ? 'default' : _ref$stickyFloatingFo10,
+    _ref$stickyFloatingFo11 = _ref.stickyFloatingFormsFormPlugin,
+    stickyFloatingFormsFormPlugin = _ref$stickyFloatingFo11 === void 0 ? 'cf7' : _ref$stickyFloatingFo11,
+    _ref$stickyFloatingFo12 = _ref.stickyFloatingFormsShortcode,
+    stickyFloatingFormsShortcode = _ref$stickyFloatingFo12 === void 0 ? '' : _ref$stickyFloatingFo12,
+    _ref$stickyFloatingFo13 = _ref.stickyFloatingFormsHoneypot,
+    stickyFloatingFormsHoneypot = _ref$stickyFloatingFo13 === void 0 ? false : _ref$stickyFloatingFo13,
+    _ref$stickyFloatingFo14 = _ref.stickyFloatingFormsDefaultMail,
+    stickyFloatingFormsDefaultMail = _ref$stickyFloatingFo14 === void 0 ? adminEmail : _ref$stickyFloatingFo14,
+    _ref$stickyFloatingFo15 = _ref.stickyFloatingFormsSuccessMessage,
+    stickyFloatingFormsSuccessMessage = _ref$stickyFloatingFo15 === void 0 ? wp.i18n.__('Thanks for reaching out. Someone from our team will get back to you within the hour.', 'all-in-one-wp-sticky-anything') : _ref$stickyFloatingFo15,
+    _ref$stickyFloatingFo16 = _ref.stickyFloatingFormsCloseButton,
+    stickyFloatingFormsCloseButton = _ref$stickyFloatingFo16 === void 0 ? true : _ref$stickyFloatingFo16,
+    _ref$stickyFloatingFo17 = _ref.stickyFloatingFormsExitIntent,
+    stickyFloatingFormsExitIntent = _ref$stickyFloatingFo17 === void 0 ? true : _ref$stickyFloatingFo17,
+    _ref$stickyFloatingFo18 = _ref.stickyFloatingFormsExitFrequency,
+    stickyFloatingFormsExitFrequency = _ref$stickyFloatingFo18 === void 0 ? 'session' : _ref$stickyFloatingFo18,
+    _ref$stickyFloatingFo19 = _ref.stickyFloatingFormsExitFrequencyValue,
+    stickyFloatingFormsExitFrequencyValue = _ref$stickyFloatingFo19 === void 0 ? 1 : _ref$stickyFloatingFo19,
+    _ref$stickyFloatingFo20 = _ref.stickyFloatingFormsExitFrequencyUnit,
+    stickyFloatingFormsExitFrequencyUnit = _ref$stickyFloatingFo20 === void 0 ? 'minutes' : _ref$stickyFloatingFo20,
+    _ref$stickyFloatingFo21 = _ref.stickyFloatingFormsAutoOpen,
+    stickyFloatingFormsAutoOpen = _ref$stickyFloatingFo21 === void 0 ? false : _ref$stickyFloatingFo21,
+    _ref$stickyFloatingFo22 = _ref.stickyFloatingFormsDelay,
+    stickyFloatingFormsDelay = _ref$stickyFloatingFo22 === void 0 ? 5 : _ref$stickyFloatingFo22,
+    _ref$stickyFloatingFo23 = _ref.stickyFloatingFormsReduceMotion,
+    stickyFloatingFormsReduceMotion = _ref$stickyFloatingFo23 === void 0 ? true : _ref$stickyFloatingFo23,
+    _ref$stickyFloatingFo24 = _ref.stickyFloatingFormsDisplayFor,
+    stickyFloatingFormsDisplayFor = _ref$stickyFloatingFo24 === void 0 ? 'all' : _ref$stickyFloatingFo24,
+    _ref$stickyFloatingFo25 = _ref.stickyFloatingFormsDisplayOn,
+    stickyFloatingFormsDisplayOn = _ref$stickyFloatingFo25 === void 0 ? 'everywhere' : _ref$stickyFloatingFo25,
+    _ref$stickyFloatingFo26 = _ref.stickyFloatingFormsAttentionEffect,
+    stickyFloatingFormsAttentionEffect = _ref$stickyFloatingFo26 === void 0 ? false : _ref$stickyFloatingFo26,
+    _ref$stickyFloatingFo27 = _ref.stickyFloatingFormsAttentionEffectType,
+    stickyFloatingFormsAttentionEffectType = _ref$stickyFloatingFo27 === void 0 ? 'pulse' : _ref$stickyFloatingFo27,
+    _ref$stickyFloatingFo28 = _ref.stickyFloatingFormsUnreadBadge,
+    stickyFloatingFormsUnreadBadge = _ref$stickyFloatingFo28 === void 0 ? false : _ref$stickyFloatingFo28,
+    _ref$stickyFloatingFo29 = _ref.stickyFloatingFormsWidgetStyle,
+    stickyFloatingFormsWidgetStyle = _ref$stickyFloatingFo29 === void 0 ? {
+      bgColor: '#004bcb',
       textColor: '#ffffff',
       fontSize: '15px'
-    } : _ref$stickyFloatingFo23,
-    _ref$stickyFloatingFo24 = _ref.stickyFloatingFormsButtonStyle,
-    stickyFloatingFormsButtonStyle = _ref$stickyFloatingFo24 === void 0 ? {
-      submitBtnBg: '#1b4332',
+    } : _ref$stickyFloatingFo29,
+    _ref$stickyFloatingFo30 = _ref.stickyFloatingFormsButtonStyle,
+    stickyFloatingFormsButtonStyle = _ref$stickyFloatingFo30 === void 0 ? {
+      submitBtnBg: '#004bcb',
       submitTextColor: '#fff',
       closeBtnBg: '#ffffff00',
       closeTextColor: '#000'
-    } : _ref$stickyFloatingFo24;
+    } : _ref$stickyFloatingFo30;
+
+  // ─── Contact Form Picker ─────────────────────────────────────
+  var availableForms = contactForms[stickyFloatingFormsFormPlugin] || [];
+  var selectedContactFormId = function () {
+    var match = /id=["']?(\d+)["']?/.exec(stickyFloatingFormsShortcode || '');
+    return match ? match[1] : '';
+  }();
+  var CONTACT_FORM_SELECT_OPTIONS = [{
+    label: wp.i18n.__('— Select a form —', 'all-in-one-wp-sticky-anything'),
+    value: ''
+  }].concat(StickyForms_toConsumableArray(availableForms.map(function (form) {
+    return {
+      label: form.title,
+      value: String(form.id)
+    };
+  })));
+  var CONTACT_FORM_PLUGIN_LABELS = {
+    cf7: wp.i18n.__('Contact Form 7', 'all-in-one-wp-sticky-anything'),
+    wpforms: wp.i18n.__('WPForms', 'all-in-one-wp-sticky-anything')
+  };
 
   // ─── Reorder Effects ─────────────────────────────────────────
   var reorder = function reorder(list, startIndex, endIndex) {
@@ -9542,43 +9799,49 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Sticky Floating Forms', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Sticky Floating Forms', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
     checked: stickyFloatingForms,
+    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange() {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingForms: !stickyFloatingForms
       }));
     }
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Enable or disable the sticky floating contact form.', 'all-in-one-wp-sticky-anything')))), !!stickyFloatingForms && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Enable or disable the sticky floating contact form.', 'all-in-one-wp-sticky-anything')))), (!!stickyFloatingForms || !isPro) && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Layout', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Layout', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, {
     className: "ai1wpsa-floating-forms-layout"
   }, StickyForms_LAYOUT_OPTIONS.map(function (_ref2) {
     var label = _ref2.label,
       value = _ref2.value,
-      pro = _ref2.pro;
+      pro = _ref2.pro,
+      isComing = _ref2.isComing;
     return /*#__PURE__*/React.createElement(StickyForms_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-pro-feature ai1wpsa-disabled' : '',
       isPrimary: stickyFloatingFormsLayout === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
           stickyFloatingFormsLayout: value
         }));
       }
-    }, /*#__PURE__*/React.createElement("span", null, label));
+    }, /*#__PURE__*/React.createElement("span", null, label, " - ", isComing ? wp.i18n.__('Coming soon', 'all-in-one-wp-sticky-anything') : ''));
   })), !isPro && /*#__PURE__*/React.createElement(M, {
     anchorSelect: ".ai1wpsa-pro-feature",
     variant: "warning",
@@ -9587,7 +9850,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Position', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Position', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, null, StickyForms_POSITION_OPTIONS.map(function (_ref3) {
     var label = _ref3.label,
@@ -9595,11 +9858,11 @@ function StickyFloatingForms() {
       pro = _ref3.pro;
     return /*#__PURE__*/React.createElement(StickyForms_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-pro-feature ai1wpsa-disabled' : '',
       isPrimary: stickyFloatingFormsPosition === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
@@ -9611,7 +9874,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, null, StickyForms_DEVICE_OPTIONS.map(function (_ref4) {
     var label = _ref4.label,
@@ -9628,17 +9891,41 @@ function StickyFloatingForms() {
         }));
       }
     }, label);
-  })))), /*#__PURE__*/React.createElement("div", {
+  })))), stickyFloatingFormsLayout !== 'bar' && /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Button Text', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Hide on Scroll', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
+    checked: stickyFloatingFormsHideOnScroll,
+    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    onChange: function onChange() {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+        stickyFloatingFormsHideOnScroll: !stickyFloatingFormsHideOnScroll
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Hide the floating button while scrolling down, and show it again when scrolling up. Turn off to keep it always visible.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Button Text', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_TextControl, {
     value: stickyFloatingFormsButtonText,
-    className: "ai1wpsa-text-control",
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsButtonText: value
       }));
     }
@@ -9648,13 +9935,17 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Teaser Message', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Teaser Message', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_TextareaControl, {
     value: stickyFloatingFormsTeaserMessage,
-    className: "ai1wpsa-textarea-control",
+    className: "ai1wpsa-textarea-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsTeaserMessage: value
       }));
     }
@@ -9664,13 +9955,17 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Modal Title', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Modal Title', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_TextControl, {
     value: stickyFloatingFormsModalTitle,
-    className: "ai1wpsa-text-control",
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsModalTitle: value
       }));
     }
@@ -9678,13 +9973,17 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Modal Subtitle', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Modal Subtitle', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_TextControl, {
     value: stickyFloatingFormsModalSubtitle,
-    className: "ai1wpsa-text-control",
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsModalSubtitle: value
       }));
     }
@@ -9692,30 +9991,40 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Close Button', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Close Button', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
     checked: stickyFloatingFormsCloseButton,
+    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange() {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsCloseButton: !stickyFloatingFormsCloseButton
       }));
     }
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Show or hide the close (×) icon on the modal.', 'all-in-one-wp-sticky-anything')))))), /*#__PURE__*/React.createElement(Group, {
+  }, wp.i18n.__('Show or hide the close (×) icon on the modal.', 'all-in-one-wp-sticky-anything')))))), (!!stickyFloatingForms || !isPro) && /*#__PURE__*/React.createElement(Group, {
     icon: "\uD83D\uDC40",
     title: wp.i18n.__('Target & Trigger', 'all-in-one-wp-sticky-anything')
   }, /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Exit Intent Popup', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Exit Intent Popup', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
     checked: stickyFloatingFormsExitIntent,
+    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange() {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsExitIntent: !stickyFloatingFormsExitIntent
       }));
     }
@@ -9725,7 +10034,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Exit Intent Frequency', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Exit Intent Frequency', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, null, EXIT_FREQUENCY_OPTIONS.map(function (_ref5) {
     var label = _ref5.label,
@@ -9733,11 +10042,11 @@ function StickyFloatingForms() {
       pro = _ref5.pro;
     return /*#__PURE__*/React.createElement(StickyForms_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-pro-feature ai1wpsa-disabled' : '',
       isPrimary: stickyFloatingFormsExitFrequency === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
@@ -9749,16 +10058,106 @@ function StickyFloatingForms() {
     anchorSelect: ".ai1wpsa-pro-feature",
     variant: "warning",
     content: wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything')
-  }))), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('How often the same visitor can be shown the exit-intent popup. "Always Show" is intended for testing — it will repeatedly reopen the modal with no cooldown.', 'all-in-one-wp-sticky-anything')))), !!stickyFloatingFormsExitIntent && (stickyFloatingFormsExitFrequency === 'time-based' || !isPro) && /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Respect Reduced Motion', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Repeat Every', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "settings-sub-field flex"
+  }, /*#__PURE__*/React.createElement(StickyForms_TextControl, {
+    type: "number",
+    min: 1,
+    step: 1,
+    value: stickyFloatingFormsExitFrequencyValue,
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      var parsed = parseInt(value, 10);
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+        stickyFloatingFormsExitFrequencyValue: isNaN(parsed) ? 1 : Math.max(1, parsed)
+      }));
+    }
+  }), /*#__PURE__*/React.createElement(StickyForms_SelectControl, {
+    value: stickyFloatingFormsExitFrequencyUnit,
+    className: "ai1wpsa-select-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    options: EXIT_FREQUENCY_UNIT_OPTIONS,
+    onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+        stickyFloatingFormsExitFrequencyUnit: value
+      }));
+    }
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('The same visitor won\'t see the exit-intent popup again until this interval has passed.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Auto Open', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
+    checked: stickyFloatingFormsAutoOpen,
+    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    onChange: function onChange() {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+        stickyFloatingFormsAutoOpen: !stickyFloatingFormsAutoOpen
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Automatically open the modal a few seconds after the page loads, without waiting for exit intent.', 'all-in-one-wp-sticky-anything')))), (stickyFloatingFormsAutoOpen || !isPro) && /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Delay (seconds)', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyForms_TextControl, {
+    type: "number",
+    min: 0,
+    step: 1,
+    value: stickyFloatingFormsDelay,
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      var parsed = parseInt(value, 10);
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+        stickyFloatingFormsDelay: isNaN(parsed) ? 0 : Math.max(0, parsed)
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('How long to wait, in seconds, before automatically opening the modal.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Respect Reduced Motion', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
     checked: stickyFloatingFormsReduceMotion,
+    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange() {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsReduceMotion: !stickyFloatingFormsReduceMotion
       }));
     }
@@ -9768,7 +10167,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Display For', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Display For', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, null, DISPLAY_FOR_OPTIONS.map(function (_ref6) {
     var label = _ref6.label,
@@ -9776,11 +10175,11 @@ function StickyFloatingForms() {
       pro = _ref6.pro;
     return /*#__PURE__*/React.createElement(StickyForms_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-pro-feature ai1wpsa-disabled' : '',
       isPrimary: stickyFloatingFormsDisplayFor === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
@@ -9796,7 +10195,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Display On', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Display On', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, null, DISPLAY_ON_OPTIONS.map(function (_ref7) {
     var label = _ref7.label,
@@ -9804,11 +10203,11 @@ function StickyFloatingForms() {
       pro = _ref7.pro;
     return /*#__PURE__*/React.createElement(StickyForms_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-pro-feature ai1wpsa-disabled' : '',
       isPrimary: stickyFloatingFormsDisplayOn === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
@@ -9820,14 +10219,14 @@ function StickyFloatingForms() {
     anchorSelect: ".ai1wpsa-pro-feature",
     variant: "warning",
     content: wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything')
-  })))), !!stickyFloatingForms && /*#__PURE__*/React.createElement(Group, {
+  })))), (!!stickyFloatingForms || !isPro) && /*#__PURE__*/React.createElement(Group, {
     icon: "\uD83D\uDCDD",
     title: wp.i18n.__('Forms', 'all-in-one-wp-sticky-anything')
   }, /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Form Type', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Form Type', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, {
     className: "ai1wpsa-floating-forms-type"
@@ -9837,11 +10236,11 @@ function StickyFloatingForms() {
       pro = _ref8.pro;
     return /*#__PURE__*/React.createElement(StickyForms_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-pro-feature ai1wpsa-disabled' : '',
       isPrimary: stickyFloatingFormsFormType === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
@@ -9859,7 +10258,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Contact Form Plugin', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Contact Form Plugin', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, {
     className: "ai1wpsa-floating-forms-plugin"
@@ -9869,15 +10268,16 @@ function StickyFloatingForms() {
       pro = _ref9.pro;
     return /*#__PURE__*/React.createElement(StickyForms_Button, {
       key: value,
-      disabled: !!pro && !isPro,
-      className: !!pro && !isPro ? 'ai1wpsa-pro-feature' : '',
+      className: !!pro && !isPro ? 'ai1wpsa-pro-feature ai1wpsa-disabled' : '',
       isPrimary: stickyFloatingFormsFormPlugin === value,
       onClick: function onClick() {
         if (!!pro && !isPro) {
+          showProModal();
           return;
         }
         setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
-          stickyFloatingFormsFormPlugin: value
+          stickyFloatingFormsFormPlugin: value,
+          stickyFloatingFormsShortcode: ''
         }));
       }
     }, label);
@@ -9887,35 +10287,89 @@ function StickyFloatingForms() {
     content: wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything')
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Choose which plugin the form below belongs to, so we can render it correctly.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Choose which plugin the form below belongs to, so we can render it correctly.', 'all-in-one-wp-sticky-anything')))), stickyFloatingFormsFormPlugin === 'other' ? /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Form Shortcode', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Form Shortcode', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_TextControl, {
     value: stickyFloatingFormsShortcode,
-    className: "ai1wpsa-text-control",
-    placeholder: CONTACT_FORM_PLUGIN_PLACEHOLDERS[stickyFloatingFormsFormPlugin] || CONTACT_FORM_PLUGIN_PLACEHOLDERS.other,
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    placeholder: CONTACT_FORM_PLUGIN_PLACEHOLDERS.other,
     onChange: function onChange(value) {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsShortcode: value
       }));
     }
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Paste the shortcode of the existing form you want to render inside the modal.', 'all-in-one-wp-sticky-anything'))))), stickyFloatingFormsFormType === 'default' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Paste the shortcode of the existing form you want to render inside the modal.', 'all-in-one-wp-sticky-anything')))) : /*#__PURE__*/React.createElement("div", {
+    className: "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "settings-field-label"
+  }, wp.i18n.__('Select Form', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    className: "settings-field-content"
+  }, availableForms.length > 0 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StickyForms_SelectControl, {
+    value: selectedContactFormId,
+    className: "ai1wpsa-select-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    options: CONTACT_FORM_SELECT_OPTIONS,
+    onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      var form = availableForms.find(function (f) {
+        return String(f.id) === value;
+      });
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+        stickyFloatingFormsShortcode: form ? form.shortcode : ''
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Pick an existing form — its shortcode will be inserted automatically.', 'all-in-one-wp-sticky-anything')), !!stickyFloatingFormsShortcode && /*#__PURE__*/React.createElement("code", {
+    className: "ai1wpsa-shortcode-preview"
+  }, stickyFloatingFormsShortcode)) : /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('No', 'all-in-one-wp-sticky-anything'), ' ', CONTACT_FORM_PLUGIN_LABELS[stickyFloatingFormsFormPlugin] || stickyFloatingFormsFormPlugin, ' ', wp.i18n.__('forms were found. Create a form in that plugin first, then come back here to select it.', 'all-in-one-wp-sticky-anything'))))), stickyFloatingFormsFormType === 'default' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Honeypot field', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Send To', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyForms_TextControl, {
+    type: "text",
+    value: stickyFloatingFormsDefaultMail,
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    placeholder: adminEmail,
+    onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+        stickyFloatingFormsDefaultMail: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    "class": "description"
+  }, wp.i18n.__('Where form submissions are emailed. Defaults to the site admin email — separate multiple addresses with commas.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Honeypot field', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
     checked: stickyFloatingFormsHoneypot,
     className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange() {
       if (!isPro) {
-        showProNotification();
+        showProModal();
         return;
       }
       ;
@@ -9929,33 +10383,37 @@ function StickyFloatingForms() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Success message', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Success message', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_TextareaControl, {
     value: stickyFloatingFormsSuccessMessage,
-    className: "ai1wpsa-text-control",
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
-      return setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsSuccessMessage: value
       }));
     }
   }), /*#__PURE__*/React.createElement("p", {
     "class": "description"
-  }, wp.i18n.__('Message to show when the form has been successfully submitted.', 'all-in-one-wp-sticky-anything')))))), !!stickyFloatingForms && /*#__PURE__*/React.createElement(Group, {
+  }, wp.i18n.__('Message to show when the form has been successfully submitted.', 'all-in-one-wp-sticky-anything')))))), (!!stickyFloatingForms || !isPro) && /*#__PURE__*/React.createElement(Group, {
     icon: "\u2728",
     title: wp.i18n.__('Attention effects', 'all-in-one-wp-sticky-anything')
   }, /*#__PURE__*/React.createElement("div", {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Attention Effects', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Attention Effects', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
     checked: stickyFloatingFormsAttentionEffect,
     className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange() {
       if (!isPro) {
-        showProNotification();
+        showProModal();
         return;
       }
       ;
@@ -9969,34 +10427,45 @@ function StickyFloatingForms() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Effects Type', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Effects Type', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickyForms_SelectControl, {
-    value: stickyFloatingFormsAttentionEffectType,
-    className: "ai1wpsa-select-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
-    options: ATTENTION_EFFECTS_OPTIONS,
-    onChange: function onChange(value) {
-      if (!isPro) {
-        showProNotification();
-        return;
+  }, /*#__PURE__*/React.createElement(StickyForms_ButtonGroup, {
+    className: "ai1wpsa-animation-group"
+  }, ATTENTION_EFFECTS_OPTIONS.map(function (_ref10) {
+    var label = _ref10.label,
+      value = _ref10.value;
+    return /*#__PURE__*/React.createElement(StickyForms_Button, {
+      key: value,
+      className: "".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+      isPrimary: stickyFloatingFormsAttentionEffectType === value,
+      onClick: function onClick() {
+        if (!isPro) {
+          showProModal();
+          return;
+        }
+        setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
+          stickyFloatingFormsAttentionEffectType: value
+        }));
       }
-      ;
-      setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
-        stickyFloatingFormsAttentionEffectType: value
-      }));
-    }
-  })))), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "ai1wpsa-attn-preview-container ".concat(value)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "ai1wpsa-attn-preview"
+    })), /*#__PURE__*/React.createElement("p", null, label));
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Choose how the floating button should draw attention.', 'all-in-one-wp-sticky-anything'))))), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Unread Badge', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Unread Badge', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(StickyForms_FormToggle, {
     checked: stickyFloatingFormsUnreadBadge,
     className: "".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange() {
       if (!isPro) {
-        showProNotification();
+        showProModal();
         return;
       }
       setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
@@ -10005,14 +10474,14 @@ function StickyFloatingForms() {
     }
   }), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Show or hide the unread badge on the floating trigger button.', 'all-in-one-wp-sticky-anything'))))), !!stickyFloatingForms && /*#__PURE__*/React.createElement(Group, {
+  }, wp.i18n.__('Show or hide the unread badge on the floating trigger button.', 'all-in-one-wp-sticky-anything'))))), (!!stickyFloatingForms || !isPro) && /*#__PURE__*/React.createElement(Group, {
     icon: "\uD83C\uDFA8",
     title: wp.i18n.__('Styles', 'all-in-one-wp-sticky-anything')
   }, /*#__PURE__*/React.createElement("div", {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     className: "settings-field-label"
-  }, wp.i18n.__('Widget Style', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Widget Style', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "settings-sub-field flex"
@@ -10020,9 +10489,14 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyFloatingFormsWidgetStyle.bgColor,
+    customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
       setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsWidgetStyle: StickyForms_objectSpread(StickyForms_objectSpread({}, stickyFloatingFormsWidgetStyle), {}, {
           bgColor: value
@@ -10035,9 +10509,14 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyFloatingFormsWidgetStyle.textColor,
+    customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
       setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsWidgetStyle: StickyForms_objectSpread(StickyForms_objectSpread({}, stickyFloatingFormsWidgetStyle), {}, {
           textColor: value
@@ -10050,11 +10529,15 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Font Size', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickyForms_TextControl, {
+  }, wp.i18n.__('Font Size', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(StickyForms_TextControl, {
     value: stickyFloatingFormsWidgetStyle.fontSize,
-    className: "ai1wpsa-text-control",
+    className: "ai1wpsa-text-control ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     placeholder: wp.i18n.__('15px', 'all-in-one-wp-sticky-anything'),
     onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
       setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsWidgetStyle: StickyForms_objectSpread(StickyForms_objectSpread({}, stickyFloatingFormsWidgetStyle), {}, {
           fontSize: value
@@ -10065,7 +10548,7 @@ function StickyFloatingForms() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Button Style', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Button Style', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "settings-sub-field flex"
@@ -10073,9 +10556,14 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Submit Button Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Submit Button Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyFloatingFormsButtonStyle.submitBtnBg,
+    customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
       setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsButtonStyle: StickyForms_objectSpread(StickyForms_objectSpread({}, stickyFloatingFormsButtonStyle), {}, {
           submitBtnBg: value
@@ -10088,9 +10576,14 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Submit Button Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Submit Button Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyFloatingFormsButtonStyle.submitTextColor,
+    customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
       setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsButtonStyle: StickyForms_objectSpread(StickyForms_objectSpread({}, stickyFloatingFormsButtonStyle), {}, {
           submitTextColor: value
@@ -10105,9 +10598,14 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Close Button Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Close Button Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyFloatingFormsButtonStyle.closeBtnBg,
+    customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
       setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsButtonStyle: StickyForms_objectSpread(StickyForms_objectSpread({}, stickyFloatingFormsButtonStyle), {}, {
           closeBtnBg: value
@@ -10120,9 +10618,14 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Close Button Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Close Button Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
     value: stickyFloatingFormsButtonStyle.closeTextColor,
+    customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
       setData(StickyForms_objectSpread(StickyForms_objectSpread({}, data), {}, {
         stickyFloatingFormsButtonStyle: StickyForms_objectSpread(StickyForms_objectSpread({}, stickyFloatingFormsButtonStyle), {}, {
           closeTextColor: value
@@ -10188,13 +10691,11 @@ function Content() {
     id: 'sticky-cookie-consent',
     title: wp.i18n.__('Sticky Cookie Consent', 'all-in-one-wp-sticky-anything'),
     icon: 'dashicons dashicons-privacy'
-  },
-  // {
-  //   id: 'sticky-forms',
-  //   title: wp.i18n.__('Sticky Forms', 'all-in-one-wp-sticky-anything'),
-  //   icon: 'dashicons dashicons-feedback',
-  // },
-  {
+  }, {
+    id: 'sticky-forms',
+    title: wp.i18n.__('Sticky Forms', 'all-in-one-wp-sticky-anything'),
+    icon: 'dashicons dashicons-feedback'
+  }, {
     id: 'sticky-toc',
     title: wp.i18n.__('Sticky Table of Content', 'all-in-one-wp-sticky-anything'),
     icon: 'dashicons dashicons-sticky'
@@ -10473,6 +10974,11 @@ function BasicUsage() {
 ;// ./src/js/components/GettingStarted/Changelog.js
 function Changelog() {
   var logs = [{
+    version: 'v1.1.6',
+    date: '15-08-2026',
+    "new": [wp.i18n.__('Disable Sticky on Mobile setting added on the General settings(PRO).', 'all-in-one-wp-sticky-anything'), wp.i18n.__('Introduce Sticky Forms (Pro).', 'all-in-one-wp-sticky-anything')],
+    fix: [wp.i18n.__('Custom CSS containing quotes was being mangled on output.', 'all-in-one-wp-sticky-anything')]
+  }, {
     version: 'v1.1.5',
     date: '21-07-2026',
     "new": [wp.i18n.__('Delete Data on Uninstall.', 'all-in-one-wp-sticky-anything')]

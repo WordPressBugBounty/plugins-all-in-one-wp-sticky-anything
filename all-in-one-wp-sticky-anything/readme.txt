@@ -4,7 +4,7 @@ Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,7 +35,8 @@ https://youtu.be/Y2IEuGCVu0Y
 * **📍 Sticky Sidebar**
 * **📱 Sticky Social Icons**
 * **🍪 Sticky Cookie Consent**
-* **🍪 Sticky Table of Contents (New ⚡)**
+* **📑 Sticky Table of Contents (New ⚡)**
+* **📝 Sticky Forms (New ⚡)**
 * **✏️ Custom CSS**
 * **⏱️ Quick to Set Up**
 * **⚡ Blazing Fast**
@@ -78,6 +79,16 @@ This feature is perfect for bloggers and content creators who want to improve re
 * Display TOC inside your content
 * Choose supported post types (posts, pages, etc.)
 * Lightweight and fast
+* Works with most themes.
+
+**📝 Sticky Forms (New ⚡) PRO**
+Add a floating contact button that opens a form on click, so visitors can reach out without leaving the page. Trigger it automatically, on exit-intent, or after a delay, and grab attention with built-in animation effects.
+
+This feature is perfect for capturing leads and support requests without a dedicated contact page. *(Pro feature)*
+
+* Floating button with customizable position and open triggers (auto-open, exit-intent, delay)
+* Use the built-in form.
+* Attention-grabbing effects to boost visibility
 * Works with most themes.
 
 **✏️ Custom CSS**
@@ -212,6 +223,11 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.1.6 (14-08-2026) =
+* **New:** Disable Sticky on Mobile setting added on the General settings (Pro).
+* **New:** Introduce Sticky Forms (Pro).
+* **Fix:** Custom CSS containing quotes was being mangled on output.
+
 = 1.1.5 (21-07-2026) =
 * **New:** Delete Data on Uninstall.
 

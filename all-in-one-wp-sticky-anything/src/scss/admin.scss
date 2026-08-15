@@ -1,0 +1,41 @@
+@import "components/variables";
+@import "components/helpers";
+@import "components/settings";
+@import "components/dashboard";
+
+.ai1wpsa-review-notice {
+  border-left-color: $color_primary;
+  
+  p{
+    padding: 0;
+    margin: 4px 0;
+  }
+
+  .notice-btns {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+
+    a {
+      color: $color_primary;
+      &.button-secondary {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0 5px;
+      }
+    }
+  }
+}
+
+.branch-7{
+  .ai1wpsa-review-notice{
+    .notice-btns{
+      a{
+        &.button-secondary {
+          display: block;
+        }
+      }
+    }
+  }
+}
