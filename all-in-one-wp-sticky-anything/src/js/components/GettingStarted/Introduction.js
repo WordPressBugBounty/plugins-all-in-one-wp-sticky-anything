@@ -66,6 +66,15 @@ export default function Introduction() {
                 'Display a sticky table of contents to help users navigate your content.',
                 'all-in-one-wp-sticky-anything'
             )
+        },
+        {
+            id: 'admin-sticky-notes',
+            icon: 'dashicons-welcome-write-blog',
+            title: wp.i18n.__('Admin Sticky Notes', 'all-in-one-wp-sticky-anything'),
+            desc: wp.i18n.__(
+                'Add sticky notes in the WordPress admin area to keep important information visible.',
+                'all-in-one-wp-sticky-anything'
+            )
         }
     ];
 

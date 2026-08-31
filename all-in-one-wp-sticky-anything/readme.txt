@@ -2,9 +2,9 @@
 Contributors: monzuralam
 Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,7 @@ https://youtu.be/Y2IEuGCVu0Y
 * **🍪 Sticky Cookie Consent**
 * **📑 Sticky Table of Contents (New ⚡)**
 * **📝 Sticky Forms (New ⚡)**
+* **🗒️ Admin Sticky Notes (New ⚡)**
 * **✏️ Custom CSS**
 * **⏱️ Quick to Set Up**
 * **⚡ Blazing Fast**
@@ -90,6 +91,17 @@ This feature is perfect for capturing leads and support requests without a dedic
 * Use the built-in form.
 * Attention-grabbing effects to boost visibility
 * Works with most themes.
+
+**🗒️ Admin Sticky Notes (New ⚡)**
+Draggable, resizable sticky notes right on your WordPress Dashboard — jot down reminders, to-dos, or quick notes without leaving the admin area. Each logged-in user gets their own private notes, styled with custom colors, fonts, and sizes.
+
+Enable it from Dashboard → Sticky Anything → Settings → Sticky Notes, then use the "Sticky Notes" button in the admin toolbar to show or hide your notes.
+
+* Drag, resize, and color-code each note
+* Set a default font, or change fonts/colors per note anytime
+* Show notes on the Dashboard only, or on every wp-admin screen
+* Duplicate or archive notes without losing your work
+* Notes are private to each user
 
 **✏️ Custom CSS**
 All-in-One Sticky Anything allows you to customize the appearance of the website using custom CSS.
@@ -223,6 +235,9 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.1.7 (31-08-2026) =
+* **New:** Introduce Admin Sticky Notes
+
 = 1.1.6 (14-08-2026) =
 * **New:** Disable Sticky on Mobile setting added on the General settings (Pro).
 * **New:** Introduce Sticky Forms (Pro).

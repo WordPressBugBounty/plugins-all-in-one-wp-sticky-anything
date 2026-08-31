@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu & Sidebar 1.1.6\n"
+"Project-Id-Version: All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu & Sidebar 1.1.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/all-in-one-wp-sticky-anything\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-15T10:29:19+00:00\n"
+"POT-Creation-Date: 2026-08-31T02:34:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: all-in-one-wp-sticky-anything\n"
@@ -40,46 +40,93 @@ msgstr ""
 msgid "https://profiles.wordpress.org/monzuralam"
 msgstr ""
 
-#: includes/Admin.php:29
+#: includes/Admin.php:32
 #: assets/js/admin.js:139
-#: assets/js/admin.js:11308
-#: assets/js/admin.js:11311
+#: assets/js/admin.js:11443
+#: assets/js/admin.js:11446
 msgid "All-in-One WP Sticky Anything"
 msgstr ""
 
-#: includes/Admin.php:30
+#: includes/Admin.php:33
 #: includes/Customizer.php:24
 #: includes/Elementor.php:31
 msgid "Sticky Anything"
 msgstr ""
 
-#: includes/Admin.php:40
+#: includes/Admin.php:43
 msgid "Settings - All-in-One Sticky Anything"
 msgstr ""
 
-#: includes/Admin.php:41
+#: includes/Admin.php:44
 #: includes/Main.php:147
 msgid "Settings"
 msgstr ""
 
-#: includes/Admin.php:48
+#: includes/Admin.php:51
 msgid "Getting Started - All-in-One Sticky Anything"
 msgstr ""
 
-#: includes/Admin.php:49
+#: includes/Admin.php:52
 msgid "Getting Started"
 msgstr ""
 
-#: includes/Ajax.php:32
-#: includes/Ajax.php:57
-#: includes/Ajax.php:84
+#: includes/Admin.php:85
+msgid "Toggle Sticky Notes"
+msgstr ""
+
+#: includes/Admin.php:89
+msgid "Show or hide sticky notes"
+msgstr ""
+
+#: includes/Ajax.php:40
+#: includes/Ajax.php:65
+#: includes/Ajax.php:92
 msgid "Invalid nonce"
 msgstr ""
 
-#: includes/Ajax.php:36
-#: includes/Ajax.php:61
-#: includes/Ajax.php:89
+#: includes/Ajax.php:44
+#: includes/Ajax.php:69
+#: includes/Ajax.php:97
 msgid "You do not have permission to get tables"
+msgstr ""
+
+#: includes/Ajax.php:121
+#: includes/Ajax.php:166
+#: includes/Ajax.php:226
+#: includes/Ajax.php:263
+#: includes/Ajax.php:317
+#: includes/Ajax.php:353
+msgid "Insufficient permissions."
+msgstr ""
+
+#: includes/Ajax.php:150
+msgid "Could not create note."
+msgstr ""
+
+#: includes/Ajax.php:174
+#: includes/Ajax.php:234
+#: includes/Ajax.php:325
+msgid "Missing note ID."
+msgstr ""
+
+#: includes/Ajax.php:211
+msgid "Could not update note."
+msgstr ""
+
+#: includes/Ajax.php:247
+msgid "Could not delete note."
+msgstr ""
+
+#: includes/Ajax.php:278
+msgid "Note not found."
+msgstr ""
+
+#: includes/Ajax.php:301
+msgid "Could not duplicate note."
+msgstr ""
+
+#: includes/Ajax.php:340
+msgid "Could not archive note."
 msgstr ""
 
 #: includes/Customizer.php:25
@@ -87,7 +134,7 @@ msgid "Settings to configure Sticky Anything on your website."
 msgstr ""
 
 #: includes/Customizer.php:33
-#: assets/js/admin.js:11182
+#: assets/js/admin.js:11312
 msgid "Sticky Header"
 msgstr ""
 
@@ -101,7 +148,7 @@ msgstr ""
 
 #: includes/Customizer.php:75
 #: includes/Elementor.php:51
-#: assets/js/admin.js:11043
+#: assets/js/admin.js:11173
 msgid "Z-Index"
 msgstr ""
 
@@ -126,8 +173,8 @@ msgstr ""
 
 #: includes/Hooks.php:311
 #: assets/js/admin.js:7819
-#: assets/js/admin.js:10680
-#: assets/js/admin.js:11172
+#: assets/js/admin.js:10798
+#: assets/js/admin.js:11302
 #: assets/js/block-editor.js:40
 msgid "Fixed Widget"
 msgstr ""
@@ -262,8 +309,8 @@ msgid "Sticky Sidebar Settings"
 msgstr ""
 
 #: assets/js/admin.js:388
-#: assets/js/admin.js:10684
-#: assets/js/admin.js:11187
+#: assets/js/admin.js:10802
+#: assets/js/admin.js:11317
 msgid "Sticky Sidebar"
 msgstr ""
 
@@ -350,8 +397,8 @@ msgid "Visit Support Forum"
 msgstr ""
 
 #: assets/js/admin.js:648
-#: assets/js/admin.js:10710
-#: assets/js/admin.js:11043
+#: assets/js/admin.js:10832
+#: assets/js/admin.js:11173
 msgid "Custom CSS"
 msgstr ""
 
@@ -364,7 +411,7 @@ msgid "Write your custom CSS here."
 msgstr ""
 
 #: assets/js/admin.js:686
-#: assets/js/admin.js:10714
+#: assets/js/admin.js:10836
 msgid "Tools"
 msgstr ""
 
@@ -552,6 +599,7 @@ msgstr ""
 
 #: assets/js/admin.js:3398
 #: assets/js/admin.js:9617
+#: assets/js/admin.js:10694
 msgid "Everywhere"
 msgstr ""
 
@@ -4704,8 +4752,8 @@ msgid "Sticky Social Icons Settings"
 msgstr ""
 
 #: assets/js/admin.js:6948
-#: assets/js/admin.js:10688
-#: assets/js/admin.js:11192
+#: assets/js/admin.js:10806
+#: assets/js/admin.js:11322
 msgid "Sticky Social Icons"
 msgstr ""
 
@@ -4848,13 +4896,13 @@ msgstr ""
 #: assets/js/admin.js:8098
 #: assets/js/admin.js:9036
 #: assets/js/admin.js:9797
-#: assets/js/admin.js:10672
+#: assets/js/admin.js:10790
 msgid "General"
 msgstr ""
 
 #: assets/js/admin.js:7406
-#: assets/js/admin.js:10692
-#: assets/js/admin.js:11197
+#: assets/js/admin.js:10810
+#: assets/js/admin.js:11327
 msgid "Sticky Cookie Consent"
 msgstr ""
 
@@ -5126,8 +5174,8 @@ msgid "Click to Call Settings"
 msgstr ""
 
 #: assets/js/admin.js:8103
-#: assets/js/admin.js:10676
-#: assets/js/admin.js:11167
+#: assets/js/admin.js:10794
+#: assets/js/admin.js:11297
 msgid "Click to Call"
 msgstr ""
 
@@ -5955,428 +6003,473 @@ msgstr ""
 msgid "Close Button Text Color"
 msgstr ""
 
-#: assets/js/admin.js:10696
+#: assets/js/admin.js:10691
+msgid "Dashboard Only"
+msgstr ""
+
+#: assets/js/admin.js:10702
+msgid "Sticky Notes Settings"
+msgstr ""
+
+#: assets/js/admin.js:10708
+#: assets/js/admin.js:10822
+msgid "Sticky Notes"
+msgstr ""
+
+#: assets/js/admin.js:10719
+msgid "Enable draggable, resizable sticky notes on the WordPress admin dashboard. Each logged-in user gets their own notes, and can show/hide them from the \"Sticky Notes\" button in the admin bar."
+msgstr ""
+
+#: assets/js/admin.js:10723
+msgid "Show Notes On"
+msgstr ""
+
+#: assets/js/admin.js:10737
+msgid "\"Dashboard Only\" shows notes just on the WordPress Dashboard screen. \"Everywhere\" shows them on every wp-admin screen."
+msgstr ""
+
+#: assets/js/admin.js:10741
+msgid "Default Font"
+msgstr ""
+
+#: assets/js/admin.js:10754
+msgid "The font used for newly created notes. Each note can still have its font changed individually from its own settings popover."
+msgstr ""
+
+#: assets/js/admin.js:10814
 msgid "Sticky Forms"
 msgstr ""
 
-#: assets/js/admin.js:10700
+#: assets/js/admin.js:10818
 msgid "Sticky Table of Content"
 msgstr ""
 
-#: assets/js/admin.js:10818
+#: assets/js/admin.js:10943
 msgid "Settings saved successfully."
 msgstr ""
 
-#: assets/js/admin.js:10829
+#: assets/js/admin.js:10954
 msgid "Settings Reset successfully."
 msgstr ""
 
-#: assets/js/admin.js:10886
-#: assets/js/admin.js:11271
+#: assets/js/admin.js:11011
+#: assets/js/admin.js:11406
 msgid "Basic Usage"
 msgstr ""
 
-#: assets/js/admin.js:10892
+#: assets/js/admin.js:11017
 msgid "You can easily create a click-to-call button using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
 msgstr ""
 
-#: assets/js/admin.js:10892
+#: assets/js/admin.js:11017
 msgid "1. Log in to your WordPress dashboard."
 msgstr ""
 
-#: assets/js/admin.js:10892
+#: assets/js/admin.js:11017
 msgid "2. From the left menu, go to Sticky Anything → Click to Call."
 msgstr ""
 
-#: assets/js/admin.js:10892
+#: assets/js/admin.js:11017
 msgid "3. Turn on the \"Click to Call\" option."
 msgstr ""
 
-#: assets/js/admin.js:10892
+#: assets/js/admin.js:11017
 msgid "4. Enter your phone number and adjust the settings as needed."
 msgstr ""
 
-#: assets/js/admin.js:10892
+#: assets/js/admin.js:11017
 msgid "5. Click the \"Save Changes\" button."
 msgstr ""
 
-#: assets/js/admin.js:10892
+#: assets/js/admin.js:11017
 msgid "6. Visit your website to see the click-to-call button in action."
 msgstr ""
 
-#: assets/js/admin.js:10898
+#: assets/js/admin.js:11023
 msgid "You can easily create a fixed (sticky) widget using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
 msgstr ""
 
-#: assets/js/admin.js:10898
+#: assets/js/admin.js:11023
 msgid "1. Go to your WordPress Dashboard → Appearance → Widgets."
 msgstr ""
 
-#: assets/js/admin.js:10898
+#: assets/js/admin.js:11023
 msgid "2. If you are using the Block Editor, wrap the widget inside a Group block, then enable the Fixed Widget option from the Group settings in the right sidebar."
 msgstr ""
 
-#: assets/js/admin.js:10898
+#: assets/js/admin.js:11023
 msgid "3. If you are using the Classic Editor, simply enable the Fixed Widget option and click the Save button."
 msgstr ""
 
-#: assets/js/admin.js:10898
+#: assets/js/admin.js:11023
 msgid "4. Your sidebar widget will now remain fixed while scrolling."
 msgstr ""
 
-#: assets/js/admin.js:10904
+#: assets/js/admin.js:11029
 msgid "You can make Sticky Header easily by All-in-one WP Sticky Anyting. You need to do some step for it."
 msgstr ""
 
-#: assets/js/admin.js:10904
+#: assets/js/admin.js:11029
 msgid "1. Go to WordPress Dashboard > Sticky Anything > Settings > General"
 msgstr ""
 
-#: assets/js/admin.js:10904
+#: assets/js/admin.js:11029
 msgid "2. In the \"Sticky Class\" field, enter the CSS selector of your header. Must you need to provide a valid css class or id selector. example: .header"
 msgstr ""
 
-#: assets/js/admin.js:10904
+#: assets/js/admin.js:11029
 msgid "3. If sticky header z-index issue on scroll, then you need to configure the \"Z-index\" field. Write the max big integer value. ex: 9999999"
 msgstr ""
 
-#: assets/js/admin.js:10904
+#: assets/js/admin.js:11029
 msgid "4. Now you can click save button on the header."
 msgstr ""
 
-#: assets/js/admin.js:10910
+#: assets/js/admin.js:11035
 msgid "You can create a Sticky Header in Elementor without extra plugins. Just follow these steps:"
 msgstr ""
 
-#: assets/js/admin.js:10910
+#: assets/js/admin.js:11035
 msgid "1. Open any page with Elementor editor."
 msgstr ""
 
-#: assets/js/admin.js:10910
+#: assets/js/admin.js:11035
 msgid "2. Select the container or section you want to make sticky."
 msgstr ""
 
-#: assets/js/admin.js:10910
+#: assets/js/admin.js:11035
 msgid "3. Go to the \"Advanced\" tab in the Elementor panel."
 msgstr ""
 
-#: assets/js/admin.js:10910
+#: assets/js/admin.js:11035
 msgid "4. Scroll down to the \"Sticky Anything\" section and enable the \"Sticky\" option."
 msgstr ""
 
-#: assets/js/admin.js:10910
-#: assets/js/admin.js:10925
+#: assets/js/admin.js:11035
+#: assets/js/admin.js:11050
 msgid "6. Adjust \"Z-index\" if needed to control the stacking order."
 msgstr ""
 
-#: assets/js/admin.js:10910
+#: assets/js/admin.js:11035
 msgid "7. Update/Publish the page to apply the changes."
 msgstr ""
 
-#: assets/js/admin.js:10925
+#: assets/js/admin.js:11050
 msgid "You can create a Sticky Header via Customizer without any hussle. Just follow these steps:"
 msgstr ""
 
-#: assets/js/admin.js:10925
+#: assets/js/admin.js:11050
 msgid "1. Navigate Appearance > Customize."
 msgstr ""
 
-#: assets/js/admin.js:10925
+#: assets/js/admin.js:11050
 msgid "2. Navigate to the \"Sticky Anything\" section."
 msgstr ""
 
-#: assets/js/admin.js:10925
+#: assets/js/admin.js:11050
 msgid "3. Navigate to the \"Sticky Header\" section."
 msgstr ""
 
-#: assets/js/admin.js:10925
+#: assets/js/admin.js:11050
 msgid "4. Enable the \"Sticky Header\" option."
 msgstr ""
 
-#: assets/js/admin.js:10925
+#: assets/js/admin.js:11050
 msgid "7. Click the Publish bytton on the customizer."
 msgstr ""
 
-#: assets/js/admin.js:10940
-#: assets/js/admin.js:10946
+#: assets/js/admin.js:11065
+#: assets/js/admin.js:11071
 msgid "You can make Sticky Social Icons easily by All-in-one WP Sticky Anyting. You need to do some step for it."
 msgstr ""
 
-#: assets/js/admin.js:10940
+#: assets/js/admin.js:11065
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Social Icons."
 msgstr ""
 
-#: assets/js/admin.js:10940
+#: assets/js/admin.js:11065
 msgid "2. Enable the \"Sticky Social Icons\" option."
 msgstr ""
 
-#: assets/js/admin.js:10940
+#: assets/js/admin.js:11065
 msgid "3. Customize the social icons settings to your preference."
 msgstr ""
 
-#: assets/js/admin.js:10940
+#: assets/js/admin.js:11065
 msgid "4. Click \"Add Icon\" to insert social icons, then configure the icon and URL."
 msgstr ""
 
-#: assets/js/admin.js:10940
-#: assets/js/admin.js:10946
-#: assets/js/admin.js:10952
+#: assets/js/admin.js:11065
+#: assets/js/admin.js:11071
+#: assets/js/admin.js:11077
 msgid "5. Click the \"Save\" button at the top to apply your changes."
 msgstr ""
 
-#: assets/js/admin.js:10946
+#: assets/js/admin.js:11071
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Cookie Consent."
 msgstr ""
 
-#: assets/js/admin.js:10946
+#: assets/js/admin.js:11071
 msgid "2. Enable the \"Sticky Cookie Consent\" option."
 msgstr ""
 
-#: assets/js/admin.js:10946
+#: assets/js/admin.js:11071
 msgid "3. Customize the cookie consent message, button text & style."
 msgstr ""
 
-#: assets/js/admin.js:10952
-#: assets/js/admin.js:11203
+#: assets/js/admin.js:11077
+#: assets/js/admin.js:11333
 msgid "Display a sticky table of contents to help users navigate your content."
 msgstr ""
 
-#: assets/js/admin.js:10952
+#: assets/js/admin.js:11077
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Table of Contents."
 msgstr ""
 
-#: assets/js/admin.js:10952
+#: assets/js/admin.js:11077
 msgid "2. Enable the \"Table of Contents\" option."
 msgstr ""
 
-#: assets/js/admin.js:10952
+#: assets/js/admin.js:11077
 msgid "3. Enable the \"Sticky\" option."
 msgstr ""
 
-#: assets/js/admin.js:10952
+#: assets/js/admin.js:11077
 msgid "4. Customize the table of contents settings to your preference."
 msgstr ""
 
-#: assets/js/admin.js:10958
+#: assets/js/admin.js:11083
 msgid "You can make any sticky element or sidebar easily on your WordPress website by All-in-one WP Sticky Anyting. Integration is super easy. You need add a class on your target element. ex: sticky."
 msgstr ""
 
-#: assets/js/admin.js:10964
+#: assets/js/admin.js:11089
 msgid "Setting up a sticky sidebar on your WordPress site is simple with the All-in-One WP Sticky Anything plugin. Just follow these steps to get started:"
 msgstr ""
 
-#: assets/js/admin.js:10964
+#: assets/js/admin.js:11089
 msgid "1. Go to your WordPress Dashboard. Navigate to: Sticky Anything > Settings > Sticky Sidebar."
 msgstr ""
 
-#: assets/js/admin.js:10964
+#: assets/js/admin.js:11089
 msgid "2. Enable the Sticky Sidebar. Toggle the option to enable the sticky sidebar functionality."
 msgstr ""
 
-#: assets/js/admin.js:10964
+#: assets/js/admin.js:11089
 msgid "3. Enter the Sidebar Selector. This is the class or ID of the sidebar you want to make sticky. Since it varies depending on your theme, right-click on your sidebar in the browser and select Inspect. Copy the relevant selector name (e.g., .sidebar or #secondary) and paste it into the Sidebar Selector field."
 msgstr ""
 
-#: assets/js/admin.js:10964
+#: assets/js/admin.js:11089
 msgid "4. Enter the Sidebar Container Selector. This is the outer container that holds the sidebar. Again, inspect the element in your browser and copy the correct selector. Paste it into the Sidebar Container Selector field."
 msgstr ""
 
-#: assets/js/admin.js:10964
+#: assets/js/admin.js:11089
 msgid "5. Adjust additonal settings based on your needs."
 msgstr ""
 
-#: assets/js/admin.js:10964
+#: assets/js/admin.js:11089
 msgid "6. Now you can click save button on the header."
 msgstr ""
 
-#: assets/js/admin.js:10970
+#: assets/js/admin.js:11095
 msgid "If needed, add custom CSS to fine-tune the appearance and behavior of the sticky header. Your custom css need to paste on the Custom CSS box and Click Save button."
 msgstr ""
 
-#: assets/js/admin.js:10979
+#: assets/js/admin.js:11104
+msgid "Introduce Admin Sticky Notes"
+msgstr ""
+
+#: assets/js/admin.js:11109
 msgid "Disable Sticky on Mobile setting added on the General settings(PRO)."
 msgstr ""
 
-#: assets/js/admin.js:10979
+#: assets/js/admin.js:11109
 msgid "Introduce Sticky Forms (Pro)."
 msgstr ""
 
-#: assets/js/admin.js:10980
+#: assets/js/admin.js:11110
 msgid "Custom CSS containing quotes was being mangled on output."
 msgstr ""
 
-#: assets/js/admin.js:10984
+#: assets/js/admin.js:11114
 msgid "Delete Data on Uninstall."
 msgstr ""
 
-#: assets/js/admin.js:10988
+#: assets/js/admin.js:11118
 msgid "Click to call button style."
 msgstr ""
 
-#: assets/js/admin.js:10989
+#: assets/js/admin.js:11119
 msgid "Expiry and Reject Redirect settings added on the Cookie Consent."
 msgstr ""
 
-#: assets/js/admin.js:10993
+#: assets/js/admin.js:11123
 msgid "Introduce Sticky Table of Contents(toc)."
 msgstr ""
 
-#: assets/js/admin.js:10997
+#: assets/js/admin.js:11127
 msgid "Introduce Click to Call."
 msgstr ""
 
-#: assets/js/admin.js:11001
+#: assets/js/admin.js:11131
 msgid "Introduce Fixed Widget."
 msgstr ""
 
-#: assets/js/admin.js:11002
+#: assets/js/admin.js:11132
 msgid "Settings sync on the multiple devices."
 msgstr ""
 
-#: assets/js/admin.js:11006
+#: assets/js/admin.js:11136
 msgid "Introduce Sticky Cookie Consent."
 msgstr ""
 
-#: assets/js/admin.js:11007
+#: assets/js/admin.js:11137
 msgid "WordPress 6.9 Compatibility."
 msgstr ""
 
-#: assets/js/admin.js:11011
+#: assets/js/admin.js:11141
 msgid "Introduce Sticky Social Icons."
 msgstr ""
 
-#: assets/js/admin.js:11015
+#: assets/js/admin.js:11145
 msgid "Introduce Customizer support for Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra themes."
 msgstr ""
 
-#: assets/js/admin.js:11019
+#: assets/js/admin.js:11149
 msgid "Astra theme compatibility."
 msgstr ""
 
-#: assets/js/admin.js:11023
+#: assets/js/admin.js:11153
 msgid "Introduce Elementor Page Builder Sticky Option."
 msgstr ""
 
-#: assets/js/admin.js:11027
+#: assets/js/admin.js:11157
 msgid "New Option to Fix Sticky Header."
 msgstr ""
 
-#: assets/js/admin.js:11031
+#: assets/js/admin.js:11161
 msgid "Fixed close icon."
 msgstr ""
 
-#: assets/js/admin.js:11035
+#: assets/js/admin.js:11165
 msgid "Introduce Sticky Sidebar."
 msgstr ""
 
-#: assets/js/admin.js:11039
+#: assets/js/admin.js:11169
 msgid "Migrate old data."
 msgstr ""
 
-#: assets/js/admin.js:11043
+#: assets/js/admin.js:11173
 msgid "Reset Settings"
 msgstr ""
 
-#: assets/js/admin.js:11044
+#: assets/js/admin.js:11174
 msgid "Improved Dashboard"
 msgstr ""
 
-#: assets/js/admin.js:11048
+#: assets/js/admin.js:11178
 msgid "Initial Version"
 msgstr ""
 
-#: assets/js/admin.js:11058
-#: assets/js/admin.js:11279
+#: assets/js/admin.js:11188
+#: assets/js/admin.js:11414
 msgid "Changelog"
 msgstr ""
 
-#: assets/js/admin.js:11060
+#: assets/js/admin.js:11190
 msgid "Check out the latest change logs."
 msgstr ""
 
-#: assets/js/admin.js:11074
+#: assets/js/admin.js:11204
 msgid "New Features"
 msgstr ""
 
-#: assets/js/admin.js:11082
+#: assets/js/admin.js:11212
 msgid "Fixs"
 msgstr ""
 
-#: assets/js/admin.js:11090
+#: assets/js/admin.js:11220
 msgid "Enhancements"
 msgstr ""
 
-#: assets/js/admin.js:11107
+#: assets/js/admin.js:11237
 msgid "Just use .sticky class."
 msgstr ""
 
-#: assets/js/admin.js:11110
+#: assets/js/admin.js:11240
 msgid "Open any page with Elementor → Select a container or section → Go to the `Advanced Tab` → `Sticky Anything` Settings."
 msgstr ""
 
-#: assets/js/admin.js:11113
+#: assets/js/admin.js:11243
 msgid "No."
 msgstr ""
 
-#: assets/js/admin.js:11116
+#: assets/js/admin.js:11246
 msgid "Popular classic themes such as Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra provide seamless Sticky Header compatibility."
 msgstr ""
 
-#: assets/js/admin.js:11119
+#: assets/js/admin.js:11249
 msgid "Just remove class from settings."
 msgstr ""
 
-#: assets/js/admin.js:11136
-#: assets/js/admin.js:11275
+#: assets/js/admin.js:11266
+#: assets/js/admin.js:11410
 msgid "Help"
 msgstr ""
 
-#: assets/js/admin.js:11157
+#: assets/js/admin.js:11287
 msgid "Please use the support forum."
 msgstr ""
 
-#: assets/js/admin.js:11168
+#: assets/js/admin.js:11298
 msgid "Add a click-to-call button to your website to make it more user-friendly."
 msgstr ""
 
-#: assets/js/admin.js:11173
+#: assets/js/admin.js:11303
 msgid "Easily make your sidebar widgets sticky to enhance user engagement and accessibility."
 msgstr ""
 
-#: assets/js/admin.js:11177
+#: assets/js/admin.js:11307
 msgid "Sticky Element"
 msgstr ""
 
-#: assets/js/admin.js:11178
+#: assets/js/admin.js:11308
 msgid "Choose any element on your site to make it sticky as users scroll."
 msgstr ""
 
-#: assets/js/admin.js:11183
+#: assets/js/admin.js:11313
 msgid "Keep your header visible while scrolling for better navigation and branding."
 msgstr ""
 
-#: assets/js/admin.js:11188
+#: assets/js/admin.js:11318
 msgid "Make your sidebar stay in view as visitors scroll through your content."
 msgstr ""
 
-#: assets/js/admin.js:11193
+#: assets/js/admin.js:11323
 msgid "Display your social media icons on your site and make them sticky as users scroll."
 msgstr ""
 
-#: assets/js/admin.js:11198
+#: assets/js/admin.js:11328
 msgid "Make your cookie consent banner sticky to ensure compliance and visibility."
 msgstr ""
 
-#: assets/js/admin.js:11202
+#: assets/js/admin.js:11332
 msgid "Sticky Table of Contents"
 msgstr ""
 
-#: assets/js/admin.js:11211
-#: assets/js/admin.js:11267
+#: assets/js/admin.js:11337
+msgid "Admin Sticky Notes"
+msgstr ""
+
+#: assets/js/admin.js:11338
+msgid "Add sticky notes in the WordPress admin area to keep important information visible."
+msgstr ""
+
+#: assets/js/admin.js:11346
+#: assets/js/admin.js:11402
 msgid "Introduction"
 msgstr ""
 
-#: assets/js/admin.js:11311
+#: assets/js/admin.js:11446
 msgid "All-in-One WP Sticky Anything on Scroll plugin allows to you make any elements sticky or sticky Header on your website."
 msgstr ""
 
@@ -6386,4 +6479,16 @@ msgstr ""
 
 #: assets/js/block-editor.js:50
 msgid "Make this widget a fixed widget."
+msgstr ""
+
+#: assets/js/sticky-notes.js:112
+msgid "Type your note…"
+msgstr ""
+
+#: assets/js/sticky-notes.js:136
+msgid "Delete this note?"
+msgstr ""
+
+#: assets/js/sticky-notes.js:527
+msgid "Add sticky note"
 msgstr ""

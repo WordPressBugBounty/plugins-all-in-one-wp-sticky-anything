@@ -19,6 +19,9 @@ class Admin {
 
         // migrate data
         add_action('admin_init', [$this, 'migrate_data']);
+
+        // Sticky Notes admin bar toggle
+        add_action('admin_bar_menu', array($this, 'sticky_notes_admin_bar_toggle'), 100);
     }
 
     public function register_menu() {
@@ -59,6 +62,34 @@ class Admin {
 
     public function render_ai1wpsa_getting_started() {
         echo '<div id="ai1wpsa-getting-started" class="ai1wpsa-getting-started"></div>';
+    }
+
+    /**
+     * Add a "Sticky Notes" toggle button to the admin bar (all admin
+     * screens). This class is only loaded for admin requests (see
+     * Main::includes()), so there's no need to re-check is_admin() here.
+     *
+     * @param \WP_Admin_Bar $wp_admin_bar Admin bar instance.
+     * @return void
+     */
+    public function sticky_notes_admin_bar_toggle($wp_admin_bar) {
+        if (! current_user_can('read') || ! (bool) ai1wpsa_get_settings('stickyNotes', false)) {
+            return;
+        }
+
+        $hidden = (int) get_user_meta(get_current_user_id(), 'ai1wpsa_notes_hidden', true);
+
+        $wp_admin_bar->add_node(
+            array(
+                'id'    => 'ai1wpsa-notes-toggle',
+                'title' => '<span class="ab-icon dashicons dashicons-admin-post"></span><span class="ab-label">' . esc_html__('Toggle Sticky Notes', 'all-in-one-wp-sticky-anything') . '</span>',
+                'href'  => '#',
+                'meta'  => array(
+                    'class' => 'ai1wpsa-notes-toggle-node' . ($hidden ? ' ai1wpsa-notes-hidden' : ''),
+                    'title' => __('Show or hide sticky notes', 'all-in-one-wp-sticky-anything'),
+                ),
+            )
+        );
     }
 
     /**

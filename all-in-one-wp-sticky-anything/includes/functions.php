@@ -1,6 +1,7 @@
 <?php
 
-if (! defined('ABSPATH')) exit;
+if (! defined('ABSPATH')) { exit;
+}
 
 /**
  * Whether the Premium add-on is active and unlocked.
@@ -11,10 +12,11 @@ if (! defined('ABSPATH')) exit;
  * this plugin must be gated behind this, never a hardcoded flag, so a
  * missing/deactivated premium plugin always degrades to free behavior.
  *
- * @since 1.2.0
+ * @since  1.2.0
  * @return bool
  */
-function ai1wpsa_is_pro() {
+function ai1wpsa_is_pro()
+{
     return (bool) apply_filters('ai1wpsa_is_pro', false);
 }
 
@@ -31,10 +33,11 @@ function ai1wpsa_is_pro() {
  * e.g. Sticky Floating Forms' Position defaults to 'bottom-right', which
  * is a Pro option; the free-safe value is 'bottom-left').
  *
- * @since 1.2.0
+ * @since  1.2.0
  * @return array<string, mixed>
  */
-function ai1wpsa_pro_setting_locks() {
+function ai1wpsa_pro_setting_locks()
+{
     return [
         // Sticky Cookie Consent
         'stickyCookieConsentLayout'            => 'long',
@@ -94,10 +97,11 @@ function ai1wpsa_pro_setting_locks() {
  * simply removed so each consumer's own existing fallback default
  * applies, same as if the setting had never been saved at all.
  *
- * @since 1.2.0
+ * @since  1.2.0
  * @return string[]
  */
-function ai1wpsa_pro_setting_strip_keys() {
+function ai1wpsa_pro_setting_strip_keys()
+{
     return [
         'stickyFloatingFormsExitFrequencyValue',
         'stickyFloatingFormsExitFrequencyUnit',
@@ -124,11 +128,12 @@ function ai1wpsa_pro_setting_strip_keys() {
  * a full settings array or a partial one — only touches keys it knows
  * about.
  *
- * @since 1.2.0
- * @param mixed $settings
+ * @since  1.2.0
+ * @param  mixed $settings
  * @return mixed
  */
-function ai1wpsa_sanitize_pro_settings($settings) {
+function ai1wpsa_sanitize_pro_settings($settings)
+{
     if (! is_array($settings) || ai1wpsa_is_pro()) {
         return $settings;
     }
@@ -155,11 +160,12 @@ function ai1wpsa_sanitize_pro_settings($settings) {
 /**
  * Get ai1wpsa settings
  *
- * @param string $key
- * @param string $default
+ * @param  string $key
+ * @param  string $default
  * @return mixed
  */
-function ai1wpsa_get_settings($key = null, $default = null) {
+function ai1wpsa_get_settings($key = null, $default = null)
+{
 
     $settings = ai1wpsa_sanitize_pro_settings(get_option('ai1wpsa_settings'));
 
@@ -181,7 +187,8 @@ function ai1wpsa_get_settings($key = null, $default = null) {
  *
  * @return int The sanitized checkbox value.
  */
-function ai1wpsa_sanitize_checkbox($checked) {
+function ai1wpsa_sanitize_checkbox($checked)
+{
     return (isset($checked) && $checked == 1) ? 1 : 0;
 }
 
@@ -197,7 +204,8 @@ function ai1wpsa_sanitize_checkbox($checked) {
  *
  * @return array The sanitized array.
  */
-function ai1wpsa_sanitize_array($array) {
+function ai1wpsa_sanitize_array($array)
+{
     foreach ($array as $key => &$value) {
         if (is_array($value)) {
             $value = ai1wpsa_sanitize_array($value);
@@ -220,7 +228,8 @@ function ai1wpsa_sanitize_array($array) {
     return $array;
 }
 
-function ai1wpsa_get_public_post_types() {
+function ai1wpsa_get_public_post_types()
+{
     // Get all public post types as objects
     $post_types = get_post_types(
         array(
@@ -244,4 +253,53 @@ function ai1wpsa_get_public_post_types() {
     }
 
     return $result;
+}
+
+function ai1wpsa_get_notes()
+{
+    
+    if (! current_user_can('read')) {
+        return;
+    }
+   
+    $notes     = [];
+        
+	global $wpdb;
+	$table = $wpdb->prefix . 'ai1wpsa_sticky_notes';
+	$rows  = $wpdb->get_results(
+		$wpdb->prepare(
+			"SELECT * FROM $table WHERE id_user = %d AND status = 0", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			get_current_user_id()
+		),
+		ARRAY_A
+	);
+
+    if (is_array($rows)) {
+        $notes = array_map('ai1wpsa_format_row', $rows);
+    }
+
+    return $notes;
+}
+
+/**
+ * Normalize a DB row into the shape the front end expects.
+ *
+ * @param  array $row Raw row from $wpdb->get_results( ..., ARRAY_A ).
+ * @return array
+ */
+function ai1wpsa_format_row($row)
+{
+    return array(
+		'id'         => absint($row['id']),
+		'content'    => $row['content'],
+		'z'          => absint($row['z_index']),
+		'theme'      => absint($row['theme']),
+		'fontSize'   => absint($row['font_size']),
+		'fontFamily' => absint($row['font_family']),
+		'fontColor'  => $row['font_color'],
+		'width'      => absint($row['width']),
+		'height'     => absint($row['height']),
+		'top'        => absint($row['postop']),
+		'left'       => absint($row['posleft']),
+    );
 }

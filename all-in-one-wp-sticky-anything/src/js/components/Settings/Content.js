@@ -9,6 +9,7 @@ import FixedWidget from "./FixedWidget";
 import ClickToCall from "./ClickToCall";
 import StickyToc from "./StickyToc";
 import StickyForms from "./StickyForms";
+import StickyNotes from "./StickyNotes";
 
 const { useState, useEffect } = wp.element;
 
@@ -61,6 +62,11 @@ export default function Content() {
       title: wp.i18n.__('Sticky Table of Content', 'all-in-one-wp-sticky-anything'),
       icon: 'dashicons dashicons-sticky',
     },
+    {
+      id: 'sticky-notes',
+      title: wp.i18n.__('Sticky Notes', 'all-in-one-wp-sticky-anything'),
+      icon: 'dashicons dashicons-admin-post',
+    },
 
     // {
     //   id: 'announcement',
@@ -100,6 +106,7 @@ export default function Content() {
       {tab === 'sticky-cookie-consent' && <StickyCookieConsent />}
       {tab === 'sticky-forms' && <StickyForms />}
       {tab === 'sticky-toc' && <StickyToc />}
+      {tab === 'sticky-notes' && <StickyNotes />}
       {tab === 'announcement' && <AnnouncementBar />}
       {tab === 'css' && <Css />}
       {tab === 'tools' && <Tools />}

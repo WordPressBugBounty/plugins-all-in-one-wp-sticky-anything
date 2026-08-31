@@ -11,7 +11,7 @@ class Update {
      *
      * @var array
      */
-    private static $upgrades = array('1.0.2');
+    private static $upgrades = array('1.0.2', '1.1.7');
 
     public function installed_version() {
         return get_option('ai1wpsa_version');
@@ -28,8 +28,8 @@ class Update {
             return false;
         }
 
-        //if previous version is higher
-        if (version_compare($this->installed_version(), AI1WPSA_VERSION, '>')) {
+        // if the installed version is older than the code now running
+        if (version_compare($this->installed_version(), AI1WPSA_VERSION, '<')) {
             return true;
         }
 
@@ -43,7 +43,8 @@ class Update {
      */
     public function perform_updates() {
         foreach (self::$upgrades as $version) {
-            if (version_compare($this->installed_version(), $version, '>')) {
+            // run this step only if the installed version hasn't reached it yet
+            if (version_compare($this->installed_version(), $version, '<')) {
                 $file = AI1WPSA_INCLUDES . "/updates/Update-$version.php";
 
                 if (file_exists($file)) {
@@ -53,5 +54,11 @@ class Update {
                 update_option('ai1wpsa_version', $version);
             }
         }
+
+        // Bring the stored version fully up to date even if AI1WPSA_VERSION
+        // has moved past the last entry in $upgrades — otherwise
+        // needs_update() keeps returning true forever once the code
+        // version outpaces the last defined upgrade step.
+        update_option('ai1wpsa_version', AI1WPSA_VERSION);
     }
 }

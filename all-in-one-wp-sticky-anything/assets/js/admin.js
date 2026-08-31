@@ -10636,6 +10636,123 @@ function StickyFloatingForms() {
     resetValue: "#000"
   }))))))));
 }
+;// ./src/js/components/Settings/StickyNotes.js
+function StickyNotes_typeof(o) { "@babel/helpers - typeof"; return StickyNotes_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, StickyNotes_typeof(o); }
+function StickyNotes_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function StickyNotes_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? StickyNotes_ownKeys(Object(t), !0).forEach(function (r) { StickyNotes_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : StickyNotes_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function StickyNotes_defineProperty(e, r, t) { return (r = StickyNotes_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function StickyNotes_toPropertyKey(t) { var i = StickyNotes_toPrimitive(t, "string"); return "symbol" == StickyNotes_typeof(i) ? i : i + ""; }
+function StickyNotes_toPrimitive(t, r) { if ("object" != StickyNotes_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != StickyNotes_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var StickyNotes_useContext = wp.element.useContext;
+var StickyNotes_wp$components = wp.components,
+  StickyNotes_Button = StickyNotes_wp$components.Button,
+  StickyNotes_ButtonGroup = StickyNotes_wp$components.ButtonGroup,
+  StickyNotes_FormToggle = StickyNotes_wp$components.FormToggle,
+  StickyNotes_SelectControl = StickyNotes_wp$components.SelectControl;
+
+
+// Same order as the $fonts array in includes/StickyNotes.php — the stored
+// value is the array index, so this order must stay in sync with PHP.
+var fontOptions = [{
+  value: 0,
+  label: 'Arial'
+}, {
+  value: 1,
+  label: 'Georgia'
+}, {
+  value: 2,
+  label: 'Courier New'
+}, {
+  value: 3,
+  label: 'Comic Sans MS'
+}, {
+  value: 4,
+  label: 'Verdana'
+}, {
+  value: 5,
+  label: 'Segoe UI'
+}, {
+  value: 6,
+  label: 'Trebuchet MS'
+}];
+function StickyNotes() {
+  var _useContext = StickyNotes_useContext(Contexts_SettingsContext),
+    data = _useContext.data,
+    setData = _useContext.setData;
+  var _ref = data || {},
+    _ref$stickyNotes = _ref.stickyNotes,
+    stickyNotes = _ref$stickyNotes === void 0 ? false : _ref$stickyNotes,
+    _ref$stickyNotesDispl = _ref.stickyNotesDisplay,
+    stickyNotesDisplay = _ref$stickyNotesDispl === void 0 ? 'dashboard' : _ref$stickyNotesDispl,
+    _ref$stickyNotesDefau = _ref.stickyNotesDefaultFont,
+    stickyNotesDefaultFont = _ref$stickyNotesDefau === void 0 ? 0 : _ref$stickyNotesDefau;
+  var displayOptions = [{
+    value: 'dashboard',
+    label: wp.i18n.__('Dashboard Only', 'all-in-one-wp-sticky-anything')
+  }, {
+    value: 'everywhere',
+    label: wp.i18n.__('Everywhere', 'all-in-one-wp-sticky-anything')
+  }];
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "ai1wpsa-settings-content-header"
+  }, /*#__PURE__*/React.createElement("i", {
+    "class": "dashicons dashicons-admin-post"
+  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Sticky Notes Settings', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Sticky Notes', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyNotes_FormToggle, {
+    checked: stickyNotes,
+    onChange: function onChange() {
+      return setData(StickyNotes_objectSpread(StickyNotes_objectSpread({}, data), {}, {
+        stickyNotes: !stickyNotes
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Enable draggable, resizable sticky notes on the WordPress admin dashboard. Each logged-in user gets their own notes, and can show/hide them from the "Sticky Notes" button in the admin bar.', 'all-in-one-wp-sticky-anything')))), !!stickyNotes && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Show Notes On', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyNotes_ButtonGroup, null, displayOptions.map(function (option) {
+    return /*#__PURE__*/React.createElement(StickyNotes_Button, {
+      key: option.value,
+      onClick: function onClick() {
+        return setData(StickyNotes_objectSpread(StickyNotes_objectSpread({}, data), {}, {
+          stickyNotesDisplay: option.value
+        }));
+      },
+      variant: stickyNotesDisplay === option.value ? 'primary' : ''
+    }, option.label);
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('"Dashboard Only" shows notes just on the WordPress Dashboard screen. "Everywhere" shows them on every wp-admin screen.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Default Font', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickyNotes_SelectControl, {
+    value: stickyNotesDefaultFont,
+    options: fontOptions,
+    className: "ai1wpsa-select-control",
+    onChange: function onChange(value) {
+      return setData(StickyNotes_objectSpread(StickyNotes_objectSpread({}, data), {}, {
+        stickyNotesDefaultFont: parseInt(value, 10)
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('The font used for newly created notes. Each note can still have its font changed individually from its own settings popover.', 'all-in-one-wp-sticky-anything')))))));
+}
 ;// ./src/js/components/Settings/Content.js
 function Content_slicedToArray(r, e) { return Content_arrayWithHoles(r) || Content_iterableToArrayLimit(r, e) || Content_unsupportedIterableToArray(r, e) || Content_nonIterableRest(); }
 function Content_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10643,6 +10760,7 @@ function Content_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typ
 function Content_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function Content_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function Content_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 
 
@@ -10699,6 +10817,10 @@ function Content() {
     id: 'sticky-toc',
     title: wp.i18n.__('Sticky Table of Content', 'all-in-one-wp-sticky-anything'),
     icon: 'dashicons dashicons-sticky'
+  }, {
+    id: 'sticky-notes',
+    title: wp.i18n.__('Sticky Notes', 'all-in-one-wp-sticky-anything'),
+    icon: 'dashicons dashicons-admin-post'
   },
   // {
   //   id: 'announcement',
@@ -10730,7 +10852,7 @@ function Content() {
     }, /*#__PURE__*/React.createElement("i", {
       className: icon
     }), title);
-  })), tab === 'general' && /*#__PURE__*/React.createElement(General, null), tab === 'fixed-widget' && /*#__PURE__*/React.createElement(FixedWidget, null), tab === 'click-to-call' && /*#__PURE__*/React.createElement(ClickToCall, null), tab === 'sticky-sidebar' && /*#__PURE__*/React.createElement(StickySidebar, null), tab === 'sticky-social-icons' && /*#__PURE__*/React.createElement(StickySocial, null), tab === 'sticky-cookie-consent' && /*#__PURE__*/React.createElement(StickyCookieConsent, null), tab === 'sticky-forms' && /*#__PURE__*/React.createElement(StickyFloatingForms, null), tab === 'sticky-toc' && /*#__PURE__*/React.createElement(StickyToc, null), tab === 'announcement' && /*#__PURE__*/React.createElement(AnnouncementBar, null), tab === 'css' && /*#__PURE__*/React.createElement(Css, null), tab === 'tools' && /*#__PURE__*/React.createElement(Tools, null));
+  })), tab === 'general' && /*#__PURE__*/React.createElement(General, null), tab === 'fixed-widget' && /*#__PURE__*/React.createElement(FixedWidget, null), tab === 'click-to-call' && /*#__PURE__*/React.createElement(ClickToCall, null), tab === 'sticky-sidebar' && /*#__PURE__*/React.createElement(StickySidebar, null), tab === 'sticky-social-icons' && /*#__PURE__*/React.createElement(StickySocial, null), tab === 'sticky-cookie-consent' && /*#__PURE__*/React.createElement(StickyCookieConsent, null), tab === 'sticky-forms' && /*#__PURE__*/React.createElement(StickyFloatingForms, null), tab === 'sticky-toc' && /*#__PURE__*/React.createElement(StickyToc, null), tab === 'sticky-notes' && /*#__PURE__*/React.createElement(StickyNotes, null), tab === 'announcement' && /*#__PURE__*/React.createElement(AnnouncementBar, null), tab === 'css' && /*#__PURE__*/React.createElement(Css, null), tab === 'tools' && /*#__PURE__*/React.createElement(Tools, null));
 }
 ;// ./src/js/includes/functions.js
 function functions_slicedToArray(r, e) { return functions_arrayWithHoles(r) || functions_iterableToArrayLimit(r, e) || functions_unsupportedIterableToArray(r, e) || functions_nonIterableRest(); }
@@ -10796,6 +10918,9 @@ function Settings() {
     stickyDisableOn: [],
     clicktoCall: false,
     stickyToc: false,
+    stickyNotes: false,
+    stickyNotesDisplay: 'dashboard',
+    stickyNotesDefaultFont: 0,
     customCss: '',
     deleteData: false
   };
@@ -10974,6 +11099,11 @@ function BasicUsage() {
 ;// ./src/js/components/GettingStarted/Changelog.js
 function Changelog() {
   var logs = [{
+    version: 'v1.1.7',
+    date: '31-08-2026',
+    "new": [wp.i18n.__('Introduce Admin Sticky Notes', 'all-in-one-wp-sticky-anything')],
+    fix: []
+  }, {
     version: 'v1.1.6',
     date: '15-08-2026',
     "new": [wp.i18n.__('Disable Sticky on Mobile setting added on the General settings(PRO).', 'all-in-one-wp-sticky-anything'), wp.i18n.__('Introduce Sticky Forms (Pro).', 'all-in-one-wp-sticky-anything')],
@@ -11201,6 +11331,11 @@ function Introduction() {
     icon: 'dashicons-list-view',
     title: wp.i18n.__('Sticky Table of Contents', 'all-in-one-wp-sticky-anything'),
     desc: wp.i18n.__('Display a sticky table of contents to help users navigate your content.', 'all-in-one-wp-sticky-anything')
+  }, {
+    id: 'admin-sticky-notes',
+    icon: 'dashicons-welcome-write-blog',
+    title: wp.i18n.__('Admin Sticky Notes', 'all-in-one-wp-sticky-anything'),
+    desc: wp.i18n.__('Add sticky notes in the WordPress admin area to keep important information visible.', 'all-in-one-wp-sticky-anything')
   }];
   return /*#__PURE__*/React.createElement("div", {
     className: "ai1wpsa-settings-content"

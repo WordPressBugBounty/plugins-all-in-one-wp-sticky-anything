@@ -24,6 +24,9 @@ export default function Settings() {
         stickyDisableOn: [],
         clicktoCall: false,
         stickyToc: false,
+        stickyNotes: false,
+        stickyNotesDisplay: 'dashboard',
+        stickyNotesDefaultFont: 0,
         customCss: '',
         deleteData: false,
     };

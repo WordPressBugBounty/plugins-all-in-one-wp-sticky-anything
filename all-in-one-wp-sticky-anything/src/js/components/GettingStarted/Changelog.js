@@ -1,6 +1,14 @@
 export default function Changelog() {
     const logs = [
         {
+            version: 'v1.1.7',
+            date: '31-08-2026',
+            new: [
+                wp.i18n.__('Introduce Admin Sticky Notes', 'all-in-one-wp-sticky-anything'),
+            ],
+            fix: [],
+        },
+        {
             version: 'v1.1.6',
             date: '15-08-2026',
             new: [
