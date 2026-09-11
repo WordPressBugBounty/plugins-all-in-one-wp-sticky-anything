@@ -13,6 +13,7 @@ class Hooks {
 	 */
 	public function __construct() {
 		add_action('wp_print_styles', array($this, 'render_custom_css'));
+		add_action('wp_head', array($this, 'render_sticky_header_styles'));
 		add_action('wp_footer', array($this, 'render_social_icons'));
 		add_action('wp_footer', array($this, 'render_cookie_consent'));
 		add_action('in_widget_form', array($this, 'add_widget_option'), 10, 3);
@@ -30,6 +31,62 @@ class Hooks {
 		if (! empty($css)) {
 			echo '<style type="text/css">' . wp_strip_all_tags($css) . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
+	}
+
+	/**
+	 * Render Sticky Header Background
+	 *
+	 * Scoped to `.ai1wpsa-fix-sticky.sticky` — the pair of classes every
+	 * sticky-header code path in frontend.js (fix-default, Customizer,
+	 * Elementor) adds only once the header is actually stuck to the top of
+	 * the screen. So this background only ever shows up in that "active"
+	 * state, never on the header's normal in-flow appearance.
+	 *
+	 * Background Image and Gradient are Premium — `ai1wpsa_get_settings()`
+	 * already downgrades `stickyHeaderBgType`/`stickyHeaderColorType` back
+	 * to 'color'/'solid' on a free install (see ai1wpsa_pro_setting_locks），
+	 * so this method never needs its own Pro check; it just renders
+	 * whatever the (already-enforced) settings say.
+	 *
+	 * @return void
+	 */
+	public function render_sticky_header_styles() {
+		$bg_type    = ai1wpsa_get_settings('stickyHeaderBgType', 'color');
+		$color_type = ai1wpsa_get_settings('stickyHeaderColorType', 'solid');
+		$bg_color   = ai1wpsa_get_settings('stickyHeaderBgColor');
+		$gradient   = ai1wpsa_get_settings('stickyHeaderGradient');
+		$bg_image   = ai1wpsa_get_settings('stickyHeaderBgImage');
+
+		$declarations = [];
+
+		if ($bg_type === 'image' && ! empty($bg_image)) {
+			$declarations[] = 'background-image: url(' . esc_url($bg_image) . ')';
+			$declarations[] = 'background-size: cover';
+			$declarations[] = 'background-position: center';
+			$declarations[] = 'background-repeat: no-repeat';
+		} elseif ($bg_type === 'color' && $color_type === 'gradient' && ! empty($gradient)) {
+			$declarations[] = 'background-image: ' . esc_attr($gradient);
+		} elseif (! empty($bg_color)) {
+			$declarations[] = 'background-color: ' . esc_attr($bg_color);
+		}
+
+		if (empty($declarations)) {
+			return;
+		}
+		?>
+		<style>
+			.ai1wpsa-fix-sticky.sticky {
+				<?php
+				// Each value above is already escaped once at the point it
+				// was built (esc_url for the image URL, esc_attr for the
+				// gradient/color strings) — re-escaping the joined string
+				// here would HTML-entity-encode the "&" in any image URL
+				// query string and break it.
+				echo implode(' !important;' . "\n\t\t\t\t", $declarations); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				?> !important;
+			}
+		</style>
+		<?php
 	}
 
 	/**

@@ -162,7 +162,7 @@ export default function StickySidebar() {
 
                     {/* sticky sidebar margin bottom start here */}
                     <div class="settings-field">
-                        <h4 class="settings-field-label">{wp.i18n.__('Additional Top Margin', 'all-in-one-wp-sticky-anything')}</h4>
+                        <h4 class="settings-field-label">{wp.i18n.__('Additional Bottom Margin', 'all-in-one-wp-sticky-anything')}</h4>
                         <div class="settings-field-content">
 
                             <TextControl

@@ -87,6 +87,8 @@ function ai1wpsa_pro_setting_locks()
 
         // General
         'stickyDisableMobile'                  => false,
+        'stickyHeaderBgType'                   => 'color',
+        'stickyHeaderColorType'                => 'solid',
     ];
 }
 
@@ -119,6 +121,11 @@ function ai1wpsa_pro_setting_strip_keys()
         'stickyTocSidebarEdgeGap',
         'stickySocialIconsIconHoverColor',
         'stickySocialIconsIconHoverBgColor',
+
+        // General - only meaningful alongside stickyHeaderBgType/
+        // stickyHeaderColorType above, which are already forced off.
+        'stickyHeaderBgImage',
+        'stickyHeaderGradient',
     ];
 }
 

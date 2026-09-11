@@ -1,6 +1,17 @@
 export default function Changelog() {
     const logs = [
         {
+            version: 'v1.1.8',
+            date: '11-09-2026',
+            new: [
+                wp.i18n.__('Sticky Header Background color, gradient (Pro), or image (Pro) added.', 'all-in-one-wp-sticky-anything'),
+                wp.i18n.__('"Pick Header on Page" — click your header on your live site to auto-fill the Sticky Class selector.', 'all-in-one-wp-sticky-anything'),
+            ],
+            fix: [
+                wp.i18n.__('Sticky header no longer lags/blinks while scrolling; removed the "Fix Sticky" toggle.', 'all-in-one-wp-sticky-anything'),
+            ],
+        },
+        {
             version: 'v1.1.7',
             date: '31-08-2026',
             new: [

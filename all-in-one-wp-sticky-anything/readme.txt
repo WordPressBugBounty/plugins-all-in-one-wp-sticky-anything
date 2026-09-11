@@ -4,7 +4,7 @@ Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,14 @@ Make any widget in your sidebar a fixed widget. The fixed widget will stay visib
 
 **🎯 Sticky Header & Menu**
 Create fixed navigation headers and menus that stay at the top while visitors scroll. Boost navigation accessibility and keep your branding always visible. Works with any theme's header or custom navigation menus.
+
+No CSS knowledge needed — click **"Pick Header on Page"** in the settings and select your header directly on your live site; the correct CSS selector is filled in for you automatically (and it detects the full header wrapper even on themes with separate desktop/mobile header markup, like Astra).
+
+* Point-and-click header picker — no need to inspect your theme's code
+* Or set it manually with a CSS class/ID, the WordPress Customizer, or Elementor's Advanced tab
+* Customize the sticky background: solid color free, gradient or a Media Library image with Pro
+* Set a custom z-index, and disable sticky on mobile (Pro)
+* Dedicated Customizer support for Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra etc.
 
 **📌 Any Element Can Be Made Sticky**
  The user can make any element sticky by using this plugin. When you want to create an element sticky, just pick CSS class name, class id, or CSS selector.
@@ -163,10 +171,11 @@ There are lots of features coming soon. We are updating it regularly. If you fet
 
 = How do I make my header sticky/menu? =
 
-There are three easy methods:
-Method 1 (Simplest): Add the class "sticky" to your header element
-Method 2 (Settings Panel): Go to Dashboard → Sticky Anything → General Settings → Enter your header's CSS selector (e.g., .site-header or #masthead) → Save
-Method 3 (Customizer - Supported Themes): Go to Appearance → Customize → Sticky Anything → Sticky Header → Enable
+There are four easy methods:
+Method 1 (Easiest): Go to Dashboard → Sticky Anything → General Settings → click "Pick Header on Page" → click your header on your live site
+Method 2 (Simplest manual): Add the class "sticky" to your header element
+Method 3 (Settings Panel): Go to Dashboard → Sticky Anything → General Settings → Enter your header's CSS selector (e.g., .site-header or #masthead) → Save
+Method 4 (Customizer - Supported Themes): Go to Appearance → Customize → Sticky Anything → Sticky Header → Enable
 
 = Can I make multiple elements sticky? =
 
@@ -194,7 +203,9 @@ Just remove class from settings.
 
 = How to find Sticky Class, what should I enter here?
 
-The "Sticky Class" you need depends on the theme you're using. To find it, right-click on your sidebar and choose “Inspect” (in Firefox) or “Inspect Element” (in Chrome). This will open the browser’s developer tools, where you can see the HTML structure of your site. Look for the element that contains your sidebar — it might have a class name like sidebar, widget-area, or something similar. Once you’ve found it, copy the class or ID. If it’s a class, make sure to add a dot (.) in front of the name (e.g. .sidebar). If it’s an ID, use a hash (#) instead (e.g. #widget-area). This is the selector you’ll use as the Sticky Sidebar Element.
+Easiest: click "Pick Header on Page" next to the Sticky Class field and select the element on your live site — the correct selector is filled in for you.
+
+If you'd rather find it yourself: the "Sticky Class" you need depends on the theme you're using. To find it, right-click on your sidebar and choose “Inspect” (in Firefox) or “Inspect Element” (in Chrome). This will open the browser’s developer tools, where you can see the HTML structure of your site. Look for the element that contains your sidebar — it might have a class name like sidebar, widget-area, or something similar. Once you’ve found it, copy the class or ID. If it’s a class, make sure to add a dot (.) in front of the name (e.g. .sidebar). If it’s an ID, use a hash (#) instead (e.g. #widget-area). This is the selector you’ll use as the Sticky Sidebar Element.
 
 = Where can I find the Sticky Anything settings on Elementor? =  
 Inside Elementor Editor → Select any container → Go to **Advanced Tab** → Scroll to **Sticky Anything** section.
@@ -204,6 +215,9 @@ Popular classic themes such as Astra, Blocksy, GeneratePress, Kadence, Neve, Oce
 
 = How to make sticky header via Customizer? =
 Dashboard → Appearance → Customize → Sticky Anything → Sticky Header -> Enable & set z-index.
+
+= Can I customize my sticky header's background? =
+Yes. Go to Dashboard → Sticky Anything → General Settings → Sticky Header Background. A solid color is free; a gradient or an image from your Media Library are Pro. The background only shows while the header is actually stuck to the top of the screen — your theme's normal header look is untouched otherwise.
 
 = Can I create sticky social icons ? =
 Yes.
@@ -235,6 +249,11 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.1.8 (11-09-2026) =
+* **New:** Sticky Header Background color, gradient (Pro), or image (Pro) added.
+* **New:** "Pick Header on Page" — click your header on your live site to auto-fill the Sticky Class selector.
+* **Fix:** Sticky header no longer lags/blinks while scrolling; removed the "Fix Sticky" toggle.
+
 = 1.1.7 (31-08-2026) =
 * **New:** Introduce Admin Sticky Notes
 

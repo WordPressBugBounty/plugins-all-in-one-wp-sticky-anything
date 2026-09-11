@@ -32,22 +32,8 @@
       var isMobileViewport = window.innerWidth <= 767;
       var stickyHeaderEnabled = !(stickyDisableMobile && isMobileViewport);
       if (stickyHeaderEnabled) {
-        if (!fixDefaultSticky) {
-          var $stickyDefault = jQuery('.sticky').stickr({
-            duration: 0,
-            offsetTop: 0,
-            offsetBottom: 30
-          });
-          var $stickyCustom = jQuery(stickyClass).stickr({
-            duration: 0,
-            offsetTop: topOffset,
-            offsetBottom: 30,
-            closeButton: false
-          });
-        }
-
         // Fix Sticky
-        if (!!fixDefaultSticky) {
+        if (!fixDefaultSticky || !!fixDefaultSticky) {
           app.handleFixDefaultSticky();
         }
 

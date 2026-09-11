@@ -211,510 +211,145 @@ function showProModal(message) {
     }
   });
 }
-;// ./src/js/components/Settings/General.js
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-var General_useContext = wp.element.useContext;
-var _wp$components = wp.components,
-  FormToggle = _wp$components.FormToggle,
-  TextControl = _wp$components.TextControl,
-  ButtonGroup = _wp$components.ButtonGroup,
-  Button = _wp$components.Button;
-
-
-
-
-// ─── Sticky Device Options ───────────────────────────────────────
-var STICKY_DEVICE_OPTIONS = [{
-  label: wp.i18n.__('All', 'all-in-one-wp-sticky-anything'),
-  value: 'all'
-}, {
-  label: wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything'),
-  value: 'desktop'
-}, {
-  label: wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything'),
-  value: 'tablet'
-}, {
-  label: wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'),
-  value: 'mobile'
-}];
-function General() {
-  var _ai1wpsa = ai1wpsa,
-    isPro = _ai1wpsa.isPro;
-  var _useContext = General_useContext(Contexts_SettingsContext),
-    data = _useContext.data,
-    setData = _useContext.setData;
-  var _ref = data || {},
-    _ref$stickyClass = _ref.stickyClass,
-    stickyClass = _ref$stickyClass === void 0 ? '' : _ref$stickyClass,
-    _ref$stickyZIndex = _ref.stickyZIndex,
-    stickyZIndex = _ref$stickyZIndex === void 0 ? '' : _ref$stickyZIndex,
-    _ref$fixDefaultSticky = _ref.fixDefaultSticky,
-    fixDefaultSticky = _ref$fixDefaultSticky === void 0 ? false : _ref$fixDefaultSticky,
-    _ref$stickyDisableMob = _ref.stickyDisableMobile,
-    stickyDisableMobile = _ref$stickyDisableMob === void 0 ? false : _ref$stickyDisableMob;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "ai1wpsa-settings-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    "class": "ai1wpsa-settings-content-header"
-  }, /*#__PURE__*/React.createElement("i", {
-    "class": "dashicons dashicons-admin-generic"
-  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('General Settings', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
-    className: "settings-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Sticky Class', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(TextControl, {
-    value: stickyClass,
-    placeholder: wp.i18n.__('ex: #main-navigaion or .header', 'all-in-one-wp-sticky-anything'),
-    onChange: function onChange(value) {
-      return setData(_objectSpread(_objectSpread({}, data), {}, {
-        stickyClass: value
-      }));
+;// ./src/js/includes/functions.js
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function showNotification($text) {
+  Swal.fire({
+    title: false,
+    text: $text,
+    icon: 'success',
+    toast: true,
+    timer: 1500,
+    timerProgressBar: true,
+    showConfirmButton: false,
+    position: 'top-end',
+    customClass: {
+      container: 'ai1wpsa-swal ai1wpsa-notification'
     }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Write your sticky selector here. Make anything sticky by use sticky class. example: `<div class="sticky">I am sticky</div>`', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Fix Sticky', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(FormToggle, {
-    checked: fixDefaultSticky,
-    onChange: function onChange() {
-      return setData(_objectSpread(_objectSpread({}, data), {}, {
-        fixDefaultSticky: !fixDefaultSticky
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Enable this option to fix the sticky header if the default method doesn’t work.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Disable Sticky on Mobile', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(FormToggle, {
-    checked: stickyDisableMobile,
-    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
-    onChange: function onChange() {
-      if (!isPro) {
-        showProModal();
-        return;
-      }
-      setData(_objectSpread(_objectSpread({}, data), {}, {
-        stickyDisableMobile: !stickyDisableMobile
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Turn off all sticky header behavior on mobile-sized screens.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('z-index', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(TextControl, {
-    value: stickyZIndex,
-    placeholder: wp.i18n.__('ex: 9999', 'all-in-one-wp-sticky-anything'),
-    onChange: function onChange(value) {
-      return setData(_objectSpread(_objectSpread({}, data), {}, {
-        stickyZIndex: value
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Set your desire z-index value for your target element.', 'all-in-one-wp-sticky-anything'))))));
+  });
 }
-;// ./src/js/components/Settings/StickySidebar.js
-function StickySidebar_typeof(o) { "@babel/helpers - typeof"; return StickySidebar_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, StickySidebar_typeof(o); }
-function StickySidebar_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function StickySidebar_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? StickySidebar_ownKeys(Object(t), !0).forEach(function (r) { StickySidebar_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : StickySidebar_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function StickySidebar_defineProperty(e, r, t) { return (r = StickySidebar_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function StickySidebar_toPropertyKey(t) { var i = StickySidebar_toPrimitive(t, "string"); return "symbol" == StickySidebar_typeof(i) ? i : i + ""; }
-function StickySidebar_toPrimitive(t, r) { if ("object" != StickySidebar_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != StickySidebar_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-var StickySidebar_useContext = wp.element.useContext;
-var StickySidebar_wp$components = wp.components,
-  StickySidebar_Button = StickySidebar_wp$components.Button,
-  StickySidebar_ButtonGroup = StickySidebar_wp$components.ButtonGroup,
-  StickySidebar_FormToggle = StickySidebar_wp$components.FormToggle,
-  StickySidebar_TextControl = StickySidebar_wp$components.TextControl;
-
-function StickySidebar() {
-  var _ai1wpsa = ai1wpsa,
-    isPro = _ai1wpsa.isPro;
-  var _useContext = StickySidebar_useContext(Contexts_SettingsContext),
-    data = _useContext.data,
-    setData = _useContext.setData;
-  var _ref = data || {},
-    _ref$stickySidebar = _ref.stickySidebar,
-    stickySidebar = _ref$stickySidebar === void 0 ? false : _ref$stickySidebar,
-    _ref$stickySidebarEle = _ref.stickySidebarElement,
-    stickySidebarElement = _ref$stickySidebarEle === void 0 ? '' : _ref$stickySidebarEle,
-    _ref$stickySidebarCon = _ref.stickySidebarContainer,
-    stickySidebarContainer = _ref$stickySidebarCon === void 0 ? '' : _ref$stickySidebarCon,
-    _ref$stickySidebarDev = _ref.stickySidebarDevice,
-    stickySidebarDevice = _ref$stickySidebarDev === void 0 ? 'all' : _ref$stickySidebarDev,
-    _ref$StickySidebarMar = _ref.StickySidebarMarginTop,
-    StickySidebarMarginTop = _ref$StickySidebarMar === void 0 ? '90' : _ref$StickySidebarMar,
-    _ref$StickySidebarMar2 = _ref.StickySidebarMarginBottom,
-    StickySidebarMarginBottom = _ref$StickySidebarMar2 === void 0 ? '0' : _ref$StickySidebarMar2,
-    _ref$stickyMinWidth = _ref.stickyMinWidth,
-    stickyMinWidth = _ref$stickyMinWidth === void 0 ? '795' : _ref$stickyMinWidth,
-    _ref$stickySidebarHei = _ref.stickySidebarHeight,
-    stickySidebarHeight = _ref$stickySidebarHei === void 0 ? false : _ref$stickySidebarHei,
-    _ref$stickyDisableOn = _ref.stickyDisableOn,
-    stickyDisableOn = _ref$stickyDisableOn === void 0 ? [] : _ref$stickyDisableOn;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "ai1wpsa-settings-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    "class": "ai1wpsa-settings-content-header"
-  }, /*#__PURE__*/React.createElement("i", {
-    "class": "dashicons dashicons-welcome-widgets-menus"
-  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Sticky Sidebar Settings', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
-    className: "settings-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Sticky Sidebar', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickySidebar_FormToggle, {
-    checked: stickySidebar,
-    onChange: function onChange() {
-      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickySidebar: !stickySidebar
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Enable or disable the sticky sidebar.', 'all-in-one-wp-sticky-anything')))), !!stickySidebar && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Sticky Sidebar Selector', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
-    value: stickySidebarElement,
-    placeholder: wp.i18n.__('ex: #sidebar or .sidebar', 'all-in-one-wp-sticky-anything'),
-    onChange: function onChange(value) {
-      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickySidebarElement: value
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Write your sidebar element CSS selector (class or id) here. Astra: #secondary, Neve: .blog-sidebar', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Sidebar Container Selector', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
-    value: stickySidebarContainer,
-    placeholder: wp.i18n.__('ex: #main', 'all-in-one-wp-sticky-anything'),
-    onChange: function onChange(value) {
-      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickySidebarContainer: value
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Write your sidebar container element CSS selector (class or id) here. It must be element that contains both sidebar and content. If left blank script will try to guess. Usually it\'s #main or #main-content. Astra: .ast-container, Neve: .archive-container .row', 'all-in-one-wp-sticky-anything')))), isPro && /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickySidebar_ButtonGroup, null, /*#__PURE__*/React.createElement(StickySidebar_Button, {
-    onClick: function onClick() {
-      if (!isPro) {
-        return;
-      }
-      setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickySidebarDevice: 'all'
-      }));
-    },
-    variant: stickySidebarDevice === 'all' ? 'primary' : ''
-  }, wp.i18n.__('All', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
-    onClick: function onClick() {
-      if (!isPro) {
-        return;
-      }
-      setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickySidebarDevice: 'desktop'
-      }));
-    },
-    variant: stickySidebarDevice === 'desktop' ? 'primary' : ''
-  }, wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
-    onClick: function onClick() {
-      if (!isPro) {
-        return;
-      }
-      setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickySidebarDevice: 'tablet'
-      }));
-    },
-    variant: stickySidebarDevice === 'tablet' ? 'primary' : ''
-  }, wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
-    onClick: function onClick() {
-      if (!isPro) {
-        return;
-      }
-      setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickySidebarDevice: 'mobile'
-      }));
-    },
-    variant: stickySidebarDevice === 'mobile' ? 'primary' : ''
-  }, wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Set your desire z-index value for your target element.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Additional Top Margin', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
-    type: "number",
-    value: StickySidebarMarginTop,
-    placeholder: wp.i18n.__('ex: 30', 'all-in-one-wp-sticky-anything'),
-    onChange: function onChange(value) {
-      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        StickySidebarMarginTop: value
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Set additional top margin for your sidebar.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Additional Top Margin', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
-    type: "number",
-    value: StickySidebarMarginBottom,
-    placeholder: wp.i18n.__('ex: 30', 'all-in-one-wp-sticky-anything'),
-    onChange: function onChange(value) {
-      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        StickySidebarMarginBottom: value
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Set additional bottom margin for your sidebar.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Disable in small screens', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
-    type: "number",
-    value: stickyMinWidth,
-    placeholder: wp.i18n.__('ex: 767', 'all-in-one-wp-sticky-anything'),
-    onChange: function onChange(value) {
-      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickyMinWidth: value
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Disable if screen width is smaller than this value. Set only width value. Don\'t add px.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Update sidebar height', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(StickySidebar_FormToggle, {
-    checked: stickySidebarHeight,
-    onChange: function onChange() {
-      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
-        stickySidebarHeight: !stickySidebarHeight
-      }));
-    }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Troubleshooting option, try this if your sidebar loses its background color.', 'all-in-one-wp-sticky-anything')))))));
-}
-;// ./src/js/includes/Notice.js
-function Notice(_ref) {
-  var _ref$type = _ref.type,
-    type = _ref$type === void 0 ? 'info' : _ref$type,
-    _ref$message = _ref.message,
-    message = _ref$message === void 0 ? '' : _ref$message,
-    _ref$actions = _ref.actions,
-    actions = _ref$actions === void 0 ? [] : _ref$actions,
-    _ref$openNewTab = _ref.openNewTab,
-    openNewTab = _ref$openNewTab === void 0 ? true : _ref$openNewTab;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "ai1wpsa-notice ".concat(type)
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "dashicons dashicons-info"
-  }), /*#__PURE__*/React.createElement("p", null, message), actions.length > 0 && /*#__PURE__*/React.createElement("div", {
-    className: "actions"
-  }, actions.map(function (action, index) {
-    return /*#__PURE__*/React.createElement("a", {
-      key: index,
-      href: action.url,
-      target: "".concat(openNewTab ? '_blank' : 'self')
-    }, action.label);
-  })));
-}
-;// ./src/js/components/Settings/Css.js
-function Css_typeof(o) { "@babel/helpers - typeof"; return Css_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Css_typeof(o); }
-function Css_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function Css_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? Css_ownKeys(Object(t), !0).forEach(function (r) { Css_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : Css_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function Css_defineProperty(e, r, t) { return (r = Css_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function Css_toPropertyKey(t) { var i = Css_toPrimitive(t, "string"); return "symbol" == Css_typeof(i) ? i : i + ""; }
-function Css_toPrimitive(t, r) { if ("object" != Css_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Css_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-var _wp$element = wp.element,
-  Css_useContext = _wp$element.useContext,
-  useEffect = _wp$element.useEffect;
-var TextareaControl = wp.components.TextareaControl;
-
-
-function Css() {
-  var _ai1wpsa = ai1wpsa,
-    isPro = _ai1wpsa.isPro;
-  var _useContext = Css_useContext(Contexts_SettingsContext),
-    data = _useContext.data,
-    setData = _useContext.setData;
-  var _data$customCss = data.customCss,
-    customCss = _data$customCss === void 0 ? '' : _data$customCss;
-  useEffect(function () {
-    var editor = document.querySelectorAll('.ai1wpsa-custom-css textarea');
-    var instance = wp.codeEditor.initialize(editor, Css_objectSpread(Css_objectSpread({}, wp.codeEditor.defaultSettings), {}, {
-      mode: 'css',
-      wordWrap: true,
-      tabSize: 2,
-      autoComplete: {
-        enable: true,
-        showDescriptions: true,
-        caseSensitive: true,
-        autoTrigger: true,
-        delay: 0,
-        maxItems: 10,
-        sortBy: 'score',
-        maxLength: 0,
-        maxResults: 10,
-        highlightMatches: true,
-        maxHighlightLength: 0,
-        style: 'popup'
-      },
-      showGutter: true,
-      showPrintMargin: true,
-      highlightActiveLine: true,
-      showLineNumbers: true,
-      enableBasicAutocompletion: true,
-      enableLiveAutocompletion: true,
-      enableCodeFolding: true,
-      enableCodeFormatting: true
-    }));
-    instance.codemirror.on('change', function (codemirror) {
-      var value = codemirror.getValue();
-      setData(function (data) {
-        return Css_objectSpread(Css_objectSpread({}, data), {}, {
-          customCss: value
-        });
-      });
-    });
+function useMounted() {
+  var _React$useState = React.useState(false),
+    _React$useState2 = _slicedToArray(_React$useState, 2),
+    isMounted = _React$useState2[0],
+    setIsMounted = _React$useState2[1];
+  React.useEffect(function () {
+    setIsMounted(true);
   }, []);
-  return /*#__PURE__*/React.createElement("div", {
-    className: "ai1wpsa-settings-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    "class": "ai1wpsa-settings-content-header"
-  }, /*#__PURE__*/React.createElement("i", {
-    "class": "dashicons dashicons-editor-code"
-  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Custom CSS', 'ai1wpsa'))), /*#__PURE__*/React.createElement("div", {
-    className: "settings-content"
-  }, /*#__PURE__*/React.createElement(Notice, {
-    message: wp.i18n.__('Custom CSS feature will be discontinued soon. Please save your custom CSS in advance. For assistance, please use the support forum.', 'all-in-one-wp-sticky-anything'),
-    actions: [{
-      label: wp.i18n.__('Visit Support Forum', 'all-in-one-wp-sticky-anything'),
-      url: 'https://wordpress.org/support/plugin/all-in-one-wp-sticky-anything/'
-    }]
-  }), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Custom CSS', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(TextareaControl, {
-    value: customCss,
-    className: "ai1wpsa-custom-css",
-    placeholder: wp.i18n.__('ex: .header{ // your css code here.}', 'all-in-one-wp-sticky-anything'),
-    onChange: function onChange(value) {
-      return setData(Css_objectSpread(Css_objectSpread({}, data), {}, {
-        customCss: value.target.value
-      }));
-    },
-    rows: 12
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Write your custom CSS here.', 'all-in-one-wp-sticky-anything'))))));
+  return isMounted;
 }
-;// ./src/js/components/Settings/Tools.js
-function Tools_typeof(o) { "@babel/helpers - typeof"; return Tools_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Tools_typeof(o); }
-function Tools_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function Tools_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? Tools_ownKeys(Object(t), !0).forEach(function (r) { Tools_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : Tools_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function Tools_defineProperty(e, r, t) { return (r = Tools_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function Tools_toPropertyKey(t) { var i = Tools_toPrimitive(t, "string"); return "symbol" == Tools_typeof(i) ? i : i + ""; }
-function Tools_toPrimitive(t, r) { if ("object" != Tools_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Tools_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-var Tools_useContext = wp.element.useContext;
-var Tools_FormToggle = wp.components.FormToggle;
+;// ./src/js/includes/SelectorPicker.js
+/**
+ * "Pick on Page" visual element picker.
+ *
+ * Opens the site's homepage (same origin, so no CORS issues) with a
+ * short-lived nonce that makes Enqueue::frontend_scripts() load
+ * element-picker.js there. That script lets the admin hover/click an
+ * element and posts the resulting CSS selector back via postMessage.
+ *
+ * Built as a plain imperative helper (not a React component) to match the
+ * existing showProModal() helper in ./ProModal.js — same SweetAlert2-based
+ * modal system, no new UI dependency.
+ */
 
-function Tools() {
-  var _useContext = Tools_useContext(Contexts_SettingsContext),
-    handleResetSettings = _useContext.handleResetSettings,
-    data = _useContext.data,
-    setData = _useContext.setData;
-  var deleteData = data.deleteData;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "ai1wpsa-settings-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ai1wpsa-settings-content-header"
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "dashicons dashicons-admin-tools"
-  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Tools', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
-    className: "settings-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Reset Data', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "ai1wpsa-btn reset-btn",
-    onClick: handleResetSettings
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "dashicons dashicons-update"
-  }), wp.i18n.__('Reset', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Reset all settings to default.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field"
-  }, /*#__PURE__*/React.createElement("h4", {
-    "class": "settings-field-label"
-  }, wp.i18n.__('Delete Data', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
-    "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(Tools_FormToggle, {
-    checked: deleteData,
-    onChange: function onChange() {
-      return setData(Tools_objectSpread(Tools_objectSpread({}, data), {}, {
-        deleteData: !deleteData
-      }));
+
+function buildPickerUrl() {
+  var _ref = ai1wpsa || {},
+    homeUrl = _ref.homeUrl,
+    pickerNonce = _ref.pickerNonce;
+  var url = new URL(homeUrl);
+  url.searchParams.set('ai1wpsa_picker', '1');
+  url.searchParams.set('ai1wpsa_picker_nonce', pickerNonce);
+  url.searchParams.set('origin', window.location.origin);
+  return url.toString();
+}
+
+// How long we wait for element-picker.js to prove it ran inside the iframe
+// before assuming the site is blocking framing (X-Frame-Options / CSP) and
+// falling back to a new tab.
+var IFRAME_READY_TIMEOUT = 4000;
+function pickElementOnPage(onSelect) {
+  var _ref2 = ai1wpsa || {},
+    homeUrl = _ref2.homeUrl,
+    pickerNonce = _ref2.pickerNonce;
+  if (!homeUrl || !pickerNonce) {
+    return;
+  }
+  var targetUrl = buildPickerUrl();
+  var fallbackTab = null;
+  var readyTimer = null;
+  var handleMessage = function handleMessage(event) {
+    if (event.origin !== window.location.origin) {
+      return;
     }
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "description"
-  }, wp.i18n.__('Delete all settings on plugin uninstall.', 'all-in-one-wp-sticky-anything'))))));
+    var iframe = document.getElementById('ai1wpsa-picker-iframe');
+    var fromIframe = iframe && event.source === iframe.contentWindow;
+    var fromTab = fallbackTab && event.source === fallbackTab;
+    if (!fromIframe && !fromTab) {
+      return;
+    }
+    var _ref3 = event.data || {},
+      type = _ref3.type,
+      selector = _ref3.selector,
+      matches = _ref3.matches;
+    if (type === 'ai1wpsa:picker-selected' && selector) {
+      onSelect(selector);
+      showNotification(matches === 1 ? wp.i18n.__('Selector captured.', 'all-in-one-wp-sticky-anything') : wp.i18n.__('Selector captured — matches', 'all-in-one-wp-sticky-anything') + ' ' + matches + ' ' + wp.i18n.__('elements on the page.', 'all-in-one-wp-sticky-anything'));
+      Swal.close();
+    } else if (type === 'ai1wpsa:picker-cancel') {
+      Swal.close();
+    }
+  };
+  window.addEventListener('message', handleMessage);
+  var showFallback = function showFallback(popup) {
+    var fallback = popup.querySelector('#ai1wpsa-picker-fallback');
+    var wrap = popup.querySelector('.ai1wpsa-selector-picker__frame-wrap');
+    if (fallback) fallback.hidden = false;
+    if (wrap) wrap.classList.add('is-blocked');
+  };
+  Swal.fire({
+    title: wp.i18n.__('Pick Your Sticky Header', 'all-in-one-wp-sticky-anything'),
+    html: "\n            <div class=\"ai1wpsa-selector-picker\">\n                <p class=\"ai1wpsa-selector-picker__hint\">".concat(wp.i18n.__('Hover over your site below and click your header (or use "Select Parent" if the click lands on something inside it, like your logo). Press Esc to cancel.', 'all-in-one-wp-sticky-anything'), "</p>\n                <div class=\"ai1wpsa-selector-picker__frame-wrap\">\n                    <iframe id=\"ai1wpsa-picker-iframe\" class=\"ai1wpsa-selector-picker__iframe\" title=\"").concat(wp.i18n.__('Your site', 'all-in-one-wp-sticky-anything'), "\"></iframe>\n                    <div id=\"ai1wpsa-picker-fallback\" class=\"ai1wpsa-selector-picker__fallback\" hidden>\n                        <p>").concat(wp.i18n.__("This site can't be previewed in a frame here.", 'all-in-one-wp-sticky-anything'), "</p>\n                        <button type=\"button\" id=\"ai1wpsa-picker-open-tab\" class=\"button button-primary\">").concat(wp.i18n.__('Open in a New Tab to Pick', 'all-in-one-wp-sticky-anything'), "</button>\n                    </div>\n                </div>\n            </div>\n        "),
+    width: '90vw',
+    showConfirmButton: false,
+    showCloseButton: true,
+    allowOutsideClick: false,
+    customClass: {
+      container: 'ai1wpsa-swal ai1wpsa-selector-picker-modal',
+      popup: 'ai1wpsa-selector-picker-modal__popup'
+    },
+    didOpen: function didOpen(popup) {
+      var iframe = popup.querySelector('#ai1wpsa-picker-iframe');
+      iframe.src = targetUrl;
+      readyTimer = window.setTimeout(function () {
+        var ready = false;
+        try {
+          ready = !!iframe.contentDocument && !!iframe.contentDocument.getElementById('ai1wpsa-picker-toolbar');
+        } catch (e) {
+          // Cross-origin access denied — definitely blocked.
+          ready = false;
+        }
+        if (!ready) {
+          showFallback(popup);
+        }
+      }, IFRAME_READY_TIMEOUT);
+      var openTabBtn = popup.querySelector('#ai1wpsa-picker-open-tab');
+      openTabBtn.addEventListener('click', function () {
+        fallbackTab = window.open(targetUrl, '_blank');
+      });
+    },
+    willClose: function willClose() {
+      window.removeEventListener('message', handleMessage);
+      if (readyTimer) {
+        window.clearTimeout(readyTimer);
+      }
+    }
+  });
 }
 ;// external "React"
 const external_React_namespaceObject = React;
@@ -2823,10 +2458,739 @@ var classnames = __webpack_require__(942);
 const h="react-tooltip-core-styles",w="react-tooltip-base-styles",b={core:!1,base:!1};function S({css:e,id:t=w,type:o="base",ref:l}){var r,n;if(!e||"undefined"==typeof document||b[o])return;if("core"===o&&"undefined"!=typeof process&&(null===(r=null===process||void 0===process?void 0:process.env)||void 0===r?void 0:r.REACT_TOOLTIP_DISABLE_CORE_STYLES))return;if("base"!==o&&"undefined"!=typeof process&&(null===(n=null===process||void 0===process?void 0:process.env)||void 0===n?void 0:n.REACT_TOOLTIP_DISABLE_BASE_STYLES))return;"core"===o&&(t=h),l||(l={});const{insertAt:i}=l;if(document.getElementById(t))return;const c=document.head||document.getElementsByTagName("head")[0],s=document.createElement("style");s.id=t,s.type="text/css","top"===i&&c.firstChild?c.insertBefore(s,c.firstChild):c.appendChild(s),s.styleSheet?s.styleSheet.cssText=e:s.appendChild(document.createTextNode(e)),b[o]=!0}function g({type:e="base",id:t=w}={}){if(!b[e])return;"core"===e&&(t=h);const o=document.getElementById(t);"style"===(null==o?void 0:o.tagName)?null==o||o.remove():console.warn(`[react-tooltip] Failed to remove 'style' element with id '${t}'. Call \`injectStyle()\` first`),b[e]=!1}const E=async({elementReference:e=null,tooltipReference:t=null,tooltipArrowReference:o=null,place:l="top",offset:r=10,strategy:n="absolute",middlewares:i=[floating_ui_dom_offset(Number(r)),floating_ui_dom_flip({fallbackAxisSideDirection:"start"}),floating_ui_dom_shift({padding:5})],border:c})=>{if(!e)return{tooltipStyles:{},tooltipArrowStyles:{},place:l};if(null===t)return{tooltipStyles:{},tooltipArrowStyles:{},place:l};const s=i;return o?(s.push(floating_ui_dom_arrow({element:o,padding:5})),floating_ui_dom_computePosition(e,t,{placement:l,strategy:n,middleware:s}).then((({x:e,y:t,placement:o,middlewareData:l})=>{var r,n;const i={left:`${e}px`,top:`${t}px`,border:c},{x:s,y:a}=null!==(r=l.arrow)&&void 0!==r?r:{x:0,y:0},u=null!==(n={top:"bottom",right:"left",bottom:"top",left:"right"}[o.split("-")[0]])&&void 0!==n?n:"bottom",d=c&&{borderBottom:c,borderRight:c};let p=0;if(c){const e=`${c}`.match(/(\d+)px/);p=(null==e?void 0:e[1])?Number(e[1]):1}return{tooltipStyles:i,tooltipArrowStyles:{left:null!=s?`${s}px`:"",top:null!=a?`${a}px`:"",right:"",bottom:"",...d,[u]:`-${4+p}px`},place:o}}))):floating_ui_dom_computePosition(e,t,{placement:"bottom",strategy:n,middleware:s}).then((({x:e,y:t,placement:o})=>({tooltipStyles:{left:`${e}px`,top:`${t}px`},tooltipArrowStyles:{},place:o})))},A=(e,t)=>!("CSS"in window&&"supports"in window.CSS)||window.CSS.supports(e,t),_=(e,t,o)=>{let l=null;const r=function(...r){const n=()=>{l=null,o||e.apply(this,r)};o&&!l&&(e.apply(this,r),l=setTimeout(n,t)),o||(l&&clearTimeout(l),l=setTimeout(n,t))};return r.cancel=()=>{l&&(clearTimeout(l),l=null)},r},O=e=>null!==e&&!Array.isArray(e)&&"object"==typeof e,k=(e,t)=>{if(e===t)return!0;if(Array.isArray(e)&&Array.isArray(t))return e.length===t.length&&e.every(((e,o)=>k(e,t[o])));if(Array.isArray(e)!==Array.isArray(t))return!1;if(!O(e)||!O(t))return e===t;const o=Object.keys(e),l=Object.keys(t);return o.length===l.length&&o.every((o=>k(e[o],t[o])))},T=e=>{if(!(e instanceof HTMLElement||e instanceof SVGElement))return!1;const t=getComputedStyle(e);return["overflow","overflow-x","overflow-y"].some((e=>{const o=t.getPropertyValue(e);return"auto"===o||"scroll"===o}))},L=e=>{if(!e)return null;let t=e.parentElement;for(;t;){if(T(t))return t;t=t.parentElement}return document.scrollingElement||document.documentElement},C="undefined"!=typeof window?external_React_namespaceObject.useLayoutEffect:external_React_namespaceObject.useEffect,R=e=>{e.current&&(clearTimeout(e.current),e.current=null)},x="DEFAULT_TOOLTIP_ID",N={anchorRefs:new Set,activeAnchor:{current:null},attach:()=>{},detach:()=>{},setActiveAnchor:()=>{}},$=(0,external_React_namespaceObject.createContext)({getTooltipData:()=>N}),I=({children:t})=>{const[o,l]=r({[x]:new Set}),[c,s]=r({[x]:{current:null}}),a=(e,...t)=>{l((o=>{var l;const r=null!==(l=o[e])&&void 0!==l?l:new Set;return t.forEach((e=>r.add(e))),{...o,[e]:new Set(r)}}))},u=(e,...t)=>{l((o=>{const l=o[e];return l?(t.forEach((e=>l.delete(e))),{...o}):o}))},d=n(((e=x)=>{var t,l;return{anchorRefs:null!==(t=o[e])&&void 0!==t?t:new Set,activeAnchor:null!==(l=c[e])&&void 0!==l?l:{current:null},attach:(...t)=>a(e,...t),detach:(...t)=>u(e,...t),setActiveAnchor:t=>((e,t)=>{s((o=>{var l;return(null===(l=o[e])||void 0===l?void 0:l.current)===t.current?o:{...o,[e]:t}}))})(e,t)}}),[o,c,a,u]),p=i((()=>({getTooltipData:d})),[d]);return e.createElement($.Provider,{value:p},t)};function j(e=x){return (0,external_React_namespaceObject.useContext)($).getTooltipData(e)}const B=({tooltipId:t,children:l,className:r,place:n,content:i,html:c,variant:a,offset:u,wrapper:d,events:p,positionStrategy:v,delayShow:m,delayHide:f})=>{const{attach:h,detach:w}=j(t),b=s(null);return o((()=>(h(b),()=>{w(b)})),[]),e.createElement("span",{ref:b,className:y("react-tooltip-wrapper",r),"data-tooltip-place":n,"data-tooltip-content":i,"data-tooltip-html":c,"data-tooltip-variant":a,"data-tooltip-offset":u,"data-tooltip-wrapper":d,"data-tooltip-events":p,"data-tooltip-position-strategy":v,"data-tooltip-delay-show":m,"data-tooltip-delay-hide":f},l)};var z={tooltip:"core-styles-module_tooltip__3vRRp",fixed:"core-styles-module_fixed__pcSol",arrow:"core-styles-module_arrow__cvMwQ",noArrow:"core-styles-module_noArrow__xock6",clickable:"core-styles-module_clickable__ZuTTB",show:"core-styles-module_show__Nt9eE",closing:"core-styles-module_closing__sGnxF"},D={tooltip:"styles-module_tooltip__mnnfp",arrow:"styles-module_arrow__K0L3T",dark:"styles-module_dark__xNqje",light:"styles-module_light__Z6W-X",success:"styles-module_success__A2AKt",warning:"styles-module_warning__SCK0X",error:"styles-module_error__JvumD",info:"styles-module_info__BWdHW"};const q=({forwardRef:t,id:l,className:i,classNameArrow:c,variant:u="dark",anchorId:d,anchorSelect:p,place:v="top",offset:m=10,events:h=["hover"],openOnClick:w=!1,positionStrategy:b="absolute",middlewares:S,wrapper:g,delayShow:A=0,delayHide:O=0,float:T=!1,hidden:x=!1,noArrow:N=!1,clickable:$=!1,closeOnEsc:I=!1,closeOnScroll:B=!1,closeOnResize:q=!1,openEvents:H,closeEvents:M,globalCloseEvents:W,imperativeModeOnly:P,style:V,position:F,afterShow:K,afterHide:U,disableTooltip:X,content:Y,contentWrapperRef:G,isOpen:Z,defaultIsOpen:J=!1,setIsOpen:Q,activeAnchor:ee,setActiveAnchor:te,border:oe,opacity:le,arrowColor:re,role:ne="tooltip"})=>{var ie;const ce=(0,external_React_namespaceObject.useRef)(null),se=(0,external_React_namespaceObject.useRef)(null),ae=(0,external_React_namespaceObject.useRef)(null),ue=(0,external_React_namespaceObject.useRef)(null),de=(0,external_React_namespaceObject.useRef)(null),[pe,ve]=(0,external_React_namespaceObject.useState)({tooltipStyles:{},tooltipArrowStyles:{},place:v}),[me,fe]=(0,external_React_namespaceObject.useState)(!1),[ye,he]=(0,external_React_namespaceObject.useState)(!1),[we,be]=(0,external_React_namespaceObject.useState)(null),Se=(0,external_React_namespaceObject.useRef)(!1),ge=(0,external_React_namespaceObject.useRef)(null),{anchorRefs:Ee,setActiveAnchor:Ae}=j(l),_e=(0,external_React_namespaceObject.useRef)(!1),[Oe,ke]=(0,external_React_namespaceObject.useState)([]),Te=(0,external_React_namespaceObject.useRef)(!1),Le=w||h.includes("click"),Ce=Le||(null==H?void 0:H.click)||(null==H?void 0:H.dblclick)||(null==H?void 0:H.mousedown),Re=H?{...H}:{mouseover:!0,focus:!0,mouseenter:!1,click:!1,dblclick:!1,mousedown:!1};!H&&Le&&Object.assign(Re,{mouseenter:!1,focus:!1,mouseover:!1,click:!0});const xe=M?{...M}:{mouseout:!0,blur:!0,mouseleave:!1,click:!1,dblclick:!1,mouseup:!1};!M&&Le&&Object.assign(xe,{mouseleave:!1,blur:!1,mouseout:!1});const Ne=W?{...W}:{escape:I||!1,scroll:B||!1,resize:q||!1,clickOutsideAnchor:Ce||!1};P&&(Object.assign(Re,{mouseover:!1,focus:!1,mouseenter:!1,click:!1,dblclick:!1,mousedown:!1}),Object.assign(xe,{mouseout:!1,blur:!1,mouseleave:!1,click:!1,dblclick:!1,mouseup:!1}),Object.assign(Ne,{escape:!1,scroll:!1,resize:!1,clickOutsideAnchor:!1})),C((()=>(Te.current=!0,()=>{Te.current=!1})),[]);const $e=e=>{Te.current&&(e&&he(!0),setTimeout((()=>{Te.current&&(null==Q||Q(e),void 0===Z&&fe(e))}),10))};(0,external_React_namespaceObject.useEffect)((()=>{if(void 0===Z)return()=>null;Z&&he(!0);const e=setTimeout((()=>{fe(Z)}),10);return()=>{clearTimeout(e)}}),[Z]),(0,external_React_namespaceObject.useEffect)((()=>{if(me!==Se.current)if(R(de),Se.current=me,me)null==K||K();else{const e=(e=>{const t=e.match(/^([\d.]+)(ms|s)$/);if(!t)return 0;const[,o,l]=t;return Number(o)*("ms"===l?1:1e3)})(getComputedStyle(document.body).getPropertyValue("--rt-transition-show-delay"));de.current=setTimeout((()=>{he(!1),be(null),null==U||U()}),e+25)}}),[me]);const Ie=e=>{ve((t=>k(t,e)?t:e))},je=(e=A)=>{R(ae),ye?$e(!0):ae.current=setTimeout((()=>{$e(!0)}),e)},Be=(e=O)=>{R(ue),ue.current=setTimeout((()=>{_e.current||$e(!1)}),e)},ze=e=>{var t;if(!e)return;const o=null!==(t=e.currentTarget)&&void 0!==t?t:e.target;if(!(null==o?void 0:o.isConnected))return te(null),void Ae({current:null});A?je():$e(!0),te(o),Ae({current:o}),R(ue)},De=()=>{$?Be(O||100):O?Be():$e(!1),R(ae)},qe=({x:e,y:t})=>{var o;const l={getBoundingClientRect:()=>({x:e,y:t,width:0,height:0,top:t,left:e,right:e,bottom:t})};E({place:null!==(o=null==we?void 0:we.place)&&void 0!==o?o:v,offset:m,elementReference:l,tooltipReference:ce.current,tooltipArrowReference:se.current,strategy:b,middlewares:S,border:oe}).then((e=>{Ie(e)}))},He=e=>{if(!e)return;const t=e,o={x:t.clientX,y:t.clientY};qe(o),ge.current=o},Me=e=>{var t;if(!me)return;const o=e.target;if(!o.isConnected)return;if(null===(t=ce.current)||void 0===t?void 0:t.contains(o))return;[document.querySelector(`[id='${d}']`),...Oe].some((e=>null==e?void 0:e.contains(o)))||($e(!1),R(ae))},We=_(ze,50,!0),Pe=_(De,50,!0),Ve=e=>{Pe.cancel(),We(e)},Fe=()=>{We.cancel(),Pe()},Ke=(0,external_React_namespaceObject.useCallback)((()=>{var e,t;const o=null!==(e=null==we?void 0:we.position)&&void 0!==e?e:F;o?qe(o):T?ge.current&&qe(ge.current):(null==ee?void 0:ee.isConnected)&&E({place:null!==(t=null==we?void 0:we.place)&&void 0!==t?t:v,offset:m,elementReference:ee,tooltipReference:ce.current,tooltipArrowReference:se.current,strategy:b,middlewares:S,border:oe}).then((e=>{Te.current&&Ie(e)}))}),[me,ee,Y,V,v,null==we?void 0:we.place,m,b,F,null==we?void 0:we.position,T]);(0,external_React_namespaceObject.useEffect)((()=>{var e,t;const o=new Set(Ee);Oe.forEach((e=>{(null==X?void 0:X(e))||o.add({current:e})}));const l=document.querySelector(`[id='${d}']`);l&&!(null==X?void 0:X(l))&&o.add({current:l});const r=()=>{$e(!1)},n=L(ee),i=L(ce.current);Ne.scroll&&(window.addEventListener("scroll",r),null==n||n.addEventListener("scroll",r),null==i||i.addEventListener("scroll",r));let c=null;Ne.resize?window.addEventListener("resize",r):ee&&ce.current&&(c=autoUpdate(ee,ce.current,Ke,{ancestorResize:!0,elementResize:!0,layoutShift:!0}));const s=e=>{"Escape"===e.key&&$e(!1)};Ne.escape&&window.addEventListener("keydown",s),Ne.clickOutsideAnchor&&window.addEventListener("click",Me);const a=[],u=e=>Boolean((null==e?void 0:e.target)&&(null==ee?void 0:ee.contains(e.target))),p=e=>{me&&u(e)||ze(e)},v=e=>{me&&u(e)&&De()},m=["mouseover","mouseout","mouseenter","mouseleave","focus","blur"],y=["click","dblclick","mousedown","mouseup"];Object.entries(Re).forEach((([e,t])=>{t&&(m.includes(e)?a.push({event:e,listener:Ve}):y.includes(e)&&a.push({event:e,listener:p}))})),Object.entries(xe).forEach((([e,t])=>{t&&(m.includes(e)?a.push({event:e,listener:Fe}):y.includes(e)&&a.push({event:e,listener:v}))})),T&&a.push({event:"pointermove",listener:He});const h=()=>{_e.current=!0},w=()=>{_e.current=!1,De()},b=$&&(xe.mouseout||xe.mouseleave);return b&&(null===(e=ce.current)||void 0===e||e.addEventListener("mouseover",h),null===(t=ce.current)||void 0===t||t.addEventListener("mouseout",w)),a.forEach((({event:e,listener:t})=>{o.forEach((o=>{var l;null===(l=o.current)||void 0===l||l.addEventListener(e,t)}))})),()=>{var e,t;Ne.scroll&&(window.removeEventListener("scroll",r),null==n||n.removeEventListener("scroll",r),null==i||i.removeEventListener("scroll",r)),Ne.resize?window.removeEventListener("resize",r):null==c||c(),Ne.clickOutsideAnchor&&window.removeEventListener("click",Me),Ne.escape&&window.removeEventListener("keydown",s),b&&(null===(e=ce.current)||void 0===e||e.removeEventListener("mouseover",h),null===(t=ce.current)||void 0===t||t.removeEventListener("mouseout",w)),a.forEach((({event:e,listener:t})=>{o.forEach((o=>{var l;null===(l=o.current)||void 0===l||l.removeEventListener(e,t)}))}))}}),[ee,Ke,ye,Ee,Oe,H,M,W,Le,A,O]),(0,external_React_namespaceObject.useEffect)((()=>{var e,t;let o=null!==(t=null!==(e=null==we?void 0:we.anchorSelect)&&void 0!==e?e:p)&&void 0!==t?t:"";!o&&l&&(o=`[data-tooltip-id='${l.replace(/'/g,"\\'")}']`);const r=new MutationObserver((e=>{const t=[],r=[];e.forEach((e=>{if("attributes"===e.type&&"data-tooltip-id"===e.attributeName){e.target.getAttribute("data-tooltip-id")===l?t.push(e.target):e.oldValue===l&&r.push(e.target)}if("childList"===e.type){if(ee){const t=[...e.removedNodes].filter((e=>1===e.nodeType));if(o)try{r.push(...t.filter((e=>e.matches(o)))),r.push(...t.flatMap((e=>[...e.querySelectorAll(o)])))}catch(e){}t.some((e=>{var t;return!!(null===(t=null==e?void 0:e.contains)||void 0===t?void 0:t.call(e,ee))&&(he(!1),$e(!1),te(null),R(ae),R(ue),!0)}))}if(o)try{const l=[...e.addedNodes].filter((e=>1===e.nodeType));t.push(...l.filter((e=>e.matches(o)))),t.push(...l.flatMap((e=>[...e.querySelectorAll(o)])))}catch(e){}}})),(t.length||r.length)&&ke((e=>[...e.filter((e=>!r.includes(e))),...t]))}));return r.observe(document.body,{childList:!0,subtree:!0,attributes:!0,attributeFilter:["data-tooltip-id"],attributeOldValue:!0}),()=>{r.disconnect()}}),[l,p,null==we?void 0:we.anchorSelect,ee]),(0,external_React_namespaceObject.useEffect)((()=>{Ke()}),[Ke]),(0,external_React_namespaceObject.useEffect)((()=>{if(!(null==G?void 0:G.current))return()=>null;const e=new ResizeObserver((()=>{setTimeout((()=>Ke()))}));return e.observe(G.current),()=>{e.disconnect()}}),[Y,null==G?void 0:G.current]),(0,external_React_namespaceObject.useEffect)((()=>{var e;const t=document.querySelector(`[id='${d}']`),o=[...Oe,t];ee&&o.includes(ee)||te(null!==(e=Oe[0])&&void 0!==e?e:t)}),[d,Oe,ee]),(0,external_React_namespaceObject.useEffect)((()=>(J&&$e(!0),()=>{R(ae),R(ue)})),[]),(0,external_React_namespaceObject.useEffect)((()=>{var e;let t=null!==(e=null==we?void 0:we.anchorSelect)&&void 0!==e?e:p;if(!t&&l&&(t=`[data-tooltip-id='${l.replace(/'/g,"\\'")}']`),t)try{const e=Array.from(document.querySelectorAll(t));ke(e)}catch(e){ke([])}}),[l,p,null==we?void 0:we.anchorSelect]),(0,external_React_namespaceObject.useEffect)((()=>{ae.current&&(R(ae),je(A))}),[A]);const Ue=null!==(ie=null==we?void 0:we.content)&&void 0!==ie?ie:Y,Xe=me&&Object.keys(pe.tooltipStyles).length>0;return (0,external_React_namespaceObject.useImperativeHandle)(t,(()=>({open:e=>{if(null==e?void 0:e.anchorSelect)try{document.querySelector(e.anchorSelect)}catch(t){return void console.warn(`[react-tooltip] "${e.anchorSelect}" is not a valid CSS selector`)}be(null!=e?e:null),(null==e?void 0:e.delay)?je(e.delay):$e(!0)},close:e=>{(null==e?void 0:e.delay)?Be(e.delay):$e(!1)},activeAnchor:ee,place:pe.place,isOpen:Boolean(ye&&!x&&Ue&&Xe)}))),ye&&!x&&Ue?external_React_namespaceObject.createElement(g,{id:l,role:ne,className:classnames("react-tooltip",z.tooltip,D.tooltip,D[u],i,`react-tooltip__place-${pe.place}`,z[Xe?"show":"closing"],Xe?"react-tooltip__show":"react-tooltip__closing","fixed"===b&&z.fixed,$&&z.clickable),onTransitionEnd:e=>{R(de),me||"opacity"!==e.propertyName||(he(!1),be(null),null==U||U())},style:{...V,...pe.tooltipStyles,opacity:void 0!==le&&Xe?le:void 0},ref:ce},Ue,external_React_namespaceObject.createElement(g,{className:classnames("react-tooltip-arrow",z.arrow,D.arrow,c,N&&z.noArrow),style:{...pe.tooltipArrowStyles,background:re?`linear-gradient(to right bottom, transparent 50%, ${re} 50%)`:void 0},ref:se})):null},H=({content:t})=>external_React_namespaceObject.createElement("span",{dangerouslySetInnerHTML:{__html:t}}),M=external_React_namespaceObject.forwardRef((({id:t,anchorId:l,anchorSelect:n,content:i,html:c,render:a,className:u,classNameArrow:d,variant:p="dark",place:v="top",offset:m=10,wrapper:f="div",children:h=null,events:w=["hover"],openOnClick:b=!1,positionStrategy:S="absolute",middlewares:g,delayShow:E=0,delayHide:_=0,float:O=!1,hidden:k=!1,noArrow:T=!1,clickable:L=!1,closeOnEsc:C=!1,closeOnScroll:R=!1,closeOnResize:x=!1,openEvents:N,closeEvents:$,globalCloseEvents:I,imperativeModeOnly:B=!1,style:z,position:D,isOpen:M,defaultIsOpen:W=!1,disableStyleInjection:P=!1,border:V,opacity:F,arrowColor:K,setIsOpen:U,afterShow:X,afterHide:Y,disableTooltip:G,role:Z="tooltip"},J)=>{const[Q,ee]=(0,external_React_namespaceObject.useState)(i),[te,oe]=(0,external_React_namespaceObject.useState)(c),[le,re]=(0,external_React_namespaceObject.useState)(v),[ne,ie]=(0,external_React_namespaceObject.useState)(p),[ce,se]=(0,external_React_namespaceObject.useState)(m),[ae,ue]=(0,external_React_namespaceObject.useState)(E),[de,pe]=(0,external_React_namespaceObject.useState)(_),[ve,me]=(0,external_React_namespaceObject.useState)(O),[fe,ye]=(0,external_React_namespaceObject.useState)(k),[he,we]=(0,external_React_namespaceObject.useState)(f),[be,Se]=(0,external_React_namespaceObject.useState)(w),[ge,Ee]=(0,external_React_namespaceObject.useState)(S),[Ae,_e]=(0,external_React_namespaceObject.useState)(null),[Oe,ke]=(0,external_React_namespaceObject.useState)(null),Te=(0,external_React_namespaceObject.useRef)(P),{anchorRefs:Le,activeAnchor:Ce}=j(t),Re=e=>null==e?void 0:e.getAttributeNames().reduce(((t,o)=>{var l;if(o.startsWith("data-tooltip-")){t[o.replace(/^data-tooltip-/,"")]=null!==(l=null==e?void 0:e.getAttribute(o))&&void 0!==l?l:null}return t}),{}),xe=e=>{const t={place:e=>{var t;re(null!==(t=e)&&void 0!==t?t:v)},content:e=>{ee(null!=e?e:i)},html:e=>{oe(null!=e?e:c)},variant:e=>{var t;ie(null!==(t=e)&&void 0!==t?t:p)},offset:e=>{se(null===e?m:Number(e))},wrapper:e=>{var t;we(null!==(t=e)&&void 0!==t?t:f)},events:e=>{const t=null==e?void 0:e.split(" ");Se(null!=t?t:w)},"position-strategy":e=>{var t;Ee(null!==(t=e)&&void 0!==t?t:S)},"delay-show":e=>{ue(null===e?E:Number(e))},"delay-hide":e=>{pe(null===e?_:Number(e))},float:e=>{me(null===e?O:"true"===e)},hidden:e=>{ye(null===e?k:"true"===e)},"class-name":e=>{_e(e)}};Object.values(t).forEach((e=>e(null))),Object.entries(e).forEach((([e,o])=>{var l;null===(l=t[e])||void 0===l||l.call(t,o)}))};(0,external_React_namespaceObject.useEffect)((()=>{ee(i)}),[i]),(0,external_React_namespaceObject.useEffect)((()=>{oe(c)}),[c]),(0,external_React_namespaceObject.useEffect)((()=>{re(v)}),[v]),(0,external_React_namespaceObject.useEffect)((()=>{ie(p)}),[p]),(0,external_React_namespaceObject.useEffect)((()=>{se(m)}),[m]),(0,external_React_namespaceObject.useEffect)((()=>{ue(E)}),[E]),(0,external_React_namespaceObject.useEffect)((()=>{pe(_)}),[_]),(0,external_React_namespaceObject.useEffect)((()=>{me(O)}),[O]),(0,external_React_namespaceObject.useEffect)((()=>{ye(k)}),[k]),(0,external_React_namespaceObject.useEffect)((()=>{Ee(S)}),[S]),(0,external_React_namespaceObject.useEffect)((()=>{Te.current!==P&&console.warn("[react-tooltip] Do not change `disableStyleInjection` dynamically.")}),[P]),(0,external_React_namespaceObject.useEffect)((()=>{"undefined"!=typeof window&&window.dispatchEvent(new CustomEvent("react-tooltip-inject-styles",{detail:{disableCore:"core"===P,disableBase:P}}))}),[]),(0,external_React_namespaceObject.useEffect)((()=>{var e;const o=new Set(Le);let r=n;if(!r&&t&&(r=`[data-tooltip-id='${t.replace(/'/g,"\\'")}']`),r)try{document.querySelectorAll(r).forEach((e=>{o.add({current:e})}))}catch(e){console.warn(`[react-tooltip] "${r}" is not a valid CSS selector`)}const i=document.querySelector(`[id='${l}']`);if(i&&o.add({current:i}),!o.size)return()=>null;const c=null!==(e=null!=Oe?Oe:i)&&void 0!==e?e:Ce.current,s=new MutationObserver((e=>{e.forEach((e=>{var t;if(!c||"attributes"!==e.type||!(null===(t=e.attributeName)||void 0===t?void 0:t.startsWith("data-tooltip-")))return;const o=Re(c);xe(o)}))})),a={attributes:!0,childList:!1,subtree:!1};if(c){const e=Re(c);xe(e),s.observe(c,a)}return()=>{s.disconnect()}}),[Le,Ce,Oe,l,n]),(0,external_React_namespaceObject.useEffect)((()=>{(null==z?void 0:z.border)&&console.warn("[react-tooltip] Do not set `style.border`. Use `border` prop instead."),V&&!A("border",`${V}`)&&console.warn(`[react-tooltip] "${V}" is not a valid \`border\`.`),(null==z?void 0:z.opacity)&&console.warn("[react-tooltip] Do not set `style.opacity`. Use `opacity` prop instead."),F&&!A("opacity",`${F}`)&&console.warn(`[react-tooltip] "${F}" is not a valid \`opacity\`.`)}),[]);let Ne=h;const $e=(0,external_React_namespaceObject.useRef)(null);if(a){const t=a({content:(null==Oe?void 0:Oe.getAttribute("data-tooltip-content"))||Q||null,activeAnchor:Oe});Ne=t?external_React_namespaceObject.createElement("div",{ref:$e,className:"react-tooltip-content-wrapper"},t):null}else Q&&(Ne=Q);te&&(Ne=external_React_namespaceObject.createElement(H,{content:te}));const Ie={forwardRef:J,id:t,anchorId:l,anchorSelect:n,className:classnames(u,Ae),classNameArrow:d,content:Ne,contentWrapperRef:$e,place:le,variant:ne,offset:ce,wrapper:he,events:be,openOnClick:b,positionStrategy:ge,middlewares:g,delayShow:ae,delayHide:de,float:ve,hidden:fe,noArrow:T,clickable:L,closeOnEsc:C,closeOnScroll:R,closeOnResize:x,openEvents:N,closeEvents:$,globalCloseEvents:I,imperativeModeOnly:B,style:z,position:D,isOpen:M,defaultIsOpen:W,border:V,opacity:F,arrowColor:K,setIsOpen:U,afterShow:X,afterHide:Y,disableTooltip:G,activeAnchor:Oe,setActiveAnchor:e=>ke(e),role:Z};return external_React_namespaceObject.createElement(q,{...Ie})}));"undefined"!=typeof window&&window.addEventListener("react-tooltip-inject-styles",(e=>{e.detail.disableCore||S({css:`:root{--rt-color-white:#fff;--rt-color-dark:#222;--rt-color-success:#8dc572;--rt-color-error:#be6464;--rt-color-warning:#f0ad4e;--rt-color-info:#337ab7;--rt-opacity:0.9;--rt-transition-show-delay:0.15s;--rt-transition-closing-delay:0.15s}.core-styles-module_tooltip__3vRRp{position:absolute;top:0;left:0;pointer-events:none;opacity:0;will-change:opacity}.core-styles-module_fixed__pcSol{position:fixed}.core-styles-module_arrow__cvMwQ{position:absolute;background:inherit}.core-styles-module_noArrow__xock6{display:none}.core-styles-module_clickable__ZuTTB{pointer-events:auto}.core-styles-module_show__Nt9eE{opacity:var(--rt-opacity);transition:opacity var(--rt-transition-show-delay)ease-out}.core-styles-module_closing__sGnxF{opacity:0;transition:opacity var(--rt-transition-closing-delay)ease-in}`,type:"core"}),e.detail.disableBase||S({css:`
 .styles-module_tooltip__mnnfp{padding:8px 16px;border-radius:3px;font-size:90%;width:max-content}.styles-module_arrow__K0L3T{width:8px;height:8px}[class*='react-tooltip__place-top']>.styles-module_arrow__K0L3T{transform:rotate(45deg)}[class*='react-tooltip__place-right']>.styles-module_arrow__K0L3T{transform:rotate(135deg)}[class*='react-tooltip__place-bottom']>.styles-module_arrow__K0L3T{transform:rotate(225deg)}[class*='react-tooltip__place-left']>.styles-module_arrow__K0L3T{transform:rotate(315deg)}.styles-module_dark__xNqje{background:var(--rt-color-dark);color:var(--rt-color-white)}.styles-module_light__Z6W-X{background-color:var(--rt-color-white);color:var(--rt-color-dark)}.styles-module_success__A2AKt{background-color:var(--rt-color-success);color:var(--rt-color-white)}.styles-module_warning__SCK0X{background-color:var(--rt-color-warning);color:var(--rt-color-white)}.styles-module_error__JvumD{background-color:var(--rt-color-error);color:var(--rt-color-white)}.styles-module_info__BWdHW{background-color:var(--rt-color-info);color:var(--rt-color-white)}`,type:"base"})}));
 
-;// ./src/js/includes/ColorPickerWrapper.js
+;// ./src/js/components/Settings/ColorPickerWrapper.js
 
 var ColorPicker = wp.components.ColorPicker;
 function ColorPickerWrapper(_ref) {
+  var id = _ref.id,
+    value = _ref.value,
+    _onChange = _ref.onChange,
+    _ref$allowReset = _ref.allowReset,
+    allowReset = _ref$allowReset === void 0 ? false : _ref$allowReset,
+    _ref$resetValue = _ref.resetValue,
+    resetValue = _ref$resetValue === void 0 ? '' : _ref$resetValue,
+    _ref$customClassName = _ref.customClassName,
+    customClassName = _ref$customClassName === void 0 ? '' : _ref$customClassName;
+  var uniqueId = 'color-picker-' + Math.random().toString(36).substring(7);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-color-picker-wrapper",
+    id: id
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "color-holder-wrap ".concat(customClassName)
+  }, /*#__PURE__*/React.createElement("div", {
+    "data-tooltip-id": uniqueId,
+    className: "ai1wpsa-color-holder",
+    style: {
+      background: value
+    }
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "color-input",
+    value: value || resetValue,
+    onChange: function onChange(e) {
+      return _onChange(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("i", {
+    "data-tooltip-id": uniqueId,
+    className: "ai1wpsa-popup-edit color-edit dashicons dashicons-edit"
+  }), allowReset && !!value && /*#__PURE__*/React.createElement("i", {
+    className: "popup-settings-reset dashicons dashicons-image-rotate",
+    onClick: function onClick() {
+      return _onChange(resetValue);
+    },
+    title: wp.i18n.__('Reset', 'ultimate-addons-for-wpforms')
+  }), /*#__PURE__*/React.createElement(M, {
+    id: uniqueId,
+    effect: "solid",
+    place: "top",
+    variant: "light",
+    openOnClick: true,
+    clickable: true,
+    delayHide: 100,
+    className: "eacf7-tooltip color-picker-tooltip",
+    positionStrategy: "absolute",
+    border: '1px solid #ccc'
+  }, /*#__PURE__*/React.createElement(ColorPicker, {
+    color: value,
+    onChange: _onChange,
+    enableAlpha: true
+  }))));
+}
+;// ./src/js/components/Settings/General.js
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var General_useContext = wp.element.useContext;
+var _wp$components = wp.components,
+  FormToggle = _wp$components.FormToggle,
+  TextControl = _wp$components.TextControl,
+  ButtonGroup = _wp$components.ButtonGroup,
+  Button = _wp$components.Button,
+  GradientPicker = _wp$components.GradientPicker;
+
+
+
+
+
+
+// ─── Sticky Device Options ───────────────────────────────────────
+var STICKY_DEVICE_OPTIONS = [{
+  label: wp.i18n.__('All', 'all-in-one-wp-sticky-anything'),
+  value: 'all'
+}, {
+  label: wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything'),
+  value: 'desktop'
+}, {
+  label: wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything'),
+  value: 'tablet'
+}, {
+  label: wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'),
+  value: 'mobile'
+}];
+
+// ─── Sticky Header Background Options ────────────────────────────
+var BG_TYPE_OPTIONS = [{
+  label: wp.i18n.__('Color', 'all-in-one-wp-sticky-anything'),
+  value: 'color',
+  pro: false
+}, {
+  label: wp.i18n.__('Image', 'all-in-one-wp-sticky-anything'),
+  value: 'image',
+  pro: true
+}];
+var COLOR_TYPE_OPTIONS = [{
+  label: wp.i18n.__('Solid', 'all-in-one-wp-sticky-anything'),
+  value: 'solid',
+  pro: false
+}, {
+  label: wp.i18n.__('Gradient', 'all-in-one-wp-sticky-anything'),
+  value: 'gradient',
+  pro: true
+}];
+function General() {
+  var _ai1wpsa = ai1wpsa,
+    isPro = _ai1wpsa.isPro;
+  var _useContext = General_useContext(Contexts_SettingsContext),
+    data = _useContext.data,
+    setData = _useContext.setData;
+  var _ref = data || {},
+    _ref$stickyClass = _ref.stickyClass,
+    stickyClass = _ref$stickyClass === void 0 ? '' : _ref$stickyClass,
+    _ref$stickyZIndex = _ref.stickyZIndex,
+    stickyZIndex = _ref$stickyZIndex === void 0 ? '' : _ref$stickyZIndex,
+    _ref$stickyDisableMob = _ref.stickyDisableMobile,
+    stickyDisableMobile = _ref$stickyDisableMob === void 0 ? false : _ref$stickyDisableMob,
+    _ref$stickyHeaderBgTy = _ref.stickyHeaderBgType,
+    stickyHeaderBgType = _ref$stickyHeaderBgTy === void 0 ? 'color' : _ref$stickyHeaderBgTy,
+    _ref$stickyHeaderColo = _ref.stickyHeaderColorType,
+    stickyHeaderColorType = _ref$stickyHeaderColo === void 0 ? 'solid' : _ref$stickyHeaderColo,
+    _ref$stickyHeaderBgCo = _ref.stickyHeaderBgColor,
+    stickyHeaderBgColor = _ref$stickyHeaderBgCo === void 0 ? '' : _ref$stickyHeaderBgCo,
+    _ref$stickyHeaderGrad = _ref.stickyHeaderGradient,
+    stickyHeaderGradient = _ref$stickyHeaderGrad === void 0 ? '' : _ref$stickyHeaderGrad,
+    _ref$stickyHeaderBgIm = _ref.stickyHeaderBgImage,
+    stickyHeaderBgImage = _ref$stickyHeaderBgIm === void 0 ? '' : _ref$stickyHeaderBgIm;
+
+  // Opens the WP Media Library modal (requires wp_enqueue_media() — see
+  // Enqueue::admin_scripts()) and stores the picked image's URL.
+  var openBackgroundImagePicker = function openBackgroundImagePicker() {
+    if (!isPro) {
+      showProModal();
+      return;
+    }
+    var frame = wp.media({
+      title: wp.i18n.__('Select Sticky Header Background Image', 'all-in-one-wp-sticky-anything'),
+      button: {
+        text: wp.i18n.__('Use this Image', 'all-in-one-wp-sticky-anything')
+      },
+      multiple: false,
+      library: {
+        type: 'image'
+      }
+    });
+    frame.on('select', function () {
+      var attachment = frame.state().get('selection').first().toJSON();
+      setData(function (current) {
+        return _objectSpread(_objectSpread({}, current), {}, {
+          stickyHeaderBgImage: attachment.url
+        });
+      });
+    });
+    frame.open();
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "ai1wpsa-settings-content-header"
+  }, /*#__PURE__*/React.createElement("i", {
+    "class": "dashicons dashicons-admin-generic"
+  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('General Settings', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Sticky Class', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-selector-field"
+  }, /*#__PURE__*/React.createElement(TextControl, {
+    value: stickyClass,
+    placeholder: wp.i18n.__('ex: #main-navigaion or .header', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyClass: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement(Button, {
+    variant: "secondary",
+    onClick: function onClick() {
+      return pickElementOnPage(function (selector) {
+        return setData(function (current) {
+          return _objectSpread(_objectSpread({}, current), {}, {
+            stickyClass: selector
+          });
+        });
+      });
+    }
+  }, wp.i18n.__('🖱️ Pick Header on Page', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Write your sticky selector here, or click "Pick Header on Page" to click your header directly on your live site instead. Make anything sticky by use sticky class. example: `<div class="sticky">I am sticky</div>`', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Sticky Header Background', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(ButtonGroup, null, BG_TYPE_OPTIONS.map(function (_ref2) {
+    var label = _ref2.label,
+      value = _ref2.value,
+      pro = _ref2.pro;
+    return /*#__PURE__*/React.createElement(Button, {
+      key: value,
+      className: !!pro && !isPro ? 'ai1wpsa-disabled' : '',
+      isPrimary: stickyHeaderBgType === value,
+      onClick: function onClick() {
+        if (!!pro && !isPro) {
+          showProModal();
+          return;
+        }
+        setData(_objectSpread(_objectSpread({}, data), {}, {
+          stickyHeaderBgType: value
+        }));
+      }
+    }, label);
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Applied only while the header is actually stuck to the top of the screen (its "active" sticky state) — leave everything below empty to keep your theme\'s own header background.', 'all-in-one-wp-sticky-anything')))), stickyHeaderBgType === 'color' && /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Color Type', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(ButtonGroup, null, COLOR_TYPE_OPTIONS.map(function (_ref3) {
+    var label = _ref3.label,
+      value = _ref3.value,
+      pro = _ref3.pro;
+    return /*#__PURE__*/React.createElement(Button, {
+      key: value,
+      className: !!pro && !isPro ? 'ai1wpsa-disabled' : '',
+      isPrimary: stickyHeaderColorType === value,
+      onClick: function onClick() {
+        if (!!pro && !isPro) {
+          showProModal();
+          return;
+        }
+        setData(_objectSpread(_objectSpread({}, data), {}, {
+          stickyHeaderColorType: value
+        }));
+      }
+    }, label);
+  })))), stickyHeaderBgType === 'color' && stickyHeaderColorType === 'solid' && /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
+    value: stickyHeaderBgColor,
+    onChange: function onChange(value) {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyHeaderBgColor: value
+      }));
+    },
+    allowReset: true,
+    resetValue: ''
+  }))), stickyHeaderBgType === 'color' && stickyHeaderColorType === 'gradient' && /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Background Gradient', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(GradientPicker, {
+    value: stickyHeaderGradient,
+    onChange: function onChange(value) {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyHeaderGradient: value || ''
+      }));
+    },
+    gradients: [],
+    clearable: true
+  }))), stickyHeaderBgType === 'image' && /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Background Image', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-media-picker"
+  }, !!stickyHeaderBgImage && /*#__PURE__*/React.createElement("img", {
+    src: stickyHeaderBgImage,
+    alt: "",
+    className: "ai1wpsa-media-picker__preview"
+  }), /*#__PURE__*/React.createElement(Button, {
+    variant: "secondary",
+    onClick: openBackgroundImagePicker
+  }, stickyHeaderBgImage ? wp.i18n.__('Change Image', 'all-in-one-wp-sticky-anything') : wp.i18n.__('Select Image', 'all-in-one-wp-sticky-anything')), !!stickyHeaderBgImage && /*#__PURE__*/React.createElement(Button, {
+    variant: "link",
+    isDestructive: true,
+    onClick: function onClick() {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyHeaderBgImage: ''
+      }));
+    }
+  }, wp.i18n.__('Remove', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Picked from your Media Library. Stretched to cover the header and centered.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Disable Sticky on Mobile', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(FormToggle, {
+    checked: stickyDisableMobile,
+    className: "ai1wpsa-form-toggle ".concat(!isPro ? 'ai1wpsa-disabled' : ''),
+    onChange: function onChange() {
+      if (!isPro) {
+        showProModal();
+        return;
+      }
+      setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyDisableMobile: !stickyDisableMobile
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Turn off all sticky header behavior on mobile-sized screens.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('z-index', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(TextControl, {
+    value: stickyZIndex,
+    placeholder: wp.i18n.__('ex: 9999', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyZIndex: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Set your desire z-index value for your target element.', 'all-in-one-wp-sticky-anything'))))));
+}
+;// ./src/js/components/Settings/StickySidebar.js
+function StickySidebar_typeof(o) { "@babel/helpers - typeof"; return StickySidebar_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, StickySidebar_typeof(o); }
+function StickySidebar_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function StickySidebar_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? StickySidebar_ownKeys(Object(t), !0).forEach(function (r) { StickySidebar_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : StickySidebar_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function StickySidebar_defineProperty(e, r, t) { return (r = StickySidebar_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function StickySidebar_toPropertyKey(t) { var i = StickySidebar_toPrimitive(t, "string"); return "symbol" == StickySidebar_typeof(i) ? i : i + ""; }
+function StickySidebar_toPrimitive(t, r) { if ("object" != StickySidebar_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != StickySidebar_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var StickySidebar_useContext = wp.element.useContext;
+var StickySidebar_wp$components = wp.components,
+  StickySidebar_Button = StickySidebar_wp$components.Button,
+  StickySidebar_ButtonGroup = StickySidebar_wp$components.ButtonGroup,
+  StickySidebar_FormToggle = StickySidebar_wp$components.FormToggle,
+  StickySidebar_TextControl = StickySidebar_wp$components.TextControl;
+
+function StickySidebar() {
+  var _ai1wpsa = ai1wpsa,
+    isPro = _ai1wpsa.isPro;
+  var _useContext = StickySidebar_useContext(Contexts_SettingsContext),
+    data = _useContext.data,
+    setData = _useContext.setData;
+  var _ref = data || {},
+    _ref$stickySidebar = _ref.stickySidebar,
+    stickySidebar = _ref$stickySidebar === void 0 ? false : _ref$stickySidebar,
+    _ref$stickySidebarEle = _ref.stickySidebarElement,
+    stickySidebarElement = _ref$stickySidebarEle === void 0 ? '' : _ref$stickySidebarEle,
+    _ref$stickySidebarCon = _ref.stickySidebarContainer,
+    stickySidebarContainer = _ref$stickySidebarCon === void 0 ? '' : _ref$stickySidebarCon,
+    _ref$stickySidebarDev = _ref.stickySidebarDevice,
+    stickySidebarDevice = _ref$stickySidebarDev === void 0 ? 'all' : _ref$stickySidebarDev,
+    _ref$StickySidebarMar = _ref.StickySidebarMarginTop,
+    StickySidebarMarginTop = _ref$StickySidebarMar === void 0 ? '90' : _ref$StickySidebarMar,
+    _ref$StickySidebarMar2 = _ref.StickySidebarMarginBottom,
+    StickySidebarMarginBottom = _ref$StickySidebarMar2 === void 0 ? '0' : _ref$StickySidebarMar2,
+    _ref$stickyMinWidth = _ref.stickyMinWidth,
+    stickyMinWidth = _ref$stickyMinWidth === void 0 ? '795' : _ref$stickyMinWidth,
+    _ref$stickySidebarHei = _ref.stickySidebarHeight,
+    stickySidebarHeight = _ref$stickySidebarHei === void 0 ? false : _ref$stickySidebarHei,
+    _ref$stickyDisableOn = _ref.stickyDisableOn,
+    stickyDisableOn = _ref$stickyDisableOn === void 0 ? [] : _ref$stickyDisableOn;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "ai1wpsa-settings-content-header"
+  }, /*#__PURE__*/React.createElement("i", {
+    "class": "dashicons dashicons-welcome-widgets-menus"
+  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Sticky Sidebar Settings', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Sticky Sidebar', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickySidebar_FormToggle, {
+    checked: stickySidebar,
+    onChange: function onChange() {
+      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickySidebar: !stickySidebar
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Enable or disable the sticky sidebar.', 'all-in-one-wp-sticky-anything')))), !!stickySidebar && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Sticky Sidebar Selector', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
+    value: stickySidebarElement,
+    placeholder: wp.i18n.__('ex: #sidebar or .sidebar', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickySidebarElement: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Write your sidebar element CSS selector (class or id) here. Astra: #secondary, Neve: .blog-sidebar', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Sidebar Container Selector', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
+    value: stickySidebarContainer,
+    placeholder: wp.i18n.__('ex: #main', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickySidebarContainer: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Write your sidebar container element CSS selector (class or id) here. It must be element that contains both sidebar and content. If left blank script will try to guess. Usually it\'s #main or #main-content. Astra: .ast-container, Neve: .archive-container .row', 'all-in-one-wp-sticky-anything')))), isPro && /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickySidebar_ButtonGroup, null, /*#__PURE__*/React.createElement(StickySidebar_Button, {
+    onClick: function onClick() {
+      if (!isPro) {
+        return;
+      }
+      setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickySidebarDevice: 'all'
+      }));
+    },
+    variant: stickySidebarDevice === 'all' ? 'primary' : ''
+  }, wp.i18n.__('All', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
+    onClick: function onClick() {
+      if (!isPro) {
+        return;
+      }
+      setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickySidebarDevice: 'desktop'
+      }));
+    },
+    variant: stickySidebarDevice === 'desktop' ? 'primary' : ''
+  }, wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
+    onClick: function onClick() {
+      if (!isPro) {
+        return;
+      }
+      setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickySidebarDevice: 'tablet'
+      }));
+    },
+    variant: stickySidebarDevice === 'tablet' ? 'primary' : ''
+  }, wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(StickySidebar_Button, {
+    onClick: function onClick() {
+      if (!isPro) {
+        return;
+      }
+      setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickySidebarDevice: 'mobile'
+      }));
+    },
+    variant: stickySidebarDevice === 'mobile' ? 'primary' : ''
+  }, wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Set your desire z-index value for your target element.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Additional Top Margin', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
+    type: "number",
+    value: StickySidebarMarginTop,
+    placeholder: wp.i18n.__('ex: 30', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        StickySidebarMarginTop: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Set additional top margin for your sidebar.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Additional Bottom Margin', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
+    type: "number",
+    value: StickySidebarMarginBottom,
+    placeholder: wp.i18n.__('ex: 30', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        StickySidebarMarginBottom: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Set additional bottom margin for your sidebar.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Disable in small screens', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickySidebar_TextControl, {
+    type: "number",
+    value: stickyMinWidth,
+    placeholder: wp.i18n.__('ex: 767', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickyMinWidth: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Disable if screen width is smaller than this value. Set only width value. Don\'t add px.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Update sidebar height', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(StickySidebar_FormToggle, {
+    checked: stickySidebarHeight,
+    onChange: function onChange() {
+      return setData(StickySidebar_objectSpread(StickySidebar_objectSpread({}, data), {}, {
+        stickySidebarHeight: !stickySidebarHeight
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Troubleshooting option, try this if your sidebar loses its background color.', 'all-in-one-wp-sticky-anything')))))));
+}
+;// ./src/js/includes/Notice.js
+function Notice(_ref) {
+  var _ref$type = _ref.type,
+    type = _ref$type === void 0 ? 'info' : _ref$type,
+    _ref$message = _ref.message,
+    message = _ref$message === void 0 ? '' : _ref$message,
+    _ref$actions = _ref.actions,
+    actions = _ref$actions === void 0 ? [] : _ref$actions,
+    _ref$openNewTab = _ref.openNewTab,
+    openNewTab = _ref$openNewTab === void 0 ? true : _ref$openNewTab;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-notice ".concat(type)
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "dashicons dashicons-info"
+  }), /*#__PURE__*/React.createElement("p", null, message), actions.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: "actions"
+  }, actions.map(function (action, index) {
+    return /*#__PURE__*/React.createElement("a", {
+      key: index,
+      href: action.url,
+      target: "".concat(openNewTab ? '_blank' : 'self')
+    }, action.label);
+  })));
+}
+;// ./src/js/components/Settings/Css.js
+function Css_typeof(o) { "@babel/helpers - typeof"; return Css_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Css_typeof(o); }
+function Css_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function Css_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? Css_ownKeys(Object(t), !0).forEach(function (r) { Css_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : Css_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function Css_defineProperty(e, r, t) { return (r = Css_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function Css_toPropertyKey(t) { var i = Css_toPrimitive(t, "string"); return "symbol" == Css_typeof(i) ? i : i + ""; }
+function Css_toPrimitive(t, r) { if ("object" != Css_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Css_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var _wp$element = wp.element,
+  Css_useContext = _wp$element.useContext,
+  useEffect = _wp$element.useEffect;
+var TextareaControl = wp.components.TextareaControl;
+
+
+function Css() {
+  var _ai1wpsa = ai1wpsa,
+    isPro = _ai1wpsa.isPro;
+  var _useContext = Css_useContext(Contexts_SettingsContext),
+    data = _useContext.data,
+    setData = _useContext.setData;
+  var _data$customCss = data.customCss,
+    customCss = _data$customCss === void 0 ? '' : _data$customCss;
+  useEffect(function () {
+    var editor = document.querySelectorAll('.ai1wpsa-custom-css textarea');
+    var instance = wp.codeEditor.initialize(editor, Css_objectSpread(Css_objectSpread({}, wp.codeEditor.defaultSettings), {}, {
+      mode: 'css',
+      wordWrap: true,
+      tabSize: 2,
+      autoComplete: {
+        enable: true,
+        showDescriptions: true,
+        caseSensitive: true,
+        autoTrigger: true,
+        delay: 0,
+        maxItems: 10,
+        sortBy: 'score',
+        maxLength: 0,
+        maxResults: 10,
+        highlightMatches: true,
+        maxHighlightLength: 0,
+        style: 'popup'
+      },
+      showGutter: true,
+      showPrintMargin: true,
+      highlightActiveLine: true,
+      showLineNumbers: true,
+      enableBasicAutocompletion: true,
+      enableLiveAutocompletion: true,
+      enableCodeFolding: true,
+      enableCodeFormatting: true
+    }));
+    instance.codemirror.on('change', function (codemirror) {
+      var value = codemirror.getValue();
+      setData(function (data) {
+        return Css_objectSpread(Css_objectSpread({}, data), {}, {
+          customCss: value
+        });
+      });
+    });
+  }, []);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "ai1wpsa-settings-content-header"
+  }, /*#__PURE__*/React.createElement("i", {
+    "class": "dashicons dashicons-editor-code"
+  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Custom CSS', 'ai1wpsa'))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-content"
+  }, /*#__PURE__*/React.createElement(Notice, {
+    message: wp.i18n.__('Custom CSS feature will be discontinued soon. Please save your custom CSS in advance. For assistance, please use the support forum.', 'all-in-one-wp-sticky-anything'),
+    actions: [{
+      label: wp.i18n.__('Visit Support Forum', 'all-in-one-wp-sticky-anything'),
+      url: 'https://wordpress.org/support/plugin/all-in-one-wp-sticky-anything/'
+    }]
+  }), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Custom CSS', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(TextareaControl, {
+    value: customCss,
+    className: "ai1wpsa-custom-css",
+    placeholder: wp.i18n.__('ex: .header{ // your css code here.}', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(Css_objectSpread(Css_objectSpread({}, data), {}, {
+        customCss: value.target.value
+      }));
+    },
+    rows: 12
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Write your custom CSS here.', 'all-in-one-wp-sticky-anything'))))));
+}
+;// ./src/js/components/Settings/Tools.js
+function Tools_typeof(o) { "@babel/helpers - typeof"; return Tools_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Tools_typeof(o); }
+function Tools_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function Tools_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? Tools_ownKeys(Object(t), !0).forEach(function (r) { Tools_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : Tools_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function Tools_defineProperty(e, r, t) { return (r = Tools_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function Tools_toPropertyKey(t) { var i = Tools_toPrimitive(t, "string"); return "symbol" == Tools_typeof(i) ? i : i + ""; }
+function Tools_toPrimitive(t, r) { if ("object" != Tools_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Tools_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var Tools_useContext = wp.element.useContext;
+var Tools_FormToggle = wp.components.FormToggle;
+
+function Tools() {
+  var _useContext = Tools_useContext(Contexts_SettingsContext),
+    handleResetSettings = _useContext.handleResetSettings,
+    data = _useContext.data,
+    setData = _useContext.setData;
+  var deleteData = data.deleteData;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-settings-content-header"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "dashicons dashicons-admin-tools"
+  }), /*#__PURE__*/React.createElement("span", null, wp.i18n.__('Tools', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("div", {
+    className: "settings-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Reset Data', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "ai1wpsa-btn reset-btn",
+    onClick: handleResetSettings
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "dashicons dashicons-update"
+  }), wp.i18n.__('Reset', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Reset all settings to default.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Delete Data', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(Tools_FormToggle, {
+    checked: deleteData,
+    onChange: function onChange() {
+      return setData(Tools_objectSpread(Tools_objectSpread({}, data), {}, {
+        deleteData: !deleteData
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Delete all settings on plugin uninstall.', 'all-in-one-wp-sticky-anything'))))));
+}
+;// ./src/js/includes/ColorPickerWrapper.js
+
+var ColorPickerWrapper_ColorPicker = wp.components.ColorPicker;
+function ColorPickerWrapper_ColorPickerWrapper(_ref) {
   var value = _ref.value,
     _onChange = _ref.onChange,
     _ref$allowReset = _ref.allowReset,
@@ -2867,7 +3231,7 @@ function ColorPickerWrapper(_ref) {
     className: "ai1wpsa-color-picker-tooltip",
     positionStrategy: "absolute",
     border: true
-  }, /*#__PURE__*/React.createElement(ColorPicker, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPicker, {
     value: value,
     onChange: _onChange,
     enableAlpha: true
@@ -3077,7 +3441,7 @@ function AnnouncementBar() {
       "class": "settings-field-label"
     }, wp.i18n.__('Title Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
       "class": "settings-field-content"
-    }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
+    }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
       value: bar.titleColor,
       onChange: function onChange(value) {
         return setData(AnnouncementBar_objectSpread(AnnouncementBar_objectSpread({}, data), {}, {
@@ -3257,64 +3621,6 @@ function AnnouncementBar() {
     })))));
   })))))));
 }
-;// ./src/js/components/Settings/ColorPickerWrapper.js
-
-var ColorPickerWrapper_ColorPicker = wp.components.ColorPicker;
-function ColorPickerWrapper_ColorPickerWrapper(_ref) {
-  var id = _ref.id,
-    value = _ref.value,
-    _onChange = _ref.onChange,
-    _ref$allowReset = _ref.allowReset,
-    allowReset = _ref$allowReset === void 0 ? false : _ref$allowReset,
-    _ref$resetValue = _ref.resetValue,
-    resetValue = _ref$resetValue === void 0 ? '' : _ref$resetValue,
-    _ref$customClassName = _ref.customClassName,
-    customClassName = _ref$customClassName === void 0 ? '' : _ref$customClassName;
-  var uniqueId = 'color-picker-' + Math.random().toString(36).substring(7);
-  return /*#__PURE__*/React.createElement("div", {
-    className: "ai1wpsa-color-picker-wrapper",
-    id: id
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "color-holder-wrap ".concat(customClassName)
-  }, /*#__PURE__*/React.createElement("div", {
-    "data-tooltip-id": uniqueId,
-    className: "ai1wpsa-color-holder",
-    style: {
-      background: value
-    }
-  }), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    className: "color-input",
-    value: value || resetValue,
-    onChange: function onChange(e) {
-      return _onChange(e.target.value);
-    }
-  }), /*#__PURE__*/React.createElement("i", {
-    "data-tooltip-id": uniqueId,
-    className: "ai1wpsa-popup-edit color-edit dashicons dashicons-edit"
-  }), allowReset && !!value && /*#__PURE__*/React.createElement("i", {
-    className: "popup-settings-reset dashicons dashicons-image-rotate",
-    onClick: function onClick() {
-      return _onChange(resetValue);
-    },
-    title: wp.i18n.__('Reset', 'ultimate-addons-for-wpforms')
-  }), /*#__PURE__*/React.createElement(M, {
-    id: uniqueId,
-    effect: "solid",
-    place: "top",
-    variant: "light",
-    openOnClick: true,
-    clickable: true,
-    delayHide: 100,
-    className: "eacf7-tooltip color-picker-tooltip",
-    positionStrategy: "absolute",
-    border: '1px solid #ccc'
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPicker, {
-    color: value,
-    onChange: _onChange,
-    enableAlpha: true
-  }))));
-}
 ;// ./src/js/components/Settings/StickySocial.js
 function StickySocial_typeof(o) { "@babel/helpers - typeof"; return StickySocial_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, StickySocial_typeof(o); }
 function StickySocial_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -3322,12 +3628,12 @@ function StickySocial_objectSpread(e) { for (var r = 1; r < arguments.length; r+
 function StickySocial_defineProperty(e, r, t) { return (r = StickySocial_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function StickySocial_toPropertyKey(t) { var i = StickySocial_toPrimitive(t, "string"); return "symbol" == StickySocial_typeof(i) ? i : i + ""; }
 function StickySocial_toPrimitive(t, r) { if ("object" != StickySocial_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != StickySocial_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || StickySocial_unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function StickySocial_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return StickySocial_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? StickySocial_arrayLikeToArray(r, a) : void 0; } }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return StickySocial_arrayLikeToArray(r); }
+function StickySocial_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 var StickySocial_useContext = wp.element.useContext;
 var StickySocial_wp$components = wp.components,
   StickySocial_Button = StickySocial_wp$components.Button,
@@ -7163,7 +7469,7 @@ function StickySocial() {
     "class": "settings-field-label"
   }, wp.i18n.__('Icon Menu Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickySocialIconsMenuBgColor,
     onChange: function onChange(value) {
       return setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
@@ -7178,7 +7484,7 @@ function StickySocial() {
     "class": "settings-field-label"
   }, wp.i18n.__('Icon Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickySocialIconsIconColor,
     onChange: function onChange(value) {
       return setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
@@ -7193,7 +7499,7 @@ function StickySocial() {
     "class": "settings-field-label"
   }, wp.i18n.__('Icon Hover Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickySocialIconsIconHoverColor,
     customClassName: "".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
@@ -7212,7 +7518,7 @@ function StickySocial() {
     "class": "settings-field-label"
   }, wp.i18n.__('Icon Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickySocialIconsIconBgColor,
     onChange: function onChange(value) {
       return setData(StickySocial_objectSpread(StickySocial_objectSpread({}, data), {}, {
@@ -7227,7 +7533,7 @@ function StickySocial() {
     "class": "settings-field-label"
   }, wp.i18n.__('Icon Background Hover Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickySocialIconsIconHoverBgColor,
     customClassName: "".concat(!isPro ? 'ai1wpsa-disabled' : ''),
     onChange: function onChange(value) {
@@ -7264,10 +7570,10 @@ function StickyCookieConsent_objectSpread(e) { for (var r = 1; r < arguments.len
 function StickyCookieConsent_defineProperty(e, r, t) { return (r = StickyCookieConsent_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function StickyCookieConsent_toPropertyKey(t) { var i = StickyCookieConsent_toPrimitive(t, "string"); return "symbol" == StickyCookieConsent_typeof(i) ? i : i + ""; }
 function StickyCookieConsent_toPrimitive(t, r) { if ("object" != StickyCookieConsent_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != StickyCookieConsent_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || StickyCookieConsent_unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function StickyCookieConsent_slicedToArray(r, e) { return StickyCookieConsent_arrayWithHoles(r) || StickyCookieConsent_iterableToArrayLimit(r, e) || StickyCookieConsent_unsupportedIterableToArray(r, e) || StickyCookieConsent_nonIterableRest(); }
+function StickyCookieConsent_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function StickyCookieConsent_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function StickyCookieConsent_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function StickyCookieConsent_toConsumableArray(r) { return StickyCookieConsent_arrayWithoutHoles(r) || StickyCookieConsent_iterableToArray(r) || StickyCookieConsent_unsupportedIterableToArray(r) || StickyCookieConsent_nonIterableSpread(); }
 function StickyCookieConsent_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function StickyCookieConsent_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return StickyCookieConsent_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? StickyCookieConsent_arrayLikeToArray(r, a) : void 0; } }
@@ -7383,7 +7689,7 @@ function StickyCookieConsent() {
   var reorder = function reorder(list, startIndex, endIndex) {
     var result = StickyCookieConsent_toConsumableArray(list);
     var _result$splice = result.splice(startIndex, 1),
-      _result$splice2 = _slicedToArray(_result$splice, 1),
+      _result$splice2 = StickyCookieConsent_slicedToArray(_result$splice, 1),
       removed = _result$splice2[0];
     result.splice(endIndex, 0, removed);
     return result;
@@ -7658,7 +7964,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyCookieConsentBannerStyle.bgColor,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7673,7 +7979,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyCookieConsentBannerStyle.textColor,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7715,7 +8021,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyCookieConsentButtonStyle.acceptBtnBg,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7730,7 +8036,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyCookieConsentButtonStyle.acceptTextColor,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7751,7 +8057,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyCookieConsentButtonStyle.rejectBtnBg,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -7766,7 +8072,7 @@ function StickyCookieConsent() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyCookieConsentButtonStyle.rejectTextColor,
     onChange: function onChange(value) {
       setData(StickyCookieConsent_objectSpread(StickyCookieConsent_objectSpread({}, data), {}, {
@@ -8365,7 +8671,7 @@ function ClickToCall() {
     className: "settings-field-label"
   }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: clicktoCallBgColor,
     onChange: function onChange(color) {
       return setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -8380,7 +8686,7 @@ function ClickToCall() {
     className: "settings-field-label"
   }, wp.i18n.__('Icon Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: clicktoCallIconColor,
     onChange: function onChange(color) {
       return setData(ClickToCall_objectSpread(ClickToCall_objectSpread({}, data), {}, {
@@ -9420,7 +9726,7 @@ function StickyToc() {
     className: "settings-field-label"
   }, wp.i18n.__('Accent Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyTocAccentColor,
     onChange: function onChange(color) {
       return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
@@ -9435,7 +9741,7 @@ function StickyToc() {
     className: "settings-field-label"
   }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     className: "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyTocBgColor,
     onChange: function onChange(color) {
       return setData(StickyToc_objectSpread(StickyToc_objectSpread({}, data), {}, {
@@ -10489,7 +10795,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyFloatingFormsWidgetStyle.bgColor,
     customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
@@ -10509,7 +10815,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyFloatingFormsWidgetStyle.textColor,
     customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
@@ -10556,7 +10862,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Submit Button Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Submit Button Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyFloatingFormsButtonStyle.submitBtnBg,
     customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
@@ -10576,7 +10882,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Submit Button Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Submit Button Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyFloatingFormsButtonStyle.submitTextColor,
     customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
@@ -10598,7 +10904,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Close Button Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Close Button Background Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyFloatingFormsButtonStyle.closeBtnBg,
     customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
@@ -10618,7 +10924,7 @@ function StickyFloatingForms() {
     className: "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Close Button Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper_ColorPickerWrapper, {
+  }, wp.i18n.__('Close Button Text Color', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement(ColorPickerWrapper, {
     value: stickyFloatingFormsButtonStyle.closeTextColor,
     customClassName: !isPro ? 'ai1wpsa-disabled' : '',
     onChange: function onChange(value) {
@@ -10854,38 +11160,6 @@ function Content() {
     }), title);
   })), tab === 'general' && /*#__PURE__*/React.createElement(General, null), tab === 'fixed-widget' && /*#__PURE__*/React.createElement(FixedWidget, null), tab === 'click-to-call' && /*#__PURE__*/React.createElement(ClickToCall, null), tab === 'sticky-sidebar' && /*#__PURE__*/React.createElement(StickySidebar, null), tab === 'sticky-social-icons' && /*#__PURE__*/React.createElement(StickySocial, null), tab === 'sticky-cookie-consent' && /*#__PURE__*/React.createElement(StickyCookieConsent, null), tab === 'sticky-forms' && /*#__PURE__*/React.createElement(StickyFloatingForms, null), tab === 'sticky-toc' && /*#__PURE__*/React.createElement(StickyToc, null), tab === 'sticky-notes' && /*#__PURE__*/React.createElement(StickyNotes, null), tab === 'announcement' && /*#__PURE__*/React.createElement(AnnouncementBar, null), tab === 'css' && /*#__PURE__*/React.createElement(Css, null), tab === 'tools' && /*#__PURE__*/React.createElement(Tools, null));
 }
-;// ./src/js/includes/functions.js
-function functions_slicedToArray(r, e) { return functions_arrayWithHoles(r) || functions_iterableToArrayLimit(r, e) || functions_unsupportedIterableToArray(r, e) || functions_nonIterableRest(); }
-function functions_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function functions_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return functions_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? functions_arrayLikeToArray(r, a) : void 0; } }
-function functions_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function functions_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function functions_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function showNotification($text) {
-  Swal.fire({
-    title: false,
-    text: $text,
-    icon: 'success',
-    toast: true,
-    timer: 1500,
-    timerProgressBar: true,
-    showConfirmButton: false,
-    position: 'top-end',
-    customClass: {
-      container: 'ai1wpsa-swal ai1wpsa-notification'
-    }
-  });
-}
-function useMounted() {
-  var _React$useState = React.useState(false),
-    _React$useState2 = functions_slicedToArray(_React$useState, 2),
-    isMounted = _React$useState2[0],
-    setIsMounted = _React$useState2[1];
-  React.useEffect(function () {
-    setIsMounted(true);
-  }, []);
-  return isMounted;
-}
 ;// ./src/js/components/Settings.js
 function Settings_slicedToArray(r, e) { return Settings_arrayWithHoles(r) || Settings_iterableToArrayLimit(r, e) || Settings_unsupportedIterableToArray(r, e) || Settings_nonIterableRest(); }
 function Settings_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11099,6 +11373,11 @@ function BasicUsage() {
 ;// ./src/js/components/GettingStarted/Changelog.js
 function Changelog() {
   var logs = [{
+    version: 'v1.1.8',
+    date: '11-09-2026',
+    "new": [wp.i18n.__('Sticky Header Background color, gradient (Pro), or image (Pro) added.', 'all-in-one-wp-sticky-anything'), wp.i18n.__('"Pick Header on Page" — click your header on your live site to auto-fill the Sticky Class selector.', 'all-in-one-wp-sticky-anything')],
+    fix: [wp.i18n.__('Sticky header no longer lags/blinks while scrolling; removed the "Fix Sticky" toggle.', 'all-in-one-wp-sticky-anything')]
+  }, {
     version: 'v1.1.7',
     date: '31-08-2026',
     "new": [wp.i18n.__('Introduce Admin Sticky Notes', 'all-in-one-wp-sticky-anything')],

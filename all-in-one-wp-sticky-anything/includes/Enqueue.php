@@ -30,13 +30,7 @@ class Enqueue
         // frontend styles
         wp_register_style('ai1wpsa-click-to-call', AI1WPSA_ASSETS . '/vendor/click-to-call/click-to-call.min.css', [], '1.0.0');
         wp_register_style('ai1wpsa-toc', AI1WPSA_ASSETS . '/vendor/toc/toc.min.css', [], '1.0.0');
-        wp_register_style('ai1wpsa-frontend', AI1WPSA_ASSETS . '/css/frontend.min.css', [], AI1WPSA_VERSION);
-
-        // fix default sticky
-        $fix_default_sticky = ai1wpsa_get_settings('fixDefaultSticky') || get_option('ai1wpsa_sticky_header') || ai1wpsa_get_settings('stickySocialIcon') || ai1wpsa_get_settings('stickyCookieConsent');
-
-        // convert to boolean
-        $fix_default_sticky = filter_var($fix_default_sticky, FILTER_VALIDATE_BOOLEAN);
+        wp_enqueue_style('ai1wpsa-frontend', AI1WPSA_ASSETS . '/css/frontend.min.css', [], AI1WPSA_VERSION);
 
         // icon type
         $icon_type = ai1wpsa_get_settings('stickySocialIconType', 'dashicons');
@@ -44,19 +38,6 @@ class Enqueue
         if ($icon_type === 'dashicons') {
             wp_enqueue_style('dashicons');
         }
-
-        if ($fix_default_sticky === true || is_plugin_active('elementor/elementor.php')) {
-            wp_enqueue_style('ai1wpsa-frontend');
-        }
-
-        // Scripts
-        wp_register_script(
-            'ai1wpsa-stickr', AI1WPSA_ASSETS . '/vendor/stickr.min.js', [
-            'jquery',
-            'wp-plupload',
-            'wp-util',
-            ], AI1WPSA_VERSION, true
-        );
 
         wp_register_script(
             'ai1wpsa-theia', AI1WPSA_ASSETS . '/vendor/theia-sticky-sidebar.js', [
@@ -79,13 +60,6 @@ class Enqueue
             'wp-util',
             ], AI1WPSA_VERSION, true
         );
-
-        $fix_default_sticky = ai1wpsa_get_settings('fixDefaultSticky', false);
-        $fix_default_sticky = filter_var($fix_default_sticky, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-
-        if (empty($fix_default_sticky) || $fix_default_sticky === false || $fix_default_sticky === '0') {
-            wp_enqueue_script('ai1wpsa-stickr');
-        }
 
         $sticky_sidebar = ai1wpsa_get_settings('stickySidebar');
 
@@ -113,6 +87,16 @@ class Enqueue
         wp_enqueue_script('ai1wpsa-frontend');
 
         wp_localize_script('ai1wpsa-frontend', 'ai1wpsa', $this->get_localize_data());
+
+        // Visual element picker - only for a logged-in admin who opened this
+        // exact page via the "Pick on Page" button in Settings > General
+        // (see SelectorPicker.js), never on a normal page load.
+        $picker_nonce = isset($_GET['ai1wpsa_picker_nonce']) ? sanitize_text_field(wp_unslash($_GET['ai1wpsa_picker_nonce'])) : '';
+
+        if (isset($_GET['ai1wpsa_picker']) && current_user_can('manage_options') && wp_verify_nonce($picker_nonce, 'ai1wpsa_picker')) {
+            wp_enqueue_style('ai1wpsa-element-picker', AI1WPSA_ASSETS . '/css/element-picker.min.css', [], AI1WPSA_VERSION);
+            wp_enqueue_script('ai1wpsa-element-picker', AI1WPSA_ASSETS . '/js/element-picker.min.js', [], AI1WPSA_VERSION, true);
+        }
     }
 
     public function customizer_scripts()
@@ -164,6 +148,9 @@ class Enqueue
                 'type'  => 'text/css',
                 )
             );
+
+            // Media Library modal — used by the Sticky Header Background
+            wp_enqueue_media();
         }
 
 		$sticky_notes = (bool) ai1wpsa_get_settings('stickyNotes', false);
@@ -249,6 +236,7 @@ class Enqueue
             $data['pluginUrl']     = AI1WPSA_URL;
             $data['adminUrl']     = admin_url();
             $data['adminEmail'] = get_option('admin_email');
+            $data['pickerNonce'] = wp_create_nonce('ai1wpsa_picker');
             $data['postTypes']     = ai1wpsa_get_public_post_types();
             $data['contactForms'] = $this->get_contact_forms();
 
