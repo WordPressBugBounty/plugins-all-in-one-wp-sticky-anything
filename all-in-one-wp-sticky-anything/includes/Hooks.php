@@ -42,49 +42,81 @@ class Hooks {
 	 * the screen. So this background only ever shows up in that "active"
 	 * state, never on the header's normal in-flow appearance.
 	 *
-	 * Background Image and Gradient are Premium — `ai1wpsa_get_settings()`
-	 * already downgrades `stickyHeaderBgType`/`stickyHeaderColorType` back
-	 * to 'color'/'solid' on a free install (see ai1wpsa_pro_setting_locks），
-	 * so this method never needs its own Pro check; it just renders
-	 * whatever the (already-enforced) settings say.
-	 *
 	 * @return void
 	 */
 	public function render_sticky_header_styles() {
 		$bg_type    = ai1wpsa_get_settings('stickyHeaderBgType', 'color');
 		$color_type = ai1wpsa_get_settings('stickyHeaderColorType', 'solid');
 		$bg_color   = ai1wpsa_get_settings('stickyHeaderBgColor');
-		$gradient   = ai1wpsa_get_settings('stickyHeaderGradient');
-		$bg_image   = ai1wpsa_get_settings('stickyHeaderBgImage');
+
+		$shrink               = (bool) ai1wpsa_get_settings('stickyShrink', false);
+		$shrink_height        = ai1wpsa_get_settings('stickyShrinkHeight');
+		$shrink_logo_selector = (string) ai1wpsa_get_settings('stickyShrinkLogoSelector', '');
+		$shrink_logo_width    = ai1wpsa_get_settings('stickyShrinkLogoWidth');
 
 		$declarations = [];
 
-		if ($bg_type === 'image' && ! empty($bg_image)) {
-			$declarations[] = 'background-image: url(' . esc_url($bg_image) . ')';
-			$declarations[] = 'background-size: cover';
-			$declarations[] = 'background-position: center';
-			$declarations[] = 'background-repeat: no-repeat';
-		} elseif ($bg_type === 'color' && $color_type === 'gradient' && ! empty($gradient)) {
-			$declarations[] = 'background-image: ' . esc_attr($gradient);
-		} elseif (! empty($bg_color)) {
+		if (! empty($bg_color)) {
 			$declarations[] = 'background-color: ' . esc_attr($bg_color);
 		}
 
-		if (empty($declarations)) {
+		/**
+		 * Filters the sticky header's background CSS declarations.
+		 *
+		 * @since 1.3.0
+		 * @param string[] $declarations Declarations built so far.
+		 * @param string   $bg_type      Raw stickyHeaderBgType setting.
+		 * @param string   $color_type   Raw stickyHeaderColorType setting.
+		 */
+		$declarations = apply_filters('ai1wpsa_sticky_header_bg_declarations', $declarations, $bg_type, $color_type);
+
+		if ($shrink && is_numeric($shrink_height) && $shrink_height > 0) {
+			$declarations[] = 'height: ' . absint($shrink_height) . 'px';
+			$declarations[] = 'min-height: ' . absint($shrink_height) . 'px';
+		}
+
+		$logo_declarations = [];
+
+		if ($shrink && ! empty($shrink_logo_selector) && is_numeric($shrink_logo_width) && $shrink_logo_width > 0) {
+			$logo_declarations[] = 'width: ' . absint($shrink_logo_width) . 'px';
+			$logo_declarations[] = 'height: auto';
+		}
+
+		if (empty($declarations) && empty($logo_declarations)) {
 			return;
 		}
 		?>
 		<style>
+			<?php if ($shrink) : ?>
+			.ai1wpsa-fix-sticky {
+				transition: height .3s ease, min-height .3s ease, background-color .3s ease;
+			}
+			<?php if (! empty($shrink_logo_selector)) : ?>
+			.ai1wpsa-fix-sticky <?php echo wp_strip_all_tags($shrink_logo_selector); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> {
+				transition: width .3s ease, height .3s ease;
+			}
+			<?php endif; ?>
+			<?php endif; ?>
+
+			<?php if (! empty($declarations)) : ?>
 			.ai1wpsa-fix-sticky.sticky {
 				<?php
 				// Each value above is already escaped once at the point it
-				// was built (esc_url for the image URL, esc_attr for the
-				// gradient/color strings) — re-escaping the joined string
-				// here would HTML-entity-encode the "&" in any image URL
-				// query string and break it.
+				// was built (esc_attr for the color string here, absint for
+				// the shrink height, whatever the Pro filter callback used
+				// for its own image/gradient declarations) — re-escaping the
+				// joined string here would HTML-entity-encode the "&" in an
+				// image URL's query string and break it.
 				echo implode(' !important;' . "\n\t\t\t\t", $declarations); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				?> !important;
 			}
+			<?php endif; ?>
+
+			<?php if (! empty($logo_declarations)) : ?>
+			.ai1wpsa-fix-sticky.sticky <?php echo wp_strip_all_tags($shrink_logo_selector); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> {
+				<?php echo implode(' !important;' . "\n\t\t\t\t", $logo_declarations); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> !important;
+			}
+			<?php endif; ?>
 		</style>
 		<?php
 	}

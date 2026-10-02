@@ -258,7 +258,7 @@ function useMounted() {
  */
 
 
-function buildPickerUrl() {
+function buildPickerUrl(target) {
   var _ref = ai1wpsa || {},
     homeUrl = _ref.homeUrl,
     pickerNonce = _ref.pickerNonce;
@@ -266,6 +266,9 @@ function buildPickerUrl() {
   url.searchParams.set('ai1wpsa_picker', '1');
   url.searchParams.set('ai1wpsa_picker_nonce', pickerNonce);
   url.searchParams.set('origin', window.location.origin);
+  if (target === 'image') {
+    url.searchParams.set('ai1wpsa_picker_target', 'image');
+  }
   return url.toString();
 }
 
@@ -273,14 +276,27 @@ function buildPickerUrl() {
 // before assuming the site is blocking framing (X-Frame-Options / CSP) and
 // falling back to a new tab.
 var IFRAME_READY_TIMEOUT = 4000;
+
+/**
+ * @param {(selector: string) => void} onSelect
+ * @param {{ target?: 'header' | 'image' }} [options] `target: 'image'` puts
+ *   element-picker.js into logo-picking mode: it resolves whatever's hovered
+ *   down to the nearest actual `<img>` (itself, or the first `<img>`
+ *   descendant) instead of snapping up to the nearest header-like ancestor,
+ *   and drops the "Select Parent" escape hatch — this mode always ends in an
+ *   `<img>` selector, never a wrapping element.
+ */
 function pickElementOnPage(onSelect) {
-  var _ref2 = ai1wpsa || {},
-    homeUrl = _ref2.homeUrl,
-    pickerNonce = _ref2.pickerNonce;
+  var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+    _ref2$target = _ref2.target,
+    target = _ref2$target === void 0 ? 'header' : _ref2$target;
+  var _ref3 = ai1wpsa || {},
+    homeUrl = _ref3.homeUrl,
+    pickerNonce = _ref3.pickerNonce;
   if (!homeUrl || !pickerNonce) {
     return;
   }
-  var targetUrl = buildPickerUrl();
+  var targetUrl = buildPickerUrl(target);
   var fallbackTab = null;
   var readyTimer = null;
   var handleMessage = function handleMessage(event) {
@@ -293,10 +309,10 @@ function pickElementOnPage(onSelect) {
     if (!fromIframe && !fromTab) {
       return;
     }
-    var _ref3 = event.data || {},
-      type = _ref3.type,
-      selector = _ref3.selector,
-      matches = _ref3.matches;
+    var _ref4 = event.data || {},
+      type = _ref4.type,
+      selector = _ref4.selector,
+      matches = _ref4.matches;
     if (type === 'ai1wpsa:picker-selected' && selector) {
       onSelect(selector);
       showNotification(matches === 1 ? wp.i18n.__('Selector captured.', 'all-in-one-wp-sticky-anything') : wp.i18n.__('Selector captured — matches', 'all-in-one-wp-sticky-anything') + ' ' + matches + ' ' + wp.i18n.__('elements on the page.', 'all-in-one-wp-sticky-anything'));
@@ -313,8 +329,8 @@ function pickElementOnPage(onSelect) {
     if (wrap) wrap.classList.add('is-blocked');
   };
   Swal.fire({
-    title: wp.i18n.__('Pick Your Sticky Header', 'all-in-one-wp-sticky-anything'),
-    html: "\n            <div class=\"ai1wpsa-selector-picker\">\n                <p class=\"ai1wpsa-selector-picker__hint\">".concat(wp.i18n.__('Hover over your site below and click your header (or use "Select Parent" if the click lands on something inside it, like your logo). Press Esc to cancel.', 'all-in-one-wp-sticky-anything'), "</p>\n                <div class=\"ai1wpsa-selector-picker__frame-wrap\">\n                    <iframe id=\"ai1wpsa-picker-iframe\" class=\"ai1wpsa-selector-picker__iframe\" title=\"").concat(wp.i18n.__('Your site', 'all-in-one-wp-sticky-anything'), "\"></iframe>\n                    <div id=\"ai1wpsa-picker-fallback\" class=\"ai1wpsa-selector-picker__fallback\" hidden>\n                        <p>").concat(wp.i18n.__("This site can't be previewed in a frame here.", 'all-in-one-wp-sticky-anything'), "</p>\n                        <button type=\"button\" id=\"ai1wpsa-picker-open-tab\" class=\"button button-primary\">").concat(wp.i18n.__('Open in a New Tab to Pick', 'all-in-one-wp-sticky-anything'), "</button>\n                    </div>\n                </div>\n            </div>\n        "),
+    title: target === 'image' ? wp.i18n.__('Pick Your Logo Image', 'all-in-one-wp-sticky-anything') : wp.i18n.__('Pick Your Sticky Header', 'all-in-one-wp-sticky-anything'),
+    html: "\n            <div class=\"ai1wpsa-selector-picker\">\n                <p class=\"ai1wpsa-selector-picker__hint\">".concat(target === 'image' ? wp.i18n.__('Hover over your site below and click your logo — hovering near it (e.g. its link wrapper) also works, the actual `<img>` is always what gets picked. Press Esc to cancel.', 'all-in-one-wp-sticky-anything') : wp.i18n.__('Hover over your site below and click your header (or use "Select Parent" if the click lands on something inside it, like your logo). Press Esc to cancel.', 'all-in-one-wp-sticky-anything'), "</p>\n                <div class=\"ai1wpsa-selector-picker__frame-wrap\">\n                    <iframe id=\"ai1wpsa-picker-iframe\" class=\"ai1wpsa-selector-picker__iframe\" title=\"").concat(wp.i18n.__('Your site', 'all-in-one-wp-sticky-anything'), "\"></iframe>\n                    <div id=\"ai1wpsa-picker-fallback\" class=\"ai1wpsa-selector-picker__fallback\" hidden>\n                        <p>").concat(wp.i18n.__("This site can't be previewed in a frame here.", 'all-in-one-wp-sticky-anything'), "</p>\n                        <button type=\"button\" id=\"ai1wpsa-picker-open-tab\" class=\"button button-primary\">").concat(wp.i18n.__('Open in a New Tab to Pick', 'all-in-one-wp-sticky-anything'), "</button>\n                    </div>\n                </div>\n            </div>\n        "),
     width: '90vw',
     showConfirmButton: false,
     showCloseButton: true,
@@ -2458,6 +2474,46 @@ var classnames = __webpack_require__(942);
 const h="react-tooltip-core-styles",w="react-tooltip-base-styles",b={core:!1,base:!1};function S({css:e,id:t=w,type:o="base",ref:l}){var r,n;if(!e||"undefined"==typeof document||b[o])return;if("core"===o&&"undefined"!=typeof process&&(null===(r=null===process||void 0===process?void 0:process.env)||void 0===r?void 0:r.REACT_TOOLTIP_DISABLE_CORE_STYLES))return;if("base"!==o&&"undefined"!=typeof process&&(null===(n=null===process||void 0===process?void 0:process.env)||void 0===n?void 0:n.REACT_TOOLTIP_DISABLE_BASE_STYLES))return;"core"===o&&(t=h),l||(l={});const{insertAt:i}=l;if(document.getElementById(t))return;const c=document.head||document.getElementsByTagName("head")[0],s=document.createElement("style");s.id=t,s.type="text/css","top"===i&&c.firstChild?c.insertBefore(s,c.firstChild):c.appendChild(s),s.styleSheet?s.styleSheet.cssText=e:s.appendChild(document.createTextNode(e)),b[o]=!0}function g({type:e="base",id:t=w}={}){if(!b[e])return;"core"===e&&(t=h);const o=document.getElementById(t);"style"===(null==o?void 0:o.tagName)?null==o||o.remove():console.warn(`[react-tooltip] Failed to remove 'style' element with id '${t}'. Call \`injectStyle()\` first`),b[e]=!1}const E=async({elementReference:e=null,tooltipReference:t=null,tooltipArrowReference:o=null,place:l="top",offset:r=10,strategy:n="absolute",middlewares:i=[floating_ui_dom_offset(Number(r)),floating_ui_dom_flip({fallbackAxisSideDirection:"start"}),floating_ui_dom_shift({padding:5})],border:c})=>{if(!e)return{tooltipStyles:{},tooltipArrowStyles:{},place:l};if(null===t)return{tooltipStyles:{},tooltipArrowStyles:{},place:l};const s=i;return o?(s.push(floating_ui_dom_arrow({element:o,padding:5})),floating_ui_dom_computePosition(e,t,{placement:l,strategy:n,middleware:s}).then((({x:e,y:t,placement:o,middlewareData:l})=>{var r,n;const i={left:`${e}px`,top:`${t}px`,border:c},{x:s,y:a}=null!==(r=l.arrow)&&void 0!==r?r:{x:0,y:0},u=null!==(n={top:"bottom",right:"left",bottom:"top",left:"right"}[o.split("-")[0]])&&void 0!==n?n:"bottom",d=c&&{borderBottom:c,borderRight:c};let p=0;if(c){const e=`${c}`.match(/(\d+)px/);p=(null==e?void 0:e[1])?Number(e[1]):1}return{tooltipStyles:i,tooltipArrowStyles:{left:null!=s?`${s}px`:"",top:null!=a?`${a}px`:"",right:"",bottom:"",...d,[u]:`-${4+p}px`},place:o}}))):floating_ui_dom_computePosition(e,t,{placement:"bottom",strategy:n,middleware:s}).then((({x:e,y:t,placement:o})=>({tooltipStyles:{left:`${e}px`,top:`${t}px`},tooltipArrowStyles:{},place:o})))},A=(e,t)=>!("CSS"in window&&"supports"in window.CSS)||window.CSS.supports(e,t),_=(e,t,o)=>{let l=null;const r=function(...r){const n=()=>{l=null,o||e.apply(this,r)};o&&!l&&(e.apply(this,r),l=setTimeout(n,t)),o||(l&&clearTimeout(l),l=setTimeout(n,t))};return r.cancel=()=>{l&&(clearTimeout(l),l=null)},r},O=e=>null!==e&&!Array.isArray(e)&&"object"==typeof e,k=(e,t)=>{if(e===t)return!0;if(Array.isArray(e)&&Array.isArray(t))return e.length===t.length&&e.every(((e,o)=>k(e,t[o])));if(Array.isArray(e)!==Array.isArray(t))return!1;if(!O(e)||!O(t))return e===t;const o=Object.keys(e),l=Object.keys(t);return o.length===l.length&&o.every((o=>k(e[o],t[o])))},T=e=>{if(!(e instanceof HTMLElement||e instanceof SVGElement))return!1;const t=getComputedStyle(e);return["overflow","overflow-x","overflow-y"].some((e=>{const o=t.getPropertyValue(e);return"auto"===o||"scroll"===o}))},L=e=>{if(!e)return null;let t=e.parentElement;for(;t;){if(T(t))return t;t=t.parentElement}return document.scrollingElement||document.documentElement},C="undefined"!=typeof window?external_React_namespaceObject.useLayoutEffect:external_React_namespaceObject.useEffect,R=e=>{e.current&&(clearTimeout(e.current),e.current=null)},x="DEFAULT_TOOLTIP_ID",N={anchorRefs:new Set,activeAnchor:{current:null},attach:()=>{},detach:()=>{},setActiveAnchor:()=>{}},$=(0,external_React_namespaceObject.createContext)({getTooltipData:()=>N}),I=({children:t})=>{const[o,l]=r({[x]:new Set}),[c,s]=r({[x]:{current:null}}),a=(e,...t)=>{l((o=>{var l;const r=null!==(l=o[e])&&void 0!==l?l:new Set;return t.forEach((e=>r.add(e))),{...o,[e]:new Set(r)}}))},u=(e,...t)=>{l((o=>{const l=o[e];return l?(t.forEach((e=>l.delete(e))),{...o}):o}))},d=n(((e=x)=>{var t,l;return{anchorRefs:null!==(t=o[e])&&void 0!==t?t:new Set,activeAnchor:null!==(l=c[e])&&void 0!==l?l:{current:null},attach:(...t)=>a(e,...t),detach:(...t)=>u(e,...t),setActiveAnchor:t=>((e,t)=>{s((o=>{var l;return(null===(l=o[e])||void 0===l?void 0:l.current)===t.current?o:{...o,[e]:t}}))})(e,t)}}),[o,c,a,u]),p=i((()=>({getTooltipData:d})),[d]);return e.createElement($.Provider,{value:p},t)};function j(e=x){return (0,external_React_namespaceObject.useContext)($).getTooltipData(e)}const B=({tooltipId:t,children:l,className:r,place:n,content:i,html:c,variant:a,offset:u,wrapper:d,events:p,positionStrategy:v,delayShow:m,delayHide:f})=>{const{attach:h,detach:w}=j(t),b=s(null);return o((()=>(h(b),()=>{w(b)})),[]),e.createElement("span",{ref:b,className:y("react-tooltip-wrapper",r),"data-tooltip-place":n,"data-tooltip-content":i,"data-tooltip-html":c,"data-tooltip-variant":a,"data-tooltip-offset":u,"data-tooltip-wrapper":d,"data-tooltip-events":p,"data-tooltip-position-strategy":v,"data-tooltip-delay-show":m,"data-tooltip-delay-hide":f},l)};var z={tooltip:"core-styles-module_tooltip__3vRRp",fixed:"core-styles-module_fixed__pcSol",arrow:"core-styles-module_arrow__cvMwQ",noArrow:"core-styles-module_noArrow__xock6",clickable:"core-styles-module_clickable__ZuTTB",show:"core-styles-module_show__Nt9eE",closing:"core-styles-module_closing__sGnxF"},D={tooltip:"styles-module_tooltip__mnnfp",arrow:"styles-module_arrow__K0L3T",dark:"styles-module_dark__xNqje",light:"styles-module_light__Z6W-X",success:"styles-module_success__A2AKt",warning:"styles-module_warning__SCK0X",error:"styles-module_error__JvumD",info:"styles-module_info__BWdHW"};const q=({forwardRef:t,id:l,className:i,classNameArrow:c,variant:u="dark",anchorId:d,anchorSelect:p,place:v="top",offset:m=10,events:h=["hover"],openOnClick:w=!1,positionStrategy:b="absolute",middlewares:S,wrapper:g,delayShow:A=0,delayHide:O=0,float:T=!1,hidden:x=!1,noArrow:N=!1,clickable:$=!1,closeOnEsc:I=!1,closeOnScroll:B=!1,closeOnResize:q=!1,openEvents:H,closeEvents:M,globalCloseEvents:W,imperativeModeOnly:P,style:V,position:F,afterShow:K,afterHide:U,disableTooltip:X,content:Y,contentWrapperRef:G,isOpen:Z,defaultIsOpen:J=!1,setIsOpen:Q,activeAnchor:ee,setActiveAnchor:te,border:oe,opacity:le,arrowColor:re,role:ne="tooltip"})=>{var ie;const ce=(0,external_React_namespaceObject.useRef)(null),se=(0,external_React_namespaceObject.useRef)(null),ae=(0,external_React_namespaceObject.useRef)(null),ue=(0,external_React_namespaceObject.useRef)(null),de=(0,external_React_namespaceObject.useRef)(null),[pe,ve]=(0,external_React_namespaceObject.useState)({tooltipStyles:{},tooltipArrowStyles:{},place:v}),[me,fe]=(0,external_React_namespaceObject.useState)(!1),[ye,he]=(0,external_React_namespaceObject.useState)(!1),[we,be]=(0,external_React_namespaceObject.useState)(null),Se=(0,external_React_namespaceObject.useRef)(!1),ge=(0,external_React_namespaceObject.useRef)(null),{anchorRefs:Ee,setActiveAnchor:Ae}=j(l),_e=(0,external_React_namespaceObject.useRef)(!1),[Oe,ke]=(0,external_React_namespaceObject.useState)([]),Te=(0,external_React_namespaceObject.useRef)(!1),Le=w||h.includes("click"),Ce=Le||(null==H?void 0:H.click)||(null==H?void 0:H.dblclick)||(null==H?void 0:H.mousedown),Re=H?{...H}:{mouseover:!0,focus:!0,mouseenter:!1,click:!1,dblclick:!1,mousedown:!1};!H&&Le&&Object.assign(Re,{mouseenter:!1,focus:!1,mouseover:!1,click:!0});const xe=M?{...M}:{mouseout:!0,blur:!0,mouseleave:!1,click:!1,dblclick:!1,mouseup:!1};!M&&Le&&Object.assign(xe,{mouseleave:!1,blur:!1,mouseout:!1});const Ne=W?{...W}:{escape:I||!1,scroll:B||!1,resize:q||!1,clickOutsideAnchor:Ce||!1};P&&(Object.assign(Re,{mouseover:!1,focus:!1,mouseenter:!1,click:!1,dblclick:!1,mousedown:!1}),Object.assign(xe,{mouseout:!1,blur:!1,mouseleave:!1,click:!1,dblclick:!1,mouseup:!1}),Object.assign(Ne,{escape:!1,scroll:!1,resize:!1,clickOutsideAnchor:!1})),C((()=>(Te.current=!0,()=>{Te.current=!1})),[]);const $e=e=>{Te.current&&(e&&he(!0),setTimeout((()=>{Te.current&&(null==Q||Q(e),void 0===Z&&fe(e))}),10))};(0,external_React_namespaceObject.useEffect)((()=>{if(void 0===Z)return()=>null;Z&&he(!0);const e=setTimeout((()=>{fe(Z)}),10);return()=>{clearTimeout(e)}}),[Z]),(0,external_React_namespaceObject.useEffect)((()=>{if(me!==Se.current)if(R(de),Se.current=me,me)null==K||K();else{const e=(e=>{const t=e.match(/^([\d.]+)(ms|s)$/);if(!t)return 0;const[,o,l]=t;return Number(o)*("ms"===l?1:1e3)})(getComputedStyle(document.body).getPropertyValue("--rt-transition-show-delay"));de.current=setTimeout((()=>{he(!1),be(null),null==U||U()}),e+25)}}),[me]);const Ie=e=>{ve((t=>k(t,e)?t:e))},je=(e=A)=>{R(ae),ye?$e(!0):ae.current=setTimeout((()=>{$e(!0)}),e)},Be=(e=O)=>{R(ue),ue.current=setTimeout((()=>{_e.current||$e(!1)}),e)},ze=e=>{var t;if(!e)return;const o=null!==(t=e.currentTarget)&&void 0!==t?t:e.target;if(!(null==o?void 0:o.isConnected))return te(null),void Ae({current:null});A?je():$e(!0),te(o),Ae({current:o}),R(ue)},De=()=>{$?Be(O||100):O?Be():$e(!1),R(ae)},qe=({x:e,y:t})=>{var o;const l={getBoundingClientRect:()=>({x:e,y:t,width:0,height:0,top:t,left:e,right:e,bottom:t})};E({place:null!==(o=null==we?void 0:we.place)&&void 0!==o?o:v,offset:m,elementReference:l,tooltipReference:ce.current,tooltipArrowReference:se.current,strategy:b,middlewares:S,border:oe}).then((e=>{Ie(e)}))},He=e=>{if(!e)return;const t=e,o={x:t.clientX,y:t.clientY};qe(o),ge.current=o},Me=e=>{var t;if(!me)return;const o=e.target;if(!o.isConnected)return;if(null===(t=ce.current)||void 0===t?void 0:t.contains(o))return;[document.querySelector(`[id='${d}']`),...Oe].some((e=>null==e?void 0:e.contains(o)))||($e(!1),R(ae))},We=_(ze,50,!0),Pe=_(De,50,!0),Ve=e=>{Pe.cancel(),We(e)},Fe=()=>{We.cancel(),Pe()},Ke=(0,external_React_namespaceObject.useCallback)((()=>{var e,t;const o=null!==(e=null==we?void 0:we.position)&&void 0!==e?e:F;o?qe(o):T?ge.current&&qe(ge.current):(null==ee?void 0:ee.isConnected)&&E({place:null!==(t=null==we?void 0:we.place)&&void 0!==t?t:v,offset:m,elementReference:ee,tooltipReference:ce.current,tooltipArrowReference:se.current,strategy:b,middlewares:S,border:oe}).then((e=>{Te.current&&Ie(e)}))}),[me,ee,Y,V,v,null==we?void 0:we.place,m,b,F,null==we?void 0:we.position,T]);(0,external_React_namespaceObject.useEffect)((()=>{var e,t;const o=new Set(Ee);Oe.forEach((e=>{(null==X?void 0:X(e))||o.add({current:e})}));const l=document.querySelector(`[id='${d}']`);l&&!(null==X?void 0:X(l))&&o.add({current:l});const r=()=>{$e(!1)},n=L(ee),i=L(ce.current);Ne.scroll&&(window.addEventListener("scroll",r),null==n||n.addEventListener("scroll",r),null==i||i.addEventListener("scroll",r));let c=null;Ne.resize?window.addEventListener("resize",r):ee&&ce.current&&(c=autoUpdate(ee,ce.current,Ke,{ancestorResize:!0,elementResize:!0,layoutShift:!0}));const s=e=>{"Escape"===e.key&&$e(!1)};Ne.escape&&window.addEventListener("keydown",s),Ne.clickOutsideAnchor&&window.addEventListener("click",Me);const a=[],u=e=>Boolean((null==e?void 0:e.target)&&(null==ee?void 0:ee.contains(e.target))),p=e=>{me&&u(e)||ze(e)},v=e=>{me&&u(e)&&De()},m=["mouseover","mouseout","mouseenter","mouseleave","focus","blur"],y=["click","dblclick","mousedown","mouseup"];Object.entries(Re).forEach((([e,t])=>{t&&(m.includes(e)?a.push({event:e,listener:Ve}):y.includes(e)&&a.push({event:e,listener:p}))})),Object.entries(xe).forEach((([e,t])=>{t&&(m.includes(e)?a.push({event:e,listener:Fe}):y.includes(e)&&a.push({event:e,listener:v}))})),T&&a.push({event:"pointermove",listener:He});const h=()=>{_e.current=!0},w=()=>{_e.current=!1,De()},b=$&&(xe.mouseout||xe.mouseleave);return b&&(null===(e=ce.current)||void 0===e||e.addEventListener("mouseover",h),null===(t=ce.current)||void 0===t||t.addEventListener("mouseout",w)),a.forEach((({event:e,listener:t})=>{o.forEach((o=>{var l;null===(l=o.current)||void 0===l||l.addEventListener(e,t)}))})),()=>{var e,t;Ne.scroll&&(window.removeEventListener("scroll",r),null==n||n.removeEventListener("scroll",r),null==i||i.removeEventListener("scroll",r)),Ne.resize?window.removeEventListener("resize",r):null==c||c(),Ne.clickOutsideAnchor&&window.removeEventListener("click",Me),Ne.escape&&window.removeEventListener("keydown",s),b&&(null===(e=ce.current)||void 0===e||e.removeEventListener("mouseover",h),null===(t=ce.current)||void 0===t||t.removeEventListener("mouseout",w)),a.forEach((({event:e,listener:t})=>{o.forEach((o=>{var l;null===(l=o.current)||void 0===l||l.removeEventListener(e,t)}))}))}}),[ee,Ke,ye,Ee,Oe,H,M,W,Le,A,O]),(0,external_React_namespaceObject.useEffect)((()=>{var e,t;let o=null!==(t=null!==(e=null==we?void 0:we.anchorSelect)&&void 0!==e?e:p)&&void 0!==t?t:"";!o&&l&&(o=`[data-tooltip-id='${l.replace(/'/g,"\\'")}']`);const r=new MutationObserver((e=>{const t=[],r=[];e.forEach((e=>{if("attributes"===e.type&&"data-tooltip-id"===e.attributeName){e.target.getAttribute("data-tooltip-id")===l?t.push(e.target):e.oldValue===l&&r.push(e.target)}if("childList"===e.type){if(ee){const t=[...e.removedNodes].filter((e=>1===e.nodeType));if(o)try{r.push(...t.filter((e=>e.matches(o)))),r.push(...t.flatMap((e=>[...e.querySelectorAll(o)])))}catch(e){}t.some((e=>{var t;return!!(null===(t=null==e?void 0:e.contains)||void 0===t?void 0:t.call(e,ee))&&(he(!1),$e(!1),te(null),R(ae),R(ue),!0)}))}if(o)try{const l=[...e.addedNodes].filter((e=>1===e.nodeType));t.push(...l.filter((e=>e.matches(o)))),t.push(...l.flatMap((e=>[...e.querySelectorAll(o)])))}catch(e){}}})),(t.length||r.length)&&ke((e=>[...e.filter((e=>!r.includes(e))),...t]))}));return r.observe(document.body,{childList:!0,subtree:!0,attributes:!0,attributeFilter:["data-tooltip-id"],attributeOldValue:!0}),()=>{r.disconnect()}}),[l,p,null==we?void 0:we.anchorSelect,ee]),(0,external_React_namespaceObject.useEffect)((()=>{Ke()}),[Ke]),(0,external_React_namespaceObject.useEffect)((()=>{if(!(null==G?void 0:G.current))return()=>null;const e=new ResizeObserver((()=>{setTimeout((()=>Ke()))}));return e.observe(G.current),()=>{e.disconnect()}}),[Y,null==G?void 0:G.current]),(0,external_React_namespaceObject.useEffect)((()=>{var e;const t=document.querySelector(`[id='${d}']`),o=[...Oe,t];ee&&o.includes(ee)||te(null!==(e=Oe[0])&&void 0!==e?e:t)}),[d,Oe,ee]),(0,external_React_namespaceObject.useEffect)((()=>(J&&$e(!0),()=>{R(ae),R(ue)})),[]),(0,external_React_namespaceObject.useEffect)((()=>{var e;let t=null!==(e=null==we?void 0:we.anchorSelect)&&void 0!==e?e:p;if(!t&&l&&(t=`[data-tooltip-id='${l.replace(/'/g,"\\'")}']`),t)try{const e=Array.from(document.querySelectorAll(t));ke(e)}catch(e){ke([])}}),[l,p,null==we?void 0:we.anchorSelect]),(0,external_React_namespaceObject.useEffect)((()=>{ae.current&&(R(ae),je(A))}),[A]);const Ue=null!==(ie=null==we?void 0:we.content)&&void 0!==ie?ie:Y,Xe=me&&Object.keys(pe.tooltipStyles).length>0;return (0,external_React_namespaceObject.useImperativeHandle)(t,(()=>({open:e=>{if(null==e?void 0:e.anchorSelect)try{document.querySelector(e.anchorSelect)}catch(t){return void console.warn(`[react-tooltip] "${e.anchorSelect}" is not a valid CSS selector`)}be(null!=e?e:null),(null==e?void 0:e.delay)?je(e.delay):$e(!0)},close:e=>{(null==e?void 0:e.delay)?Be(e.delay):$e(!1)},activeAnchor:ee,place:pe.place,isOpen:Boolean(ye&&!x&&Ue&&Xe)}))),ye&&!x&&Ue?external_React_namespaceObject.createElement(g,{id:l,role:ne,className:classnames("react-tooltip",z.tooltip,D.tooltip,D[u],i,`react-tooltip__place-${pe.place}`,z[Xe?"show":"closing"],Xe?"react-tooltip__show":"react-tooltip__closing","fixed"===b&&z.fixed,$&&z.clickable),onTransitionEnd:e=>{R(de),me||"opacity"!==e.propertyName||(he(!1),be(null),null==U||U())},style:{...V,...pe.tooltipStyles,opacity:void 0!==le&&Xe?le:void 0},ref:ce},Ue,external_React_namespaceObject.createElement(g,{className:classnames("react-tooltip-arrow",z.arrow,D.arrow,c,N&&z.noArrow),style:{...pe.tooltipArrowStyles,background:re?`linear-gradient(to right bottom, transparent 50%, ${re} 50%)`:void 0},ref:se})):null},H=({content:t})=>external_React_namespaceObject.createElement("span",{dangerouslySetInnerHTML:{__html:t}}),M=external_React_namespaceObject.forwardRef((({id:t,anchorId:l,anchorSelect:n,content:i,html:c,render:a,className:u,classNameArrow:d,variant:p="dark",place:v="top",offset:m=10,wrapper:f="div",children:h=null,events:w=["hover"],openOnClick:b=!1,positionStrategy:S="absolute",middlewares:g,delayShow:E=0,delayHide:_=0,float:O=!1,hidden:k=!1,noArrow:T=!1,clickable:L=!1,closeOnEsc:C=!1,closeOnScroll:R=!1,closeOnResize:x=!1,openEvents:N,closeEvents:$,globalCloseEvents:I,imperativeModeOnly:B=!1,style:z,position:D,isOpen:M,defaultIsOpen:W=!1,disableStyleInjection:P=!1,border:V,opacity:F,arrowColor:K,setIsOpen:U,afterShow:X,afterHide:Y,disableTooltip:G,role:Z="tooltip"},J)=>{const[Q,ee]=(0,external_React_namespaceObject.useState)(i),[te,oe]=(0,external_React_namespaceObject.useState)(c),[le,re]=(0,external_React_namespaceObject.useState)(v),[ne,ie]=(0,external_React_namespaceObject.useState)(p),[ce,se]=(0,external_React_namespaceObject.useState)(m),[ae,ue]=(0,external_React_namespaceObject.useState)(E),[de,pe]=(0,external_React_namespaceObject.useState)(_),[ve,me]=(0,external_React_namespaceObject.useState)(O),[fe,ye]=(0,external_React_namespaceObject.useState)(k),[he,we]=(0,external_React_namespaceObject.useState)(f),[be,Se]=(0,external_React_namespaceObject.useState)(w),[ge,Ee]=(0,external_React_namespaceObject.useState)(S),[Ae,_e]=(0,external_React_namespaceObject.useState)(null),[Oe,ke]=(0,external_React_namespaceObject.useState)(null),Te=(0,external_React_namespaceObject.useRef)(P),{anchorRefs:Le,activeAnchor:Ce}=j(t),Re=e=>null==e?void 0:e.getAttributeNames().reduce(((t,o)=>{var l;if(o.startsWith("data-tooltip-")){t[o.replace(/^data-tooltip-/,"")]=null!==(l=null==e?void 0:e.getAttribute(o))&&void 0!==l?l:null}return t}),{}),xe=e=>{const t={place:e=>{var t;re(null!==(t=e)&&void 0!==t?t:v)},content:e=>{ee(null!=e?e:i)},html:e=>{oe(null!=e?e:c)},variant:e=>{var t;ie(null!==(t=e)&&void 0!==t?t:p)},offset:e=>{se(null===e?m:Number(e))},wrapper:e=>{var t;we(null!==(t=e)&&void 0!==t?t:f)},events:e=>{const t=null==e?void 0:e.split(" ");Se(null!=t?t:w)},"position-strategy":e=>{var t;Ee(null!==(t=e)&&void 0!==t?t:S)},"delay-show":e=>{ue(null===e?E:Number(e))},"delay-hide":e=>{pe(null===e?_:Number(e))},float:e=>{me(null===e?O:"true"===e)},hidden:e=>{ye(null===e?k:"true"===e)},"class-name":e=>{_e(e)}};Object.values(t).forEach((e=>e(null))),Object.entries(e).forEach((([e,o])=>{var l;null===(l=t[e])||void 0===l||l.call(t,o)}))};(0,external_React_namespaceObject.useEffect)((()=>{ee(i)}),[i]),(0,external_React_namespaceObject.useEffect)((()=>{oe(c)}),[c]),(0,external_React_namespaceObject.useEffect)((()=>{re(v)}),[v]),(0,external_React_namespaceObject.useEffect)((()=>{ie(p)}),[p]),(0,external_React_namespaceObject.useEffect)((()=>{se(m)}),[m]),(0,external_React_namespaceObject.useEffect)((()=>{ue(E)}),[E]),(0,external_React_namespaceObject.useEffect)((()=>{pe(_)}),[_]),(0,external_React_namespaceObject.useEffect)((()=>{me(O)}),[O]),(0,external_React_namespaceObject.useEffect)((()=>{ye(k)}),[k]),(0,external_React_namespaceObject.useEffect)((()=>{Ee(S)}),[S]),(0,external_React_namespaceObject.useEffect)((()=>{Te.current!==P&&console.warn("[react-tooltip] Do not change `disableStyleInjection` dynamically.")}),[P]),(0,external_React_namespaceObject.useEffect)((()=>{"undefined"!=typeof window&&window.dispatchEvent(new CustomEvent("react-tooltip-inject-styles",{detail:{disableCore:"core"===P,disableBase:P}}))}),[]),(0,external_React_namespaceObject.useEffect)((()=>{var e;const o=new Set(Le);let r=n;if(!r&&t&&(r=`[data-tooltip-id='${t.replace(/'/g,"\\'")}']`),r)try{document.querySelectorAll(r).forEach((e=>{o.add({current:e})}))}catch(e){console.warn(`[react-tooltip] "${r}" is not a valid CSS selector`)}const i=document.querySelector(`[id='${l}']`);if(i&&o.add({current:i}),!o.size)return()=>null;const c=null!==(e=null!=Oe?Oe:i)&&void 0!==e?e:Ce.current,s=new MutationObserver((e=>{e.forEach((e=>{var t;if(!c||"attributes"!==e.type||!(null===(t=e.attributeName)||void 0===t?void 0:t.startsWith("data-tooltip-")))return;const o=Re(c);xe(o)}))})),a={attributes:!0,childList:!1,subtree:!1};if(c){const e=Re(c);xe(e),s.observe(c,a)}return()=>{s.disconnect()}}),[Le,Ce,Oe,l,n]),(0,external_React_namespaceObject.useEffect)((()=>{(null==z?void 0:z.border)&&console.warn("[react-tooltip] Do not set `style.border`. Use `border` prop instead."),V&&!A("border",`${V}`)&&console.warn(`[react-tooltip] "${V}" is not a valid \`border\`.`),(null==z?void 0:z.opacity)&&console.warn("[react-tooltip] Do not set `style.opacity`. Use `opacity` prop instead."),F&&!A("opacity",`${F}`)&&console.warn(`[react-tooltip] "${F}" is not a valid \`opacity\`.`)}),[]);let Ne=h;const $e=(0,external_React_namespaceObject.useRef)(null);if(a){const t=a({content:(null==Oe?void 0:Oe.getAttribute("data-tooltip-content"))||Q||null,activeAnchor:Oe});Ne=t?external_React_namespaceObject.createElement("div",{ref:$e,className:"react-tooltip-content-wrapper"},t):null}else Q&&(Ne=Q);te&&(Ne=external_React_namespaceObject.createElement(H,{content:te}));const Ie={forwardRef:J,id:t,anchorId:l,anchorSelect:n,className:classnames(u,Ae),classNameArrow:d,content:Ne,contentWrapperRef:$e,place:le,variant:ne,offset:ce,wrapper:he,events:be,openOnClick:b,positionStrategy:ge,middlewares:g,delayShow:ae,delayHide:de,float:ve,hidden:fe,noArrow:T,clickable:L,closeOnEsc:C,closeOnScroll:R,closeOnResize:x,openEvents:N,closeEvents:$,globalCloseEvents:I,imperativeModeOnly:B,style:z,position:D,isOpen:M,defaultIsOpen:W,border:V,opacity:F,arrowColor:K,setIsOpen:U,afterShow:X,afterHide:Y,disableTooltip:G,activeAnchor:Oe,setActiveAnchor:e=>ke(e),role:Z};return external_React_namespaceObject.createElement(q,{...Ie})}));"undefined"!=typeof window&&window.addEventListener("react-tooltip-inject-styles",(e=>{e.detail.disableCore||S({css:`:root{--rt-color-white:#fff;--rt-color-dark:#222;--rt-color-success:#8dc572;--rt-color-error:#be6464;--rt-color-warning:#f0ad4e;--rt-color-info:#337ab7;--rt-opacity:0.9;--rt-transition-show-delay:0.15s;--rt-transition-closing-delay:0.15s}.core-styles-module_tooltip__3vRRp{position:absolute;top:0;left:0;pointer-events:none;opacity:0;will-change:opacity}.core-styles-module_fixed__pcSol{position:fixed}.core-styles-module_arrow__cvMwQ{position:absolute;background:inherit}.core-styles-module_noArrow__xock6{display:none}.core-styles-module_clickable__ZuTTB{pointer-events:auto}.core-styles-module_show__Nt9eE{opacity:var(--rt-opacity);transition:opacity var(--rt-transition-show-delay)ease-out}.core-styles-module_closing__sGnxF{opacity:0;transition:opacity var(--rt-transition-closing-delay)ease-in}`,type:"core"}),e.detail.disableBase||S({css:`
 .styles-module_tooltip__mnnfp{padding:8px 16px;border-radius:3px;font-size:90%;width:max-content}.styles-module_arrow__K0L3T{width:8px;height:8px}[class*='react-tooltip__place-top']>.styles-module_arrow__K0L3T{transform:rotate(45deg)}[class*='react-tooltip__place-right']>.styles-module_arrow__K0L3T{transform:rotate(135deg)}[class*='react-tooltip__place-bottom']>.styles-module_arrow__K0L3T{transform:rotate(225deg)}[class*='react-tooltip__place-left']>.styles-module_arrow__K0L3T{transform:rotate(315deg)}.styles-module_dark__xNqje{background:var(--rt-color-dark);color:var(--rt-color-white)}.styles-module_light__Z6W-X{background-color:var(--rt-color-white);color:var(--rt-color-dark)}.styles-module_success__A2AKt{background-color:var(--rt-color-success);color:var(--rt-color-white)}.styles-module_warning__SCK0X{background-color:var(--rt-color-warning);color:var(--rt-color-white)}.styles-module_error__JvumD{background-color:var(--rt-color-error);color:var(--rt-color-white)}.styles-module_info__BWdHW{background-color:var(--rt-color-info);color:var(--rt-color-white)}`,type:"base"})}));
 
+;// ./src/js/includes/ExperimentalBadge.js
+
+
+/**
+ * Small "Experimental" icon shown next to a settings-field-label — same slot
+ * ProIcon uses for the Pro crown — for a feature that works but isn't
+ * guaranteed to behave the same across every theme yet. Hover/focus shows
+ * the explanation via react-tooltip, same as the "Pro Feature" tooltips
+ * anchored to .ai1wpsa-pro-feature elsewhere in the settings screens.
+ *
+ * Icon: Lucide "flask-conical" (https://lucide.dev/icons/flask-conical),
+ * inlined the same way ProIcon.js inlines the crown — no lucide-react
+ * dependency needed for a single icon.
+ */
+function ExperimentalBadge() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#b45309",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "class": "lucide lucide-flask-conical-icon lucide-flask-conical ai1wpsa-experimental-badge",
+    role: "img",
+    "aria-label": wp.i18n.__('Experimental', 'all-in-one-wp-sticky-anything')
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M6.453 15h11.094"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M8.5 2h7"
+  })), /*#__PURE__*/React.createElement(M, {
+    anchorSelect: ".ai1wpsa-experimental-badge",
+    variant: "warning",
+    content: wp.i18n.__('Experimental — behavior can vary by theme, please test after enabling.', 'all-in-one-wp-sticky-anything')
+  }));
+}
 ;// ./src/js/components/Settings/ColorPickerWrapper.js
 
 var ColorPicker = wp.components.ColorPicker;
@@ -2528,8 +2584,9 @@ var _wp$components = wp.components,
   FormToggle = _wp$components.FormToggle,
   TextControl = _wp$components.TextControl,
   ButtonGroup = _wp$components.ButtonGroup,
-  Button = _wp$components.Button,
-  GradientPicker = _wp$components.GradientPicker;
+  Button = _wp$components.Button;
+var applyFilters = wp.hooks.applyFilters;
+
 
 
 
@@ -2552,23 +2609,18 @@ var STICKY_DEVICE_OPTIONS = [{
 }];
 
 // ─── Sticky Header Background Options ────────────────────────────
-var BG_TYPE_OPTIONS = [{
+// Background Image and Gradient are Premium — the free plugin doesn't know
+// they exist. It only ever offers "Color"/"Solid" here; the sticky-anything-
+// pro plugin (when active) hooks these two filters to append its own
+// 'image'/'gradient' options, and hooks ai1wpsa_sticky_header_bg_extra_fields
+// below to render whatever fields those extra options need.
+var BASE_BG_TYPE_OPTIONS = [{
   label: wp.i18n.__('Color', 'all-in-one-wp-sticky-anything'),
-  value: 'color',
-  pro: false
-}, {
-  label: wp.i18n.__('Image', 'all-in-one-wp-sticky-anything'),
-  value: 'image',
-  pro: true
+  value: 'color'
 }];
-var COLOR_TYPE_OPTIONS = [{
+var BASE_COLOR_TYPE_OPTIONS = [{
   label: wp.i18n.__('Solid', 'all-in-one-wp-sticky-anything'),
-  value: 'solid',
-  pro: false
-}, {
-  label: wp.i18n.__('Gradient', 'all-in-one-wp-sticky-anything'),
-  value: 'gradient',
-  pro: true
+  value: 'solid'
 }];
 function General() {
   var _ai1wpsa = ai1wpsa,
@@ -2579,6 +2631,8 @@ function General() {
   var _ref = data || {},
     _ref$stickyClass = _ref.stickyClass,
     stickyClass = _ref$stickyClass === void 0 ? '' : _ref$stickyClass,
+    _ref$stickyScrollOffs = _ref.stickyScrollOffset,
+    stickyScrollOffset = _ref$stickyScrollOffs === void 0 ? '' : _ref$stickyScrollOffs,
     _ref$stickyZIndex = _ref.stickyZIndex,
     stickyZIndex = _ref$stickyZIndex === void 0 ? '' : _ref$stickyZIndex,
     _ref$stickyDisableMob = _ref.stickyDisableMobile,
@@ -2589,20 +2643,32 @@ function General() {
     stickyHeaderColorType = _ref$stickyHeaderColo === void 0 ? 'solid' : _ref$stickyHeaderColo,
     _ref$stickyHeaderBgCo = _ref.stickyHeaderBgColor,
     stickyHeaderBgColor = _ref$stickyHeaderBgCo === void 0 ? '' : _ref$stickyHeaderBgCo,
-    _ref$stickyHeaderGrad = _ref.stickyHeaderGradient,
-    stickyHeaderGradient = _ref$stickyHeaderGrad === void 0 ? '' : _ref$stickyHeaderGrad,
-    _ref$stickyHeaderBgIm = _ref.stickyHeaderBgImage,
-    stickyHeaderBgImage = _ref$stickyHeaderBgIm === void 0 ? '' : _ref$stickyHeaderBgIm;
+    _ref$stickyShrink = _ref.stickyShrink,
+    stickyShrink = _ref$stickyShrink === void 0 ? false : _ref$stickyShrink,
+    _ref$stickyShrinkHeig = _ref.stickyShrinkHeight,
+    stickyShrinkHeight = _ref$stickyShrinkHeig === void 0 ? '' : _ref$stickyShrinkHeig,
+    _ref$stickyShrinkLogo = _ref.stickyShrinkLogoSelector,
+    stickyShrinkLogoSelector = _ref$stickyShrinkLogo === void 0 ? '' : _ref$stickyShrinkLogo,
+    _ref$stickyShrinkLogo2 = _ref.stickyShrinkLogoWidth,
+    stickyShrinkLogoWidth = _ref$stickyShrinkLogo2 === void 0 ? '' : _ref$stickyShrinkLogo2,
+    _ref$stickyLogoSwap = _ref.stickyLogoSwap,
+    stickyLogoSwap = _ref$stickyLogoSwap === void 0 ? false : _ref$stickyLogoSwap,
+    _ref$stickyLogoSwapSe = _ref.stickyLogoSwapSelector,
+    stickyLogoSwapSelector = _ref$stickyLogoSwapSe === void 0 ? '' : _ref$stickyLogoSwapSe,
+    _ref$stickyLogoSwapIm = _ref.stickyLogoSwapImage,
+    stickyLogoSwapImage = _ref$stickyLogoSwapIm === void 0 ? '' : _ref$stickyLogoSwapIm;
 
-  // Opens the WP Media Library modal (requires wp_enqueue_media() — see
-  // Enqueue::admin_scripts()) and stores the picked image's URL.
-  var openBackgroundImagePicker = function openBackgroundImagePicker() {
-    if (!isPro) {
-      showProModal();
-      return;
-    }
+  // Background Image/Gradient options (and their fields) are appended by
+  // the Pro add-on's own JS via wp.hooks - see the filters called in the
+  // JSX below. Re-computed every render so a Pro script that registers its
+  // addFilter() after this component's first mount still gets picked up.
+  var BG_TYPE_OPTIONS = applyFilters('ai1wpsa_sticky_header_bg_type_options', BASE_BG_TYPE_OPTIONS);
+  var COLOR_TYPE_OPTIONS = applyFilters('ai1wpsa_sticky_header_color_type_options', BASE_COLOR_TYPE_OPTIONS);
+
+  // Opens the WP Media Library modal for the alternate ("sticky") logo image.
+  var openLogoSwapImagePicker = function openLogoSwapImagePicker() {
     var frame = wp.media({
-      title: wp.i18n.__('Select Sticky Header Background Image', 'all-in-one-wp-sticky-anything'),
+      title: wp.i18n.__('Select Sticky Logo Image', 'all-in-one-wp-sticky-anything'),
       button: {
         text: wp.i18n.__('Use this Image', 'all-in-one-wp-sticky-anything')
       },
@@ -2615,7 +2681,7 @@ function General() {
       var attachment = frame.state().get('selection').first().toJSON();
       setData(function (current) {
         return _objectSpread(_objectSpread({}, current), {}, {
-          stickyHeaderBgImage: attachment.url
+          stickyLogoSwapImage: attachment.url
         });
       });
     });
@@ -2662,29 +2728,40 @@ function General() {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
+  }, wp.i18n.__('Scroll Offset', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(TextControl, {
+    type: "number",
+    value: stickyScrollOffset,
+    placeholder: wp.i18n.__('ex: 100', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyScrollOffset: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Number of pixels the page must be scrolled before the header becomes sticky. ex: 100 makes the header stick only after scrolling 100px. Leave empty to stick as soon as it reaches the top.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
   }, wp.i18n.__('Sticky Header Background', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(ButtonGroup, null, BG_TYPE_OPTIONS.map(function (_ref2) {
+  }, BG_TYPE_OPTIONS.length > 1 && /*#__PURE__*/React.createElement(ButtonGroup, null, BG_TYPE_OPTIONS.map(function (_ref2) {
     var label = _ref2.label,
-      value = _ref2.value,
-      pro = _ref2.pro;
+      value = _ref2.value;
     return /*#__PURE__*/React.createElement(Button, {
       key: value,
-      className: !!pro && !isPro ? 'ai1wpsa-disabled' : '',
       isPrimary: stickyHeaderBgType === value,
       onClick: function onClick() {
-        if (!!pro && !isPro) {
-          showProModal();
-          return;
-        }
-        setData(_objectSpread(_objectSpread({}, data), {}, {
+        return setData(_objectSpread(_objectSpread({}, data), {}, {
           stickyHeaderBgType: value
         }));
       }
     }, label);
   })), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Applied only while the header is actually stuck to the top of the screen (its "active" sticky state) — leave everything below empty to keep your theme\'s own header background.', 'all-in-one-wp-sticky-anything')))), stickyHeaderBgType === 'color' && /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Applied only while the header is actually stuck to the top of the screen (its "active" sticky state) — leave everything below empty to keep your theme\'s own header background.', 'all-in-one-wp-sticky-anything')))), stickyHeaderBgType === 'color' && COLOR_TYPE_OPTIONS.length > 1 && /*#__PURE__*/React.createElement("div", {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
@@ -2692,18 +2769,12 @@ function General() {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement(ButtonGroup, null, COLOR_TYPE_OPTIONS.map(function (_ref3) {
     var label = _ref3.label,
-      value = _ref3.value,
-      pro = _ref3.pro;
+      value = _ref3.value;
     return /*#__PURE__*/React.createElement(Button, {
       key: value,
-      className: !!pro && !isPro ? 'ai1wpsa-disabled' : '',
       isPrimary: stickyHeaderColorType === value,
       onClick: function onClick() {
-        if (!!pro && !isPro) {
-          showProModal();
-          return;
-        }
-        setData(_objectSpread(_objectSpread({}, data), {}, {
+        return setData(_objectSpread(_objectSpread({}, data), {}, {
           stickyHeaderColorType: value
         }));
       }
@@ -2723,51 +2794,157 @@ function General() {
     },
     allowReset: true,
     resetValue: ''
-  }))), stickyHeaderBgType === 'color' && stickyHeaderColorType === 'gradient' && /*#__PURE__*/React.createElement("div", {
+  }))), applyFilters('ai1wpsa_sticky_header_bg_extra_fields', null, {
+    stickyHeaderBgType: stickyHeaderBgType,
+    stickyHeaderColorType: stickyHeaderColorType,
+    data: data,
+    setData: setData
+  }), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Background Gradient', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Shrink Header on Sticky', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ExperimentalBadge, null)), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
-  }, /*#__PURE__*/React.createElement(GradientPicker, {
-    value: stickyHeaderGradient,
-    onChange: function onChange(value) {
-      if (!isPro) {
-        showProModal();
-        return;
-      }
-      setData(_objectSpread(_objectSpread({}, data), {}, {
-        stickyHeaderGradient: value || ''
+  }, /*#__PURE__*/React.createElement(FormToggle, {
+    checked: stickyShrink,
+    className: "ai1wpsa-form-toggle",
+    onChange: function onChange() {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyShrink: !stickyShrink
       }));
-    },
-    gradients: [],
-    clearable: true
-  }))), stickyHeaderBgType === 'image' && /*#__PURE__*/React.createElement("div", {
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Reduce the header (and optionally its logo) once it becomes sticky, so it takes up less space while visitors scroll.', 'all-in-one-wp-sticky-anything')))), !!stickyShrink && /*#__PURE__*/React.createElement("div", {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
-  }, wp.i18n.__('Background Image', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ProIcon, null)), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Sticky Header Height', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ExperimentalBadge, null)), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(TextControl, {
+    type: "number",
+    value: stickyShrinkHeight,
+    placeholder: wp.i18n.__('ex: 60', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyShrinkHeight: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Height (in px) the header shrinks to once it\'s stuck to the top.', 'all-in-one-wp-sticky-anything')))), !!stickyShrink && /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Sticky Logo', 'all-in-one-wp-sticky-anything'), /*#__PURE__*/React.createElement(ExperimentalBadge, null)), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-selector-field"
+  }, /*#__PURE__*/React.createElement(TextControl, {
+    value: stickyShrinkLogoSelector,
+    placeholder: wp.i18n.__('ex: .site-logo img', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyShrinkLogoSelector: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement(Button, {
+    variant: "secondary",
+    onClick: function onClick() {
+      return pickElementOnPage(function (selector) {
+        return setData(function (current) {
+          return _objectSpread(_objectSpread({}, current), {}, {
+            stickyShrinkLogoSelector: selector
+          });
+        });
+      }, {
+        target: 'image'
+      });
+    }
+  }, wp.i18n.__('🖱️ Pick Logo on Page', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement(TextControl, {
+    type: "number",
+    value: stickyShrinkLogoWidth,
+    placeholder: wp.i18n.__('ex: 120', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyShrinkLogoWidth: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Optional. Pick your logo and set the width (in px) it should shrink to. Leave the selector empty to only shrink the header height.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Logo Swap on Sticky', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement(FormToggle, {
+    checked: stickyLogoSwap,
+    className: "ai1wpsa-form-toggle",
+    onChange: function onChange() {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyLogoSwap: !stickyLogoSwap
+      }));
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('Show a different logo (e.g. a smaller or dark/light variant) once the header becomes sticky, then switch back when it un-sticks.', 'all-in-one-wp-sticky-anything')))), !!stickyLogoSwap && /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Logo Element', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ai1wpsa-selector-field"
+  }, /*#__PURE__*/React.createElement(TextControl, {
+    value: stickyLogoSwapSelector,
+    placeholder: wp.i18n.__('ex: .site-logo img', 'all-in-one-wp-sticky-anything'),
+    onChange: function onChange(value) {
+      return setData(_objectSpread(_objectSpread({}, data), {}, {
+        stickyLogoSwapSelector: value
+      }));
+    }
+  }), /*#__PURE__*/React.createElement(Button, {
+    variant: "secondary",
+    onClick: function onClick() {
+      return pickElementOnPage(function (selector) {
+        return setData(function (current) {
+          return _objectSpread(_objectSpread({}, current), {}, {
+            stickyLogoSwapSelector: selector
+          });
+        });
+      }, {
+        target: 'image'
+      });
+    }
+  }, wp.i18n.__('🖱️ Pick Logo on Page', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("p", {
+    className: "description"
+  }, wp.i18n.__('The `<img>` on your live site whose source should swap once sticky.', 'all-in-one-wp-sticky-anything')))), !!stickyLogoSwap && /*#__PURE__*/React.createElement("div", {
+    "class": "settings-field"
+  }, /*#__PURE__*/React.createElement("h4", {
+    "class": "settings-field-label"
+  }, wp.i18n.__('Sticky Logo Image', 'all-in-one-wp-sticky-anything')), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "ai1wpsa-media-picker"
-  }, !!stickyHeaderBgImage && /*#__PURE__*/React.createElement("img", {
-    src: stickyHeaderBgImage,
+  }, !!stickyLogoSwapImage && /*#__PURE__*/React.createElement("img", {
+    src: stickyLogoSwapImage,
     alt: "",
     className: "ai1wpsa-media-picker__preview"
   }), /*#__PURE__*/React.createElement(Button, {
     variant: "secondary",
-    onClick: openBackgroundImagePicker
-  }, stickyHeaderBgImage ? wp.i18n.__('Change Image', 'all-in-one-wp-sticky-anything') : wp.i18n.__('Select Image', 'all-in-one-wp-sticky-anything')), !!stickyHeaderBgImage && /*#__PURE__*/React.createElement(Button, {
+    onClick: openLogoSwapImagePicker
+  }, stickyLogoSwapImage ? wp.i18n.__('Change Image', 'all-in-one-wp-sticky-anything') : wp.i18n.__('Select Image', 'all-in-one-wp-sticky-anything')), !!stickyLogoSwapImage && /*#__PURE__*/React.createElement(Button, {
     variant: "link",
     isDestructive: true,
     onClick: function onClick() {
       return setData(_objectSpread(_objectSpread({}, data), {}, {
-        stickyHeaderBgImage: ''
+        stickyLogoSwapImage: ''
       }));
     }
   }, wp.i18n.__('Remove', 'all-in-one-wp-sticky-anything'))), /*#__PURE__*/React.createElement("p", {
     className: "description"
-  }, wp.i18n.__('Picked from your Media Library. Stretched to cover the header and centered.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
+  }, wp.i18n.__('Picked from your Media Library. Swapped in only while the header is stuck to the top; your original logo returns once it un-sticks.', 'all-in-one-wp-sticky-anything')))), /*#__PURE__*/React.createElement("div", {
     "class": "settings-field"
   }, /*#__PURE__*/React.createElement("h4", {
     "class": "settings-field-label"
@@ -11373,6 +11550,10 @@ function BasicUsage() {
 ;// ./src/js/components/GettingStarted/Changelog.js
 function Changelog() {
   var logs = [{
+    version: 'v1.1.9',
+    date: '02-10-2026',
+    "new": [wp.i18n.__('Introduced the Sticky Scroll Offset setting for the Sticky Header.', 'all-in-one-wp-sticky-anything'), wp.i18n.__('Introduced the Shrink Header on Sticky setting (Experimental) for the Sticky Header.', 'all-in-one-wp-sticky-anything'), wp.i18n.__('Introduced the Logo Swap on Sticky setting for the Sticky Header.', 'all-in-one-wp-sticky-anything')]
+  }, {
     version: 'v1.1.8',
     date: '11-09-2026',
     "new": [wp.i18n.__('Sticky Header Background color, gradient (Pro), or image (Pro) added.', 'all-in-one-wp-sticky-anything'), wp.i18n.__('"Pick Header on Page" — click your header on your live site to auto-fill the Sticky Class selector.', 'all-in-one-wp-sticky-anything')],

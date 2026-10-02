@@ -228,7 +228,17 @@ function ai1wpsa_sanitize_array($array)
                 $value = $value;
             }
         } else {
-            $value = wp_kses_post($value);
+            // wp_kses_post() normalizes any stray ">" that isn't closing a
+            // recognized tag into "&gt;" — harmless for genuine HTML fields
+            // (e.g. Cookie Consent's message), but it corrupts plain-text
+            // values that legitimately contain ">", like a CSS/jQuery child
+            // selector (`div > div > img`) picked via "Pick on Page". Only
+            // run the tag-stripping path when the value could actually
+            // contain markup (i.e. has a "<" at all); otherwise a plain
+            // sanitize_text_field() never touches ">".
+            $value = (is_string($value) && strpos($value, '<') !== false)
+                ? wp_kses_post($value)
+                : sanitize_text_field($value);
         }
     }
 

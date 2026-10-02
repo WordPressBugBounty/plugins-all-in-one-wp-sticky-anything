@@ -246,6 +246,12 @@
   opacity: 0.5;
 }
 
+// ─── "Experimental" icon (src/js/includes/ExperimentalBadge.js) ───
+.ai1wpsa-experimental-badge {
+  flex-shrink: 0;
+  cursor: help;
+}
+
 .bg-10 {
   background-color: #e8f0ff;
 }

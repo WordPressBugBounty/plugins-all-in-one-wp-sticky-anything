@@ -44,6 +44,9 @@
 
         // set z-index
         $(stickyClass).css('z-index', stickyZIndex);
+
+        // Logo swap on sticky
+        app.handleLogoSwap();
       }
 
       // Sticky Sidebar
@@ -80,10 +83,13 @@
     handleFixDefaultSticky: function handleFixDefaultSticky() {
       var _ai1wpsa3 = ai1wpsa,
         settings = _ai1wpsa3.settings;
-      var stickyClass = settings.stickyClass;
+      var stickyClass = settings.stickyClass,
+        _settings$stickyScrol = settings.stickyScrollOffset,
+        stickyScrollOffset = _settings$stickyScrol === void 0 ? 0 : _settings$stickyScrol;
       var header = $(stickyClass);
       if (!header.length) return;
-      var stickyOffset = header.offset().top;
+      var scrollOffset = parseInt(stickyScrollOffset, 10) || 0;
+      var stickyOffset = header.offset().top + scrollOffset;
       $(window).on('scroll', function () {
         if ($(window).scrollTop() > stickyOffset) {
           // added fix sticky class
@@ -99,10 +105,13 @@
     handleCustomizerStickyHeader: function handleCustomizerStickyHeader() {
       var _ai1wpsa4;
       var _ref = ((_ai1wpsa4 = ai1wpsa) === null || _ai1wpsa4 === void 0 ? void 0 : _ai1wpsa4.settings) || {},
-        stickyCIndex = _ref.stickyCIndex;
+        stickyCIndex = _ref.stickyCIndex,
+        _ref$stickyScrollOffs = _ref.stickyScrollOffset,
+        stickyScrollOffset = _ref$stickyScrollOffs === void 0 ? 0 : _ref$stickyScrollOffs;
       var element = $('header.site-header, header#site-header, header.header, header#header, header#zak-masthead');
       if (!element.length) return;
-      var stickyOffset = element.offset().top;
+      var scrollOffset = parseInt(stickyScrollOffset, 10) || 0;
+      var stickyOffset = element.offset().top + scrollOffset;
 
       // reset any existing listeners
       $(window).off('.ai1wpsaSticky');
@@ -120,10 +129,44 @@
         }
       });
     },
-    handleStickySidebar: function handleStickySidebar() {
-      var _$;
+    // Logo Swap on Sticky — a no-op whenever the selector/image settings
+    // are empty (nothing configured yet).
+    //
+    // Decoupled from which sticky mechanism is active: it just watches
+    // for the shared `.ai1wpsa-fix-sticky.sticky` pair every sticky-header
+    // code path above (fix-default, Customizer, Elementor) adds, same as
+    // the Sticky Header Background/Shrink CSS in Hooks.php does.
+    handleLogoSwap: function handleLogoSwap() {
       var _ai1wpsa5 = ai1wpsa,
         settings = _ai1wpsa5.settings;
+      var _settings$stickyLogoS = settings.stickyLogoSwapSelector,
+        stickyLogoSwapSelector = _settings$stickyLogoS === void 0 ? '' : _settings$stickyLogoS,
+        _settings$stickyLogoS2 = settings.stickyLogoSwapImage,
+        stickyLogoSwapImage = _settings$stickyLogoS2 === void 0 ? '' : _settings$stickyLogoS2;
+      if (!stickyLogoSwapSelector || !stickyLogoSwapImage) return;
+      var logo = $(stickyLogoSwapSelector);
+      if (!logo.length) return;
+      var originalSrc = logo.attr('src');
+      var isSwapped = false;
+      $(window).on('scroll.ai1wpsaLogoSwap', function () {
+        var isSticky = $('.ai1wpsa-fix-sticky.sticky').length > 0;
+        if (isSticky && !isSwapped) {
+          logo.attr('src', stickyLogoSwapImage);
+          isSwapped = true;
+        } else if (!isSticky && isSwapped) {
+          logo.attr('src', originalSrc);
+          isSwapped = false;
+        }
+      });
+
+      // Covers the page loading already past the sticky threshold
+      // (e.g. reloaded mid-scroll, or arriving via an in-page anchor).
+      $(window).trigger('scroll.ai1wpsaLogoSwap');
+    },
+    handleStickySidebar: function handleStickySidebar() {
+      var _$;
+      var _ai1wpsa6 = ai1wpsa,
+        settings = _ai1wpsa6.settings;
       var stickySidebarElement = settings.stickySidebarElement,
         stickySidebarContainer = settings.stickySidebarContainer,
         StickySidebarMarginTop = settings.StickySidebarMarginTop,
@@ -144,21 +187,16 @@
       });
     },
     handleElementorStickyHeader: function handleElementorStickyHeader(element) {
-      var _$2, _$3;
+      var _$2, _$3, _ai1wpsa7;
       var settings = (_$2 = $(element)) !== null && _$2 !== void 0 && _$2.data('settings') ? (_$3 = $(element)) === null || _$3 === void 0 ? void 0 : _$3.data('settings') : {};
       var stickyStatus = settings === null || settings === void 0 ? void 0 : settings.ai1wpsa_status;
       var stickyZIndex = (settings === null || settings === void 0 ? void 0 : settings.ai1wpsa_z_index) || 99999;
-      var stickyOffset = element.offset().top;
+      var _ref2 = ((_ai1wpsa7 = ai1wpsa) === null || _ai1wpsa7 === void 0 ? void 0 : _ai1wpsa7.settings) || {},
+        _ref2$stickyScrollOff = _ref2.stickyScrollOffset,
+        stickyScrollOffset = _ref2$stickyScrollOff === void 0 ? 0 : _ref2$stickyScrollOff;
+      var scrollOffset = parseInt(stickyScrollOffset, 10) || 0;
+      var stickyOffset = element.offset().top + scrollOffset;
       if (stickyStatus == 'yes') {
-        // jQuery(element).stickr({
-        //     duration: 0,
-        //     offsetTop: 0,
-        //     offsetBottom: 30,
-        //     closeButton: false,
-        // });
-
-        // $('body').addClass('ai1wpsa-astra-elementor');
-
         $('.ai1wpsa-yes').css('z-index', stickyZIndex);
         $(window).on('scroll', function () {
           if ($(window).scrollTop() > stickyOffset) {
@@ -187,8 +225,8 @@
       $('html').removeClass('ai1wpsa-cookie-lock');
     },
     handleStickyCookieConsentActions: function handleStickyCookieConsentActions(e) {
-      var _ai1wpsa6 = ai1wpsa,
-        settings = _ai1wpsa6.settings;
+      var _ai1wpsa8 = ai1wpsa,
+        settings = _ai1wpsa8.settings;
       var _settings$stickyCooki = settings.stickyCookieConsentExpires,
         stickyCookieConsentExpires = _settings$stickyCooki === void 0 ? 90 : _settings$stickyCooki,
         _settings$stickyCooki2 = settings.stickyCookieConsentRejectRedirect,
@@ -239,8 +277,8 @@
           return;
         }
         if ($(window).scrollTop() > widgetOffset) {
-          var _ai1wpsa$settings$fix, _ai1wpsa7;
-          var topOffset = parseInt((_ai1wpsa$settings$fix = (_ai1wpsa7 = ai1wpsa) === null || _ai1wpsa7 === void 0 || (_ai1wpsa7 = _ai1wpsa7.settings) === null || _ai1wpsa7 === void 0 ? void 0 : _ai1wpsa7.fixedWidgetTopOffset) !== null && _ai1wpsa$settings$fix !== void 0 ? _ai1wpsa$settings$fix : 100, 10);
+          var _ai1wpsa$settings$fix, _ai1wpsa9;
+          var topOffset = parseInt((_ai1wpsa$settings$fix = (_ai1wpsa9 = ai1wpsa) === null || _ai1wpsa9 === void 0 || (_ai1wpsa9 = _ai1wpsa9.settings) === null || _ai1wpsa9 === void 0 ? void 0 : _ai1wpsa9.fixedWidgetTopOffset) !== null && _ai1wpsa$settings$fix !== void 0 ? _ai1wpsa$settings$fix : 100, 10);
           widgetData.forEach(function (item) {
             item.el.css({
               position: 'fixed',
@@ -262,45 +300,45 @@
       });
     },
     handleClicktoCall: function handleClicktoCall() {
-      var _ai1wpsa$settings, _ai1wpsa8;
-      var _ref2 = (_ai1wpsa$settings = (_ai1wpsa8 = ai1wpsa) === null || _ai1wpsa8 === void 0 ? void 0 : _ai1wpsa8.settings) !== null && _ai1wpsa$settings !== void 0 ? _ai1wpsa$settings : {},
-        _ref2$clicktoCall = _ref2.clicktoCall,
-        clicktoCall = _ref2$clicktoCall === void 0 ? false : _ref2$clicktoCall,
-        _ref2$clicktoCallPosi = _ref2.clicktoCallPosition,
-        clicktoCallPosition = _ref2$clicktoCallPosi === void 0 ? 'bottom-center' : _ref2$clicktoCallPosi,
-        _ref2$clicktoCallPhon = _ref2.clicktoCallPhones,
-        clicktoCallPhones = _ref2$clicktoCallPhon === void 0 ? [{
+      var _ai1wpsa$settings, _ai1wpsa10;
+      var _ref3 = (_ai1wpsa$settings = (_ai1wpsa10 = ai1wpsa) === null || _ai1wpsa10 === void 0 ? void 0 : _ai1wpsa10.settings) !== null && _ai1wpsa$settings !== void 0 ? _ai1wpsa$settings : {},
+        _ref3$clicktoCall = _ref3.clicktoCall,
+        clicktoCall = _ref3$clicktoCall === void 0 ? false : _ref3$clicktoCall,
+        _ref3$clicktoCallPosi = _ref3.clicktoCallPosition,
+        clicktoCallPosition = _ref3$clicktoCallPosi === void 0 ? 'bottom-center' : _ref3$clicktoCallPosi,
+        _ref3$clicktoCallPhon = _ref3.clicktoCallPhones,
+        clicktoCallPhones = _ref3$clicktoCallPhon === void 0 ? [{
           label: 'Support',
           number: '+8801512345678'
-        }] : _ref2$clicktoCallPhon,
-        _ref2$clicktoCallStyl = _ref2.clicktoCallStyleType,
-        clicktoCallStyleType = _ref2$clicktoCallStyl === void 0 ? 'launcher' : _ref2$clicktoCallStyl,
-        _ref2$clicktoCallStyl2 = _ref2.clicktoCallStyle,
-        clicktoCallStyle = _ref2$clicktoCallStyl2 === void 0 ? 'popup' : _ref2$clicktoCallStyl2,
-        _ref2$clicktoCallBgCo = _ref2.clicktoCallBgColor,
-        clicktoCallBgColor = _ref2$clicktoCallBgCo === void 0 ? '#004bcb' : _ref2$clicktoCallBgCo,
-        _ref2$clicktoCallIcon = _ref2.clicktoCallIconColor,
-        clicktoCallIconColor = _ref2$clicktoCallIcon === void 0 ? '#ffffff' : _ref2$clicktoCallIcon,
-        _ref2$clicktoCallDevi = _ref2.clicktoCallDevice,
-        clicktoCallDevice = _ref2$clicktoCallDevi === void 0 ? 'all' : _ref2$clicktoCallDevi,
-        _ref2$clicktoCallAnim = _ref2.clicktoCallAnimation,
-        clicktoCallAnimation = _ref2$clicktoCallAnim === void 0 ? 'none' : _ref2$clicktoCallAnim,
-        _ref2$clicktoCallAuto = _ref2.clicktoCallAutoOpen,
-        clicktoCallAutoOpen = _ref2$clicktoCallAuto === void 0 ? false : _ref2$clicktoCallAuto,
-        _ref2$clicktoCallAuto2 = _ref2.clicktoCallAutoOpenDelay,
-        clicktoCallAutoOpenDelay = _ref2$clicktoCallAuto2 === void 0 ? 0 : _ref2$clicktoCallAuto2,
-        _ref2$clicktoCallBadg = _ref2.clicktoCallBadge,
-        clicktoCallBadge = _ref2$clicktoCallBadg === void 0 ? false : _ref2$clicktoCallBadg,
-        _ref2$clicktoCallBadg2 = _ref2.clicktoCallBadgeCount,
-        clicktoCallBadgeCount = _ref2$clicktoCallBadg2 === void 0 ? 0 : _ref2$clicktoCallBadg2,
-        _ref2$clicktoCallshow = _ref2.clicktoCallshowHours,
-        clicktoCallshowHours = _ref2$clicktoCallshow === void 0 ? false : _ref2$clicktoCallshow,
-        _ref2$clicktoCallShow = _ref2.clicktoCallShowChip,
-        clicktoCallShowChip = _ref2$clicktoCallShow === void 0 ? false : _ref2$clicktoCallShow,
-        _ref2$clicktoCallshow2 = _ref2.clicktoCallshowChipDot,
-        clicktoCallshowChipDot = _ref2$clicktoCallshow2 === void 0 ? false : _ref2$clicktoCallshow2,
-        _ref2$clicktoCallSche = _ref2.clicktoCallSchedules,
-        clicktoCallSchedules = _ref2$clicktoCallSche === void 0 ? {
+        }] : _ref3$clicktoCallPhon,
+        _ref3$clicktoCallStyl = _ref3.clicktoCallStyleType,
+        clicktoCallStyleType = _ref3$clicktoCallStyl === void 0 ? 'launcher' : _ref3$clicktoCallStyl,
+        _ref3$clicktoCallStyl2 = _ref3.clicktoCallStyle,
+        clicktoCallStyle = _ref3$clicktoCallStyl2 === void 0 ? 'popup' : _ref3$clicktoCallStyl2,
+        _ref3$clicktoCallBgCo = _ref3.clicktoCallBgColor,
+        clicktoCallBgColor = _ref3$clicktoCallBgCo === void 0 ? '#004bcb' : _ref3$clicktoCallBgCo,
+        _ref3$clicktoCallIcon = _ref3.clicktoCallIconColor,
+        clicktoCallIconColor = _ref3$clicktoCallIcon === void 0 ? '#ffffff' : _ref3$clicktoCallIcon,
+        _ref3$clicktoCallDevi = _ref3.clicktoCallDevice,
+        clicktoCallDevice = _ref3$clicktoCallDevi === void 0 ? 'all' : _ref3$clicktoCallDevi,
+        _ref3$clicktoCallAnim = _ref3.clicktoCallAnimation,
+        clicktoCallAnimation = _ref3$clicktoCallAnim === void 0 ? 'none' : _ref3$clicktoCallAnim,
+        _ref3$clicktoCallAuto = _ref3.clicktoCallAutoOpen,
+        clicktoCallAutoOpen = _ref3$clicktoCallAuto === void 0 ? false : _ref3$clicktoCallAuto,
+        _ref3$clicktoCallAuto2 = _ref3.clicktoCallAutoOpenDelay,
+        clicktoCallAutoOpenDelay = _ref3$clicktoCallAuto2 === void 0 ? 0 : _ref3$clicktoCallAuto2,
+        _ref3$clicktoCallBadg = _ref3.clicktoCallBadge,
+        clicktoCallBadge = _ref3$clicktoCallBadg === void 0 ? false : _ref3$clicktoCallBadg,
+        _ref3$clicktoCallBadg2 = _ref3.clicktoCallBadgeCount,
+        clicktoCallBadgeCount = _ref3$clicktoCallBadg2 === void 0 ? 0 : _ref3$clicktoCallBadg2,
+        _ref3$clicktoCallshow = _ref3.clicktoCallshowHours,
+        clicktoCallshowHours = _ref3$clicktoCallshow === void 0 ? false : _ref3$clicktoCallshow,
+        _ref3$clicktoCallShow = _ref3.clicktoCallShowChip,
+        clicktoCallShowChip = _ref3$clicktoCallShow === void 0 ? false : _ref3$clicktoCallShow,
+        _ref3$clicktoCallshow2 = _ref3.clicktoCallshowChipDot,
+        clicktoCallshowChipDot = _ref3$clicktoCallshow2 === void 0 ? false : _ref3$clicktoCallshow2,
+        _ref3$clicktoCallSche = _ref3.clicktoCallSchedules,
+        clicktoCallSchedules = _ref3$clicktoCallSche === void 0 ? {
           Monday: {
             on: true,
             open: '00:00',
@@ -336,7 +374,7 @@
             open: '00:00',
             close: '23:59'
           }
-        } : _ref2$clicktoCallSche;
+        } : _ref3$clicktoCallSche;
       if (!clicktoCall) return;
       CTC.init({
         phones: clicktoCallPhones,
@@ -358,8 +396,8 @@
       });
     },
     handleStickyToc: function handleStickyToc() {
-      var _ai1wpsa9 = ai1wpsa,
-        settings = _ai1wpsa9.settings;
+      var _ai1wpsa11 = ai1wpsa,
+        settings = _ai1wpsa11.settings;
       var _settings$stickyTocTi = settings.stickyTocTitle,
         stickyTocTitle = _settings$stickyTocTi === void 0 ? 'Table of Contents' : _settings$stickyTocTi,
         _settings$stickyTocTa = settings.stickyTocTarget,

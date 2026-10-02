@@ -47,6 +47,9 @@
 
                 // set z-index
                 $(stickyClass).css('z-index', stickyZIndex);
+
+                // Logo swap on sticky
+                app.handleLogoSwap();
             }
 
             // Sticky Sidebar
@@ -83,13 +86,14 @@
 
         handleFixDefaultSticky: () => {
             const { settings } = ai1wpsa;
-            const { stickyClass } = settings;
+            const { stickyClass, stickyScrollOffset = 0 } = settings;
 
             const header = $(stickyClass);
 
             if (!header.length) return;
 
-            const stickyOffset = header.offset().top;
+            const scrollOffset = parseInt(stickyScrollOffset, 10) || 0;
+            const stickyOffset = header.offset().top + scrollOffset;
 
             $(window).on('scroll', function () {
                 if ($(window).scrollTop() > stickyOffset) {
@@ -106,12 +110,13 @@
         },
 
         handleCustomizerStickyHeader: () => {
-            const { stickyCIndex } = ai1wpsa?.settings || {};
+            const { stickyCIndex, stickyScrollOffset = 0 } = ai1wpsa?.settings || {};
             const element = $('header.site-header, header#site-header, header.header, header#header, header#zak-masthead');
 
             if (!element.length) return;
 
-            const stickyOffset = element.offset().top;
+            const scrollOffset = parseInt(stickyScrollOffset, 10) || 0;
+            const stickyOffset = element.offset().top + scrollOffset;
 
             // reset any existing listeners
             $(window).off('.ai1wpsaSticky');
@@ -131,6 +136,46 @@
                     element.removeClass('sticky');
                 }
             });
+        },
+
+        // Logo Swap on Sticky — a no-op whenever the selector/image settings
+        // are empty (nothing configured yet).
+        //
+        // Decoupled from which sticky mechanism is active: it just watches
+        // for the shared `.ai1wpsa-fix-sticky.sticky` pair every sticky-header
+        // code path above (fix-default, Customizer, Elementor) adds, same as
+        // the Sticky Header Background/Shrink CSS in Hooks.php does.
+        handleLogoSwap: () => {
+            const { settings } = ai1wpsa;
+            const {
+                stickyLogoSwapSelector = '',
+                stickyLogoSwapImage = '',
+            } = settings;
+
+            if (!stickyLogoSwapSelector || !stickyLogoSwapImage) return;
+
+            const logo = $(stickyLogoSwapSelector);
+
+            if (!logo.length) return;
+
+            const originalSrc = logo.attr('src');
+            let isSwapped = false;
+
+            $(window).on('scroll.ai1wpsaLogoSwap', function () {
+                const isSticky = $('.ai1wpsa-fix-sticky.sticky').length > 0;
+
+                if (isSticky && !isSwapped) {
+                    logo.attr('src', stickyLogoSwapImage);
+                    isSwapped = true;
+                } else if (!isSticky && isSwapped) {
+                    logo.attr('src', originalSrc);
+                    isSwapped = false;
+                }
+            });
+
+            // Covers the page loading already past the sticky threshold
+            // (e.g. reloaded mid-scroll, or arriving via an in-page anchor).
+            $(window).trigger('scroll.ai1wpsaLogoSwap');
         },
 
         handleStickySidebar: () => {
@@ -162,17 +207,11 @@
             const settings = $(element)?.data('settings') ? $(element)?.data('settings') : {};
             const stickyStatus = settings?.ai1wpsa_status;
             const stickyZIndex = settings?.ai1wpsa_z_index || 99999;
-            const stickyOffset = element.offset().top;
+            const { stickyScrollOffset = 0 } = ai1wpsa?.settings || {};
+            const scrollOffset = parseInt(stickyScrollOffset, 10) || 0;
+            const stickyOffset = element.offset().top + scrollOffset;
 
             if (stickyStatus == 'yes') {
-                // jQuery(element).stickr({
-                //     duration: 0,
-                //     offsetTop: 0,
-                //     offsetBottom: 30,
-                //     closeButton: false,
-                // });
-
-                // $('body').addClass('ai1wpsa-astra-elementor');
 
                 $('.ai1wpsa-yes').css('z-index', stickyZIndex);
 

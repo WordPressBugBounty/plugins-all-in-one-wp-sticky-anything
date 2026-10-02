@@ -13,13 +13,17 @@
 
 import { showNotification } from "./functions";
 
-function buildPickerUrl() {
+function buildPickerUrl(target) {
     const { homeUrl, pickerNonce } = ai1wpsa || {};
     const url = new URL(homeUrl);
 
     url.searchParams.set('ai1wpsa_picker', '1');
     url.searchParams.set('ai1wpsa_picker_nonce', pickerNonce);
     url.searchParams.set('origin', window.location.origin);
+
+    if (target === 'image') {
+        url.searchParams.set('ai1wpsa_picker_target', 'image');
+    }
 
     return url.toString();
 }
@@ -29,14 +33,23 @@ function buildPickerUrl() {
 // falling back to a new tab.
 const IFRAME_READY_TIMEOUT = 4000;
 
-export function pickElementOnPage(onSelect) {
+/**
+ * @param {(selector: string) => void} onSelect
+ * @param {{ target?: 'header' | 'image' }} [options] `target: 'image'` puts
+ *   element-picker.js into logo-picking mode: it resolves whatever's hovered
+ *   down to the nearest actual `<img>` (itself, or the first `<img>`
+ *   descendant) instead of snapping up to the nearest header-like ancestor,
+ *   and drops the "Select Parent" escape hatch — this mode always ends in an
+ *   `<img>` selector, never a wrapping element.
+ */
+export function pickElementOnPage(onSelect, { target = 'header' } = {}) {
     const { homeUrl, pickerNonce } = ai1wpsa || {};
 
     if (!homeUrl || !pickerNonce) {
         return;
     }
 
-    const targetUrl = buildPickerUrl();
+    const targetUrl = buildPickerUrl(target);
     let fallbackTab = null;
     let readyTimer = null;
 
@@ -78,10 +91,16 @@ export function pickElementOnPage(onSelect) {
     };
 
     Swal.fire({
-        title: wp.i18n.__('Pick Your Sticky Header', 'all-in-one-wp-sticky-anything'),
+        title: target === 'image'
+            ? wp.i18n.__('Pick Your Logo Image', 'all-in-one-wp-sticky-anything')
+            : wp.i18n.__('Pick Your Sticky Header', 'all-in-one-wp-sticky-anything'),
         html: `
             <div class="ai1wpsa-selector-picker">
-                <p class="ai1wpsa-selector-picker__hint">${wp.i18n.__('Hover over your site below and click your header (or use "Select Parent" if the click lands on something inside it, like your logo). Press Esc to cancel.', 'all-in-one-wp-sticky-anything')}</p>
+                <p class="ai1wpsa-selector-picker__hint">${
+                    target === 'image'
+                        ? wp.i18n.__('Hover over your site below and click your logo — hovering near it (e.g. its link wrapper) also works, the actual `<img>` is always what gets picked. Press Esc to cancel.', 'all-in-one-wp-sticky-anything')
+                        : wp.i18n.__('Hover over your site below and click your header (or use "Select Parent" if the click lands on something inside it, like your logo). Press Esc to cancel.', 'all-in-one-wp-sticky-anything')
+                }</p>
                 <div class="ai1wpsa-selector-picker__frame-wrap">
                     <iframe id="ai1wpsa-picker-iframe" class="ai1wpsa-selector-picker__iframe" title="${wp.i18n.__('Your site', 'all-in-one-wp-sticky-anything')}"></iframe>
                     <div id="ai1wpsa-picker-fallback" class="ai1wpsa-selector-picker__fallback" hidden>

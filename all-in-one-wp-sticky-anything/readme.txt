@@ -4,7 +4,7 @@ Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,9 @@ No CSS knowledge needed — click **"Pick Header on Page"** in the settings and 
 * Or set it manually with a CSS class/ID, the WordPress Customizer, or Elementor's Advanced tab
 * Customize the sticky background: solid color free, gradient or a Media Library image with Pro
 * Set a custom z-index, and disable sticky on mobile (Pro)
+* Delay how far the page scrolls before the header sticks with the Scroll Offset setting
+* Shrink the header (and its logo) once it's stuck to the top *(Experimental)*
+* Swap in a different logo automatically while the header is sticky
 * Dedicated Customizer support for Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra etc.
 
 **📌 Any Element Can Be Made Sticky**
@@ -249,6 +252,11 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.1.9 (02-10-2026) =
+* **New:** Introduced the **Sticky Scroll Offset** setting for the Sticky Header.
+* **New:** Introduced the **Shrink Header on Sticky** setting *(Experimental)* for the Sticky Header.
+* **New:** Introduced the **Logo Swap on Sticky** setting for the Sticky Header.
+
 = 1.1.8 (11-09-2026) =
 * **New:** Sticky Header Background color, gradient (Pro), or image (Pro) added.
 * **New:** "Pick Header on Page" — click your header on your live site to auto-fill the Sticky Class selector.

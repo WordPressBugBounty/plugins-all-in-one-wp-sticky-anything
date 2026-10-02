@@ -1,6 +1,15 @@
 export default function Changelog() {
     const logs = [
         {
+            version: 'v1.1.9',
+            date: '02-10-2026',
+            new: [
+                wp.i18n.__('Introduced the Sticky Scroll Offset setting for the Sticky Header.', 'all-in-one-wp-sticky-anything'),
+                wp.i18n.__('Introduced the Shrink Header on Sticky setting (Experimental) for the Sticky Header.', 'all-in-one-wp-sticky-anything'),
+                wp.i18n.__('Introduced the Logo Swap on Sticky setting for the Sticky Header.', 'all-in-one-wp-sticky-anything'),
+            ],
+        },
+        {
             version: 'v1.1.8',
             date: '11-09-2026',
             new: [

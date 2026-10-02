@@ -25,6 +25,11 @@
     // any embedding page read the selector. Refuse instead.
     return;
   }
+
+  // 'header' (default): snaps hover up to the nearest header-like ancestor.
+  // 'image': resolves hover down to the nearest actual <img> instead - see
+  // resolveImageTarget() - for picking a logo image specifically.
+  var pickerTarget = params.get('ai1wpsa_picker_target') === 'image' ? 'image' : 'header';
   var UI_ATTR = 'data-ai1wpsa-picker-ui';
   var currentEl = null;
   var sent = false;
@@ -146,7 +151,11 @@
   var toolbar = document.createElement('div');
   toolbar.id = 'ai1wpsa-picker-toolbar';
   toolbar.setAttribute(UI_ATTR, '1');
-  toolbar.innerHTML = '<span id="ai1wpsa-picker-hint">Click your header to use it as the sticky selector</span>' + '<button type="button" id="ai1wpsa-picker-parent">&uarr; Select Parent</button>' + '<button type="button" id="ai1wpsa-picker-cancel">Cancel</button>';
+  toolbar.innerHTML = '<span id="ai1wpsa-picker-hint">' + (pickerTarget === 'image' ? 'Click your logo to select its &lt;img&gt;' : 'Click your header to use it as the sticky selector') + '</span>' + (
+  // "Select Parent" only makes sense in header mode - in image mode it
+  // would let the admin walk up to a non-<img> wrapper, breaking the
+  // "always ends in an <img>" guarantee resolveImageTarget() gives.
+  pickerTarget === 'image' ? '' : '<button type="button" id="ai1wpsa-picker-parent">&uarr; Select Parent</button>') + '<button type="button" id="ai1wpsa-picker-cancel">Cancel</button>';
   document.documentElement.appendChild(highlight);
   document.documentElement.appendChild(tooltip);
   document.documentElement.appendChild(toolbar);
@@ -189,7 +198,7 @@
     }
     return null;
   }
-  function updateHighlight(el, wasSnapped) {
+  function updateHighlight(el, note) {
     if (!el) {
       return;
     }
@@ -201,19 +210,38 @@
     highlight.style.height = rect.height + 'px';
     highlight.style.display = 'block';
     var preview = getSelectorFor(el);
-    tooltip.textContent = el.tagName.toLowerCase() + ' — ' + preview + (wasSnapped ? ' (full header - covers mobile & desktop)' : '');
+    tooltip.textContent = el.tagName.toLowerCase() + ' — ' + preview + (note ? ' (' + note + ')' : '');
     tooltip.style.display = 'block';
     var top = rect.top - 28;
     tooltip.style.top = (top < 0 ? rect.bottom + 6 : top) + 'px';
     tooltip.style.left = Math.max(0, rect.left) + 'px';
+  }
+
+  // Image mode: resolves whatever's under the cursor down to an actual
+  // <img> - itself directly, or the first <img> nested inside it (covers
+  // hovering a logo's <a>/<div> wrapper when the image doesn't fill every
+  // pixel of it). Returns null when there's no image to find, in which
+  // case the previous highlight is simply left in place.
+  function resolveImageTarget(el) {
+    if (el.tagName === 'IMG') {
+      return el;
+    }
+    return el.querySelector && el.querySelector('img') || null;
   }
   function onMouseMove(e) {
     var el = document.elementFromPoint(e.clientX, e.clientY);
     if (!el || isPickerUi(el)) {
       return;
     }
+    if (pickerTarget === 'image') {
+      var imgEl = resolveImageTarget(el);
+      if (imgEl) {
+        updateHighlight(imgEl, imgEl === el ? null : 'nearest image found');
+      }
+      return;
+    }
     var headerAncestor = findHeaderAncestor(el);
-    updateHighlight(headerAncestor || el, !!headerAncestor);
+    updateHighlight(headerAncestor || el, headerAncestor ? 'full header - covers mobile & desktop' : null);
   }
   function finish(type, payload) {
     if (sent) {
@@ -268,23 +296,30 @@
   document.getElementById('ai1wpsa-picker-cancel').addEventListener('click', function () {
     finish('ai1wpsa:picker-cancel');
   });
-  document.getElementById('ai1wpsa-picker-parent').addEventListener('click', function () {
-    if (currentEl && currentEl.parentElement && currentEl.parentElement !== document.documentElement) {
-      updateHighlight(currentEl.parentElement);
-    }
-  });
+  var parentBtn = document.getElementById('ai1wpsa-picker-parent');
+  if (parentBtn) {
+    parentBtn.addEventListener('click', function () {
+      if (currentEl && currentEl.parentElement && currentEl.parentElement !== document.documentElement) {
+        updateHighlight(currentEl.parentElement);
+      }
+    });
+  }
   document.addEventListener('mousemove', onMouseMove, true);
   document.addEventListener('click', onClick, true);
   document.addEventListener('keydown', onKeyDown, true);
 
-  // This tool is specifically for picking the sticky HEADER, not an
-  // arbitrary element - so as soon as it loads, pre-highlight the site's
-  // actual <header> (if the theme has one) as a starting suggestion. The
-  // admin can still hover elsewhere and click anything else if their
-  // header isn't a <header> tag.
-  var likelyHeader = document.querySelector('header');
-  if (likelyHeader) {
-    updateHighlight(likelyHeader);
+  // Pre-highlight a starting suggestion as soon as the page loads, so
+  // there's something on screen before the admin's first mouse move.
+  if (pickerTarget === 'image') {
+    var likelyLogo = document.querySelector('.custom-logo, .site-logo img, .site-branding img, a.logo img, header img');
+    if (likelyLogo) {
+      updateHighlight(likelyLogo);
+    }
+  } else {
+    var likelyHeader = document.querySelector('header');
+    if (likelyHeader) {
+      updateHighlight(likelyHeader);
+    }
   }
 })();
 /******/ })()
