@@ -1,4 +1,5 @@
 const { useContext } = wp.element;
+const { applyFilters } = wp.hooks;
 
 const {
     Button,
@@ -8,62 +9,25 @@ const {
     SelectControl,
 } = wp.components;
 
-import { Tooltip } from "react-tooltip";
 import SettingsContext from "../../Contexts/SettingsContext";
 import ColorPickerWrapper from "./ColorPickerWrapper";
-import { showProModal } from "../../includes/ProModal";
-import ProIcon from "../../includes/ProIcon";
 
 export default function StickySocial() {
-    const { isPro, postTypes } = ai1wpsa;
     const { data, setData } = useContext(SettingsContext);
 
     const {
         stickySocialIcon = false,
-        stickySocialIconType = 'dashicons',
-        stickySocialIconPosition = 'left',
         stickySocialIconStyle = 'square',
-        stickySocialIconDisplay = 'everywhere',
-        stickySocialIconDevice = 'all',
         stickySocialIcons = [],
         stickySocialIconsMenuBgColor = '#004bcb',
         stickySocialIconsIconColor = '#fff',
-        stickySocialIconsIconHoverColor = '',
         stickySocialIconsIconBgColor = '#000',
-        stickySocialIconsIconHoverBgColor = '',
     } = data || {};
-
-    const iconOptions = [
-        { value: 'dashicons', label: wp.i18n.__('Dashicons', 'all-in-one-wp-sticky-anything'), pro: false },
-        { value: 'fontawesome', label: wp.i18n.__('Fontawesome', 'all-in-one-wp-sticky-anything'), pro: true },
-        { value: 'bootstrap', label: wp.i18n.__('Bootstrap', 'all-in-one-wp-sticky-anything'), pro: true },
-        { value: 'remixicon', label: wp.i18n.__('RemixIcon', 'all-in-one-wp-sticky-anything'), pro: true },
-        { value: 'lineicon', label: wp.i18n.__('Lineicons', 'all-in-one-wp-sticky-anything'), pro: true },
-    ];
-
-    const displayLocationOptions = [
-        { value: 'everywhere', label: wp.i18n.__('Everywhere', 'all-in-one-wp-sticky-anything') },
-        { value: 'home', label: wp.i18n.__('Homepage', 'all-in-one-wp-sticky-anything'), pro: true },
-        { value: 'blog', label: wp.i18n.__('Posts Page', 'all-in-one-wp-sticky-anything'), pro: true },
-        ...postTypes.map(postType => ({ ...postType, pro: true }))
-    ];
-
-    const positionOptions = [
-        { value: 'left', label: wp.i18n.__('Left', 'all-in-one-wp-sticky-anything') },
-        { value: 'right', label: wp.i18n.__('Right', 'all-in-one-wp-sticky-anything') },
-        { value: 'bottom', label: wp.i18n.__('Bottom', 'all-in-one-wp-sticky-anything'), pro: true },
-    ];
 
     const styleOptions = [
         { value: 'circle', label: wp.i18n.__('Circle', 'all-in-one-wp-sticky-anything') },
         { value: 'square', label: wp.i18n.__('Square', 'all-in-one-wp-sticky-anything') },
         { value: 'rounded', label: wp.i18n.__('Rounded', 'all-in-one-wp-sticky-anything') },
-    ];
-
-    const deviceOptions = [
-        { value: 'all', label: wp.i18n.__('All', 'all-in-one-wp-sticky-anything') },
-        { value: 'desktop', label: wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything'), pro: true },
-        { value: 'mobile', label: wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'), pro: true },
     ];
 
     const socialIconOptions = {
@@ -1265,68 +1229,11 @@ export default function StickySocial() {
                 {/* sticky social icons stop here */}
 
                 {!!stickySocialIcon && <>
-                    <div class="settings-field">
-                        <h4 class="settings-field-label">
-                            {wp.i18n.__('Icons Type', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div class="settings-field-content">
+                    {/* Pro field slot — icons type. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_social', null, { area: 'type', data, setData })}
 
-                            <ButtonGroup>
-                                {iconOptions.map((icon) => (
-                                    <Button
-                                        key={icon.value}
-                                        className={icon.pro && !isPro ? 'ai1wpsa-disabled' : ''}
-                                        onClick={() => {
-                                            if (icon.pro && !isPro) {
-                                                showProModal();
-                                                return;
-                                            }
-                                            setData({ ...data, stickySocialIconType: icon.value });
-                                        }}
-                                        variant={stickySocialIconType === icon.value ? 'primary' : ''}
-                                    >
-                                        {icon.label}
-                                    </Button>
-                                ))}
-                            </ButtonGroup>
-
-                            {!isPro && <Tooltip anchorSelect=".ai1wpsa-pro-feature" variant="warning" content={wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything')} />}
-
-                            <p className="description">{wp.i18n.__('Select the social icons library.', 'all-in-one-wp-sticky-anything')}</p>
-                        </div>
-                    </div>
-
-                    <div class="settings-field">
-                        <h4 class="settings-field-label">
-                            {wp.i18n.__('Icons Position', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div class="settings-field-content">
-
-                            <ButtonGroup>
-                                {positionOptions.map((pos) => (
-                                    <Button
-                                        key={pos.value}
-                                        className={pos.pro && !isPro ? 'ai1wpsa-disabled' : ''}
-                                        onClick={() => {
-                                            if (pos.pro && !isPro) {
-                                                showProModal();
-                                                return;
-                                            }
-                                            setData({ ...data, stickySocialIconPosition: pos.value });
-                                        }}
-                                        title={pos.pro ? wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything') : ''}
-                                        variant={stickySocialIconPosition === pos.value ? 'primary' : ''}
-                                    >
-                                        {pos.label}
-                                    </Button>
-                                ))}
-                            </ButtonGroup>
-
-                            <p className="description">{wp.i18n.__('Select the social icons position on the frontend.', 'all-in-one-wp-sticky-anything')}</p>
-                        </div>
-                    </div>
+                    {/* Pro field slot — icons position. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_social', null, { area: 'position', data, setData })}
 
                     <div class="settings-field">
                         <h4 class="settings-field-label">{wp.i18n.__('Icons Style', 'all-in-one-wp-sticky-anything')}</h4>
@@ -1348,71 +1255,11 @@ export default function StickySocial() {
                         </div>
                     </div>
 
-                    {/* display location start here*/}
-                    <div class="settings-field">
-                        <h4 class="settings-field-label">
-                            {wp.i18n.__('Display Location', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div class="settings-field-content">
+                    {/* Pro field slot — display location. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_social', null, { area: 'display', data, setData })}
 
-                            <ButtonGroup>
-                                {displayLocationOptions.map((display) => (
-                                    <Button
-                                        key={display.value}
-                                        className={display.pro && !isPro ? 'ai1wpsa-disabled' : ''}
-                                        onClick={() => {
-                                            if (display.pro && !isPro) {
-                                                showProModal();
-                                                return;
-                                            }
-                                            setData({ ...data, stickySocialIconDisplay: display.value });
-                                        }}
-                                        variant={stickySocialIconDisplay === display.value ? 'primary' : ''}
-                                        title={!isPro ? wp.i18n.__('Pro feature', 'all-in-one-wp-sticky-anything') : ''}
-                                    >
-                                        {display.label}
-                                    </Button>
-                                ))}
-                            </ButtonGroup>
-
-                            <p className="description">{wp.i18n.__('set the social icon display location visibility on the frontend.', 'all-in-one-wp-sticky-anything')}</p>
-                        </div>
-                    </div>
-                    {/* display location stop here */}
-
-                    {/* device start here */}
-                    <div class="settings-field">
-                        <h4 class="settings-field-label">
-                            {wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div class="settings-field-content">
-
-                            <ButtonGroup>
-                                {deviceOptions.map((device) => (
-                                    <Button
-                                        key={device.value}
-                                        className={device.pro && !isPro ? 'ai1wpsa-disabled' : ''}
-                                        onClick={() => {
-                                            if (device.pro && !isPro) {
-                                                showProModal();
-                                                return;
-                                            }
-                                            setData({ ...data, stickySocialIconDevice: device.value });
-                                        }}
-                                        variant={stickySocialIconDevice === device.value ? 'primary' : ''}
-                                        title={!isPro ? wp.i18n.__('Pro feature', 'all-in-one-wp-sticky-anything') : ''}
-                                    >
-                                        {device.label}
-                                    </Button>
-                                ))}
-                            </ButtonGroup>
-
-                            <p className="description">{wp.i18n.__('set the social icon device visibility on the frontend.', 'all-in-one-wp-sticky-anything')}</p>
-                        </div>
-                    </div>
-                    {/* device stop here */}
+                    {/* Pro field slot — device. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_social', null, { area: 'device', data, setData })}
 
                     <div className="settings-field social-icons">
                         <h4 class="settings-field-label">{wp.i18n.__('Social Icons', 'all-in-one-wp-sticky-anything')}</h4>
@@ -1547,30 +1394,6 @@ export default function StickySocial() {
                     </div>
                     {/* icon color stop here */}
 
-                    {/* icon hover color start here */}
-                    <div className="settings-field">
-                        <h4 class="settings-field-label">
-                            {wp.i18n.__('Icon Hover Color', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div class="settings-field-content">
-                            <ColorPickerWrapper
-                                value={stickySocialIconsIconHoverColor}
-                                customClassName={`${!isPro ? 'ai1wpsa-disabled' : ''}`}
-                                onChange={(value) => {
-                                    if (!isPro) {
-                                        showProModal();
-                                        return;
-                                    }
-
-                                    setData({ ...data, stickySocialIconsIconHoverColor: value });
-                                }}
-                                allowReset={true}
-                            />
-                        </div>
-                    </div>
-                    {/* icon hover color stop here */}
-
                     {/* icon bg color start here */}
                     <div className="settings-field">
                         <h4 class="settings-field-label">{wp.i18n.__('Icon Background Color', 'all-in-one-wp-sticky-anything')}</h4>
@@ -1585,29 +1408,8 @@ export default function StickySocial() {
                     </div>
                     {/* icon bg color stop here */}
 
-                    {/* icon bg hover color start here */}
-                    <div className="settings-field">
-                        <h4 class="settings-field-label">
-                            {wp.i18n.__('Icon Background Hover Color', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div class="settings-field-content">
-                            <ColorPickerWrapper
-                                value={stickySocialIconsIconHoverBgColor}
-                                customClassName={`${!isPro ? 'ai1wpsa-disabled' : ''}`}
-                                onChange={(value) => {
-                                    if (!isPro) {
-                                        showProModal();
-                                        return;
-                                    }
-
-                                    setData({ ...data, stickySocialIconsIconHoverBgColor: value });
-                                }}
-                                allowReset={true}
-                            />
-                        </div>
-                    </div>
-                    {/* icon bg hover color stop here */}
+                    {/* Pro field slot — icon hover colors. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_social', null, { area: 'hover', data, setData })}
                 </>}
             </div>
         </div>

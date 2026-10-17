@@ -1,8 +1,7 @@
 const { useContext } = wp.element;
+const { applyFilters } = wp.hooks;
 
 const {
-    Button,
-    ButtonGroup,
     FormToggle,
     TextControl,
 } = wp.components;
@@ -10,14 +9,12 @@ const {
 import SettingsContext from "../../Contexts/SettingsContext";
 
 export default function StickySidebar() {
-    const { isPro } = ai1wpsa;
     const { data, setData } = useContext(SettingsContext);
 
     const {
         stickySidebar = false,
         stickySidebarElement = '',
         stickySidebarContainer = '',
-        stickySidebarDevice = 'all',
         StickySidebarMarginTop = '90',
         StickySidebarMarginBottom = '0',
         stickyMinWidth = '795',
@@ -79,69 +76,7 @@ export default function StickySidebar() {
                     {/* sticky sidebar container element stop here */}
 
                     {/* device start here */}
-                    {isPro &&
-                        <div class="settings-field">
-                            <h4 class="settings-field-label">{wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')}</h4>
-                            <div class="settings-field-content">
-
-                                <ButtonGroup>
-                                    <Button
-                                        onClick={() => {
-                                            if (!isPro) {
-                                                return;
-                                            }
-
-                                            setData({ ...data, stickySidebarDevice: 'all' });
-                                        }}
-                                        variant={stickySidebarDevice === 'all' ? 'primary' : ''}
-                                    >
-                                        {wp.i18n.__('All', 'all-in-one-wp-sticky-anything')}
-                                    </Button>
-
-                                    <Button
-                                        onClick={() => {
-                                            if (!isPro) {
-                                                return;
-                                            }
-
-                                            setData({ ...data, stickySidebarDevice: 'desktop' });
-                                        }}
-                                        variant={stickySidebarDevice === 'desktop' ? 'primary' : ''}
-                                    >
-                                        {wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything')}
-                                    </Button>
-
-                                    <Button
-                                        onClick={() => {
-                                            if (!isPro) {
-                                                return;
-                                            }
-
-                                            setData({ ...data, stickySidebarDevice: 'tablet' });
-                                        }}
-                                        variant={stickySidebarDevice === 'tablet' ? 'primary' : ''}
-                                    >
-                                        {wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything')}
-                                    </Button>
-
-                                    <Button
-                                        onClick={() => {
-                                            if (!isPro) {
-                                                return;
-                                            }
-
-                                            setData({ ...data, stickySidebarDevice: 'mobile' });
-                                        }}
-                                        variant={stickySidebarDevice === 'mobile' ? 'primary' : ''}
-                                    >
-                                        {wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything')}
-                                    </Button>
-                                </ButtonGroup>
-
-                                <p className="description">{wp.i18n.__('Set your desire z-index value for your target element.', 'all-in-one-wp-sticky-anything')}</p>
-                            </div>
-                        </div>
-                    }
+                    {applyFilters('ai1wpsa_settings_fields_sticky_sidebar', null, { area: 'device', data, setData })}
                     {/* device stop here */}
 
                     {/* sticky sidebar margin top start here */}

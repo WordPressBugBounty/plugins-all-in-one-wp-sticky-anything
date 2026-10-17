@@ -27,7 +27,6 @@ export default function Settings() {
         stickyNotes: false,
         stickyNotesDisplay: 'dashboard',
         stickyNotesDefaultFont: 0,
-        customCss: '',
         deleteData: false,
     };
 

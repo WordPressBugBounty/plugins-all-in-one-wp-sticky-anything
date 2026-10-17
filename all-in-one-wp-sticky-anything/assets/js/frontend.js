@@ -1,6 +1,7 @@
 /******/ (() => { // webpackBootstrap
 ;
 (function ($) {
+  var applyFilters = wp.hooks.applyFilters;
   var app = {
     init: function init() {
       var _ai1wpsa = ai1wpsa,
@@ -19,7 +20,6 @@
       var stickyClass = settings.stickyClass,
         stickyZIndex = settings.stickyZIndex,
         fixDefaultSticky = settings.fixDefaultSticky,
-        stickyDisableMobile = settings.stickyDisableMobile,
         stickyHeader = settings.stickyHeader,
         stickySidebar = settings.stickySidebar,
         stickyCookieConsent = settings.stickyCookieConsent,
@@ -28,9 +28,10 @@
       var topOffset = isLoggedIn ? 32 : 0;
       var elementorStickyHeader = $('.elementor-element.ai1wpsa-yes');
 
-      // Sticky header behavior is skipped entirely on mobile-sized screens when disabled.
-      var isMobileViewport = window.innerWidth <= 767;
-      var stickyHeaderEnabled = !(stickyDisableMobile && isMobileViewport);
+      // Whether the sticky header runs at all. The Premium add-on can
+      // turn this off (e.g. on mobile-sized screens, via its "Disable
+      // Sticky on Mobile" option); the free plugin always keeps it on.
+      var stickyHeaderEnabled = applyFilters('ai1wpsa_sticky_header_enabled', true);
       if (stickyHeaderEnabled) {
         // Fix Sticky
         if (!fixDefaultSticky || !!fixDefaultSticky) {
@@ -311,89 +312,34 @@
           label: 'Support',
           number: '+8801512345678'
         }] : _ref3$clicktoCallPhon,
-        _ref3$clicktoCallStyl = _ref3.clicktoCallStyleType,
-        clicktoCallStyleType = _ref3$clicktoCallStyl === void 0 ? 'launcher' : _ref3$clicktoCallStyl,
-        _ref3$clicktoCallStyl2 = _ref3.clicktoCallStyle,
-        clicktoCallStyle = _ref3$clicktoCallStyl2 === void 0 ? 'popup' : _ref3$clicktoCallStyl2,
         _ref3$clicktoCallBgCo = _ref3.clicktoCallBgColor,
         clicktoCallBgColor = _ref3$clicktoCallBgCo === void 0 ? '#004bcb' : _ref3$clicktoCallBgCo,
         _ref3$clicktoCallIcon = _ref3.clicktoCallIconColor,
-        clicktoCallIconColor = _ref3$clicktoCallIcon === void 0 ? '#ffffff' : _ref3$clicktoCallIcon,
-        _ref3$clicktoCallDevi = _ref3.clicktoCallDevice,
-        clicktoCallDevice = _ref3$clicktoCallDevi === void 0 ? 'all' : _ref3$clicktoCallDevi,
-        _ref3$clicktoCallAnim = _ref3.clicktoCallAnimation,
-        clicktoCallAnimation = _ref3$clicktoCallAnim === void 0 ? 'none' : _ref3$clicktoCallAnim,
-        _ref3$clicktoCallAuto = _ref3.clicktoCallAutoOpen,
-        clicktoCallAutoOpen = _ref3$clicktoCallAuto === void 0 ? false : _ref3$clicktoCallAuto,
-        _ref3$clicktoCallAuto2 = _ref3.clicktoCallAutoOpenDelay,
-        clicktoCallAutoOpenDelay = _ref3$clicktoCallAuto2 === void 0 ? 0 : _ref3$clicktoCallAuto2,
-        _ref3$clicktoCallBadg = _ref3.clicktoCallBadge,
-        clicktoCallBadge = _ref3$clicktoCallBadg === void 0 ? false : _ref3$clicktoCallBadg,
-        _ref3$clicktoCallBadg2 = _ref3.clicktoCallBadgeCount,
-        clicktoCallBadgeCount = _ref3$clicktoCallBadg2 === void 0 ? 0 : _ref3$clicktoCallBadg2,
-        _ref3$clicktoCallshow = _ref3.clicktoCallshowHours,
-        clicktoCallshowHours = _ref3$clicktoCallshow === void 0 ? false : _ref3$clicktoCallshow,
-        _ref3$clicktoCallShow = _ref3.clicktoCallShowChip,
-        clicktoCallShowChip = _ref3$clicktoCallShow === void 0 ? false : _ref3$clicktoCallShow,
-        _ref3$clicktoCallshow2 = _ref3.clicktoCallshowChipDot,
-        clicktoCallshowChipDot = _ref3$clicktoCallshow2 === void 0 ? false : _ref3$clicktoCallshow2,
-        _ref3$clicktoCallSche = _ref3.clicktoCallSchedules,
-        clicktoCallSchedules = _ref3$clicktoCallSche === void 0 ? {
-          Monday: {
-            on: true,
-            open: '00:00',
-            close: '23:59'
-          },
-          Tuesday: {
-            on: true,
-            open: '00:00',
-            close: '23:59'
-          },
-          Wednesday: {
-            on: true,
-            open: '00:00',
-            close: '23:59'
-          },
-          Thursday: {
-            on: true,
-            open: '00:00',
-            close: '23:59'
-          },
-          Friday: {
-            on: true,
-            open: '00:00',
-            close: '23:59'
-          },
-          Saturday: {
-            on: true,
-            open: '00:00',
-            close: '23:59'
-          },
-          Sunday: {
-            on: true,
-            open: '00:00',
-            close: '23:59'
-          }
-        } : _ref3$clicktoCallSche;
+        clicktoCallIconColor = _ref3$clicktoCallIcon === void 0 ? '#ffffff' : _ref3$clicktoCallIcon;
       if (!clicktoCall) return;
-      CTC.init({
+
+      // Free-tier widget options. The Premium add-on appends the
+      // premium ones (widget style, device targeting, animation,
+      // auto-open, badge, chip, schedules, …) through this filter.
+      var options = applyFilters('ai1wpsa_click_to_call_options', {
         phones: clicktoCallPhones,
-        style: clicktoCallStyle,
+        style: 'popup',
         theme: {
           '--ctc-bg': clicktoCallBgColor,
           '--ctc-icon': clicktoCallIconColor
         },
         labels: {},
-        showHours: clicktoCallshowHours,
-        showChip: clicktoCallShowChip,
-        showChipDot: clicktoCallshowChipDot,
+        showHours: false,
+        showChip: false,
+        showChipDot: false,
         position: clicktoCallPosition,
-        display: clicktoCallDevice,
-        animation: clicktoCallAnimation,
-        autoOpen: clicktoCallAutoOpen ? clicktoCallAutoOpenDelay : 0,
-        badge: clicktoCallBadge ? clicktoCallBadgeCount : 0,
-        schedule: clicktoCallSchedules
+        display: 'all',
+        animation: 'none',
+        autoOpen: 0,
+        badge: 0,
+        schedule: {}
       });
+      CTC.init(options);
     },
     handleStickyToc: function handleStickyToc() {
       var _ai1wpsa11 = ai1wpsa,
@@ -414,22 +360,12 @@
         stickyTocScrollOffset = _settings$stickyTocSc === void 0 ? 80 : _settings$stickyTocSc,
         _settings$stickyTocSh2 = settings.stickyTocShowInline,
         stickyTocShowInline = _settings$stickyTocSh2 === void 0 ? true : _settings$stickyTocSh2,
-        _settings$stickyTocIn = settings.stickyTocInlinePreset,
-        stickyTocInlinePreset = _settings$stickyTocIn === void 0 ? 'card' : _settings$stickyTocIn,
         _settings$stickyTocSt = settings.stickyTocStartCollapsed,
         stickyTocStartCollapsed = _settings$stickyTocSt === void 0 ? false : _settings$stickyTocSt,
         _settings$stickyTocSi = settings.stickyTocSidebar,
         stickyTocSidebar = _settings$stickyTocSi === void 0 ? false : _settings$stickyTocSi,
-        _settings$stickyTocSi2 = settings.stickyTocSidebarPreset,
-        stickyTocSidebarPreset = _settings$stickyTocSi2 === void 0 ? 'default' : _settings$stickyTocSi2,
-        _settings$stickyTocSi3 = settings.stickyTocSidebarPosition,
-        stickyTocSidebarPosition = _settings$stickyTocSi3 === void 0 ? 'right' : _settings$stickyTocSi3,
-        _settings$stickyTocSi4 = settings.stickyTocSidebarEdgeGap,
-        stickyTocSidebarEdgeGap = _settings$stickyTocSi4 === void 0 ? 24 : _settings$stickyTocSi4,
-        _settings$stickyTocSi5 = settings.stickyTocSidebarShowProgress,
-        stickyTocSidebarShowProgress = _settings$stickyTocSi5 === void 0 ? false : _settings$stickyTocSi5,
-        _settings$stickyTocSh3 = settings.stickyTocShowProgressBar,
-        stickyTocShowProgressBar = _settings$stickyTocSh3 === void 0 ? false : _settings$stickyTocSh3,
+        _settings$stickyTocSi2 = settings.stickyTocSidebarPosition,
+        stickyTocSidebarPosition = _settings$stickyTocSi2 === void 0 ? 'right' : _settings$stickyTocSi2,
         _settings$stickyTocSc2 = settings.stickyTocScrollBehavior,
         stickyTocScrollBehavior = _settings$stickyTocSc2 === void 0 ? 'smooth' : _settings$stickyTocSc2,
         _settings$stickyTocAc = settings.stickyTocAccentColor,
@@ -438,7 +374,11 @@
         stickyTocBgColor = _settings$stickyTocBg === void 0 ? '#ffffff' : _settings$stickyTocBg,
         _settings$stickyTocRa = settings.stickyTocRadius,
         stickyTocRadius = _settings$stickyTocRa === void 0 ? 0 : _settings$stickyTocRa;
-      new SmartTOC({
+
+      // Free-tier TOC options. The Premium add-on appends the premium
+      // ones (inline / sidebar presets, sidebar edge gap, progress
+      // bars) through this filter.
+      var options = applyFilters('ai1wpsa_sticky_toc_options', {
         target: stickyTocTarget,
         minHeadings: stickyTocMinHeadings,
         title: stickyTocTitle,
@@ -448,18 +388,18 @@
         showNumbers: stickyTocShowNumbers,
         inline: {
           show: stickyTocShowInline,
-          preset: stickyTocInlinePreset,
+          preset: 'card',
           collapsed: stickyTocStartCollapsed,
           injectInto: 'auto'
         },
         sidebar: {
           enabled: stickyTocSidebar,
-          preset: stickyTocSidebarPreset,
+          preset: 'default',
           position: stickyTocSidebarPosition,
-          edgeGap: stickyTocSidebarEdgeGap,
-          progress: stickyTocSidebarShowProgress
+          edgeGap: 24,
+          progress: false
         },
-        showProgressBar: stickyTocShowProgressBar,
+        showProgressBar: false,
         vars: {
           '--stoc-color': stickyTocAccentColor,
           '--stoc-color-bg': stickyTocBgColor,
@@ -468,11 +408,18 @@
         scrollBehavior: stickyTocScrollBehavior,
         onInit: null,
         onActivate: null
-      }).init();
+      });
+      new SmartTOC(options).init();
     }
   };
-  app.init();
-  $(document).ready(app.ready);
+
+  // Run on DOM ready so every wp.hooks filter the Premium add-on registers
+  // (in its own footer script, which loads after this one but before
+  // DOMContentLoaded) is in place before we build the widget options.
+  $(document).ready(function () {
+    app.init();
+    app.ready();
+  });
 })(jQuery);
 /******/ })()
 ;

@@ -12,7 +12,6 @@ import SettingsContext from "../../Contexts/SettingsContext";
 import ColorPickerWrapper from "../../includes/ColorPickerWrapper";
 
 export default function AnnouncementBar() {
-    const { isPro } = ai1wpsa;
     const { data, setData } = useContext(SettingsContext);
 
     const {

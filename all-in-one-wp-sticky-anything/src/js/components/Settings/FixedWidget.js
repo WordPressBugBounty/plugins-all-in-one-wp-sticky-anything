@@ -10,7 +10,6 @@ const {
 import SettingsContext from "../../Contexts/SettingsContext";
 
 export default function FixedWidget() {
-    const { isPro } = ai1wpsa;
     const { data, setData } = useContext(SettingsContext);
 
     const {

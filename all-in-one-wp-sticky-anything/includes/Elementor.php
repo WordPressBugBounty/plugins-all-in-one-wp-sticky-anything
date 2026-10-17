@@ -15,8 +15,8 @@ class Elementor {
      * Constructor
      */
     public function __construct() {
-        // If Elementor is not active, return
-        if (! is_plugin_active('elementor/elementor.php')) {
+        // Bail unless Elementor is active.
+        if (! did_action('elementor/loaded') && ! defined('ELEMENTOR_VERSION')) {
             return;
         }
 

@@ -40,8 +40,8 @@ class Update_1_1_7 {
             height INT(11) NOT NULL DEFAULT 250,
             postop INT(11) NOT NULL DEFAULT 60,
             posleft INT(11) NOT NULL DEFAULT 200,
-            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            created_at DATETIME NULL,
+            updated_at DATETIME NULL,
             PRIMARY KEY  (id),
             KEY id_user (id_user)
         ) $charset_collate;";

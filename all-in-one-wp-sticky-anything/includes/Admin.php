@@ -14,6 +14,18 @@ class Admin {
 
     private static $instance = null;
 
+    /**
+     * Admin screen hook suffixes registered by this plugin.
+     *
+     * Captured from the menu functions' return values because a submenu's hook
+     * is derived from the parent menu *title* (e.g. "Sticky Anything" =>
+     * `sticky-anything_page_...`), not from the slug — so it can't be predicted
+     * from the menu slug alone.
+     *
+     * @var string[]
+     */
+    private static $screen_hooks = array();
+
     public function __construct() {
         add_action('admin_menu', array($this, 'register_menu'));
 
@@ -28,7 +40,7 @@ class Admin {
         $slug = 'all-in-one-wp-sticky-anything';
         $capability = 'manage_options';
 
-        add_menu_page(
+        $settings_hook = add_menu_page(
             __('All-in-One WP Sticky Anything', 'all-in-one-wp-sticky-anything'),
             __('Sticky Anything', 'all-in-one-wp-sticky-anything'),
             $capability,
@@ -46,7 +58,7 @@ class Admin {
             $slug,
         );
 
-        add_submenu_page(
+        $getting_started_hook = add_submenu_page(
             $slug,
             __('Getting Started - All-in-One Sticky Anything', 'all-in-one-wp-sticky-anything'),
             __('Getting Started', 'all-in-one-wp-sticky-anything'),
@@ -54,6 +66,27 @@ class Admin {
             'sticky-anything-getting-started',
             array($this, 'render_ai1wpsa_getting_started'),
         );
+
+        self::$screen_hooks = array_values(array_unique(array_filter(array(
+            $settings_hook,
+            $getting_started_hook,
+        ))));
+    }
+
+    /**
+     * Whether the given hook suffix (or the current screen) is one of this
+     * plugin's own admin screens.
+     *
+     * @param string|null $hook Optional hook suffix; defaults to the current screen id.
+     * @return bool
+     */
+    public static function is_plugin_screen($hook = null) {
+        if (null === $hook) {
+            $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+            $hook = ($screen && !empty($screen->id)) ? $screen->id : '';
+        }
+
+        return in_array($hook, self::$screen_hooks, true);
     }
 
     public function render_ai1wpsa_settings() {
@@ -100,7 +133,7 @@ class Admin {
     public function migrate_data() {
         include_once AI1WPSA_INCLUDES . '/Install.php';
 
-		Install::activate();
+		Install::maybe_upgrade();
     }
 
     public static function instance() {

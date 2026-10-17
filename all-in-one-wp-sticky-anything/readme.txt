@@ -4,7 +4,7 @@ Tags: sticky header, sticky menu, fixed sidebar, sticky sidebar, social icons
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.9
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ This plugin is perfect for creating click to call, sticky headers, fixed navigat
 You don’t need to worry about performance or loading speed. The plugin is built with lightweight and optimized code to ensure excellent speed and performance. Simply download, install, and activate the plugin to start making any element sticky with ease.
 
 == ▶️ VIDEO OVERVIEW ==
-https://youtu.be/Y2IEuGCVu0Y
+https://youtu.be/vH4RnLXz0G8
 
 
 == 🔥 Key Features of All-in-One Sticky Anything ==
@@ -38,7 +38,6 @@ https://youtu.be/Y2IEuGCVu0Y
 * **📑 Sticky Table of Contents (New ⚡)**
 * **📝 Sticky Forms (New ⚡)**
 * **🗒️ Admin Sticky Notes (New ⚡)**
-* **✏️ Custom CSS**
 * **⏱️ Quick to Set Up**
 * **⚡ Blazing Fast**
 * **🌍 Works with Everything**
@@ -114,9 +113,6 @@ Enable it from Dashboard → Sticky Anything → Settings → Sticky Notes, then
 * Duplicate or archive notes without losing your work
 * Notes are private to each user
 
-**✏️ Custom CSS**
-All-in-One Sticky Anything allows you to customize the appearance of the website using custom CSS.
-
 **⏱️ Quick to Set Up**
 It doesn’t require any pro skills to download and install the plugin. You can download itself and install it on your WordPress dashboard.
 
@@ -166,8 +162,7 @@ There are lots of features coming soon. We are updating it regularly. If you fet
 == Screenshots ==
 1. General Settings
 2. Sticky Sidebar Settings
-3. Custom CSS
-4. Tools
+3. Tools
 
 
 == Frequently Asked Questions ==
@@ -252,6 +247,15 @@ Please use the support forum.
 
 
 == Changelog ==
+= 1.2.1 (13-10-2026) =
+* **Update:** The Custom CSS option has been removed. Use Appearance > Customize > Additional CSS (or the Site Editor's Styles panel) instead.
+* **Fix:** Plugin admin assets (SweetAlert2 and the settings stylesheet) no longer load on every admin screen.
+* **Fix:** Colors, sizes and selectors printed into inline CSS (sticky header, social icons, cookie consent) are now validated against strict allowlists to prevent CSS injection.
+* **Fix:** Sticky Notes table is now compatible with MySQL 5.5 and the install routine no longer runs on every admin page load.
+
+= 1.2.0 (10-10-2026) =
+* **Update:** Pro only settings are no longer restricted in the free plugin.
+
 = 1.1.9 (02-10-2026) =
 * **New:** Introduced the **Sticky Scroll Offset** setting for the Sticky Header.
 * **New:** Introduced the **Shrink Header on Sticky** setting *(Experimental)* for the Sticky Header.

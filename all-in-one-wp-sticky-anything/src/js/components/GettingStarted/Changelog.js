@@ -1,6 +1,28 @@
 export default function Changelog() {
     const logs = [
         {
+            version: 'v1.2.1',
+            date: '13-10-2026',
+            new: [],
+            fix: [
+                wp.i18n.__('Plugin admin assets (SweetAlert2 and the settings stylesheet) no longer load on every admin screen.', 'all-in-one-wp-sticky-anything'),
+                wp.i18n.__('Colors, sizes and selectors printed into inline CSS (sticky header, social icons, cookie consent) are now validated against strict allowlists to prevent CSS injection.', 'all-in-one-wp-sticky-anything'),
+                wp.i18n.__('Sticky Notes table is now compatible with MySQL 5.5 and the install routine no longer runs on every admin page load.', 'all-in-one-wp-sticky-anything'),
+            ],
+            enhancement: [
+                wp.i18n.__('The Custom CSS option has been removed. Use Appearance > Customize > Additional CSS instead.', 'all-in-one-wp-sticky-anything'),
+            ],
+        },
+        {
+            version: 'v1.2.0',
+            date: '10-10-2026',
+            fix: [],
+            enhancement: [
+                wp.i18n.__('Pro only settings are no longer restricted in the free plugin.', 'all-in-one-wp-sticky-anything'),
+            ],
+            new: [],
+        },
+        {
             version: 'v1.1.9',
             date: '02-10-2026',
             new: [

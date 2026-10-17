@@ -1,9 +1,7 @@
-import { Tooltip } from "react-tooltip";
 const { useContext } = wp.element;
+const { applyFilters } = wp.hooks;
 
 const {
-    Button,
-    ButtonGroup,
     FormToggle,
     TextControl,
     TextareaControl,
@@ -12,72 +10,13 @@ const {
 import SettingsContext from "../../Contexts/SettingsContext";
 import ColorPickerWrapper from "./ColorPickerWrapper";
 import Group from "../../includes/Group";
-import { showProModal } from "../../includes/ProModal";
-import ProIcon from "../../includes/ProIcon";
-
-// ─── Layout Options ─────────────────────────────────────────────
-const LAYOUT_OPTIONS = [
-    {
-        label: wp.i18n.__('Long Banner', 'all-in-one-wp-sticky-anything'),
-        value: 'long',
-        pro: false,
-    },
-    {
-        label: wp.i18n.__('Floating Banner', 'all-in-one-wp-sticky-anything'),
-        value: 'floating',
-        pro: true,
-    },
-    {
-        label: wp.i18n.__('Modal Banner', 'all-in-one-wp-sticky-anything'),
-        value: 'modal',
-        pro: true,
-    }
-];
-
-// ─── Position Options ───────────────────────────────────────────
-const POSITION_OPTIONS = [
-    {
-        label: wp.i18n.__('Bottom Left', 'all-in-one-wp-sticky-anything'),
-        value: 'bottom-left',
-        pro: true,
-    },
-    {
-        label: wp.i18n.__('Bottom Right', 'all-in-one-wp-sticky-anything'),
-        value: 'bottom-right',
-        pro: true,
-    },
-];
-
-// ─── Device Options ─────────────────────────────────────────────
-const DEVICE_OPTIONS = [
-    {
-        label: wp.i18n.__('All', 'all-in-one-wp-sticky-anything'),
-        value: 'all',
-    },
-    {
-        label: wp.i18n.__('Desktop', 'all-in-one-wp-sticky-anything'),
-        value: 'desktop',
-    },
-    {
-        label: wp.i18n.__('Tablet', 'all-in-one-wp-sticky-anything'),
-        value: 'tablet',
-    },
-    {
-        label: wp.i18n.__('Mobile', 'all-in-one-wp-sticky-anything'),
-        value: 'mobile',
-    },
-];
 
 export default function StickyCookieConsent() {
 
-    const { isPro } = ai1wpsa;
     const { data, setData } = useContext(SettingsContext);
 
     const {
         stickyCookieConsent = false,
-        stickyCookieConsentLayout = 'long',
-        stickyCookieConsentPosition = 'bottom-right',
-        stickyCookieConsentDevice = 'all',
         stickyCookieConsentMessage = wp.i18n.__(
             'We use cookies to improve your experience on our site. By using our site, you consent to cookies.',
             'all-in-one-wp-sticky-anything'
@@ -178,140 +117,9 @@ export default function StickyCookieConsent() {
                     {!!stickyCookieConsent && (
                         <>
 
-                            {/* Layout */}
-                            <div className="settings-field">
-
-                                <h4 className="settings-field-label">
-                                    {wp.i18n.__('Layout', 'all-in-one-wp-sticky-anything')}
-                                    <ProIcon />
-                                </h4>
-
-                                <div className="settings-field-content">
-
-                                    <ButtonGroup className="ai1wpsa-cookie-consent-layout">
-
-                                        {LAYOUT_OPTIONS.map(({ label, value, pro }) => (
-                                            <Button
-                                                key={value}
-                                                className={!!pro && !isPro ? 'ai1wpsa-disabled' : ''}
-                                                isPrimary={stickyCookieConsentLayout === value}
-                                                onClick={() => {
-
-                                                    if (!!pro && !isPro) {
-                                                        showProModal();
-                                                        return;
-                                                    }
-
-                                                    setData({
-                                                        ...data,
-                                                        stickyCookieConsentLayout: value,
-                                                    });
-                                                }}
-                                            >
-
-                                                <img
-                                                    src={ai1wpsa?.pluginUrl + `/assets/images/cookie-consent/${value}.png`}
-                                                    alt={label}
-                                                />
-
-                                                <span>{label}</span>
-
-                                            </Button>
-                                        ))}
-
-                                    </ButtonGroup>
-
-                                    {!isPro && (
-                                        <Tooltip
-                                            anchorSelect=".ai1wpsa-disabled"
-                                            variant="warning"
-                                            content={wp.i18n.__(
-                                                'Pro Feature',
-                                                'all-in-one-wp-sticky-anything'
-                                            )}
-                                        />
-                                    )}
-
-                                </div>
-                            </div>
-
-                            {/* Position */}
-                            {stickyCookieConsentLayout === 'floating' && (
-                                <div className="settings-field">
-
-                                    <h4 className="settings-field-label">
-                                        {wp.i18n.__('Position', 'all-in-one-wp-sticky-anything')}
-                                        <ProIcon />
-                                    </h4>
-
-                                    <div className="settings-field-content">
-
-                                        <ButtonGroup>
-
-                                            {POSITION_OPTIONS.map(({ label, value, pro }) => (
-                                                <Button
-                                                    key={value}
-                                                    className={!!pro && !isPro ? 'ai1wpsa-disabled' : ''}
-                                                    isPrimary={stickyCookieConsentPosition === value}
-                                                    onClick={() => {
-
-                                                        if (!!pro && !isPro) {
-                                                            showProModal();
-                                                            return;
-                                                        }
-
-                                                        setData({
-                                                            ...data,
-                                                            stickyCookieConsentPosition: value,
-                                                        });
-                                                    }}
-                                                >
-                                                    {label}
-                                                </Button>
-                                            ))}
-
-                                        </ButtonGroup>
-
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Device */}
-                            <div className="settings-field">
-                                <h4 className="settings-field-label">
-                                    {wp.i18n.__('Device', 'all-in-one-wp-sticky-anything')}
-                                    <ProIcon />
-                                </h4>
-
-                                <div className="settings-field-content">
-
-                                    <ButtonGroup>
-
-                                        {DEVICE_OPTIONS.map(({ label, value }) => (
-                                            <Button
-                                                key={value}
-                                                className={!isPro ? 'ai1wpsa-disabled' : ''}
-                                                isPrimary={stickyCookieConsentDevice === value}
-                                                onClick={() => {
-                                                    if (!isPro) {
-                                                        showProModal();
-                                                        return;
-                                                    }
-
-                                                    setData({
-                                                        ...data,
-                                                        stickyCookieConsentDevice: value,
-                                                    })
-                                                }}
-                                            >
-                                                {label}
-                                            </Button>
-                                        ))}
-
-                                    </ButtonGroup>
-
-                                </div>
-                            </div>
+                            {/* Pro field slot — Layout / Position / Device are
+                                rendered by the Pro add-on when active. */}
+                            {applyFilters('ai1wpsa_settings_fields_sticky_cookie', null, { area: 'layout', data, setData })}
 
                             {/* Message */}
                             <div className="settings-field">

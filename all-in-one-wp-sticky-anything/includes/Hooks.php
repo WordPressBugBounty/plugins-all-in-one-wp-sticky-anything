@@ -12,25 +12,12 @@ class Hooks {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action('wp_print_styles', array($this, 'render_custom_css'));
 		add_action('wp_head', array($this, 'render_sticky_header_styles'));
 		add_action('wp_footer', array($this, 'render_social_icons'));
 		add_action('wp_footer', array($this, 'render_cookie_consent'));
 		add_action('in_widget_form', array($this, 'add_widget_option'), 10, 3);
 		add_action('widget_update_callback', array($this, 'widget_update'), 10, 3);
 		add_filter('dynamic_sidebar_params', array($this, 'add_fixed_widget_attribute'));
-	}
-
-	/**
-	 * Render Custom CSS
-	 *
-	 * @return void
-	 */
-	public function render_custom_css() {
-		$css = ai1wpsa_get_settings('customCss');
-		if (! empty($css)) {
-			echo '<style type="text/css">' . wp_strip_all_tags($css) . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		}
 	}
 
 	/**
@@ -47,17 +34,17 @@ class Hooks {
 	public function render_sticky_header_styles() {
 		$bg_type    = ai1wpsa_get_settings('stickyHeaderBgType', 'color');
 		$color_type = ai1wpsa_get_settings('stickyHeaderColorType', 'solid');
-		$bg_color   = ai1wpsa_get_settings('stickyHeaderBgColor');
+		$bg_color   = ai1wpsa_sanitize_css_color(ai1wpsa_get_settings('stickyHeaderBgColor'));
 
 		$shrink               = (bool) ai1wpsa_get_settings('stickyShrink', false);
 		$shrink_height        = ai1wpsa_get_settings('stickyShrinkHeight');
-		$shrink_logo_selector = (string) ai1wpsa_get_settings('stickyShrinkLogoSelector', '');
+		$shrink_logo_selector = ai1wpsa_sanitize_css_selector(ai1wpsa_get_settings('stickyShrinkLogoSelector', ''));
 		$shrink_logo_width    = ai1wpsa_get_settings('stickyShrinkLogoWidth');
 
 		$declarations = [];
 
 		if (! empty($bg_color)) {
-			$declarations[] = 'background-color: ' . esc_attr($bg_color);
+			$declarations[] = 'background-color: ' . $bg_color;
 		}
 
 		/**
@@ -85,6 +72,17 @@ class Hooks {
 		if (empty($declarations) && empty($logo_declarations)) {
 			return;
 		}
+
+		// Every value above was validated for its exact CSS position (colors
+		// against a color allowlist, sizes with absint). The Pro filter's
+		// declarations are validated as a whole below. Anything that fails
+		// validation is dropped instead of being printed.
+		$declarations      = array_values(array_filter(array_map(array($this, 'validate_css_declaration'), $declarations)));
+		$logo_declarations = array_values(array_filter(array_map(array($this, 'validate_css_declaration'), $logo_declarations)));
+
+		if (empty($declarations) && empty($logo_declarations)) {
+			return;
+		}
 		?>
 		<style>
 			<?php if ($shrink) : ?>
@@ -92,7 +90,7 @@ class Hooks {
 				transition: height .3s ease, min-height .3s ease, background-color .3s ease;
 			}
 			<?php if (! empty($shrink_logo_selector)) : ?>
-			.ai1wpsa-fix-sticky <?php echo wp_strip_all_tags($shrink_logo_selector); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> {
+			.ai1wpsa-fix-sticky <?php echo $shrink_logo_selector; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- validated against a selector allowlist in ai1wpsa_sanitize_css_selector(); HTML escaping would break the ">" combinator. ?> {
 				transition: width .3s ease, height .3s ease;
 			}
 			<?php endif; ?>
@@ -101,24 +99,71 @@ class Hooks {
 			<?php if (! empty($declarations)) : ?>
 			.ai1wpsa-fix-sticky.sticky {
 				<?php
-				// Each value above is already escaped once at the point it
-				// was built (esc_attr for the color string here, absint for
-				// the shrink height, whatever the Pro filter callback used
-				// for its own image/gradient declarations) — re-escaping the
-				// joined string here would HTML-entity-encode the "&" in an
-				// image URL's query string and break it.
-				echo implode(' !important;' . "\n\t\t\t\t", $declarations); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// Each declaration passed validate_css_declaration(). They must
+				// NOT be HTML-escaped here, as that would entity-encode the "&"
+				// in an image URL's query string and break it.
+				echo implode(' !important;' . "\n\t\t\t\t", $declarations); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- validated in validate_css_declaration().
 				?> !important;
 			}
 			<?php endif; ?>
 
 			<?php if (! empty($logo_declarations)) : ?>
-			.ai1wpsa-fix-sticky.sticky <?php echo wp_strip_all_tags($shrink_logo_selector); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> {
-				<?php echo implode(' !important;' . "\n\t\t\t\t", $logo_declarations); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> !important;
+			.ai1wpsa-fix-sticky.sticky <?php echo $shrink_logo_selector; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- validated against a selector allowlist in ai1wpsa_sanitize_css_selector(). ?> {
+				<?php echo implode(' !important;' . "\n\t\t\t\t", $logo_declarations); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- validated in validate_css_declaration(). ?> !important;
 			}
 			<?php endif; ?>
 		</style>
 		<?php
+	}
+
+	/**
+	 * Validate a single CSS declaration ("property: value") for output.
+	 *
+	 * WordPress has no CSS-context escaping function, so declarations are
+	 * validated instead: the property must be a plain CSS property name, and
+	 * the value may not contain anything that could end the declaration or
+	 * rule (";", "{", "}"), close the <style> element ("<", ">"), start a
+	 * comment ("/*") or use CSS escapes ("\"). Invalid declarations are
+	 * dropped entirely rather than repaired.
+	 *
+	 * @param string $declaration Declaration to validate.
+	 * @return string The declaration, or '' when invalid.
+	 */
+	private function validate_css_declaration($declaration) {
+		if (! is_string($declaration)) {
+			return '';
+		}
+
+		$declaration = trim($declaration);
+
+		if (! preg_match('/^-{0,2}[a-z][a-z0-9-]*\s*:\s*[^<>{};\\\\]+$/i', $declaration) || false !== strpos($declaration, '/*')) {
+			return '';
+		}
+
+		return $declaration;
+	}
+
+	/**
+	 * Build a block of CSS custom properties for output inside a rule.
+	 *
+	 * Each entry ("--name: value;"), including any added by Premium filters,
+	 * is validated with validate_css_declaration() and dropped if invalid.
+	 *
+	 * @param string[] $css_vars Custom property declarations.
+	 * @return string
+	 */
+	private function build_css_vars($css_vars) {
+		$valid = array();
+
+		foreach ((array) $css_vars as $css_var) {
+			$css_var = $this->validate_css_declaration(rtrim(trim((string) $css_var), ';'));
+
+			if ('' !== $css_var) {
+				$valid[] = $css_var . ';';
+			}
+		}
+
+		return implode("\n\t", $valid);
 	}
 
 	/**
@@ -134,11 +179,11 @@ class Hooks {
 		$position 				= ai1wpsa_get_settings('stickySocialIconPosition', 'right');
 		$style 					= ai1wpsa_get_settings('stickySocialIconStyle', 'square') === 'square' ? '0' : (ai1wpsa_get_settings('stickySocialIconStyle') === 'rounded' ? '6px' : '50%');
 		$icons 					= ai1wpsa_get_settings('stickySocialIcons');
-		$icon_color				= ai1wpsa_get_settings('stickySocialIconsIconColor');
-		$icon_hover_color 		= ai1wpsa_get_settings('stickySocialIconsIconHoverColor');
-		$icon_bg_color			= ai1wpsa_get_settings('stickySocialIconsIconBgColor');
-		$icon_bg_hover_color 	= ai1wpsa_get_settings('stickySocialIconsIconHoverBgColor');
-		$icon_menu_bg_color 	= ai1wpsa_get_settings('stickySocialIconsMenuBgColor');
+		$icon_color				= ai1wpsa_sanitize_css_color(ai1wpsa_get_settings('stickySocialIconsIconColor'));
+		$icon_hover_color 		= ai1wpsa_sanitize_css_color(ai1wpsa_get_settings('stickySocialIconsIconHoverColor'));
+		$icon_bg_color			= ai1wpsa_sanitize_css_color(ai1wpsa_get_settings('stickySocialIconsIconBgColor'));
+		$icon_bg_hover_color 	= ai1wpsa_sanitize_css_color(ai1wpsa_get_settings('stickySocialIconsIconHoverBgColor'));
+		$icon_menu_bg_color 	= ai1wpsa_sanitize_css_color(ai1wpsa_get_settings('stickySocialIconsMenuBgColor'));
 
 		if (! $sticky_social_icon) {
 			return;
@@ -179,7 +224,7 @@ class Hooks {
 ?>
 			<style>
 				.ai1wpsa-social-icons {
-					<?php echo esc_attr(implode("\n\t", $css_vars)); ?>
+					<?php echo esc_attr($this->build_css_vars($css_vars)); ?>
 				}
 			</style>
 			<div class="ai1wpsa-social-icons <?php echo esc_attr($position); ?>">
@@ -245,14 +290,14 @@ class Hooks {
 
 		// styling variables
 		$banner_style = (array) ai1wpsa_get_settings('stickyCookieConsentBannerStyle', array());
-		$banner_bg_color = $banner_style['bgColor'] ?? '';
-		$banner_text_color = $banner_style['textColor'] ?? '';
-		$banner_font_size = $banner_style['fontSize'] ?? '';
+		$banner_bg_color = ai1wpsa_sanitize_css_color($banner_style['bgColor'] ?? '');
+		$banner_text_color = ai1wpsa_sanitize_css_color($banner_style['textColor'] ?? '');
+		$banner_font_size = ai1wpsa_sanitize_css_size($banner_style['fontSize'] ?? '');
 		$btn_style = (array) ai1wpsa_get_settings('stickyCookieConsentButtonStyle', array());
-		$accept_btn_bg = $btn_style['acceptBtnBg'] ?? '';
-		$accept_text_color = $btn_style['acceptTextColor'] ?? '';
-		$reject_btn_bg = $btn_style['rejectBtnBg'] ?? '';
-		$reject_text_color = $btn_style['rejectTextColor'] ?? '';
+		$accept_btn_bg = ai1wpsa_sanitize_css_color($btn_style['acceptBtnBg'] ?? '');
+		$accept_text_color = ai1wpsa_sanitize_css_color($btn_style['acceptTextColor'] ?? '');
+		$reject_btn_bg = ai1wpsa_sanitize_css_color($btn_style['rejectBtnBg'] ?? '');
+		$reject_text_color = ai1wpsa_sanitize_css_color($btn_style['rejectTextColor'] ?? '');
 
 		if (! $enabled) {
 			return;
@@ -297,7 +342,7 @@ class Hooks {
 		?>
 		<style>
 			.ai1wpsa-cookie-consent {
-				<?php echo esc_attr(implode("\n\t", $css_vars)); ?>
+				<?php echo esc_attr($this->build_css_vars($css_vars)); ?>
 			}
 		</style>
 		<div id="ai1wpsa-cookie-consent" class="ai1wpsa-cookie-consent ai1wpsa-cookie-consent--long">

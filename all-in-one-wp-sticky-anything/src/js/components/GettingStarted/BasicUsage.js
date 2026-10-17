@@ -198,18 +198,6 @@ export default function BasicUsage() {
                     </div>
                 </div>
                 {/* sticky sidebar stop here */}
-
-                {/* custom css start here */}
-                <div class="settings-row bg-9">
-                    <div class="settings-col">
-                        <h2>{wp.i18n.__('Custom CSS')}</h2>
-                        <p>{wp.i18n.__('If needed, add custom CSS to fine-tune the appearance and behavior of the sticky header. Your custom css need to paste on the Custom CSS box and Click Save button.', 'all-in-one-wp-sticky-anything')}</p>
-                    </div>
-                    <div class="settings-col">
-                        {/* <iframe width="100%" height="315" src="https://www.youtube.com/embed/Y-x0efG1seA?si=1ts_suH0PKZJddXi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
-                    </div>
-                </div>
-                {/* custom css stop here */}
             </div>
         </div>
     )

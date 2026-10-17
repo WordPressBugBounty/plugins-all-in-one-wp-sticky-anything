@@ -1,5 +1,5 @@
-import { Tooltip } from "react-tooltip";
 const { useContext } = wp.element;
+const { applyFilters } = wp.hooks;
 
 const {
     Button,
@@ -13,38 +13,6 @@ const {
 import SettingsContext from "../../Contexts/SettingsContext";
 import ColorPickerWrapper from "./ColorPickerWrapper";
 import Group from "../../includes/Group";
-import { showProModal } from "../../includes/ProModal";
-import ProIcon from "../../includes/ProIcon";
-
-// ─── Preset catalogue ────────────────────────────────────────────────────────
-// Maps each SmartTOC preset to its display label, layout type and pro flag.
-
-const INLINE_PRESET_OPTIONS = [
-    { label: wp.i18n.__('Card', 'all-in-one-wp-sticky-anything'), value: 'card', pro: false },
-    { label: wp.i18n.__('Simple', 'all-in-one-wp-sticky-anything'), value: 'simple', pro: false },
-    { label: wp.i18n.__('Steps', 'all-in-one-wp-sticky-anything'), value: 'steps', pro: true },
-    { label: wp.i18n.__('Banner', 'all-in-one-wp-sticky-anything'), value: 'banner', pro: true },
-    { label: wp.i18n.__('Pills', 'all-in-one-wp-sticky-anything'), value: 'pills', pro: true },
-    { label: wp.i18n.__('Sticky Inline', 'all-in-one-wp-sticky-anything'), value: 'sticky-inline', pro: true },
-    { label: wp.i18n.__('Accordion', 'all-in-one-wp-sticky-anything'), value: 'accordion', pro: true },
-    { label: wp.i18n.__('Two Column', 'all-in-one-wp-sticky-anything'), value: 'two-column', pro: true },
-    { label: wp.i18n.__('Tracker', 'all-in-one-wp-sticky-anything'), value: 'tracker', pro: true },
-    { label: wp.i18n.__('Tabs', 'all-in-one-wp-sticky-anything'), value: 'tabs', pro: true },
-    { label: wp.i18n.__('Ghost', 'all-in-one-wp-sticky-anything'), value: 'ghost', pro: true },
-]
-
-const PRESET_OPTIONS = [
-    { label: wp.i18n.__('Default', 'all-in-one-wp-sticky-anything'), value: 'default', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Glass', 'all-in-one-wp-sticky-anything'), value: 'glass', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Dark', 'all-in-one-wp-sticky-anything'), value: 'dark', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Minimal', 'all-in-one-wp-sticky-anything'), value: 'minimal', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Neon', 'all-in-one-wp-sticky-anything'), value: 'neon', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Frosted Dark', 'all-in-one-wp-sticky-anything'), value: 'frosted-dark', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Newspaper', 'all-in-one-wp-sticky-anything'), value: 'newspaper', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Outline', 'all-in-one-wp-sticky-anything'), value: 'outline', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Slideout', 'all-in-one-wp-sticky-anything'), value: 'slideout', type: 'sidebar', pro: true },
-    { label: wp.i18n.__('Top Nav', 'all-in-one-wp-sticky-anything'), value: 'topnav', type: 'topnav', pro: true },
-];
 
 // Sidebar presets use left/right; topnav uses top/bottom.
 const SIDEBAR_POSITIONS = [
@@ -59,7 +27,7 @@ const TOPNAV_POSITIONS = [
 const HEADING_LEVELS = ['h2', 'h3', 'h4'];
 
 export default function StickyToc() {
-    const { isPro, postTypes } = ai1wpsa;
+    const { postTypes } = ai1wpsa;
     const { data, setData } = useContext(SettingsContext);
 
     // ── Destructure all SmartTOC-mapped settings with sensible defaults ──────
@@ -79,18 +47,12 @@ export default function StickyToc() {
 
         // Inline TOC block
         stickyTocShowInline = true,          // → showInline
-        stickyTocInlinePreset = 'card',            // → inline.preset
         stickyTocStartCollapsed = false,        // → startCollapsed
 
         // Sidebar
         stickyTocSidebar = false,              // → sidebar.sticky
         stickyTocSidebarPreset = 'default',   // → sidebar.preset
         stickyTocSidebarPosition = 'right',     // → sidebar.position
-        stickyTocSidebarEdgeGap = 24,          // → sidebar.edgeGap
-        stickyTocSidebarShowProgress = false,        // → sidebar.showProgress
-
-        // Progress bar
-        stickyTocShowProgressBar = false,            // → showProgressBar
 
         // Scroll behaviour
         stickyTocScrollBehavior = 'smooth',         // → scrollBehavior
@@ -173,30 +135,8 @@ export default function StickyToc() {
                         </div>
                     </div>
 
-                    {/* Page-wide progress bar  →  SmartTOC: showProgressBar */}
-                    <div className="settings-field">
-                        <h4 className="settings-field-label">
-                            {wp.i18n.__('Progress Bar', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div className="settings-field-content">
-                            <FormToggle
-                                checked={stickyTocShowProgressBar}
-                                className={!isPro ? 'ai1wpsa-disabled' : ''}
-                                onChange={() => {
-                                    if (!isPro) {
-                                        showProModal();
-                                        return;
-                                    }
-
-                                    setData({ ...data, stickyTocShowProgressBar: !stickyTocShowProgressBar });
-                                }}
-                            />
-                            <p className="description">
-                                {wp.i18n.__('Display a thin reading-progress bar pinned to the very top of the page.', 'all-in-one-wp-sticky-anything')}
-                            </p>
-                        </div>
-                    </div>
+                    {/* Pro field slot — page-wide progress bar. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_toc', null, { area: 'progress', data, setData })}
 
                     {/* TOC Title  →  SmartTOC: title */}
                     <div className="settings-field">
@@ -390,39 +330,8 @@ export default function StickyToc() {
                         </div>
                     </div>
 
-                    {/* Inline preset  →  SmartTOC: inline.preset  (SmartTOC.INLINE_PRESETS) */}
-                    <div className="settings-field">
-                        <h4 className="settings-field-label">
-                            {wp.i18n.__('Preset', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div className="settings-field-content">
-                            <div className="widget-style-options">
-                                <ButtonGroup>
-                                    {INLINE_PRESET_OPTIONS.map((option, index) => (
-                                        <Button
-                                            key={index}
-                                            isPrimary={stickyTocInlinePreset === option.value}
-                                            className={option.pro && !isPro ? 'ai1wpsa-disabled' : ''}
-                                            onClick={() => {
-                                                if (option.pro && !isPro) {
-                                                    showProModal();
-                                                    return;
-                                                }
-
-                                                setData({ ...data, stickyTocInlinePreset: option.value });
-                                            }}
-                                        >
-                                            {option.label}
-                                        </Button>
-                                    ))}
-                                </ButtonGroup>
-                            </div>
-                            <p className="description">
-                                {wp.i18n.__('Preset for the inline TOC block.', 'all-in-one-wp-sticky-anything')}
-                            </p>
-                        </div>
-                    </div>
+                    {/* Pro field slot — inline TOC block preset. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_toc', null, { area: 'inline_preset', data, setData })}
 
                     {/* Start collapsed  →  SmartTOC: startCollapsed */}
                     <div className="settings-field">
@@ -463,45 +372,8 @@ export default function StickyToc() {
                         </div>
                     </div>
 
-                    {/* Preset  →  SmartTOC: sidebar.preset  (SmartTOC.PRESETS) */}
-                    <div className="settings-field">
-                        <h4 className="settings-field-label">
-                            {wp.i18n.__('Preset', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div className="settings-field-content">
-                            <div className="widget-style-options">
-                                <ButtonGroup>
-                                    {PRESET_OPTIONS.map((option, index) => (
-                                        <Button
-                                            key={index}
-                                            className={option.pro && !isPro ? 'ai1wpsa-disabled' : ''}
-                                            variant={stickyTocSidebarPreset === option.value ? 'primary' : ''}
-                                            onClick={() => {
-                                                if (option.pro && !isPro) {
-                                                    showProModal();
-                                                    return;
-                                                }
-
-                                                // When switching to/from topnav, reset position to a sensible default.
-                                                const nextPosition = option.type === 'topnav' ? 'top' : 'right';
-                                                setData({
-                                                    ...data,
-                                                    stickyTocSidebarPreset: option.value,
-                                                    stickyTocSidebarPosition: nextPosition,
-                                                });
-                                            }}
-                                        >
-                                            {option.label}
-                                        </Button>
-                                    ))}
-                                </ButtonGroup>
-                            </div>
-                            <p className="description">
-                                {wp.i18n.__('Visual style for the sticky sidebar. Choosing "Top Nav" switches to a floating navigation chip.', 'all-in-one-wp-sticky-anything')}
-                            </p>
-                        </div>
-                    </div>
+                    {/* Pro field slot — sidebar / topnav preset. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_toc', null, { area: 'sidebar_preset', data, setData })}
 
                     {/* Position  →  SmartTOC: sidebar.position */}
                     <div className="settings-field">
@@ -529,58 +401,8 @@ export default function StickyToc() {
                         </div>
                     </div>
 
-                    {/* Edge gap  →  SmartTOC: sidebar.edgeGap */}
-                    <div className="settings-field">
-                        <h4 className="settings-field-label">
-                            {wp.i18n.__('Edge Gap (px)', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div className="settings-field-content">
-                            <TextControl
-                                type="number"
-                                className={`ai1wpsa-text-control ${!isPro ? 'ai1wpsa-disabled' : ''}`}
-                                value={stickyTocSidebarEdgeGap}
-                                onChange={(val) => {
-                                    if (!isPro) {
-                                        showProModal();
-                                        return;
-                                    }
-
-                                    setData({ ...data, stickyTocSidebarEdgeGap: val });
-                                }}
-                                min={0}
-                                max={100}
-                            />
-                            <p className="description">
-                                {wp.i18n.__('Distance in pixels between the sidebar / topnav and the viewport edge.', 'all-in-one-wp-sticky-anything')}
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Sidebar reading progress  →  SmartTOC: sidebar.showProgress */}
-                    <div className="settings-field">
-                        <h4 className="settings-field-label">
-                            {wp.i18n.__('Progress Bar', 'all-in-one-wp-sticky-anything')}
-                            <ProIcon />
-                        </h4>
-                        <div className="settings-field-content">
-                            <FormToggle
-                                checked={stickyTocSidebarShowProgress}
-                                className={!isPro ? 'ai1wpsa-disabled' : ''}
-                                onChange={() => {
-                                    if (!isPro) {
-                                        showProModal();
-                                        return;
-                                    }
-
-                                    setData({ ...data, stickyTocSidebarShowProgress: !stickyTocSidebarShowProgress });
-                                }}
-                            />
-                            <p className="description">
-                                {wp.i18n.__('Show a mini reading-progress bar inside the sidebar header.', 'all-in-one-wp-sticky-anything')}
-                            </p>
-                        </div>
-                    </div>
+                    {/* Pro field slot — sidebar edge gap & reading progress. */}
+                    {applyFilters('ai1wpsa_settings_fields_sticky_toc', null, { area: 'sidebar_options', data, setData })}
                 </Group>
 
                 {/* ── 5. THEME / STYLING ──────────────────────────────────── */}
@@ -640,15 +462,6 @@ export default function StickyToc() {
                     </div>
 
                 </Group>
-
-                {!isPro && (
-                    <Tooltip
-                        anchorSelect=".ai1wpsa-disabled"
-                        variant="warning"
-                        content={wp.i18n.__('Pro Feature', 'all-in-one-wp-sticky-anything')}
-                        place="right"
-                    />
-                )}
 
             </div>
         </div>

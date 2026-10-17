@@ -10,8 +10,6 @@ const {
 const { applyFilters } = wp.hooks;
 
 import SettingsContext from "../../Contexts/SettingsContext";
-import ProIcon from "../../includes/ProIcon";
-import { showProModal } from "../../includes/ProModal";
 import { pickElementOnPage } from "../../includes/SelectorPicker";
 import ExperimentalBadge from "../../includes/ExperimentalBadge";
 import ColorPickerWrapper from "./ColorPickerWrapper";
@@ -39,14 +37,12 @@ const BASE_COLOR_TYPE_OPTIONS = [
 ];
 
 export default function General() {
-  const { isPro } = ai1wpsa;
   const { data, setData } = useContext(SettingsContext);
 
   const {
     stickyClass = '',
     stickyScrollOffset = '',
     stickyZIndex = '',
-    stickyDisableMobile = false,
     stickyHeaderBgType = 'color',
     stickyHeaderColorType = 'solid',
     stickyHeaderBgColor = '',
@@ -346,31 +342,9 @@ export default function General() {
         )}
         {/* logo swap stop here */}
 
-        {/* disable sticky on mobile start here */}
-        <div class="settings-field">
-          <h4 class="settings-field-label">
-            {wp.i18n.__('Disable Sticky on Mobile', 'all-in-one-wp-sticky-anything')}
-            <ProIcon />
-          </h4>
-          <div class="settings-field-content">
-
-            <FormToggle
-              checked={stickyDisableMobile}
-              className={`ai1wpsa-form-toggle ${!isPro ? 'ai1wpsa-disabled' : ''}`}
-              onChange={() => {
-                if (!isPro) {
-                  showProModal();
-                  return;
-                }
-
-                setData({ ...data, stickyDisableMobile: !stickyDisableMobile });
-              }}
-            />
-
-            <p className="description">{wp.i18n.__('Turn off all sticky header behavior on mobile-sized screens.', 'all-in-one-wp-sticky-anything')}</p>
-          </div>
-        </div>
-        {/* disable sticky on mobile stop here */}
+        {/* Pro field slot — the Pro add-on (when active) renders its own
+            General fields here, e.g. "Disable Sticky on Mobile". */}
+        {applyFilters('ai1wpsa_settings_fields_general', null, { area: 'main', data, setData })}
 
         {/* z-index start here */}
         <div class="settings-field">

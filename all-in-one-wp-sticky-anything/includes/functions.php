@@ -4,168 +4,12 @@ if (! defined('ABSPATH')) { exit;
 }
 
 /**
- * Whether the Premium add-on is active and unlocked.
+ * Get ai1wpsa settings.
  *
- * The free plugin itself always returns false here — the premium plugin
- * (all-in-one-wp-sticky-anything-premium) hooks this filter to true when
- * it's installed, active, and licensed. Every pro-only render/behavior in
- * this plugin must be gated behind this, never a hardcoded flag, so a
- * missing/deactivated premium plugin always degrades to free behavior.
- *
- * @since  1.2.0
- * @return bool
- */
-function ai1wpsa_is_pro()
-{
-    return (bool) apply_filters('ai1wpsa_is_pro', false);
-}
-
-/**
- * Every setting that is a Premium-only feature (per the `pro: true` flags
- * and `isPro` gates in src/js/components/Settings/*.js), mapped to the
- * value it must be forced to when the Premium add-on isn't active.
- *
- * This is the single source of truth for server-side enforcement — the
- * settings UI disabling a button is a courtesy, this is the real lock.
- * Every value here is deliberately picked to be a genuinely FREE-tier
- * option (never just "whatever the field's ambient default happens to
- * be" — some of those ambient defaults are themselves Pro-only values,
- * e.g. Sticky Floating Forms' Position defaults to 'bottom-right', which
- * is a Pro option; the free-safe value is 'bottom-left').
- *
- * @since  1.2.0
- * @return array<string, mixed>
- */
-function ai1wpsa_pro_setting_locks()
-{
-    return [
-        // Sticky Cookie Consent
-        'stickyCookieConsentLayout'            => 'long',
-        'stickyCookieConsentDevice'            => 'all',
-
-        // Sticky Floating Forms
-        'stickyFloatingFormsLayout'            => 'button',
-        'stickyFloatingFormsPosition'          => 'bottom-left',
-        'stickyFloatingFormsDevice'            => 'all',
-        'stickyFloatingFormsHideOnScroll'      => false,
-        'stickyFloatingFormsExitFrequency'     => 'session',
-        'stickyFloatingFormsAutoOpen'          => false,
-        'stickyFloatingFormsDisplayFor'        => 'all',
-        'stickyFloatingFormsDisplayOn'         => 'everywhere',
-        'stickyFloatingFormsFormType'          => 'default',
-        'stickyFloatingFormsHoneypot'          => false,
-        'stickyFloatingFormsAttentionEffect'   => false,
-        'stickyFloatingFormsUnreadBadge'       => false,
-
-        // Click to Call
-        'clicktoCallDevice'                    => 'all',
-        'clicktoCallStyleType'                 => 'launcher',
-        'clicktoCallStyle'                     => 'popup',
-        'clicktoCallAnimation'                 => 'none',
-        'clicktoCallAutoOpen'                  => false,
-        'clicktoCallAutoOpenDelay'             => 0,
-        'clicktoCallBadge'                     => false,
-        'clicktoCallBadgeCount'                => 0,
-        'clicktoCallShowChip'                  => false,
-        'clicktoCallshowChipDot'               => false,
-        'clicktoCallshowHours'                 => false,
-
-        // Sticky Sidebar
-        'stickySidebarDevice'                  => 'all',
-
-        // Sticky TOC
-        'stickyTocShowProgressBar'             => false,
-        'stickyTocInlinePreset'                => 'card',
-        'stickyTocSidebarPreset'                => 'default',
-        'stickyTocSidebarShowProgress'         => false,
-
-        // Sticky Social
-        'stickySocialIconType'                 => 'dashicons',
-        'stickySocialIconPosition'             => 'right',
-        'stickySocialIconDisplay'              => 'everywhere',
-        'stickySocialIconDevice'               => 'all',
-
-        // General
-        'stickyDisableMobile'                  => false,
-        'stickyHeaderBgType'                   => 'color',
-        'stickyHeaderColorType'                => 'solid',
-    ];
-}
-
-/**
- * Setting keys that are Premium-only but have no single "correct" forced
- * value worth hardcoding (free-form text, or values only meaningful
- * alongside a field above that's already being forced off) — these are
- * simply removed so each consumer's own existing fallback default
- * applies, same as if the setting had never been saved at all.
- *
- * @since  1.2.0
- * @return string[]
- */
-function ai1wpsa_pro_setting_strip_keys()
-{
-    return [
-        'stickyFloatingFormsExitFrequencyValue',
-        'stickyFloatingFormsExitFrequencyUnit',
-        'stickyFloatingFormsDelay',
-        'stickyFloatingFormsFormPlugin',
-        'stickyFloatingFormsAttentionEffectType',
-        'clicktoCallTooltip',
-        'clicktoCallTitle',
-        'clicktoCallSubtitle',
-        'clicktoCallOnlineMsg',
-        'clicktoCallClosedMsg',
-        'clicktoCallOfflineMsg',
-        'clicktoCallFooter',
-        'clicktoCallSchedules',
-        'stickyTocSidebarEdgeGap',
-        'stickySocialIconsIconHoverColor',
-        'stickySocialIconsIconHoverBgColor',
-
-        // General - only meaningful alongside stickyHeaderBgType/
-        // stickyHeaderColorType above, which are already forced off.
-        'stickyHeaderBgImage',
-        'stickyHeaderGradient',
-    ];
-}
-
-/**
- * Downgrades every Premium-only key in a settings array back to its
- * free-tier value, unless the Premium add-on is active. Safe to call on
- * a full settings array or a partial one — only touches keys it knows
- * about.
- *
- * @since  1.2.0
- * @param  mixed $settings
- * @return mixed
- */
-function ai1wpsa_sanitize_pro_settings($settings)
-{
-    if (! is_array($settings) || ai1wpsa_is_pro()) {
-        return $settings;
-    }
-
-    foreach (ai1wpsa_pro_setting_locks() as $key => $free_value) {
-        if (array_key_exists($key, $settings)) {
-            $settings[$key] = $free_value;
-        }
-    }
-
-    foreach (ai1wpsa_pro_setting_strip_keys() as $key) {
-        unset($settings[$key]);
-    }
-
-    // Click to Call: multiple phone numbers (add/duplicate) is Premium —
-    // free tier keeps only the first configured number.
-    if (! empty($settings['clicktoCallPhones']) && is_array($settings['clicktoCallPhones'])) {
-        $settings['clicktoCallPhones'] = array_slice($settings['clicktoCallPhones'], 0, 1);
-    }
-
-    return $settings;
-}
-
-/**
- * Get ai1wpsa settings
+ * Returns the stored option untouched. The free plugin has no concept of a
+ * paid tier and never downgrades, removes, or truncates anything a user has
+ * saved — each consumer just falls back to its own default when a key is
+ * absent.
  *
  * @param  string $key
  * @param  string $default
@@ -174,7 +18,7 @@ function ai1wpsa_sanitize_pro_settings($settings)
 function ai1wpsa_get_settings($key = null, $default = null)
 {
 
-    $settings = ai1wpsa_sanitize_pro_settings(get_option('ai1wpsa_settings'));
+    $settings = get_option('ai1wpsa_settings');
 
     if ($key === null) {
         return $settings;
@@ -243,6 +87,166 @@ function ai1wpsa_sanitize_array($array)
     }
 
     return $array;
+}
+
+/**
+ * Validate a CSS color value against an allowlist of known color syntaxes.
+ *
+ * Accepts hex (#rgb, #rgba, #rrggbb, #rrggbbaa), rgb()/rgba()/hsl()/hsla()
+ * with numeric arguments only, and plain keyword colors (e.g. "red",
+ * "transparent"). Anything else returns an empty string, so the value can
+ * never carry extra declarations, rules or markup into a stylesheet.
+ *
+ * @param mixed $color Raw color.
+ * @return string Valid color, or '' when invalid.
+ */
+function ai1wpsa_sanitize_css_color($color)
+{
+    if (! is_string($color)) {
+        return '';
+    }
+
+    $color = strtolower(trim($color));
+
+    if (preg_match('/^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/', $color)) {
+        return $color;
+    }
+
+    if (preg_match('/^(?:rgba?|hsla?)\(\s*[0-9.%\s,\/deg]+\)$/', $color)) {
+        return $color;
+    }
+
+    if (preg_match('/^[a-z]{3,20}$/', $color)) {
+        return $color;
+    }
+
+    return '';
+}
+
+/**
+ * Validate a CSS length (e.g. a font size). A bare number is treated as px.
+ *
+ * @param mixed $size Raw size.
+ * @return string Valid length, or '' when invalid.
+ */
+function ai1wpsa_sanitize_css_size($size)
+{
+    if (is_int($size) || is_float($size)) {
+        return $size > 0 ? $size . 'px' : '';
+    }
+
+    if (! is_string($size)) {
+        return '';
+    }
+
+    $size = strtolower(trim($size));
+
+    if (preg_match('/^\d+(?:\.\d+)?$/', $size)) {
+        return $size . 'px';
+    }
+
+    if (preg_match('/^\d+(?:\.\d+)?(?:px|em|rem|%|pt|vw|vh)$/', $size)) {
+        return $size;
+    }
+
+    return '';
+}
+
+/**
+ * Validate a CSS selector against an allowlist of selector characters.
+ *
+ * Only characters a normal selector needs are allowed (names, ids, classes,
+ * combinators, attribute selectors, pseudo-classes, commas). Braces,
+ * semicolons, "<", "/", "\" and "@" are rejected outright, as are unbalanced
+ * quotes, brackets or parentheses — so the value cannot open or close a rule,
+ * start a comment, use CSS escapes, or end the surrounding <style> element.
+ *
+ * @param mixed $selector Raw selector.
+ * @return string Valid selector, or '' when invalid.
+ */
+function ai1wpsa_sanitize_css_selector($selector)
+{
+    if (! is_string($selector)) {
+        return '';
+    }
+
+    $selector = trim(preg_replace('/\s+/', ' ', $selector));
+
+    if ('' === $selector || strlen($selector) > 500) {
+        return '';
+    }
+
+    if (! preg_match('/^[a-zA-Z0-9_\-\s#.>+~:\[\]="\'(),*^$|]+$/', $selector)) {
+        return '';
+    }
+
+    if (
+        substr_count($selector, '"') % 2 !== 0
+        || substr_count($selector, "'") % 2 !== 0
+        || substr_count($selector, '[') !== substr_count($selector, ']')
+        || substr_count($selector, '(') !== substr_count($selector, ')')
+    ) {
+        return '';
+    }
+
+    return $selector;
+}
+
+/**
+ * Validate the settings that are printed into inline CSS, at save time.
+ *
+ * ai1wpsa_sanitize_array() is generic; these keys get a strict per-context
+ * validator on top of it. Invalid values are dropped (saved as '').
+ *
+ * @param array $settings Settings already run through ai1wpsa_sanitize_array().
+ * @return array
+ */
+function ai1wpsa_sanitize_css_settings($settings)
+{
+    $color_keys = array(
+        'stickyHeaderBgColor',
+        'stickySocialIconsIconColor',
+        'stickySocialIconsIconHoverColor',
+        'stickySocialIconsIconBgColor',
+        'stickySocialIconsIconHoverBgColor',
+        'stickySocialIconsMenuBgColor',
+    );
+
+    foreach ($color_keys as $key) {
+        if (isset($settings[$key])) {
+            $settings[$key] = ai1wpsa_sanitize_css_color($settings[$key]);
+        }
+    }
+
+    if (isset($settings['stickyShrinkLogoSelector'])) {
+        $settings['stickyShrinkLogoSelector'] = ai1wpsa_sanitize_css_selector($settings['stickyShrinkLogoSelector']);
+    }
+
+    if (isset($settings['stickyCookieConsentBannerStyle']) && is_array($settings['stickyCookieConsentBannerStyle'])) {
+        $banner = &$settings['stickyCookieConsentBannerStyle'];
+
+        foreach (array('bgColor', 'textColor') as $key) {
+            if (isset($banner[$key])) {
+                $banner[$key] = ai1wpsa_sanitize_css_color($banner[$key]);
+            }
+        }
+
+        if (isset($banner['fontSize'])) {
+            $banner['fontSize'] = ai1wpsa_sanitize_css_size($banner['fontSize']);
+        }
+
+        unset($banner);
+    }
+
+    if (isset($settings['stickyCookieConsentButtonStyle']) && is_array($settings['stickyCookieConsentButtonStyle'])) {
+        foreach (array('acceptBtnBg', 'acceptTextColor', 'rejectBtnBg', 'rejectTextColor') as $key) {
+            if (isset($settings['stickyCookieConsentButtonStyle'][$key])) {
+                $settings['stickyCookieConsentButtonStyle'][$key] = ai1wpsa_sanitize_css_color($settings['stickyCookieConsentButtonStyle'][$key]);
+            }
+        }
+    }
+
+    return $settings;
 }
 
 function ai1wpsa_get_public_post_types()

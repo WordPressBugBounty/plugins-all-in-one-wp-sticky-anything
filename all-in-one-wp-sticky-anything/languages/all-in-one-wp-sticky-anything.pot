@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu & Sidebar 1.1.9\n"
+"Project-Id-Version: All-in-One Sticky Anything – Click to Call, Fixed Widget, Sticky Header, Menu & Sidebar 1.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/all-in-one-wp-sticky-anything\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-01T23:35:51+00:00\n"
+"POT-Creation-Date: 2026-10-13T05:03:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: all-in-one-wp-sticky-anything\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #. Author of the plugin
 #: all-in-one-wp-sticky-anything.php
-#: includes/Main.php:120
+#: includes/Main.php:132
 msgid "Monzur Alam"
 msgstr ""
 
@@ -40,41 +40,41 @@ msgstr ""
 msgid "https://profiles.wordpress.org/monzuralam"
 msgstr ""
 
-#: includes/Admin.php:32
+#: includes/Admin.php:44
 #: assets/js/admin.js:139
-#: assets/js/admin.js:11903
-#: assets/js/admin.js:11906
+#: assets/js/admin.js:8815
+#: assets/js/admin.js:8818
 msgid "All-in-One WP Sticky Anything"
 msgstr ""
 
-#: includes/Admin.php:33
+#: includes/Admin.php:45
 #: includes/Customizer.php:24
 #: includes/Elementor.php:31
 msgid "Sticky Anything"
 msgstr ""
 
-#: includes/Admin.php:43
+#: includes/Admin.php:55
 msgid "Settings - All-in-One Sticky Anything"
 msgstr ""
 
-#: includes/Admin.php:44
-#: includes/Main.php:147
+#: includes/Admin.php:56
+#: includes/Main.php:159
 msgid "Settings"
 msgstr ""
 
-#: includes/Admin.php:51
+#: includes/Admin.php:63
 msgid "Getting Started - All-in-One Sticky Anything"
 msgstr ""
 
-#: includes/Admin.php:52
+#: includes/Admin.php:64
 msgid "Getting Started"
 msgstr ""
 
-#: includes/Admin.php:85
+#: includes/Admin.php:118
 msgid "Toggle Sticky Notes"
 msgstr ""
 
-#: includes/Admin.php:89
+#: includes/Admin.php:122
 msgid "Show or hide sticky notes"
 msgstr ""
 
@@ -91,41 +91,41 @@ msgid "You do not have permission to get tables"
 msgstr ""
 
 #: includes/Ajax.php:121
-#: includes/Ajax.php:166
-#: includes/Ajax.php:226
-#: includes/Ajax.php:263
-#: includes/Ajax.php:317
-#: includes/Ajax.php:353
+#: includes/Ajax.php:168
+#: includes/Ajax.php:229
+#: includes/Ajax.php:266
+#: includes/Ajax.php:322
+#: includes/Ajax.php:358
 msgid "Insufficient permissions."
 msgstr ""
 
-#: includes/Ajax.php:150
+#: includes/Ajax.php:152
 msgid "Could not create note."
 msgstr ""
 
-#: includes/Ajax.php:174
-#: includes/Ajax.php:234
-#: includes/Ajax.php:325
+#: includes/Ajax.php:176
+#: includes/Ajax.php:237
+#: includes/Ajax.php:330
 msgid "Missing note ID."
 msgstr ""
 
-#: includes/Ajax.php:211
+#: includes/Ajax.php:214
 msgid "Could not update note."
 msgstr ""
 
-#: includes/Ajax.php:247
+#: includes/Ajax.php:250
 msgid "Could not delete note."
 msgstr ""
 
-#: includes/Ajax.php:278
+#: includes/Ajax.php:281
 msgid "Note not found."
 msgstr ""
 
-#: includes/Ajax.php:301
+#: includes/Ajax.php:306
 msgid "Could not duplicate note."
 msgstr ""
 
-#: includes/Ajax.php:340
+#: includes/Ajax.php:345
 msgid "Could not archive note."
 msgstr ""
 
@@ -134,7 +134,7 @@ msgid "Settings to configure Sticky Anything on your website."
 msgstr ""
 
 #: includes/Customizer.php:33
-#: assets/js/admin.js:11772
+#: assets/js/admin.js:8684
 msgid "Sticky Header"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgstr ""
 
 #: includes/Customizer.php:75
 #: includes/Elementor.php:51
-#: assets/js/admin.js:11633
+#: assets/js/admin.js:8545
 msgid "Z-Index"
 msgstr ""
 
@@ -156,51 +156,51 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: includes/Hooks.php:227
-#: assets/js/admin.js:7830
+#: includes/Hooks.php:272
+#: assets/js/admin.js:6897
 msgid "We use cookies to improve your experience on our site. By using our site, you consent to cookies."
 msgstr ""
 
-#: includes/Hooks.php:232
-#: assets/js/admin.js:7841
+#: includes/Hooks.php:277
+#: assets/js/admin.js:6908
 msgid "Accept"
 msgstr ""
 
-#: includes/Hooks.php:238
-#: assets/js/admin.js:7846
+#: includes/Hooks.php:283
+#: assets/js/admin.js:6913
 msgid "Reject"
 msgstr ""
 
-#: includes/Hooks.php:400
-#: assets/js/admin.js:8302
-#: assets/js/admin.js:11281
-#: assets/js/admin.js:11762
+#: includes/Hooks.php:445
+#: assets/js/admin.js:7290
+#: assets/js/admin.js:8170
+#: assets/js/admin.js:8674
 #: assets/js/block-editor.js:40
 msgid "Fixed Widget"
 msgstr ""
 
 #. translators: %s: plugin name
-#: includes/Main.php:111
+#: includes/Main.php:123
 msgid "Hey, we noticed you have been using %s for more than 3 days now - that's awesome!"
 msgstr ""
 
-#: includes/Main.php:117
+#: includes/Main.php:129
 msgid "Could you please do us a BIG favor and give it a rating on WordPress.org to help us do more great work and boost our motivation?"
 msgstr ""
 
-#: includes/Main.php:122
+#: includes/Main.php:134
 msgid "Founder of WP Sticky Anything"
 msgstr ""
 
-#: includes/Main.php:127
+#: includes/Main.php:139
 msgid "Yes, you deserve it"
 msgstr ""
 
-#: includes/Main.php:131
+#: includes/Main.php:143
 msgid "No, maybe later"
 msgstr ""
 
-#: includes/Main.php:135
+#: includes/Main.php:147
 msgid "I already did"
 msgstr ""
 
@@ -212,6451 +212,5422 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: assets/js/admin.js:188
-msgid "Upgrade to PRO to unlock this and all PRO features."
-msgstr ""
-
-#: assets/js/admin.js:191
-msgid "Unlock All Features!"
-msgstr ""
-
-#: assets/js/admin.js:194
-msgid "Upgrade Now"
-msgstr ""
-
-#: assets/js/admin.js:318
+#: assets/js/admin.js:254
 msgid "Selector captured."
 msgstr ""
 
-#: assets/js/admin.js:318
+#: assets/js/admin.js:254
 msgid "Selector captured — matches"
 msgstr ""
 
-#: assets/js/admin.js:318
+#: assets/js/admin.js:254
 msgid "elements on the page."
 msgstr ""
 
-#: assets/js/admin.js:332
+#: assets/js/admin.js:268
 msgid "Pick Your Logo Image"
 msgstr ""
 
-#: assets/js/admin.js:332
+#: assets/js/admin.js:268
 msgid "Pick Your Sticky Header"
 msgstr ""
 
-#: assets/js/admin.js:333
+#: assets/js/admin.js:269
 msgid "Hover over your site below and click your logo — hovering near it (e.g. its link wrapper) also works, the actual `<img>` is always what gets picked. Press Esc to cancel."
 msgstr ""
 
-#: assets/js/admin.js:333
+#: assets/js/admin.js:269
 msgid "Hover over your site below and click your header (or use \"Select Parent\" if the click lands on something inside it, like your logo). Press Esc to cancel."
 msgstr ""
 
-#: assets/js/admin.js:333
+#: assets/js/admin.js:269
 msgid "Your site"
 msgstr ""
 
-#: assets/js/admin.js:333
+#: assets/js/admin.js:269
 msgid "This site can't be previewed in a frame here."
 msgstr ""
 
-#: assets/js/admin.js:333
+#: assets/js/admin.js:269
 msgid "Open in a New Tab to Pick"
 msgstr ""
 
-#: assets/js/admin.js:2504
+#: assets/js/admin.js:2440
 msgid "Experimental"
 msgstr ""
 
-#: assets/js/admin.js:2514
+#: assets/js/admin.js:2450
 msgid "Experimental — behavior can vary by theme, please test after enabling."
 msgstr ""
 
-#: assets/js/admin.js:2598
-#: assets/js/admin.js:3095
-#: assets/js/admin.js:3918
-#: assets/js/admin.js:7802
-#: assets/js/admin.js:8617
-#: assets/js/admin.js:10020
+#: assets/js/admin.js:2532
 msgid "All"
 msgstr ""
 
-#: assets/js/admin.js:2601
-#: assets/js/admin.js:3105
-#: assets/js/admin.js:3921
-#: assets/js/admin.js:7805
-#: assets/js/admin.js:8630
-#: assets/js/admin.js:10023
+#: assets/js/admin.js:2535
 msgid "Desktop"
 msgstr ""
 
-#: assets/js/admin.js:2604
-#: assets/js/admin.js:3115
-#: assets/js/admin.js:7808
-#: assets/js/admin.js:8644
-#: assets/js/admin.js:10026
+#: assets/js/admin.js:2538
 msgid "Tablet"
 msgstr ""
 
-#: assets/js/admin.js:2607
-#: assets/js/admin.js:3125
-#: assets/js/admin.js:3925
-#: assets/js/admin.js:7811
-#: assets/js/admin.js:8658
-#: assets/js/admin.js:10029
+#: assets/js/admin.js:2541
 msgid "Mobile"
 msgstr ""
 
-#: assets/js/admin.js:2618
+#: assets/js/admin.js:2552
 msgid "Color"
 msgstr ""
 
-#: assets/js/admin.js:2622
+#: assets/js/admin.js:2556
 msgid "Solid"
 msgstr ""
 
-#: assets/js/admin.js:2671
+#: assets/js/admin.js:2601
 msgid "Select Sticky Logo Image"
 msgstr ""
 
-#: assets/js/admin.js:2673
+#: assets/js/admin.js:2603
 msgid "Use this Image"
 msgstr ""
 
-#: assets/js/admin.js:2696
+#: assets/js/admin.js:2626
 msgid "General Settings"
 msgstr ""
 
-#: assets/js/admin.js:2702
+#: assets/js/admin.js:2632
 msgid "Sticky Class"
 msgstr ""
 
-#: assets/js/admin.js:2708
+#: assets/js/admin.js:2638
 msgid "ex: #main-navigaion or .header"
 msgstr ""
 
-#: assets/js/admin.js:2725
+#: assets/js/admin.js:2655
 msgid "🖱️ Pick Header on Page"
 msgstr ""
 
-#: assets/js/admin.js:2727
+#: assets/js/admin.js:2657
 msgid "Write your sticky selector here, or click \"Pick Header on Page\" to click your header directly on your live site instead. Make anything sticky by use sticky class. example: `<div class=\"sticky\">I am sticky</div>`"
 msgstr ""
 
-#: assets/js/admin.js:2731
+#: assets/js/admin.js:2661
 msgid "Scroll Offset"
 msgstr ""
 
-#: assets/js/admin.js:2736
-#: assets/js/admin.js:8321
+#: assets/js/admin.js:2666
+#: assets/js/admin.js:7309
 msgid "ex: 100"
 msgstr ""
 
-#: assets/js/admin.js:2744
+#: assets/js/admin.js:2674
 msgid "Number of pixels the page must be scrolled before the header becomes sticky. ex: 100 makes the header stick only after scrolling 100px. Leave empty to stick as soon as it reaches the top."
 msgstr ""
 
-#: assets/js/admin.js:2748
+#: assets/js/admin.js:2678
 msgid "Sticky Header Background"
 msgstr ""
 
-#: assets/js/admin.js:2764
+#: assets/js/admin.js:2694
 msgid "Applied only while the header is actually stuck to the top of the screen (its \"active\" sticky state) — leave everything below empty to keep your theme's own header background."
 msgstr ""
 
-#: assets/js/admin.js:2768
+#: assets/js/admin.js:2698
 msgid "Color Type"
 msgstr ""
 
-#: assets/js/admin.js:2786
-#: assets/js/admin.js:8144
-#: assets/js/admin.js:8201
-#: assets/js/admin.js:8237
-#: assets/js/admin.js:8849
-#: assets/js/admin.js:9919
-#: assets/js/admin.js:10975
+#: assets/js/admin.js:2716
+#: assets/js/admin.js:7134
+#: assets/js/admin.js:7191
+#: assets/js/admin.js:7227
+#: assets/js/admin.js:7493
+#: assets/js/admin.js:7968
 msgid "Background Color"
 msgstr ""
 
-#: assets/js/admin.js:2806
+#: assets/js/admin.js:2736
 msgid "Shrink Header on Sticky"
 msgstr ""
 
-#: assets/js/admin.js:2818
+#: assets/js/admin.js:2748
 msgid "Reduce the header (and optionally its logo) once it becomes sticky, so it takes up less space while visitors scroll."
 msgstr ""
 
-#: assets/js/admin.js:2822
+#: assets/js/admin.js:2752
 msgid "Sticky Header Height"
 msgstr ""
 
-#: assets/js/admin.js:2827
+#: assets/js/admin.js:2757
 msgid "ex: 60"
 msgstr ""
 
-#: assets/js/admin.js:2835
+#: assets/js/admin.js:2765
 msgid "Height (in px) the header shrinks to once it's stuck to the top."
 msgstr ""
 
-#: assets/js/admin.js:2839
+#: assets/js/admin.js:2769
 msgid "Sticky Logo"
 msgstr ""
 
-#: assets/js/admin.js:2845
-#: assets/js/admin.js:2901
+#: assets/js/admin.js:2775
+#: assets/js/admin.js:2831
 msgid "ex: .site-logo img"
 msgstr ""
 
-#: assets/js/admin.js:2864
-#: assets/js/admin.js:2920
+#: assets/js/admin.js:2794
+#: assets/js/admin.js:2850
 msgid "🖱️ Pick Logo on Page"
 msgstr ""
 
-#: assets/js/admin.js:2867
+#: assets/js/admin.js:2797
 msgid "ex: 120"
 msgstr ""
 
-#: assets/js/admin.js:2875
+#: assets/js/admin.js:2805
 msgid "Optional. Pick your logo and set the width (in px) it should shrink to. Leave the selector empty to only shrink the header height."
 msgstr ""
 
-#: assets/js/admin.js:2879
+#: assets/js/admin.js:2809
 msgid "Logo Swap on Sticky"
 msgstr ""
 
-#: assets/js/admin.js:2891
+#: assets/js/admin.js:2821
 msgid "Show a different logo (e.g. a smaller or dark/light variant) once the header becomes sticky, then switch back when it un-sticks."
 msgstr ""
 
-#: assets/js/admin.js:2895
+#: assets/js/admin.js:2825
 msgid "Logo Element"
 msgstr ""
 
-#: assets/js/admin.js:2922
+#: assets/js/admin.js:2852
 msgid "The `<img>` on your live site whose source should swap once sticky."
 msgstr ""
 
-#: assets/js/admin.js:2926
+#: assets/js/admin.js:2856
 msgid "Sticky Logo Image"
 msgstr ""
 
-#: assets/js/admin.js:2937
+#: assets/js/admin.js:2867
 msgid "Change Image"
 msgstr ""
 
-#: assets/js/admin.js:2937
+#: assets/js/admin.js:2867
 msgid "Select Image"
 msgstr ""
 
-#: assets/js/admin.js:2945
+#: assets/js/admin.js:2875
 msgid "Remove"
 msgstr ""
 
-#: assets/js/admin.js:2947
+#: assets/js/admin.js:2877
 msgid "Picked from your Media Library. Swapped in only while the header is stuck to the top; your original logo returns once it un-sticks."
 msgstr ""
 
-#: assets/js/admin.js:2951
-msgid "Disable Sticky on Mobile"
-msgstr ""
-
-#: assets/js/admin.js:2967
-msgid "Turn off all sticky header behavior on mobile-sized screens."
-msgstr ""
-
-#: assets/js/admin.js:2971
+#: assets/js/admin.js:2885
 msgid "z-index"
 msgstr ""
 
-#: assets/js/admin.js:2975
+#: assets/js/admin.js:2889
 msgid "ex: 9999"
 msgstr ""
 
-#: assets/js/admin.js:2983
-#: assets/js/admin.js:3127
+#: assets/js/admin.js:2897
 msgid "Set your desire z-index value for your target element."
 msgstr ""
 
-#: assets/js/admin.js:3030
+#: assets/js/admin.js:2939
 msgid "Sticky Sidebar Settings"
 msgstr ""
 
-#: assets/js/admin.js:3036
-#: assets/js/admin.js:11285
-#: assets/js/admin.js:11777
+#: assets/js/admin.js:2945
+#: assets/js/admin.js:8177
+#: assets/js/admin.js:8689
 msgid "Sticky Sidebar"
 msgstr ""
 
-#: assets/js/admin.js:3047
+#: assets/js/admin.js:2956
 msgid "Enable or disable the sticky sidebar."
 msgstr ""
 
-#: assets/js/admin.js:3051
+#: assets/js/admin.js:2960
 msgid "Sticky Sidebar Selector"
 msgstr ""
 
-#: assets/js/admin.js:3055
+#: assets/js/admin.js:2964
 msgid "ex: #sidebar or .sidebar"
 msgstr ""
 
-#: assets/js/admin.js:3063
+#: assets/js/admin.js:2972
 msgid "Write your sidebar element CSS selector (class or id) here. Astra: #secondary, Neve: .blog-sidebar"
 msgstr ""
 
-#: assets/js/admin.js:3067
+#: assets/js/admin.js:2976
 msgid "Sidebar Container Selector"
 msgstr ""
 
-#: assets/js/admin.js:3071
+#: assets/js/admin.js:2980
 msgid "ex: #main"
 msgstr ""
 
-#: assets/js/admin.js:3079
+#: assets/js/admin.js:2988
 msgid "Write your sidebar container element CSS selector (class or id) here. It must be element that contains both sidebar and content. If left blank script will try to guess. Usually it's #main or #main-content. Astra: .ast-container, Neve: .archive-container .row"
 msgstr ""
 
-#: assets/js/admin.js:3083
-#: assets/js/admin.js:7539
-#: assets/js/admin.js:7962
-#: assets/js/admin.js:8601
-#: assets/js/admin.js:10360
-msgid "Device"
-msgstr ""
-
-#: assets/js/admin.js:3131
+#: assets/js/admin.js:2996
 msgid "Additional Top Margin"
 msgstr ""
 
-#: assets/js/admin.js:3136
-#: assets/js/admin.js:3153
+#: assets/js/admin.js:3001
+#: assets/js/admin.js:3018
 msgid "ex: 30"
 msgstr ""
 
-#: assets/js/admin.js:3144
+#: assets/js/admin.js:3009
 msgid "Set additional top margin for your sidebar."
 msgstr ""
 
-#: assets/js/admin.js:3148
+#: assets/js/admin.js:3013
 msgid "Additional Bottom Margin"
 msgstr ""
 
-#: assets/js/admin.js:3161
+#: assets/js/admin.js:3026
 msgid "Set additional bottom margin for your sidebar."
 msgstr ""
 
-#: assets/js/admin.js:3165
+#: assets/js/admin.js:3030
 msgid "Disable in small screens"
 msgstr ""
 
-#: assets/js/admin.js:3170
+#: assets/js/admin.js:3035
 msgid "ex: 767"
 msgstr ""
 
-#: assets/js/admin.js:3178
+#: assets/js/admin.js:3043
 msgid "Disable if screen width is smaller than this value. Set only width value. Don't add px."
 msgstr ""
 
-#: assets/js/admin.js:3182
+#: assets/js/admin.js:3047
 msgid "Update sidebar height"
 msgstr ""
 
-#: assets/js/admin.js:3193
+#: assets/js/admin.js:3058
 msgid "Troubleshooting option, try this if your sidebar loses its background color."
 msgstr ""
 
-#: assets/js/admin.js:3287
-msgid "Custom CSS feature will be discontinued soon. Please save your custom CSS in advance. For assistance, please use the support forum."
-msgstr ""
-
-#: assets/js/admin.js:3289
-msgid "Visit Support Forum"
-msgstr ""
-
-#: assets/js/admin.js:3296
-#: assets/js/admin.js:11315
-#: assets/js/admin.js:11633
-msgid "Custom CSS"
-msgstr ""
-
-#: assets/js/admin.js:3301
-msgid "ex: .header{ // your css code here.}"
-msgstr ""
-
-#: assets/js/admin.js:3310
-msgid "Write your custom CSS here."
-msgstr ""
-
-#: assets/js/admin.js:3334
-#: assets/js/admin.js:11319
+#: assets/js/admin.js:3082
+#: assets/js/admin.js:8212
 msgid "Tools"
 msgstr ""
 
-#: assets/js/admin.js:3340
+#: assets/js/admin.js:3088
 msgid "Reset Data"
 msgstr ""
 
-#: assets/js/admin.js:3348
+#: assets/js/admin.js:3096
 msgid "Reset"
 msgstr ""
 
-#: assets/js/admin.js:3350
+#: assets/js/admin.js:3098
 msgid "Reset all settings to default."
 msgstr ""
 
-#: assets/js/admin.js:3354
+#: assets/js/admin.js:3102
 msgid "Delete Data"
 msgstr ""
 
-#: assets/js/admin.js:3365
+#: assets/js/admin.js:3113
 msgid "Delete all settings on plugin uninstall."
 msgstr ""
 
-#: assets/js/admin.js:3485
-msgid "Announcement Bar Settings"
-msgstr ""
-
-#: assets/js/admin.js:3491
-#: assets/js/admin.js:3515
-msgid "Announcement Bar"
-msgstr ""
-
-#: assets/js/admin.js:3502
-msgid "Enable or disable the announcemnt bar."
-msgstr ""
-
-#: assets/js/admin.js:3506
-msgid "Announcement Bar Items"
-msgstr ""
-
-#: assets/js/admin.js:3519
-#: assets/js/admin.js:3523
-msgid "Title"
-msgstr ""
-
-#: assets/js/admin.js:3537
-#: assets/js/admin.js:3541
-#: assets/js/admin.js:7985
-msgid "Message"
-msgstr ""
-
-#: assets/js/admin.js:3555
-#: assets/js/admin.js:3559
-#: assets/js/admin.js:10401
-msgid "Button Text"
-msgstr ""
-
-#: assets/js/admin.js:3573
-#: assets/js/admin.js:3577
-msgid "Button URL"
-msgstr ""
-
-#: assets/js/admin.js:3591
-#: assets/js/admin.js:7938
-#: assets/js/admin.js:8664
-#: assets/js/admin.js:9840
-#: assets/js/admin.js:10336
-msgid "Position"
-msgstr ""
-
-#: assets/js/admin.js:3604
-#: assets/js/admin.js:9431
-msgid "Top"
-msgstr ""
-
-#: assets/js/admin.js:3615
-#: assets/js/admin.js:3903
-#: assets/js/admin.js:9434
-msgid "Bottom"
-msgstr ""
-
-#: assets/js/admin.js:3619
-msgid "Title Text Color"
-msgstr ""
-
-#: assets/js/admin.js:3638
-#: assets/js/admin.js:3651
-msgid "Title Font Family"
-msgstr ""
-
-#: assets/js/admin.js:3656
-#: assets/js/admin.js:3669
-msgid "Title Font Size"
-msgstr ""
-
-#: assets/js/admin.js:3674
-#: assets/js/admin.js:3687
-#: assets/js/admin.js:3728
-msgid "Title Font Weight"
-msgstr ""
-
-#: assets/js/admin.js:3692
-#: assets/js/admin.js:3705
-msgid "Title Line Height"
-msgstr ""
-
-#: assets/js/admin.js:3710
-#: assets/js/admin.js:3723
-msgid "Title Letter Spacing"
-msgstr ""
-
-#: assets/js/admin.js:3735
-msgid "100"
-msgstr ""
-
-#: assets/js/admin.js:3738
-msgid "200"
-msgstr ""
-
-#: assets/js/admin.js:3741
-msgid "300"
-msgstr ""
-
-#: assets/js/admin.js:3744
-msgid "400"
-msgstr ""
-
-#: assets/js/admin.js:3747
-msgid "500"
-msgstr ""
-
-#: assets/js/admin.js:3750
-msgid "600"
-msgstr ""
-
-#: assets/js/admin.js:3753
-msgid "700"
-msgstr ""
-
-#: assets/js/admin.js:3756
-msgid "800"
-msgstr ""
-
-#: assets/js/admin.js:3759
-msgid "900"
-msgstr ""
-
-#: assets/js/admin.js:3774
-msgid "Title Font Style"
-msgstr ""
-
-#: assets/js/admin.js:3781
-msgid "Normal"
-msgstr ""
-
-#: assets/js/admin.js:3784
-msgid "Italic"
-msgstr ""
-
-#: assets/js/admin.js:3787
-msgid "Oblique"
-msgstr ""
-
-#: assets/js/admin.js:3860
-msgid "Dashicons"
-msgstr ""
-
-#: assets/js/admin.js:3864
-msgid "Fontawesome"
-msgstr ""
-
-#: assets/js/admin.js:3868
-#: assets/js/admin.js:4162
-msgid "Bootstrap"
-msgstr ""
-
-#: assets/js/admin.js:3872
-msgid "RemixIcon"
-msgstr ""
-
-#: assets/js/admin.js:3876
-#: assets/js/admin.js:7048
-msgid "Lineicons"
-msgstr ""
-
-#: assets/js/admin.js:3881
-#: assets/js/admin.js:10100
-#: assets/js/admin.js:11177
-msgid "Everywhere"
-msgstr ""
-
-#: assets/js/admin.js:3884
-#: assets/js/admin.js:10104
-msgid "Homepage"
-msgstr ""
-
-#: assets/js/admin.js:3888
-msgid "Posts Page"
-msgstr ""
-
-#: assets/js/admin.js:3897
-#: assets/js/admin.js:9427
-msgid "Left"
-msgstr ""
-
-#: assets/js/admin.js:3900
-#: assets/js/admin.js:9424
-msgid "Right"
-msgstr ""
-
-#: assets/js/admin.js:3908
+#: assets/js/admin.js:3157
 msgid "Circle"
 msgstr ""
 
-#: assets/js/admin.js:3911
+#: assets/js/admin.js:3160
 msgid "Square"
 msgstr ""
 
-#: assets/js/admin.js:3914
+#: assets/js/admin.js:3163
 msgid "Rounded"
 msgstr ""
 
-#: assets/js/admin.js:3930
-#: assets/js/admin.js:5092
-#: assets/js/admin.js:5564
-#: assets/js/admin.js:5811
-#: assets/js/admin.js:6679
+#: assets/js/admin.js:3167
+#: assets/js/admin.js:4329
+#: assets/js/admin.js:4801
+#: assets/js/admin.js:5048
+#: assets/js/admin.js:5916
 msgid "Select Icon"
 msgstr ""
 
-#: assets/js/admin.js:3933
-#: assets/js/admin.js:4060
-#: assets/js/admin.js:5573
-#: assets/js/admin.js:6700
+#: assets/js/admin.js:3170
+#: assets/js/admin.js:3297
+#: assets/js/admin.js:4810
+#: assets/js/admin.js:5937
 msgid "Amazon"
 msgstr ""
 
-#: assets/js/admin.js:3936
+#: assets/js/admin.js:3173
 msgid "bbPress"
 msgstr ""
 
-#: assets/js/admin.js:3939
+#: assets/js/admin.js:3176
 msgid "BuddyPress"
 msgstr ""
 
-#: assets/js/admin.js:3942
-#: assets/js/admin.js:4459
-#: assets/js/admin.js:5630
-#: assets/js/admin.js:6910
+#: assets/js/admin.js:3179
+#: assets/js/admin.js:3696
+#: assets/js/admin.js:4867
+#: assets/js/admin.js:6147
 msgid "Facebook"
 msgstr ""
 
-#: assets/js/admin.js:3945
+#: assets/js/admin.js:3182
 msgid "Facebook (alt)"
 msgstr ""
 
-#: assets/js/admin.js:3948
-#: assets/js/admin.js:4591
-#: assets/js/admin.js:5642
-#: assets/js/admin.js:6967
+#: assets/js/admin.js:3185
+#: assets/js/admin.js:3828
+#: assets/js/admin.js:4879
+#: assets/js/admin.js:6204
 msgid "Google"
 msgstr ""
 
-#: assets/js/admin.js:3951
-#: assets/js/admin.js:5377
-#: assets/js/admin.js:5765
+#: assets/js/admin.js:3188
+#: assets/js/admin.js:4614
+#: assets/js/admin.js:5002
 msgid "Twitter"
 msgstr ""
 
-#: assets/js/admin.js:3954
+#: assets/js/admin.js:3191
 msgid "Twitter (alt)"
 msgstr ""
 
-#: assets/js/admin.js:3957
-#: assets/js/admin.js:4675
-#: assets/js/admin.js:5648
-#: assets/js/admin.js:7003
+#: assets/js/admin.js:3194
+#: assets/js/admin.js:3912
+#: assets/js/admin.js:4885
+#: assets/js/admin.js:6240
 msgid "Instagram"
 msgstr ""
 
-#: assets/js/admin.js:3960
-#: assets/js/admin.js:4768
-#: assets/js/admin.js:5657
-#: assets/js/admin.js:7051
+#: assets/js/admin.js:3197
+#: assets/js/admin.js:4005
+#: assets/js/admin.js:4894
+#: assets/js/admin.js:6288
 msgid "LinkedIn"
 msgstr ""
 
-#: assets/js/admin.js:3963
-#: assets/js/admin.js:5557
-#: assets/js/admin.js:5807
-#: assets/js/admin.js:7402
+#: assets/js/admin.js:3200
+#: assets/js/admin.js:4794
+#: assets/js/admin.js:5044
+#: assets/js/admin.js:6639
 msgid "YouTube"
 msgstr ""
 
-#: assets/js/admin.js:3966
-#: assets/js/admin.js:4978
-#: assets/js/admin.js:5696
-#: assets/js/admin.js:7171
+#: assets/js/admin.js:3203
+#: assets/js/admin.js:4215
+#: assets/js/admin.js:4933
+#: assets/js/admin.js:6408
 msgid "Pinterest"
 msgstr ""
 
-#: assets/js/admin.js:3969
+#: assets/js/admin.js:3206
 msgid "Podio"
 msgstr ""
 
-#: assets/js/admin.js:3972
-#: assets/js/admin.js:5041
-#: assets/js/admin.js:5705
-#: assets/js/admin.js:7216
+#: assets/js/admin.js:3209
+#: assets/js/admin.js:4278
+#: assets/js/admin.js:4942
+#: assets/js/admin.js:6453
 msgid "Reddit"
 msgstr ""
 
-#: assets/js/admin.js:3975
-#: assets/js/admin.js:5479
-#: assets/js/admin.js:5789
-#: assets/js/admin.js:7369
+#: assets/js/admin.js:3212
+#: assets/js/admin.js:4716
+#: assets/js/admin.js:5026
+#: assets/js/admin.js:6606
 msgid "WhatsApp"
 msgstr ""
 
-#: assets/js/admin.js:3978
-#: assets/js/admin.js:5506
-#: assets/js/admin.js:5798
-#: assets/js/admin.js:7378
+#: assets/js/admin.js:3215
+#: assets/js/admin.js:4743
+#: assets/js/admin.js:5035
+#: assets/js/admin.js:6615
 msgid "WordPress"
 msgstr ""
 
-#: assets/js/admin.js:3981
+#: assets/js/admin.js:3218
 msgid "WordPress (alt)"
 msgstr ""
 
-#: assets/js/admin.js:3984
-#: assets/js/admin.js:5374
-#: assets/js/admin.js:5762
-#: assets/js/admin.js:7312
+#: assets/js/admin.js:3221
+#: assets/js/admin.js:4611
+#: assets/js/admin.js:4999
+#: assets/js/admin.js:6549
 msgid "Twitch"
 msgstr ""
 
-#: assets/js/admin.js:3987
-#: assets/js/admin.js:5164
-#: assets/js/admin.js:5726
-#: assets/js/admin.js:7252
+#: assets/js/admin.js:3224
+#: assets/js/admin.js:4401
+#: assets/js/admin.js:4963
+#: assets/js/admin.js:6489
 msgid "Spotify"
 msgstr ""
 
-#: assets/js/admin.js:3990
+#: assets/js/admin.js:3227
 msgid "RSS"
 msgstr ""
 
-#: assets/js/admin.js:3993
+#: assets/js/admin.js:3230
 msgid "Email"
 msgstr ""
 
-#: assets/js/admin.js:3996
+#: assets/js/admin.js:3233
 msgid "Email (alt)"
 msgstr ""
 
-#: assets/js/admin.js:3999
+#: assets/js/admin.js:3236
 msgid "Email (alt2)"
 msgstr ""
 
-#: assets/js/admin.js:4002
+#: assets/js/admin.js:3239
 msgid "Phone"
 msgstr ""
 
-#: assets/js/admin.js:4005
+#: assets/js/admin.js:3242
 msgid "Links"
 msgstr ""
 
-#: assets/js/admin.js:4008
+#: assets/js/admin.js:3245
 msgid "Share"
 msgstr ""
 
-#: assets/js/admin.js:4011
+#: assets/js/admin.js:3248
 msgid "Share (alt)"
 msgstr ""
 
-#: assets/js/admin.js:4014
+#: assets/js/admin.js:3251
 msgid "Share (alt2)"
 msgstr ""
 
-#: assets/js/admin.js:4017
+#: assets/js/admin.js:3254
 msgid "Site"
 msgstr ""
 
-#: assets/js/admin.js:4020
+#: assets/js/admin.js:3257
 msgid "Site (alt)"
 msgstr ""
 
-#: assets/js/admin.js:4023
+#: assets/js/admin.js:3260
 msgid "Site (alt2)"
 msgstr ""
 
-#: assets/js/admin.js:4026
+#: assets/js/admin.js:3263
 msgid "Site (alt3)"
 msgstr ""
 
-#: assets/js/admin.js:4029
-#: assets/js/admin.js:5530
+#: assets/js/admin.js:3266
+#: assets/js/admin.js:4767
 msgid "Xing"
 msgstr ""
 
-#: assets/js/admin.js:4033
+#: assets/js/admin.js:3270
 msgid "42 Group"
 msgstr ""
 
-#: assets/js/admin.js:4036
-#: assets/js/admin.js:6682
+#: assets/js/admin.js:3273
+#: assets/js/admin.js:5919
 msgid "500px"
 msgstr ""
 
-#: assets/js/admin.js:4039
+#: assets/js/admin.js:3276
 msgid "Accusoft"
 msgstr ""
 
-#: assets/js/admin.js:4042
+#: assets/js/admin.js:3279
 msgid "Accessible Icon"
 msgstr ""
 
-#: assets/js/admin.js:4045
+#: assets/js/admin.js:3282
 msgid "ADN"
 msgstr ""
 
-#: assets/js/admin.js:4048
+#: assets/js/admin.js:3285
 msgid "Affiliatetheme"
 msgstr ""
 
-#: assets/js/admin.js:4051
-#: assets/js/admin.js:6691
+#: assets/js/admin.js:3288
+#: assets/js/admin.js:5928
 msgid "Airbnb"
 msgstr ""
 
-#: assets/js/admin.js:4054
+#: assets/js/admin.js:3291
 msgid "Algolia"
 msgstr ""
 
-#: assets/js/admin.js:4057
-#: assets/js/admin.js:5570
+#: assets/js/admin.js:3294
+#: assets/js/admin.js:4807
 msgid "Alipay"
 msgstr ""
 
-#: assets/js/admin.js:4063
-#: assets/js/admin.js:6706
+#: assets/js/admin.js:3300
+#: assets/js/admin.js:5943
 msgid "Amazon Pay"
 msgstr ""
 
-#: assets/js/admin.js:4066
+#: assets/js/admin.js:3303
 msgid "Amilia"
 msgstr ""
 
-#: assets/js/admin.js:4069
-#: assets/js/admin.js:5579
-#: assets/js/admin.js:6715
+#: assets/js/admin.js:3306
+#: assets/js/admin.js:4816
+#: assets/js/admin.js:5952
 msgid "Android"
 msgstr ""
 
-#: assets/js/admin.js:4072
+#: assets/js/admin.js:3309
 msgid "AngelList"
 msgstr ""
 
-#: assets/js/admin.js:4075
+#: assets/js/admin.js:3312
 msgid "Angry Creative"
 msgstr ""
 
-#: assets/js/admin.js:4078
-#: assets/js/admin.js:6724
+#: assets/js/admin.js:3315
+#: assets/js/admin.js:5961
 msgid "Angular"
 msgstr ""
 
-#: assets/js/admin.js:4081
-#: assets/js/admin.js:6727
+#: assets/js/admin.js:3318
+#: assets/js/admin.js:5964
 msgid "App Store"
 msgstr ""
 
-#: assets/js/admin.js:4084
+#: assets/js/admin.js:3321
 msgid "App Store iOS"
 msgstr ""
 
-#: assets/js/admin.js:4087
+#: assets/js/admin.js:3324
 msgid "Apper"
 msgstr ""
 
-#: assets/js/admin.js:4090
-#: assets/js/admin.js:5588
+#: assets/js/admin.js:3327
+#: assets/js/admin.js:4825
 msgid "Apple"
 msgstr ""
 
-#: assets/js/admin.js:4093
-#: assets/js/admin.js:6739
+#: assets/js/admin.js:3330
+#: assets/js/admin.js:5976
 msgid "Apple Pay"
 msgstr ""
 
-#: assets/js/admin.js:4096
+#: assets/js/admin.js:3333
 msgid "ArtStation"
 msgstr ""
 
-#: assets/js/admin.js:4099
+#: assets/js/admin.js:3336
 msgid "Asymmetrik"
 msgstr ""
 
-#: assets/js/admin.js:4102
-#: assets/js/admin.js:6751
+#: assets/js/admin.js:3339
+#: assets/js/admin.js:5988
 msgid "Atlassian"
 msgstr ""
 
-#: assets/js/admin.js:4105
+#: assets/js/admin.js:3342
 msgid "Audible"
 msgstr ""
 
-#: assets/js/admin.js:4108
+#: assets/js/admin.js:3345
 msgid "Autoprefixer"
 msgstr ""
 
-#: assets/js/admin.js:4111
+#: assets/js/admin.js:3348
 msgid "Avianex"
 msgstr ""
 
-#: assets/js/admin.js:4114
+#: assets/js/admin.js:3351
 msgid "Aviato"
 msgstr ""
 
-#: assets/js/admin.js:4117
-#: assets/js/admin.js:6760
+#: assets/js/admin.js:3354
+#: assets/js/admin.js:5997
 msgid "AWS"
 msgstr ""
 
-#: assets/js/admin.js:4120
+#: assets/js/admin.js:3357
 msgid "Bandcamp"
 msgstr ""
 
-#: assets/js/admin.js:4123
+#: assets/js/admin.js:3360
 msgid "Battle.net"
 msgstr ""
 
-#: assets/js/admin.js:4126
-#: assets/js/admin.js:5594
-#: assets/js/admin.js:6766
+#: assets/js/admin.js:3363
+#: assets/js/admin.js:4831
+#: assets/js/admin.js:6003
 msgid "Behance"
 msgstr ""
 
-#: assets/js/admin.js:4129
+#: assets/js/admin.js:3366
 msgid "Bilibili"
 msgstr ""
 
-#: assets/js/admin.js:4132
+#: assets/js/admin.js:3369
 msgid "Bimobject"
 msgstr ""
 
-#: assets/js/admin.js:4135
-#: assets/js/admin.js:6775
+#: assets/js/admin.js:3372
+#: assets/js/admin.js:6012
 msgid "Bitcoin"
 msgstr ""
 
-#: assets/js/admin.js:4138
-#: assets/js/admin.js:6772
+#: assets/js/admin.js:3375
+#: assets/js/admin.js:6009
 msgid "Bitbucket"
 msgstr ""
 
-#: assets/js/admin.js:4141
+#: assets/js/admin.js:3378
 msgid "Bity"
 msgstr ""
 
-#: assets/js/admin.js:4144
+#: assets/js/admin.js:3381
 msgid "Black Tie"
 msgstr ""
 
-#: assets/js/admin.js:4147
+#: assets/js/admin.js:3384
 msgid "BlackBerry"
 msgstr ""
 
-#: assets/js/admin.js:4150
-#: assets/js/admin.js:6781
+#: assets/js/admin.js:3387
+#: assets/js/admin.js:6018
 msgid "Blogger"
 msgstr ""
 
-#: assets/js/admin.js:4153
+#: assets/js/admin.js:3390
 msgid "Blogger B"
 msgstr ""
 
-#: assets/js/admin.js:4156
-#: assets/js/admin.js:6787
+#: assets/js/admin.js:3393
+#: assets/js/admin.js:6024
 msgid "Bluetooth"
 msgstr ""
 
-#: assets/js/admin.js:4159
+#: assets/js/admin.js:3396
 msgid "Bluetooth B"
 msgstr ""
 
-#: assets/js/admin.js:4165
+#: assets/js/admin.js:3399
+msgid "Bootstrap"
+msgstr ""
+
+#: assets/js/admin.js:3402
 msgid "Bots"
 msgstr ""
 
-#: assets/js/admin.js:4168
-#: assets/js/admin.js:6802
+#: assets/js/admin.js:3405
+#: assets/js/admin.js:6039
 msgid "Brave"
 msgstr ""
 
-#: assets/js/admin.js:4171
+#: assets/js/admin.js:3408
 msgid "Brave Reverse"
 msgstr ""
 
-#: assets/js/admin.js:4174
-#: assets/js/admin.js:6805
+#: assets/js/admin.js:3411
+#: assets/js/admin.js:6042
 msgid "BTC"
 msgstr ""
 
-#: assets/js/admin.js:4177
+#: assets/js/admin.js:3414
 msgid "Buffer"
 msgstr ""
 
-#: assets/js/admin.js:4180
+#: assets/js/admin.js:3417
 msgid "Buy n Large"
 msgstr ""
 
-#: assets/js/admin.js:4183
+#: assets/js/admin.js:3420
 msgid "BuySellAds"
 msgstr ""
 
-#: assets/js/admin.js:4186
+#: assets/js/admin.js:3423
 msgid "Buromobelexperte"
 msgstr ""
 
-#: assets/js/admin.js:4189
+#: assets/js/admin.js:3426
 msgid "CC Amazon Pay"
 msgstr ""
 
-#: assets/js/admin.js:4192
+#: assets/js/admin.js:3429
 msgid "CC Amex"
 msgstr ""
 
-#: assets/js/admin.js:4195
+#: assets/js/admin.js:3432
 msgid "CC Apple Pay"
 msgstr ""
 
-#: assets/js/admin.js:4198
+#: assets/js/admin.js:3435
 msgid "CC Diners Club"
 msgstr ""
 
-#: assets/js/admin.js:4201
+#: assets/js/admin.js:3438
 msgid "CC Discover"
 msgstr ""
 
-#: assets/js/admin.js:4204
+#: assets/js/admin.js:3441
 msgid "CC JCB"
 msgstr ""
 
-#: assets/js/admin.js:4207
+#: assets/js/admin.js:3444
 msgid "CC Mastercard"
 msgstr ""
 
-#: assets/js/admin.js:4210
+#: assets/js/admin.js:3447
 msgid "CC PayPal"
 msgstr ""
 
-#: assets/js/admin.js:4213
+#: assets/js/admin.js:3450
 msgid "CC Stripe"
 msgstr ""
 
-#: assets/js/admin.js:4216
+#: assets/js/admin.js:3453
 msgid "CC Visa"
 msgstr ""
 
-#: assets/js/admin.js:4219
+#: assets/js/admin.js:3456
 msgid "Canadian Maple Leaf"
 msgstr ""
 
-#: assets/js/admin.js:4222
-#: assets/js/admin.js:6811
+#: assets/js/admin.js:3459
+#: assets/js/admin.js:6048
 msgid "Cash App"
 msgstr ""
 
-#: assets/js/admin.js:4225
+#: assets/js/admin.js:3462
 msgid "Centercode"
 msgstr ""
 
-#: assets/js/admin.js:4228
+#: assets/js/admin.js:3465
 msgid "CentOS"
 msgstr ""
 
-#: assets/js/admin.js:4231
-#: assets/js/admin.js:6814
+#: assets/js/admin.js:3468
+#: assets/js/admin.js:6051
 msgid "Chrome"
 msgstr ""
 
-#: assets/js/admin.js:4234
-#: assets/js/admin.js:6817
+#: assets/js/admin.js:3471
+#: assets/js/admin.js:6054
 msgid "Chromecast"
 msgstr ""
 
-#: assets/js/admin.js:4237
-#: assets/js/admin.js:6829
+#: assets/js/admin.js:3474
+#: assets/js/admin.js:6066
 msgid "Cloudflare"
 msgstr ""
 
-#: assets/js/admin.js:4240
+#: assets/js/admin.js:3477
 msgid "Cloudscale"
 msgstr ""
 
-#: assets/js/admin.js:4243
+#: assets/js/admin.js:3480
 msgid "Cloudsmith"
 msgstr ""
 
-#: assets/js/admin.js:4246
+#: assets/js/admin.js:3483
 msgid "Cloudversify"
 msgstr ""
 
-#: assets/js/admin.js:4249
+#: assets/js/admin.js:3486
 msgid "Cmplid"
 msgstr ""
 
-#: assets/js/admin.js:4252
+#: assets/js/admin.js:3489
 msgid "Codie Pie"
 msgstr ""
 
-#: assets/js/admin.js:4255
+#: assets/js/admin.js:3492
 msgid "CodePen"
 msgstr ""
 
-#: assets/js/admin.js:4258
+#: assets/js/admin.js:3495
 msgid "Confluence"
 msgstr ""
 
-#: assets/js/admin.js:4261
+#: assets/js/admin.js:3498
 msgid "Connect Develop"
 msgstr ""
 
-#: assets/js/admin.js:4264
+#: assets/js/admin.js:3501
 msgid "Contao"
 msgstr ""
 
-#: assets/js/admin.js:4267
+#: assets/js/admin.js:3504
 msgid "Cotton Bureau"
 msgstr ""
 
-#: assets/js/admin.js:4270
+#: assets/js/admin.js:3507
 msgid "cPanel"
 msgstr ""
 
-#: assets/js/admin.js:4273
-#: assets/js/admin.js:6850
+#: assets/js/admin.js:3510
+#: assets/js/admin.js:6087
 msgid "Creative Commons"
 msgstr ""
 
-#: assets/js/admin.js:4276
+#: assets/js/admin.js:3513
 msgid "Creative Commons BY"
 msgstr ""
 
-#: assets/js/admin.js:4279
+#: assets/js/admin.js:3516
 msgid "Creative Commons NC"
 msgstr ""
 
-#: assets/js/admin.js:4282
+#: assets/js/admin.js:3519
 msgid "Creative Commons NC EU"
 msgstr ""
 
-#: assets/js/admin.js:4285
+#: assets/js/admin.js:3522
 msgid "Creative Commons NC JP"
 msgstr ""
 
-#: assets/js/admin.js:4288
+#: assets/js/admin.js:3525
 msgid "Creative Commons ND"
 msgstr ""
 
-#: assets/js/admin.js:4291
+#: assets/js/admin.js:3528
 msgid "Creative Commons PD"
 msgstr ""
 
-#: assets/js/admin.js:4294
+#: assets/js/admin.js:3531
 msgid "Creative Commons PD Alt"
 msgstr ""
 
-#: assets/js/admin.js:4297
+#: assets/js/admin.js:3534
 msgid "Creative Commons Remix"
 msgstr ""
 
-#: assets/js/admin.js:4300
+#: assets/js/admin.js:3537
 msgid "Creative Commons SA"
 msgstr ""
 
-#: assets/js/admin.js:4303
+#: assets/js/admin.js:3540
 msgid "Creative Commons Sampling"
 msgstr ""
 
-#: assets/js/admin.js:4306
+#: assets/js/admin.js:3543
 msgid "Creative Commons Sampling Plus"
 msgstr ""
 
-#: assets/js/admin.js:4309
+#: assets/js/admin.js:3546
 msgid "Creative Commons Share"
 msgstr ""
 
-#: assets/js/admin.js:4312
+#: assets/js/admin.js:3549
 msgid "Creative Commons Zero"
 msgstr ""
 
-#: assets/js/admin.js:4315
+#: assets/js/admin.js:3552
 msgid "Critical Role"
 msgstr ""
 
-#: assets/js/admin.js:4318
-#: assets/js/admin.js:5618
+#: assets/js/admin.js:3555
+#: assets/js/admin.js:4855
 msgid "CSS"
 msgstr ""
 
-#: assets/js/admin.js:4321
-#: assets/js/admin.js:6853
+#: assets/js/admin.js:3558
+#: assets/js/admin.js:6090
 msgid "CSS3"
 msgstr ""
 
-#: assets/js/admin.js:4324
+#: assets/js/admin.js:3561
 msgid "CSS3 Alt"
 msgstr ""
 
-#: assets/js/admin.js:4327
+#: assets/js/admin.js:3564
 msgid "Cuttlefish"
 msgstr ""
 
-#: assets/js/admin.js:4330
+#: assets/js/admin.js:3567
 msgid "D and D"
 msgstr ""
 
-#: assets/js/admin.js:4333
+#: assets/js/admin.js:3570
 msgid "D and D Beyond"
 msgstr ""
 
-#: assets/js/admin.js:4336
+#: assets/js/admin.js:3573
 msgid "Dailymotion"
 msgstr ""
 
-#: assets/js/admin.js:4339
+#: assets/js/admin.js:3576
 msgid "Dart Lang"
 msgstr ""
 
-#: assets/js/admin.js:4342
+#: assets/js/admin.js:3579
 msgid "Dashcube"
 msgstr ""
 
-#: assets/js/admin.js:4345
+#: assets/js/admin.js:3582
 msgid "Deezer"
 msgstr ""
 
-#: assets/js/admin.js:4348
+#: assets/js/admin.js:3585
 msgid "Debian"
 msgstr ""
 
-#: assets/js/admin.js:4351
+#: assets/js/admin.js:3588
 msgid "Delicious"
 msgstr ""
 
-#: assets/js/admin.js:4354
+#: assets/js/admin.js:3591
 msgid "Deploydog"
 msgstr ""
 
-#: assets/js/admin.js:4357
+#: assets/js/admin.js:3594
 msgid "Deskpro"
 msgstr ""
 
-#: assets/js/admin.js:4360
-#: assets/js/admin.js:6859
+#: assets/js/admin.js:3597
+#: assets/js/admin.js:6096
 msgid "Dev"
 msgstr ""
 
-#: assets/js/admin.js:4363
+#: assets/js/admin.js:3600
 msgid "DeviantArt"
 msgstr ""
 
-#: assets/js/admin.js:4366
+#: assets/js/admin.js:3603
 msgid "DHL"
 msgstr ""
 
-#: assets/js/admin.js:4369
+#: assets/js/admin.js:3606
 msgid "Diaspora"
 msgstr ""
 
-#: assets/js/admin.js:4372
+#: assets/js/admin.js:3609
 msgid "Digg"
 msgstr ""
 
-#: assets/js/admin.js:4375
+#: assets/js/admin.js:3612
 msgid "Digital Ocean"
 msgstr ""
 
-#: assets/js/admin.js:4378
-#: assets/js/admin.js:5621
-#: assets/js/admin.js:6871
+#: assets/js/admin.js:3615
+#: assets/js/admin.js:4858
+#: assets/js/admin.js:6108
 msgid "Discord"
 msgstr ""
 
-#: assets/js/admin.js:4381
+#: assets/js/admin.js:3618
 msgid "Discourse"
 msgstr ""
 
-#: assets/js/admin.js:4384
+#: assets/js/admin.js:3621
 msgid "Disqus"
 msgstr ""
 
-#: assets/js/admin.js:4387
+#: assets/js/admin.js:3624
 msgid "DocHub"
 msgstr ""
 
-#: assets/js/admin.js:4390
-#: assets/js/admin.js:6880
+#: assets/js/admin.js:3627
+#: assets/js/admin.js:6117
 msgid "Docker"
 msgstr ""
 
-#: assets/js/admin.js:4393
+#: assets/js/admin.js:3630
 msgid "Draft2digital"
 msgstr ""
 
-#: assets/js/admin.js:4396
-#: assets/js/admin.js:5624
-#: assets/js/admin.js:6883
+#: assets/js/admin.js:3633
+#: assets/js/admin.js:4861
+#: assets/js/admin.js:6120
 msgid "Dribbble"
 msgstr ""
 
-#: assets/js/admin.js:4399
-#: assets/js/admin.js:5627
-#: assets/js/admin.js:6892
+#: assets/js/admin.js:3636
+#: assets/js/admin.js:4864
+#: assets/js/admin.js:6129
 msgid "Dropbox"
 msgstr ""
 
-#: assets/js/admin.js:4402
-#: assets/js/admin.js:6895
+#: assets/js/admin.js:3639
+#: assets/js/admin.js:6132
 msgid "Drupal"
 msgstr ""
 
-#: assets/js/admin.js:4405
+#: assets/js/admin.js:3642
 msgid "Duolingo"
 msgstr ""
 
-#: assets/js/admin.js:4408
+#: assets/js/admin.js:3645
 msgid "Dyalog"
 msgstr ""
 
-#: assets/js/admin.js:4411
+#: assets/js/admin.js:3648
 msgid "Earlybirds"
 msgstr ""
 
-#: assets/js/admin.js:4414
+#: assets/js/admin.js:3651
 msgid "eBay"
 msgstr ""
 
-#: assets/js/admin.js:4417
-#: assets/js/admin.js:6898
+#: assets/js/admin.js:3654
+#: assets/js/admin.js:6135
 msgid "Edge"
 msgstr ""
 
-#: assets/js/admin.js:4420
+#: assets/js/admin.js:3657
 msgid "Edge Legacy"
 msgstr ""
 
-#: assets/js/admin.js:4423
+#: assets/js/admin.js:3660
 msgid "Elementor"
 msgstr ""
 
-#: assets/js/admin.js:4426
+#: assets/js/admin.js:3663
 msgid "Eleventy"
 msgstr ""
 
-#: assets/js/admin.js:4429
+#: assets/js/admin.js:3666
 msgid "Ello"
 msgstr ""
 
-#: assets/js/admin.js:4432
+#: assets/js/admin.js:3669
 msgid "Ember"
 msgstr ""
 
-#: assets/js/admin.js:4435
+#: assets/js/admin.js:3672
 msgid "Empire"
 msgstr ""
 
-#: assets/js/admin.js:4438
+#: assets/js/admin.js:3675
 msgid "Envira"
 msgstr ""
 
-#: assets/js/admin.js:4441
+#: assets/js/admin.js:3678
 msgid "Erlang"
 msgstr ""
 
-#: assets/js/admin.js:4444
+#: assets/js/admin.js:3681
 msgid "Ethereum"
 msgstr ""
 
-#: assets/js/admin.js:4447
+#: assets/js/admin.js:3684
 msgid "Etsy"
 msgstr ""
 
-#: assets/js/admin.js:4450
+#: assets/js/admin.js:3687
 msgid "Evernote"
 msgstr ""
 
-#: assets/js/admin.js:4453
+#: assets/js/admin.js:3690
 msgid "ExpeditedSSL"
 msgstr ""
 
-#: assets/js/admin.js:4456
+#: assets/js/admin.js:3693
 msgid "Fantasy Flight Games"
 msgstr ""
 
-#: assets/js/admin.js:4462
+#: assets/js/admin.js:3699
 msgid "Facebook F"
 msgstr ""
 
-#: assets/js/admin.js:4465
-#: assets/js/admin.js:6913
+#: assets/js/admin.js:3702
+#: assets/js/admin.js:6150
 msgid "Facebook Messenger"
 msgstr ""
 
-#: assets/js/admin.js:4468
+#: assets/js/admin.js:3705
 msgid "FedEx"
 msgstr ""
 
-#: assets/js/admin.js:4471
+#: assets/js/admin.js:3708
 msgid "Fedora"
 msgstr ""
 
-#: assets/js/admin.js:4474
-#: assets/js/admin.js:6925
+#: assets/js/admin.js:3711
+#: assets/js/admin.js:6162
 msgid "Figma"
 msgstr ""
 
-#: assets/js/admin.js:4477
+#: assets/js/admin.js:3714
 msgid "Files Pinwheel"
 msgstr ""
 
-#: assets/js/admin.js:4480
-#: assets/js/admin.js:6931
+#: assets/js/admin.js:3717
+#: assets/js/admin.js:6168
 msgid "Firefox"
 msgstr ""
 
-#: assets/js/admin.js:4483
+#: assets/js/admin.js:3720
 msgid "Firefox Browser"
 msgstr ""
 
-#: assets/js/admin.js:4486
+#: assets/js/admin.js:3723
 msgid "First Order"
 msgstr ""
 
-#: assets/js/admin.js:4489
+#: assets/js/admin.js:3726
 msgid "First Order Alt"
 msgstr ""
 
-#: assets/js/admin.js:4492
+#: assets/js/admin.js:3729
 msgid "Firstdraft"
 msgstr ""
 
-#: assets/js/admin.js:4495
-#: assets/js/admin.js:6937
+#: assets/js/admin.js:3732
+#: assets/js/admin.js:6174
 msgid "Flickr"
 msgstr ""
 
-#: assets/js/admin.js:4498
+#: assets/js/admin.js:3735
 msgid "Flipboard"
 msgstr ""
 
-#: assets/js/admin.js:4501
-#: assets/js/admin.js:6940
+#: assets/js/admin.js:3738
+#: assets/js/admin.js:6177
 msgid "Flutter"
 msgstr ""
 
-#: assets/js/admin.js:4504
+#: assets/js/admin.js:3741
 msgid "Fly"
 msgstr ""
 
-#: assets/js/admin.js:4507
+#: assets/js/admin.js:3744
 msgid "Font Awesome"
 msgstr ""
 
-#: assets/js/admin.js:4510
+#: assets/js/admin.js:3747
 msgid "Fonticons"
 msgstr ""
 
-#: assets/js/admin.js:4513
+#: assets/js/admin.js:3750
 msgid "Fonticons Fi"
 msgstr ""
 
-#: assets/js/admin.js:4516
+#: assets/js/admin.js:3753
 msgid "Fort Awesome"
 msgstr ""
 
-#: assets/js/admin.js:4519
+#: assets/js/admin.js:3756
 msgid "Fort Awesome Alt"
 msgstr ""
 
-#: assets/js/admin.js:4522
+#: assets/js/admin.js:3759
 msgid "Forumbee"
 msgstr ""
 
-#: assets/js/admin.js:4525
+#: assets/js/admin.js:3762
 msgid "Foursquare"
 msgstr ""
 
-#: assets/js/admin.js:4528
+#: assets/js/admin.js:3765
 msgid "Free Code Camp"
 msgstr ""
 
-#: assets/js/admin.js:4531
+#: assets/js/admin.js:3768
 msgid "FreeBSD"
 msgstr ""
 
-#: assets/js/admin.js:4534
+#: assets/js/admin.js:3771
 msgid "Fulcrum"
 msgstr ""
 
-#: assets/js/admin.js:4537
+#: assets/js/admin.js:3774
 msgid "Galactic Republic"
 msgstr ""
 
-#: assets/js/admin.js:4540
+#: assets/js/admin.js:3777
 msgid "Galactic Senate"
 msgstr ""
 
-#: assets/js/admin.js:4543
+#: assets/js/admin.js:3780
 msgid "Get Pocket"
 msgstr ""
 
-#: assets/js/admin.js:4546
+#: assets/js/admin.js:3783
 msgid "GG"
 msgstr ""
 
-#: assets/js/admin.js:4549
+#: assets/js/admin.js:3786
 msgid "GG Circle"
 msgstr ""
 
-#: assets/js/admin.js:4552
-#: assets/js/admin.js:5633
-#: assets/js/admin.js:6955
+#: assets/js/admin.js:3789
+#: assets/js/admin.js:4870
+#: assets/js/admin.js:6192
 msgid "Git"
 msgstr ""
 
-#: assets/js/admin.js:4555
+#: assets/js/admin.js:3792
 msgid "Git Alt"
 msgstr ""
 
-#: assets/js/admin.js:4558
-#: assets/js/admin.js:5636
+#: assets/js/admin.js:3795
+#: assets/js/admin.js:4873
 msgid "GitHub"
 msgstr ""
 
-#: assets/js/admin.js:4561
+#: assets/js/admin.js:3798
 msgid "GitHub Alt"
 msgstr ""
 
-#: assets/js/admin.js:4564
+#: assets/js/admin.js:3801
 msgid "GitKraken"
 msgstr ""
 
-#: assets/js/admin.js:4567
-#: assets/js/admin.js:5639
+#: assets/js/admin.js:3804
+#: assets/js/admin.js:4876
 msgid "GitLab"
 msgstr ""
 
-#: assets/js/admin.js:4570
+#: assets/js/admin.js:3807
 msgid "Gitter"
 msgstr ""
 
-#: assets/js/admin.js:4573
+#: assets/js/admin.js:3810
 msgid "Glide"
 msgstr ""
 
-#: assets/js/admin.js:4576
+#: assets/js/admin.js:3813
 msgid "Glide G"
 msgstr ""
 
-#: assets/js/admin.js:4579
+#: assets/js/admin.js:3816
 msgid "Gofore"
 msgstr ""
 
-#: assets/js/admin.js:4582
+#: assets/js/admin.js:3819
 msgid "Golang"
 msgstr ""
 
-#: assets/js/admin.js:4585
-#: assets/js/admin.js:6964
+#: assets/js/admin.js:3822
+#: assets/js/admin.js:6201
 msgid "Goodreads"
 msgstr ""
 
-#: assets/js/admin.js:4588
+#: assets/js/admin.js:3825
 msgid "Goodreads G"
 msgstr ""
 
-#: assets/js/admin.js:4594
-#: assets/js/admin.js:6973
+#: assets/js/admin.js:3831
+#: assets/js/admin.js:6210
 msgid "Google Drive"
 msgstr ""
 
-#: assets/js/admin.js:4597
-#: assets/js/admin.js:6979
+#: assets/js/admin.js:3834
+#: assets/js/admin.js:6216
 msgid "Google Pay"
 msgstr ""
 
-#: assets/js/admin.js:4600
-#: assets/js/admin.js:5645
+#: assets/js/admin.js:3837
+#: assets/js/admin.js:4882
 msgid "Google Play"
 msgstr ""
 
-#: assets/js/admin.js:4603
+#: assets/js/admin.js:3840
 msgid "Google Plus"
 msgstr ""
 
-#: assets/js/admin.js:4606
+#: assets/js/admin.js:3843
 msgid "Google Plus G"
 msgstr ""
 
-#: assets/js/admin.js:4609
+#: assets/js/admin.js:3846
 msgid "Google Scholar"
 msgstr ""
 
-#: assets/js/admin.js:4612
-#: assets/js/admin.js:6982
+#: assets/js/admin.js:3849
+#: assets/js/admin.js:6219
 msgid "Google Wallet"
 msgstr ""
 
-#: assets/js/admin.js:4615
+#: assets/js/admin.js:3852
 msgid "Gratipay"
 msgstr ""
 
-#: assets/js/admin.js:4618
+#: assets/js/admin.js:3855
 msgid "Grav"
 msgstr ""
 
-#: assets/js/admin.js:4621
+#: assets/js/admin.js:3858
 msgid "Gripfire"
 msgstr ""
 
-#: assets/js/admin.js:4624
+#: assets/js/admin.js:3861
 msgid "Grunt"
 msgstr ""
 
-#: assets/js/admin.js:4627
+#: assets/js/admin.js:3864
 msgid "Guilded"
 msgstr ""
 
-#: assets/js/admin.js:4630
+#: assets/js/admin.js:3867
 msgid "Gulp"
 msgstr ""
 
-#: assets/js/admin.js:4633
-#: assets/js/admin.js:6988
+#: assets/js/admin.js:3870
+#: assets/js/admin.js:6225
 msgid "Hacker News"
 msgstr ""
 
-#: assets/js/admin.js:4636
+#: assets/js/admin.js:3873
 msgid "HackerRank"
 msgstr ""
 
-#: assets/js/admin.js:4639
-#: assets/js/admin.js:6991
+#: assets/js/admin.js:3876
+#: assets/js/admin.js:6228
 msgid "Hashnode"
 msgstr ""
 
-#: assets/js/admin.js:4642
+#: assets/js/admin.js:3879
 msgid "Hire A Helper"
 msgstr ""
 
-#: assets/js/admin.js:4645
+#: assets/js/admin.js:3882
 msgid "Hive"
 msgstr ""
 
-#: assets/js/admin.js:4648
+#: assets/js/admin.js:3885
 msgid "HIPS"
 msgstr ""
 
-#: assets/js/admin.js:4651
+#: assets/js/admin.js:3888
 msgid "Hooli"
 msgstr ""
 
-#: assets/js/admin.js:4654
+#: assets/js/admin.js:3891
 msgid "Hornbill"
 msgstr ""
 
-#: assets/js/admin.js:4657
+#: assets/js/admin.js:3894
 msgid "Hotjar"
 msgstr ""
 
-#: assets/js/admin.js:4660
+#: assets/js/admin.js:3897
 msgid "Houzz"
 msgstr ""
 
-#: assets/js/admin.js:4663
-#: assets/js/admin.js:6994
+#: assets/js/admin.js:3900
+#: assets/js/admin.js:6231
 msgid "HTML5"
 msgstr ""
 
-#: assets/js/admin.js:4666
+#: assets/js/admin.js:3903
 msgid "HubSpot"
 msgstr ""
 
-#: assets/js/admin.js:4669
+#: assets/js/admin.js:3906
 msgid "Ideal"
 msgstr ""
 
-#: assets/js/admin.js:4672
-#: assets/js/admin.js:7000
+#: assets/js/admin.js:3909
+#: assets/js/admin.js:6237
 msgid "IMDB"
 msgstr ""
 
-#: assets/js/admin.js:4678
+#: assets/js/admin.js:3915
 msgid "Instalod"
 msgstr ""
 
-#: assets/js/admin.js:4681
+#: assets/js/admin.js:3918
 msgid "Intercom"
 msgstr ""
 
-#: assets/js/admin.js:4684
+#: assets/js/admin.js:3921
 msgid "Internet Explorer"
 msgstr ""
 
-#: assets/js/admin.js:4687
+#: assets/js/admin.js:3924
 msgid "Invision"
 msgstr ""
 
-#: assets/js/admin.js:4690
+#: assets/js/admin.js:3927
 msgid "IOXHost"
 msgstr ""
 
-#: assets/js/admin.js:4693
+#: assets/js/admin.js:3930
 msgid "Itch.io"
 msgstr ""
 
-#: assets/js/admin.js:4696
+#: assets/js/admin.js:3933
 msgid "iTunes"
 msgstr ""
 
-#: assets/js/admin.js:4699
+#: assets/js/admin.js:3936
 msgid "iTunes Note"
 msgstr ""
 
-#: assets/js/admin.js:4702
-#: assets/js/admin.js:7021
+#: assets/js/admin.js:3939
+#: assets/js/admin.js:6258
 msgid "Java"
 msgstr ""
 
-#: assets/js/admin.js:4705
+#: assets/js/admin.js:3942
 msgid "Jedi Order"
 msgstr ""
 
-#: assets/js/admin.js:4708
+#: assets/js/admin.js:3945
 msgid "Jenkins"
 msgstr ""
 
-#: assets/js/admin.js:4711
+#: assets/js/admin.js:3948
 msgid "Jira"
 msgstr ""
 
-#: assets/js/admin.js:4714
-#: assets/js/admin.js:7030
+#: assets/js/admin.js:3951
+#: assets/js/admin.js:6267
 msgid "Joomla"
 msgstr ""
 
-#: assets/js/admin.js:4717
+#: assets/js/admin.js:3954
 msgid "Joget"
 msgstr ""
 
-#: assets/js/admin.js:4720
+#: assets/js/admin.js:3957
 msgid "JS"
 msgstr ""
 
-#: assets/js/admin.js:4723
-#: assets/js/admin.js:7033
+#: assets/js/admin.js:3960
+#: assets/js/admin.js:6270
 msgid "JSFiddle"
 msgstr ""
 
-#: assets/js/admin.js:4726
+#: assets/js/admin.js:3963
 msgid "JXL"
 msgstr ""
 
-#: assets/js/admin.js:4729
+#: assets/js/admin.js:3966
 msgid "Kaggle"
 msgstr ""
 
-#: assets/js/admin.js:4732
+#: assets/js/admin.js:3969
 msgid "Kakao Talk"
 msgstr ""
 
-#: assets/js/admin.js:4735
+#: assets/js/admin.js:3972
 msgid "Keybase"
 msgstr ""
 
-#: assets/js/admin.js:4738
+#: assets/js/admin.js:3975
 msgid "KeyCDN"
 msgstr ""
 
-#: assets/js/admin.js:4741
+#: assets/js/admin.js:3978
 msgid "Kickstarter"
 msgstr ""
 
-#: assets/js/admin.js:4744
+#: assets/js/admin.js:3981
 msgid "Kickstarter K"
 msgstr ""
 
-#: assets/js/admin.js:4747
+#: assets/js/admin.js:3984
 msgid "Korvue"
 msgstr ""
 
-#: assets/js/admin.js:4750
-#: assets/js/admin.js:7039
+#: assets/js/admin.js:3987
+#: assets/js/admin.js:6276
 msgid "Laravel"
 msgstr ""
 
-#: assets/js/admin.js:4753
+#: assets/js/admin.js:3990
 msgid "Last.fm"
 msgstr ""
 
-#: assets/js/admin.js:4756
+#: assets/js/admin.js:3993
 msgid "Leanpub"
 msgstr ""
 
-#: assets/js/admin.js:4759
+#: assets/js/admin.js:3996
 msgid "Less"
 msgstr ""
 
-#: assets/js/admin.js:4762
+#: assets/js/admin.js:3999
 msgid "Letterboxd"
 msgstr ""
 
-#: assets/js/admin.js:4765
-#: assets/js/admin.js:5654
-#: assets/js/admin.js:7045
+#: assets/js/admin.js:4002
+#: assets/js/admin.js:4891
+#: assets/js/admin.js:6282
 msgid "Line"
 msgstr ""
 
-#: assets/js/admin.js:4771
+#: assets/js/admin.js:4008
 msgid "LinkedIn In"
 msgstr ""
 
-#: assets/js/admin.js:4774
+#: assets/js/admin.js:4011
 msgid "Linode"
 msgstr ""
 
-#: assets/js/admin.js:4777
+#: assets/js/admin.js:4014
 msgid "Linktree"
 msgstr ""
 
-#: assets/js/admin.js:4780
+#: assets/js/admin.js:4017
 msgid "Linux"
 msgstr ""
 
-#: assets/js/admin.js:4783
+#: assets/js/admin.js:4020
 msgid "Lumon"
 msgstr ""
 
-#: assets/js/admin.js:4786
+#: assets/js/admin.js:4023
 msgid "Lumon Drop"
 msgstr ""
 
-#: assets/js/admin.js:4789
+#: assets/js/admin.js:4026
 msgid "Lyft"
 msgstr ""
 
-#: assets/js/admin.js:4792
-#: assets/js/admin.js:7057
+#: assets/js/admin.js:4029
+#: assets/js/admin.js:6294
 msgid "Magento"
 msgstr ""
 
-#: assets/js/admin.js:4795
-#: assets/js/admin.js:7060
+#: assets/js/admin.js:4032
+#: assets/js/admin.js:6297
 msgid "Mailchimp"
 msgstr ""
 
-#: assets/js/admin.js:4798
+#: assets/js/admin.js:4035
 msgid "Mandalorian"
 msgstr ""
 
-#: assets/js/admin.js:4801
-#: assets/js/admin.js:7063
+#: assets/js/admin.js:4038
+#: assets/js/admin.js:6300
 msgid "Markdown"
 msgstr ""
 
-#: assets/js/admin.js:4804
-#: assets/js/admin.js:5660
+#: assets/js/admin.js:4041
+#: assets/js/admin.js:4897
 msgid "Mastodon"
 msgstr ""
 
-#: assets/js/admin.js:4807
+#: assets/js/admin.js:4044
 msgid "MaxCDN"
 msgstr ""
 
-#: assets/js/admin.js:4810
+#: assets/js/admin.js:4047
 msgid "MDB"
 msgstr ""
 
-#: assets/js/admin.js:4813
+#: assets/js/admin.js:4050
 msgid "Medapps"
 msgstr ""
 
-#: assets/js/admin.js:4816
+#: assets/js/admin.js:4053
 msgid "MedRT"
 msgstr ""
 
-#: assets/js/admin.js:4819
-#: assets/js/admin.js:5663
-#: assets/js/admin.js:7069
+#: assets/js/admin.js:4056
+#: assets/js/admin.js:4900
+#: assets/js/admin.js:6306
 msgid "Medium"
 msgstr ""
 
-#: assets/js/admin.js:4822
+#: assets/js/admin.js:4059
 msgid "Meetup"
 msgstr ""
 
-#: assets/js/admin.js:4825
+#: assets/js/admin.js:4062
 msgid "Megaport"
 msgstr ""
 
-#: assets/js/admin.js:4828
+#: assets/js/admin.js:4065
 msgid "Mendeley"
 msgstr ""
 
-#: assets/js/admin.js:4831
-#: assets/js/admin.js:5669
-#: assets/js/admin.js:7078
+#: assets/js/admin.js:4068
+#: assets/js/admin.js:4906
+#: assets/js/admin.js:6315
 msgid "Meta"
 msgstr ""
 
-#: assets/js/admin.js:4834
-#: assets/js/admin.js:5672
-#: assets/js/admin.js:7084
+#: assets/js/admin.js:4071
+#: assets/js/admin.js:4909
+#: assets/js/admin.js:6321
 msgid "Microsoft"
 msgstr ""
 
-#: assets/js/admin.js:4837
+#: assets/js/admin.js:4074
 msgid "Mintbit"
 msgstr ""
 
-#: assets/js/admin.js:4840
+#: assets/js/admin.js:4077
 msgid "Mix"
 msgstr ""
 
-#: assets/js/admin.js:4843
+#: assets/js/admin.js:4080
 msgid "Mixcloud"
 msgstr ""
 
-#: assets/js/admin.js:4846
+#: assets/js/admin.js:4083
 msgid "Mixer"
 msgstr ""
 
-#: assets/js/admin.js:4849
+#: assets/js/admin.js:4086
 msgid "Mizuni"
 msgstr ""
 
-#: assets/js/admin.js:4852
+#: assets/js/admin.js:4089
 msgid "MODX"
 msgstr ""
 
-#: assets/js/admin.js:4855
+#: assets/js/admin.js:4092
 msgid "Monero"
 msgstr ""
 
-#: assets/js/admin.js:4858
+#: assets/js/admin.js:4095
 msgid "Napster"
 msgstr ""
 
-#: assets/js/admin.js:4861
+#: assets/js/admin.js:4098
 msgid "Neos"
 msgstr ""
 
-#: assets/js/admin.js:4864
+#: assets/js/admin.js:4101
 msgid "NFC Directional"
 msgstr ""
 
-#: assets/js/admin.js:4867
+#: assets/js/admin.js:4104
 msgid "NFC Symbol"
 msgstr ""
 
-#: assets/js/admin.js:4870
+#: assets/js/admin.js:4107
 msgid "Nimblr"
 msgstr ""
 
-#: assets/js/admin.js:4873
+#: assets/js/admin.js:4110
 msgid "Node"
 msgstr ""
 
-#: assets/js/admin.js:4876
+#: assets/js/admin.js:4113
 msgid "Node JS"
 msgstr ""
 
-#: assets/js/admin.js:4879
-#: assets/js/admin.js:7123
+#: assets/js/admin.js:4116
+#: assets/js/admin.js:6360
 msgid "Notion"
 msgstr ""
 
-#: assets/js/admin.js:4882
-#: assets/js/admin.js:7126
+#: assets/js/admin.js:4119
+#: assets/js/admin.js:6363
 msgid "NPM"
 msgstr ""
 
-#: assets/js/admin.js:4885
+#: assets/js/admin.js:4122
 msgid "NS8"
 msgstr ""
 
-#: assets/js/admin.js:4888
+#: assets/js/admin.js:4125
 msgid "Nutritionix"
 msgstr ""
 
-#: assets/js/admin.js:4891
+#: assets/js/admin.js:4128
 msgid "Octopus Deploy"
 msgstr ""
 
-#: assets/js/admin.js:4894
+#: assets/js/admin.js:4131
 msgid "Odnoklassniki"
 msgstr ""
 
-#: assets/js/admin.js:4897
+#: assets/js/admin.js:4134
 msgid "Odysee"
 msgstr ""
 
-#: assets/js/admin.js:4900
+#: assets/js/admin.js:4137
 msgid "Old Republic"
 msgstr ""
 
-#: assets/js/admin.js:4903
-#: assets/js/admin.js:5684
-#: assets/js/admin.js:7138
+#: assets/js/admin.js:4140
+#: assets/js/admin.js:4921
+#: assets/js/admin.js:6375
 msgid "OpenAI"
 msgstr ""
 
-#: assets/js/admin.js:4906
+#: assets/js/admin.js:4143
 msgid "OpenCart"
 msgstr ""
 
-#: assets/js/admin.js:4909
+#: assets/js/admin.js:4146
 msgid "OpenID"
 msgstr ""
 
-#: assets/js/admin.js:4912
+#: assets/js/admin.js:4149
 msgid "OpenSUSE"
 msgstr ""
 
-#: assets/js/admin.js:4915
+#: assets/js/admin.js:4152
 msgid "Opera"
 msgstr ""
 
-#: assets/js/admin.js:4918
+#: assets/js/admin.js:4155
 msgid "OptinMonster"
 msgstr ""
 
-#: assets/js/admin.js:4921
+#: assets/js/admin.js:4158
 msgid "ORCID"
 msgstr ""
 
-#: assets/js/admin.js:4924
+#: assets/js/admin.js:4161
 msgid "OSI"
 msgstr ""
 
-#: assets/js/admin.js:4927
+#: assets/js/admin.js:4164
 msgid "Padlet"
 msgstr ""
 
-#: assets/js/admin.js:4930
+#: assets/js/admin.js:4167
 msgid "Page4"
 msgstr ""
 
-#: assets/js/admin.js:4933
+#: assets/js/admin.js:4170
 msgid "Pagelines"
 msgstr ""
 
-#: assets/js/admin.js:4936
+#: assets/js/admin.js:4173
 msgid "Palfed"
 msgstr ""
 
-#: assets/js/admin.js:4939
+#: assets/js/admin.js:4176
 msgid "Pandora"
 msgstr ""
 
-#: assets/js/admin.js:4942
-#: assets/js/admin.js:7150
+#: assets/js/admin.js:4179
+#: assets/js/admin.js:6387
 msgid "Patreon"
 msgstr ""
 
-#: assets/js/admin.js:4945
-#: assets/js/admin.js:5690
-#: assets/js/admin.js:7156
+#: assets/js/admin.js:4182
+#: assets/js/admin.js:4927
+#: assets/js/admin.js:6393
 msgid "PayPal"
 msgstr ""
 
-#: assets/js/admin.js:4948
+#: assets/js/admin.js:4185
 msgid "Perbyte"
 msgstr ""
 
-#: assets/js/admin.js:4951
+#: assets/js/admin.js:4188
 msgid "Periscope"
 msgstr ""
 
-#: assets/js/admin.js:4954
+#: assets/js/admin.js:4191
 msgid "Phabricator"
 msgstr ""
 
-#: assets/js/admin.js:4957
+#: assets/js/admin.js:4194
 msgid "Phoenix Framework"
 msgstr ""
 
-#: assets/js/admin.js:4960
+#: assets/js/admin.js:4197
 msgid "Phoenix Squadron"
 msgstr ""
 
-#: assets/js/admin.js:4963
-#: assets/js/admin.js:7162
+#: assets/js/admin.js:4200
+#: assets/js/admin.js:6399
 msgid "PHP"
 msgstr ""
 
-#: assets/js/admin.js:4966
+#: assets/js/admin.js:4203
 msgid "Pied Piper"
 msgstr ""
 
-#: assets/js/admin.js:4969
+#: assets/js/admin.js:4206
 msgid "Pied Piper Alt"
 msgstr ""
 
-#: assets/js/admin.js:4972
+#: assets/js/admin.js:4209
 msgid "Pied Piper Hat"
 msgstr ""
 
-#: assets/js/admin.js:4975
+#: assets/js/admin.js:4212
 msgid "Pied Piper PP"
 msgstr ""
 
-#: assets/js/admin.js:4981
+#: assets/js/admin.js:4218
 msgid "Pinterest P"
 msgstr ""
 
-#: assets/js/admin.js:4984
+#: assets/js/admin.js:4221
 msgid "Pix"
 msgstr ""
 
-#: assets/js/admin.js:4987
+#: assets/js/admin.js:4224
 msgid "PixelFed"
 msgstr ""
 
-#: assets/js/admin.js:4990
+#: assets/js/admin.js:4227
 msgid "Pixiv"
 msgstr ""
 
-#: assets/js/admin.js:4993
-#: assets/js/admin.js:5699
+#: assets/js/admin.js:4230
+#: assets/js/admin.js:4936
 msgid "PlayStation"
 msgstr ""
 
-#: assets/js/admin.js:4996
+#: assets/js/admin.js:4233
 msgid "Product Hunt"
 msgstr ""
 
-#: assets/js/admin.js:4999
+#: assets/js/admin.js:4236
 msgid "Pushed"
 msgstr ""
 
-#: assets/js/admin.js:5002
-#: assets/js/admin.js:7204
+#: assets/js/admin.js:4239
+#: assets/js/admin.js:6441
 msgid "Python"
 msgstr ""
 
-#: assets/js/admin.js:5005
+#: assets/js/admin.js:4242
 msgid "QQ"
 msgstr ""
 
-#: assets/js/admin.js:5008
+#: assets/js/admin.js:4245
 msgid "Quinscape"
 msgstr ""
 
-#: assets/js/admin.js:5011
-#: assets/js/admin.js:5702
-#: assets/js/admin.js:7207
+#: assets/js/admin.js:4248
+#: assets/js/admin.js:4939
+#: assets/js/admin.js:6444
 msgid "Quora"
 msgstr ""
 
-#: assets/js/admin.js:5014
+#: assets/js/admin.js:4251
 msgid "R Project"
 msgstr ""
 
-#: assets/js/admin.js:5017
+#: assets/js/admin.js:4254
 msgid "Raspberry Pi"
 msgstr ""
 
-#: assets/js/admin.js:5020
+#: assets/js/admin.js:4257
 msgid "Ravelry"
 msgstr ""
 
-#: assets/js/admin.js:5023
-#: assets/js/admin.js:7213
+#: assets/js/admin.js:4260
+#: assets/js/admin.js:6450
 msgid "React"
 msgstr ""
 
-#: assets/js/admin.js:5026
+#: assets/js/admin.js:4263
 msgid "Reacteurope"
 msgstr ""
 
-#: assets/js/admin.js:5029
+#: assets/js/admin.js:4266
 msgid "Readme"
 msgstr ""
 
-#: assets/js/admin.js:5032
+#: assets/js/admin.js:4269
 msgid "Rebel"
 msgstr ""
 
-#: assets/js/admin.js:5035
+#: assets/js/admin.js:4272
 msgid "Red Hat"
 msgstr ""
 
-#: assets/js/admin.js:5038
+#: assets/js/admin.js:4275
 msgid "Red River"
 msgstr ""
 
-#: assets/js/admin.js:5044
+#: assets/js/admin.js:4281
 msgid "Reddit Alien"
 msgstr ""
 
-#: assets/js/admin.js:5047
+#: assets/js/admin.js:4284
 msgid "Renren"
 msgstr ""
 
-#: assets/js/admin.js:5050
+#: assets/js/admin.js:4287
 msgid "Replyd"
 msgstr ""
 
-#: assets/js/admin.js:5053
+#: assets/js/admin.js:4290
 msgid "ResearchGate"
 msgstr ""
 
-#: assets/js/admin.js:5056
+#: assets/js/admin.js:4293
 msgid "Resolving"
 msgstr ""
 
-#: assets/js/admin.js:5059
+#: assets/js/admin.js:4296
 msgid "Rev"
 msgstr ""
 
-#: assets/js/admin.js:5062
+#: assets/js/admin.js:4299
 msgid "Rocketchat"
 msgstr ""
 
-#: assets/js/admin.js:5065
+#: assets/js/admin.js:4302
 msgid "Rockrms"
 msgstr ""
 
-#: assets/js/admin.js:5068
+#: assets/js/admin.js:4305
 msgid "Rust"
 msgstr ""
 
-#: assets/js/admin.js:5071
-#: assets/js/admin.js:7222
+#: assets/js/admin.js:4308
+#: assets/js/admin.js:6459
 msgid "Safari"
 msgstr ""
 
-#: assets/js/admin.js:5074
+#: assets/js/admin.js:4311
 msgid "Salesforce"
 msgstr ""
 
-#: assets/js/admin.js:5077
+#: assets/js/admin.js:4314
 msgid "Sass"
 msgstr ""
 
-#: assets/js/admin.js:5080
+#: assets/js/admin.js:4317
 msgid "Schlix"
 msgstr ""
 
-#: assets/js/admin.js:5083
+#: assets/js/admin.js:4320
 msgid "ScreenPal"
 msgstr ""
 
-#: assets/js/admin.js:5086
+#: assets/js/admin.js:4323
 msgid "Scribd"
 msgstr ""
 
-#: assets/js/admin.js:5089
+#: assets/js/admin.js:4326
 msgid "Searchengin"
 msgstr ""
 
-#: assets/js/admin.js:5095
+#: assets/js/admin.js:4332
 msgid "Sellcast"
 msgstr ""
 
-#: assets/js/admin.js:5098
+#: assets/js/admin.js:4335
 msgid "Sellsy"
 msgstr ""
 
-#: assets/js/admin.js:5101
+#: assets/js/admin.js:4338
 msgid "Servicestack"
 msgstr ""
 
-#: assets/js/admin.js:5104
+#: assets/js/admin.js:4341
 msgid "Shirts In Bulk"
 msgstr ""
 
-#: assets/js/admin.js:5107
+#: assets/js/admin.js:4344
 msgid "Shoelace"
 msgstr ""
 
-#: assets/js/admin.js:5110
+#: assets/js/admin.js:4347
 msgid "Shopify"
 msgstr ""
 
-#: assets/js/admin.js:5113
+#: assets/js/admin.js:4350
 msgid "Shopware"
 msgstr ""
 
-#: assets/js/admin.js:5116
+#: assets/js/admin.js:4353
 msgid "Signal Messenger"
 msgstr ""
 
-#: assets/js/admin.js:5119
+#: assets/js/admin.js:4356
 msgid "SimplyBuilt"
 msgstr ""
 
-#: assets/js/admin.js:5122
+#: assets/js/admin.js:4359
 msgid "Sistrix"
 msgstr ""
 
-#: assets/js/admin.js:5125
+#: assets/js/admin.js:4362
 msgid "Sith"
 msgstr ""
 
-#: assets/js/admin.js:5128
+#: assets/js/admin.js:4365
 msgid "Sitrox"
 msgstr ""
 
-#: assets/js/admin.js:5131
-#: assets/js/admin.js:7231
+#: assets/js/admin.js:4368
+#: assets/js/admin.js:6468
 msgid "Sketch"
 msgstr ""
 
-#: assets/js/admin.js:5134
+#: assets/js/admin.js:4371
 msgid "SkyAtlas"
 msgstr ""
 
-#: assets/js/admin.js:5137
-#: assets/js/admin.js:5714
-#: assets/js/admin.js:7234
+#: assets/js/admin.js:4374
+#: assets/js/admin.js:4951
+#: assets/js/admin.js:6471
 msgid "Skype"
 msgstr ""
 
-#: assets/js/admin.js:5140
-#: assets/js/admin.js:5717
-#: assets/js/admin.js:7237
+#: assets/js/admin.js:4377
+#: assets/js/admin.js:4954
+#: assets/js/admin.js:6474
 msgid "Slack"
 msgstr ""
 
-#: assets/js/admin.js:5143
+#: assets/js/admin.js:4380
 msgid "SlideShare"
 msgstr ""
 
-#: assets/js/admin.js:5146
-#: assets/js/admin.js:5720
-#: assets/js/admin.js:7243
+#: assets/js/admin.js:4383
+#: assets/js/admin.js:4957
+#: assets/js/admin.js:6480
 msgid "Snapchat"
 msgstr ""
 
-#: assets/js/admin.js:5149
+#: assets/js/admin.js:4386
 msgid "SoundCloud"
 msgstr ""
 
-#: assets/js/admin.js:5152
+#: assets/js/admin.js:4389
 msgid "Sourcetree"
 msgstr ""
 
-#: assets/js/admin.js:5155
+#: assets/js/admin.js:4392
 msgid "Space Awesome"
 msgstr ""
 
-#: assets/js/admin.js:5158
+#: assets/js/admin.js:4395
 msgid "Speakap"
 msgstr ""
 
-#: assets/js/admin.js:5161
+#: assets/js/admin.js:4398
 msgid "Speaker Deck"
 msgstr ""
 
-#: assets/js/admin.js:5167
+#: assets/js/admin.js:4404
 msgid "Square Behance"
 msgstr ""
 
-#: assets/js/admin.js:5170
+#: assets/js/admin.js:4407
 msgid "Square Bluesky"
 msgstr ""
 
-#: assets/js/admin.js:5173
+#: assets/js/admin.js:4410
 msgid "Square Dribbble"
 msgstr ""
 
-#: assets/js/admin.js:5176
+#: assets/js/admin.js:4413
 msgid "Square Facebook"
 msgstr ""
 
-#: assets/js/admin.js:5179
+#: assets/js/admin.js:4416
 msgid "Square Figma"
 msgstr ""
 
-#: assets/js/admin.js:5182
+#: assets/js/admin.js:4419
 msgid "Square Font Awesome"
 msgstr ""
 
-#: assets/js/admin.js:5185
+#: assets/js/admin.js:4422
 msgid "Square Font Awesome Stroke"
 msgstr ""
 
-#: assets/js/admin.js:5188
+#: assets/js/admin.js:4425
 msgid "Square Git"
 msgstr ""
 
-#: assets/js/admin.js:5191
+#: assets/js/admin.js:4428
 msgid "Square GitHub"
 msgstr ""
 
-#: assets/js/admin.js:5194
+#: assets/js/admin.js:4431
 msgid "Square GitLab"
 msgstr ""
 
-#: assets/js/admin.js:5197
+#: assets/js/admin.js:4434
 msgid "Square Google Plus"
 msgstr ""
 
-#: assets/js/admin.js:5200
+#: assets/js/admin.js:4437
 msgid "Square Hacker News"
 msgstr ""
 
-#: assets/js/admin.js:5203
+#: assets/js/admin.js:4440
 msgid "Square Instagram"
 msgstr ""
 
-#: assets/js/admin.js:5206
+#: assets/js/admin.js:4443
 msgid "Square JS"
 msgstr ""
 
-#: assets/js/admin.js:5209
+#: assets/js/admin.js:4446
 msgid "Square Last.fm"
 msgstr ""
 
-#: assets/js/admin.js:5212
+#: assets/js/admin.js:4449
 msgid "Square Letterboxd"
 msgstr ""
 
-#: assets/js/admin.js:5215
+#: assets/js/admin.js:4452
 msgid "Square LinkedIn"
 msgstr ""
 
-#: assets/js/admin.js:5218
+#: assets/js/admin.js:4455
 msgid "Square Odnoklassniki"
 msgstr ""
 
-#: assets/js/admin.js:5221
+#: assets/js/admin.js:4458
 msgid "Square Pied Piper"
 msgstr ""
 
-#: assets/js/admin.js:5224
+#: assets/js/admin.js:4461
 msgid "Square Pinterest"
 msgstr ""
 
-#: assets/js/admin.js:5227
+#: assets/js/admin.js:4464
 msgid "Square Reddit"
 msgstr ""
 
-#: assets/js/admin.js:5230
+#: assets/js/admin.js:4467
 msgid "Square Snapchat"
 msgstr ""
 
-#: assets/js/admin.js:5233
+#: assets/js/admin.js:4470
 msgid "Square Steam"
 msgstr ""
 
-#: assets/js/admin.js:5236
+#: assets/js/admin.js:4473
 msgid "Square Threads"
 msgstr ""
 
-#: assets/js/admin.js:5239
+#: assets/js/admin.js:4476
 msgid "Square Tumblr"
 msgstr ""
 
-#: assets/js/admin.js:5242
+#: assets/js/admin.js:4479
 msgid "Square Twitter"
 msgstr ""
 
-#: assets/js/admin.js:5245
+#: assets/js/admin.js:4482
 msgid "Square Upwork"
 msgstr ""
 
-#: assets/js/admin.js:5248
+#: assets/js/admin.js:4485
 msgid "Square Viadeo"
 msgstr ""
 
-#: assets/js/admin.js:5251
+#: assets/js/admin.js:4488
 msgid "Square Vimeo"
 msgstr ""
 
-#: assets/js/admin.js:5254
+#: assets/js/admin.js:4491
 msgid "Square Web Awesome"
 msgstr ""
 
-#: assets/js/admin.js:5257
+#: assets/js/admin.js:4494
 msgid "Square Web Awesome Stroke"
 msgstr ""
 
-#: assets/js/admin.js:5260
+#: assets/js/admin.js:4497
 msgid "Square WhatsApp"
 msgstr ""
 
-#: assets/js/admin.js:5263
+#: assets/js/admin.js:4500
 msgid "Square X Twitter"
 msgstr ""
 
-#: assets/js/admin.js:5266
+#: assets/js/admin.js:4503
 msgid "Square Xing"
 msgstr ""
 
-#: assets/js/admin.js:5269
+#: assets/js/admin.js:4506
 msgid "Square YouTube"
 msgstr ""
 
-#: assets/js/admin.js:5272
-#: assets/js/admin.js:7258
+#: assets/js/admin.js:4509
+#: assets/js/admin.js:6495
 msgid "Squarespace"
 msgstr ""
 
-#: assets/js/admin.js:5275
+#: assets/js/admin.js:4512
 msgid "Stack Exchange"
 msgstr ""
 
-#: assets/js/admin.js:5278
-#: assets/js/admin.js:5729
+#: assets/js/admin.js:4515
+#: assets/js/admin.js:4966
 msgid "Stack Overflow"
 msgstr ""
 
-#: assets/js/admin.js:5281
+#: assets/js/admin.js:4518
 msgid "Stackpath"
 msgstr ""
 
-#: assets/js/admin.js:5284
+#: assets/js/admin.js:4521
 msgid "Staylinked"
 msgstr ""
 
-#: assets/js/admin.js:5287
-#: assets/js/admin.js:5732
-#: assets/js/admin.js:7267
+#: assets/js/admin.js:4524
+#: assets/js/admin.js:4969
+#: assets/js/admin.js:6504
 msgid "Steam"
 msgstr ""
 
-#: assets/js/admin.js:5290
+#: assets/js/admin.js:4527
 msgid "Steam Symbol"
 msgstr ""
 
-#: assets/js/admin.js:5293
+#: assets/js/admin.js:4530
 msgid "Sticker Mule"
 msgstr ""
 
-#: assets/js/admin.js:5296
-#: assets/js/admin.js:5735
+#: assets/js/admin.js:4533
+#: assets/js/admin.js:4972
 msgid "Strava"
 msgstr ""
 
-#: assets/js/admin.js:5299
-#: assets/js/admin.js:5738
-#: assets/js/admin.js:7270
+#: assets/js/admin.js:4536
+#: assets/js/admin.js:4975
+#: assets/js/admin.js:6507
 msgid "Stripe"
 msgstr ""
 
-#: assets/js/admin.js:5302
+#: assets/js/admin.js:4539
 msgid "Stripe S"
 msgstr ""
 
-#: assets/js/admin.js:5305
+#: assets/js/admin.js:4542
 msgid "Stubber"
 msgstr ""
 
-#: assets/js/admin.js:5308
+#: assets/js/admin.js:4545
 msgid "Studiovinari"
 msgstr ""
 
-#: assets/js/admin.js:5311
+#: assets/js/admin.js:4548
 msgid "StumbleUpon"
 msgstr ""
 
-#: assets/js/admin.js:5314
+#: assets/js/admin.js:4551
 msgid "StumbleUpon Circle"
 msgstr ""
 
-#: assets/js/admin.js:5317
+#: assets/js/admin.js:4554
 msgid "Superpowers"
 msgstr ""
 
-#: assets/js/admin.js:5320
+#: assets/js/admin.js:4557
 msgid "Supple"
 msgstr ""
 
-#: assets/js/admin.js:5323
+#: assets/js/admin.js:4560
 msgid "SUSE"
 msgstr ""
 
-#: assets/js/admin.js:5326
-#: assets/js/admin.js:7282
+#: assets/js/admin.js:4563
+#: assets/js/admin.js:6519
 msgid "Swift"
 msgstr ""
 
-#: assets/js/admin.js:5329
+#: assets/js/admin.js:4566
 msgid "Symfony"
 msgstr ""
 
-#: assets/js/admin.js:5332
+#: assets/js/admin.js:4569
 msgid "TeamSpeak"
 msgstr ""
 
-#: assets/js/admin.js:5335
+#: assets/js/admin.js:4572
 msgid "TeX"
 msgstr ""
 
-#: assets/js/admin.js:5338
-#: assets/js/admin.js:5744
-#: assets/js/admin.js:7288
+#: assets/js/admin.js:4575
+#: assets/js/admin.js:4981
+#: assets/js/admin.js:6525
 msgid "Telegram"
 msgstr ""
 
-#: assets/js/admin.js:5341
+#: assets/js/admin.js:4578
 msgid "Tencent Weibo"
 msgstr ""
 
-#: assets/js/admin.js:5344
+#: assets/js/admin.js:4581
 msgid "The Red Yeti"
 msgstr ""
 
-#: assets/js/admin.js:5347
+#: assets/js/admin.js:4584
 msgid "Themeco"
 msgstr ""
 
-#: assets/js/admin.js:5350
+#: assets/js/admin.js:4587
 msgid "ThemeIsle"
 msgstr ""
 
-#: assets/js/admin.js:5353
+#: assets/js/admin.js:4590
 msgid "Think Peaks"
 msgstr ""
 
-#: assets/js/admin.js:5356
-#: assets/js/admin.js:5750
+#: assets/js/admin.js:4593
+#: assets/js/admin.js:4987
 msgid "Threads"
 msgstr ""
 
-#: assets/js/admin.js:5359
+#: assets/js/admin.js:4596
 msgid "Tidal"
 msgstr ""
 
-#: assets/js/admin.js:5362
-#: assets/js/admin.js:5756
-#: assets/js/admin.js:7294
+#: assets/js/admin.js:4599
+#: assets/js/admin.js:4993
+#: assets/js/admin.js:6531
 msgid "TikTok"
 msgstr ""
 
-#: assets/js/admin.js:5365
+#: assets/js/admin.js:4602
 msgid "Trade Federation"
 msgstr ""
 
-#: assets/js/admin.js:5368
-#: assets/js/admin.js:5759
-#: assets/js/admin.js:7303
+#: assets/js/admin.js:4605
+#: assets/js/admin.js:4996
+#: assets/js/admin.js:6540
 msgid "Trello"
 msgstr ""
 
-#: assets/js/admin.js:5371
-#: assets/js/admin.js:7306
+#: assets/js/admin.js:4608
+#: assets/js/admin.js:6543
 msgid "Tumblr"
 msgstr ""
 
-#: assets/js/admin.js:5380
+#: assets/js/admin.js:4617
 msgid "Typo3"
 msgstr ""
 
-#: assets/js/admin.js:5383
-#: assets/js/admin.js:7321
+#: assets/js/admin.js:4620
+#: assets/js/admin.js:6558
 msgid "Uber"
 msgstr ""
 
-#: assets/js/admin.js:5386
-#: assets/js/admin.js:5777
-#: assets/js/admin.js:7327
+#: assets/js/admin.js:4623
+#: assets/js/admin.js:5014
+#: assets/js/admin.js:6564
 msgid "Ubuntu"
 msgstr ""
 
-#: assets/js/admin.js:5389
+#: assets/js/admin.js:4626
 msgid "UIkit"
 msgstr ""
 
-#: assets/js/admin.js:5392
+#: assets/js/admin.js:4629
 msgid "Umbraco"
 msgstr ""
 
-#: assets/js/admin.js:5395
+#: assets/js/admin.js:4632
 msgid "Uncharted"
 msgstr ""
 
-#: assets/js/admin.js:5398
-#: assets/js/admin.js:5780
+#: assets/js/admin.js:4635
+#: assets/js/admin.js:5017
 msgid "Unity"
 msgstr ""
 
-#: assets/js/admin.js:5401
+#: assets/js/admin.js:4638
 msgid "Uniregistry"
 msgstr ""
 
-#: assets/js/admin.js:5404
-#: assets/js/admin.js:7330
+#: assets/js/admin.js:4641
+#: assets/js/admin.js:6567
 msgid "Unsplash"
 msgstr ""
 
-#: assets/js/admin.js:5407
+#: assets/js/admin.js:4644
 msgid "Untappd"
 msgstr ""
 
-#: assets/js/admin.js:5410
+#: assets/js/admin.js:4647
 msgid "UPS"
 msgstr ""
 
-#: assets/js/admin.js:5413
+#: assets/js/admin.js:4650
 msgid "Upwork"
 msgstr ""
 
-#: assets/js/admin.js:5416
+#: assets/js/admin.js:4653
 msgid "USB"
 msgstr ""
 
-#: assets/js/admin.js:5419
+#: assets/js/admin.js:4656
 msgid "USPS"
 msgstr ""
 
-#: assets/js/admin.js:5422
+#: assets/js/admin.js:4659
 msgid "Ussunnah"
 msgstr ""
 
-#: assets/js/admin.js:5425
+#: assets/js/admin.js:4662
 msgid "Vaadin"
 msgstr ""
 
-#: assets/js/admin.js:5428
+#: assets/js/admin.js:4665
 msgid "Viacoin"
 msgstr ""
 
-#: assets/js/admin.js:5431
+#: assets/js/admin.js:4668
 msgid "Viadeo"
 msgstr ""
 
-#: assets/js/admin.js:5434
+#: assets/js/admin.js:4671
 msgid "Viber"
 msgstr ""
 
-#: assets/js/admin.js:5437
-#: assets/js/admin.js:5783
-#: assets/js/admin.js:7336
+#: assets/js/admin.js:4674
+#: assets/js/admin.js:5020
+#: assets/js/admin.js:6573
 msgid "Vimeo"
 msgstr ""
 
-#: assets/js/admin.js:5440
+#: assets/js/admin.js:4677
 msgid "Vimeo V"
 msgstr ""
 
-#: assets/js/admin.js:5443
+#: assets/js/admin.js:4680
 msgid "Vine"
 msgstr ""
 
-#: assets/js/admin.js:5446
-#: assets/js/admin.js:7345
+#: assets/js/admin.js:4683
+#: assets/js/admin.js:6582
 msgid "VK"
 msgstr ""
 
-#: assets/js/admin.js:5449
+#: assets/js/admin.js:4686
 msgid "VNV"
 msgstr ""
 
-#: assets/js/admin.js:5452
+#: assets/js/admin.js:4689
 msgid "VSCO"
 msgstr ""
 
-#: assets/js/admin.js:5455
+#: assets/js/admin.js:4692
 msgid "VueJS"
 msgstr ""
 
-#: assets/js/admin.js:5458
+#: assets/js/admin.js:4695
 msgid "Watchman Monitoring"
 msgstr ""
 
-#: assets/js/admin.js:5461
+#: assets/js/admin.js:4698
 msgid "Waze"
 msgstr ""
 
-#: assets/js/admin.js:5464
-#: assets/js/admin.js:7360
+#: assets/js/admin.js:4701
+#: assets/js/admin.js:6597
 msgid "Webflow"
 msgstr ""
 
-#: assets/js/admin.js:5467
+#: assets/js/admin.js:4704
 msgid "Web Awesome"
 msgstr ""
 
-#: assets/js/admin.js:5470
+#: assets/js/admin.js:4707
 msgid "Weebly"
 msgstr ""
 
-#: assets/js/admin.js:5473
+#: assets/js/admin.js:4710
 msgid "Weibo"
 msgstr ""
 
-#: assets/js/admin.js:5476
+#: assets/js/admin.js:4713
 msgid "Weixin"
 msgstr ""
 
-#: assets/js/admin.js:5482
+#: assets/js/admin.js:4719
 msgid "WHMCS"
 msgstr ""
 
-#: assets/js/admin.js:5485
+#: assets/js/admin.js:4722
 msgid "Wikipedia W"
 msgstr ""
 
-#: assets/js/admin.js:5488
-#: assets/js/admin.js:5795
-#: assets/js/admin.js:7372
+#: assets/js/admin.js:4725
+#: assets/js/admin.js:5032
+#: assets/js/admin.js:6609
 msgid "Windows"
 msgstr ""
 
-#: assets/js/admin.js:5491
+#: assets/js/admin.js:4728
 msgid "Wirsindhandwerk"
 msgstr ""
 
-#: assets/js/admin.js:5494
+#: assets/js/admin.js:4731
 msgid "Wix"
 msgstr ""
 
-#: assets/js/admin.js:5497
+#: assets/js/admin.js:4734
 msgid "Wizards of the Coast"
 msgstr ""
 
-#: assets/js/admin.js:5500
+#: assets/js/admin.js:4737
 msgid "Wodu"
 msgstr ""
 
-#: assets/js/admin.js:5503
+#: assets/js/admin.js:4740
 msgid "Wolf Pack Battalion"
 msgstr ""
 
-#: assets/js/admin.js:5509
+#: assets/js/admin.js:4746
 msgid "WordPress Simple"
 msgstr ""
 
-#: assets/js/admin.js:5512
+#: assets/js/admin.js:4749
 msgid "WPBeginner"
 msgstr ""
 
-#: assets/js/admin.js:5515
+#: assets/js/admin.js:4752
 msgid "WPExplorer"
 msgstr ""
 
-#: assets/js/admin.js:5518
-#: assets/js/admin.js:10078
-#: assets/js/admin.js:10258
+#: assets/js/admin.js:4755
 msgid "WPForms"
 msgstr ""
 
-#: assets/js/admin.js:5521
+#: assets/js/admin.js:4758
 msgid "W3C"
 msgstr ""
 
-#: assets/js/admin.js:5524
+#: assets/js/admin.js:4761
 msgid "X Twitter"
 msgstr ""
 
-#: assets/js/admin.js:5527
-#: assets/js/admin.js:5801
-#: assets/js/admin.js:7387
+#: assets/js/admin.js:4764
+#: assets/js/admin.js:5038
+#: assets/js/admin.js:6624
 msgid "Xbox"
 msgstr ""
 
-#: assets/js/admin.js:5533
+#: assets/js/admin.js:4770
 msgid "Y Combinator"
 msgstr ""
 
-#: assets/js/admin.js:5536
-#: assets/js/admin.js:7393
+#: assets/js/admin.js:4773
+#: assets/js/admin.js:6630
 msgid "Yahoo"
 msgstr ""
 
-#: assets/js/admin.js:5539
+#: assets/js/admin.js:4776
 msgid "Yammer"
 msgstr ""
 
-#: assets/js/admin.js:5542
+#: assets/js/admin.js:4779
 msgid "Yandex"
 msgstr ""
 
-#: assets/js/admin.js:5545
+#: assets/js/admin.js:4782
 msgid "Yandex International"
 msgstr ""
 
-#: assets/js/admin.js:5548
-#: assets/js/admin.js:7396
+#: assets/js/admin.js:4785
+#: assets/js/admin.js:6633
 msgid "Yarn"
 msgstr ""
 
-#: assets/js/admin.js:5551
-#: assets/js/admin.js:5804
+#: assets/js/admin.js:4788
+#: assets/js/admin.js:5041
 msgid "Yelp"
 msgstr ""
 
-#: assets/js/admin.js:5554
+#: assets/js/admin.js:4791
 msgid "Yoast"
 msgstr ""
 
-#: assets/js/admin.js:5560
+#: assets/js/admin.js:4797
 msgid "Zhihu"
 msgstr ""
 
-#: assets/js/admin.js:5567
+#: assets/js/admin.js:4804
 msgid "Alexa"
 msgstr ""
 
-#: assets/js/admin.js:5576
-#: assets/js/admin.js:6709
+#: assets/js/admin.js:4813
+#: assets/js/admin.js:5946
 msgid "AMD"
 msgstr ""
 
-#: assets/js/admin.js:5582
+#: assets/js/admin.js:4819
 msgid "Android2"
 msgstr ""
 
-#: assets/js/admin.js:5585
+#: assets/js/admin.js:4822
 msgid "Anthropic"
 msgstr ""
 
-#: assets/js/admin.js:5591
-#: assets/js/admin.js:6733
+#: assets/js/admin.js:4828
+#: assets/js/admin.js:5970
 msgid "Apple Music"
 msgstr ""
 
-#: assets/js/admin.js:5597
-#: assets/js/admin.js:6769
+#: assets/js/admin.js:4834
+#: assets/js/admin.js:6006
 msgid "Bing"
 msgstr ""
 
-#: assets/js/admin.js:5600
+#: assets/js/admin.js:4837
 msgid "Bluesky"
 msgstr ""
 
-#: assets/js/admin.js:5603
+#: assets/js/admin.js:4840
 msgid "Browser Chrome"
 msgstr ""
 
-#: assets/js/admin.js:5606
+#: assets/js/admin.js:4843
 msgid "Browser Edge"
 msgstr ""
 
-#: assets/js/admin.js:5609
+#: assets/js/admin.js:4846
 msgid "Browser Firefox"
 msgstr ""
 
-#: assets/js/admin.js:5612
+#: assets/js/admin.js:4849
 msgid "Browser Safari"
 msgstr ""
 
-#: assets/js/admin.js:5615
-#: assets/js/admin.js:6823
+#: assets/js/admin.js:4852
+#: assets/js/admin.js:6060
 msgid "Claude"
 msgstr ""
 
-#: assets/js/admin.js:5651
+#: assets/js/admin.js:4888
 msgid "JavaScript"
 msgstr ""
 
-#: assets/js/admin.js:5666
+#: assets/js/admin.js:4903
 msgid "Messenger"
 msgstr ""
 
-#: assets/js/admin.js:5675
-#: assets/js/admin.js:7090
+#: assets/js/admin.js:4912
+#: assets/js/admin.js:6327
 msgid "Microsoft Teams"
 msgstr ""
 
-#: assets/js/admin.js:5678
+#: assets/js/admin.js:4915
 msgid "Nintendo Switch"
 msgstr ""
 
-#: assets/js/admin.js:5681
-#: assets/js/admin.js:7132
+#: assets/js/admin.js:4918
+#: assets/js/admin.js:6369
 msgid "Nvidia"
 msgstr ""
 
-#: assets/js/admin.js:5687
+#: assets/js/admin.js:4924
 msgid "OpenCollective"
 msgstr ""
 
-#: assets/js/admin.js:5693
+#: assets/js/admin.js:4930
 msgid "Perplexity"
 msgstr ""
 
-#: assets/js/admin.js:5708
+#: assets/js/admin.js:4945
 msgid "Signal"
 msgstr ""
 
-#: assets/js/admin.js:5711
+#: assets/js/admin.js:4948
 msgid "Sina Weibo"
 msgstr ""
 
-#: assets/js/admin.js:5723
+#: assets/js/admin.js:4960
 msgid "SourceForge"
 msgstr ""
 
-#: assets/js/admin.js:5741
+#: assets/js/admin.js:4978
 msgid "Substack"
 msgstr ""
 
-#: assets/js/admin.js:5747
+#: assets/js/admin.js:4984
 msgid "Tencent QQ"
 msgstr ""
 
-#: assets/js/admin.js:5753
-#: assets/js/admin.js:6498
+#: assets/js/admin.js:4990
+#: assets/js/admin.js:5735
 msgid "Threads Fill"
 msgstr ""
 
-#: assets/js/admin.js:5768
+#: assets/js/admin.js:5005
 msgid "Twitter X"
 msgstr ""
 
-#: assets/js/admin.js:5771
+#: assets/js/admin.js:5008
 msgid "Tux"
 msgstr ""
 
-#: assets/js/admin.js:5774
+#: assets/js/admin.js:5011
 msgid "TypeScript"
 msgstr ""
 
-#: assets/js/admin.js:5786
-#: assets/js/admin.js:7366
+#: assets/js/admin.js:5023
+#: assets/js/admin.js:6603
 msgid "WeChat"
 msgstr ""
 
-#: assets/js/admin.js:5792
+#: assets/js/admin.js:5029
 msgid "Wikipedia"
 msgstr ""
 
-#: assets/js/admin.js:5814
+#: assets/js/admin.js:5051
 msgid "Alibaba Cloud Fill"
 msgstr ""
 
-#: assets/js/admin.js:5817
+#: assets/js/admin.js:5054
 msgid "Alibaba Cloud Line"
 msgstr ""
 
-#: assets/js/admin.js:5820
+#: assets/js/admin.js:5057
 msgid "Alipay Fill"
 msgstr ""
 
-#: assets/js/admin.js:5823
+#: assets/js/admin.js:5060
 msgid "Alipay Line"
 msgstr ""
 
-#: assets/js/admin.js:5826
+#: assets/js/admin.js:5063
 msgid "Amazon Fill"
 msgstr ""
 
-#: assets/js/admin.js:5829
+#: assets/js/admin.js:5066
 msgid "Amazon Line"
 msgstr ""
 
-#: assets/js/admin.js:5832
+#: assets/js/admin.js:5069
 msgid "Android Fill"
 msgstr ""
 
-#: assets/js/admin.js:5835
+#: assets/js/admin.js:5072
 msgid "Android Line"
 msgstr ""
 
-#: assets/js/admin.js:5838
+#: assets/js/admin.js:5075
 msgid "AngularJS Fill"
 msgstr ""
 
-#: assets/js/admin.js:5841
+#: assets/js/admin.js:5078
 msgid "AngularJS Line"
 msgstr ""
 
-#: assets/js/admin.js:5844
+#: assets/js/admin.js:5081
 msgid "Anthropic Fill"
 msgstr ""
 
-#: assets/js/admin.js:5847
+#: assets/js/admin.js:5084
 msgid "Anthropic Line"
 msgstr ""
 
-#: assets/js/admin.js:5850
+#: assets/js/admin.js:5087
 msgid "App Store Fill"
 msgstr ""
 
-#: assets/js/admin.js:5853
+#: assets/js/admin.js:5090
 msgid "App Store Line"
 msgstr ""
 
-#: assets/js/admin.js:5856
+#: assets/js/admin.js:5093
 msgid "Apple Fill"
 msgstr ""
 
-#: assets/js/admin.js:5859
+#: assets/js/admin.js:5096
 msgid "Apple Line"
 msgstr ""
 
-#: assets/js/admin.js:5862
+#: assets/js/admin.js:5099
 msgid "Baidu Fill"
 msgstr ""
 
-#: assets/js/admin.js:5865
+#: assets/js/admin.js:5102
 msgid "Baidu Line"
 msgstr ""
 
-#: assets/js/admin.js:5868
+#: assets/js/admin.js:5105
 msgid "Bard Fill"
 msgstr ""
 
-#: assets/js/admin.js:5871
+#: assets/js/admin.js:5108
 msgid "Bard Line"
 msgstr ""
 
-#: assets/js/admin.js:5874
+#: assets/js/admin.js:5111
 msgid "Behance Fill"
 msgstr ""
 
-#: assets/js/admin.js:5877
+#: assets/js/admin.js:5114
 msgid "Behance Line"
 msgstr ""
 
-#: assets/js/admin.js:5880
+#: assets/js/admin.js:5117
 msgid "Bilibili Fill"
 msgstr ""
 
-#: assets/js/admin.js:5883
+#: assets/js/admin.js:5120
 msgid "Bilibili Line"
 msgstr ""
 
-#: assets/js/admin.js:5886
+#: assets/js/admin.js:5123
 msgid "Blender Fill"
 msgstr ""
 
-#: assets/js/admin.js:5889
+#: assets/js/admin.js:5126
 msgid "Blender Line"
 msgstr ""
 
-#: assets/js/admin.js:5892
+#: assets/js/admin.js:5129
 msgid "Blogger Fill"
 msgstr ""
 
-#: assets/js/admin.js:5895
+#: assets/js/admin.js:5132
 msgid "Blogger Line"
 msgstr ""
 
-#: assets/js/admin.js:5898
+#: assets/js/admin.js:5135
 msgid "Bluesky Fill"
 msgstr ""
 
-#: assets/js/admin.js:5901
+#: assets/js/admin.js:5138
 msgid "Bluesky Line"
 msgstr ""
 
-#: assets/js/admin.js:5904
+#: assets/js/admin.js:5141
 msgid "BNB Fill"
 msgstr ""
 
-#: assets/js/admin.js:5907
+#: assets/js/admin.js:5144
 msgid "BNB Line"
 msgstr ""
 
-#: assets/js/admin.js:5910
+#: assets/js/admin.js:5147
 msgid "Bootstrap Fill"
 msgstr ""
 
-#: assets/js/admin.js:5913
+#: assets/js/admin.js:5150
 msgid "Bootstrap Line"
 msgstr ""
 
-#: assets/js/admin.js:5916
+#: assets/js/admin.js:5153
 msgid "BTC Fill"
 msgstr ""
 
-#: assets/js/admin.js:5919
+#: assets/js/admin.js:5156
 msgid "BTC Line"
 msgstr ""
 
-#: assets/js/admin.js:5922
+#: assets/js/admin.js:5159
 msgid "CentOS Fill"
 msgstr ""
 
-#: assets/js/admin.js:5925
+#: assets/js/admin.js:5162
 msgid "CentOS Line"
 msgstr ""
 
-#: assets/js/admin.js:5928
+#: assets/js/admin.js:5165
 msgid "Chrome Fill"
 msgstr ""
 
-#: assets/js/admin.js:5931
+#: assets/js/admin.js:5168
 msgid "Chrome Line"
 msgstr ""
 
-#: assets/js/admin.js:5934
+#: assets/js/admin.js:5171
 msgid "Claude Fill"
 msgstr ""
 
-#: assets/js/admin.js:5937
+#: assets/js/admin.js:5174
 msgid "Claude Line"
 msgstr ""
 
-#: assets/js/admin.js:5940
+#: assets/js/admin.js:5177
 msgid "Codepen Fill"
 msgstr ""
 
-#: assets/js/admin.js:5943
+#: assets/js/admin.js:5180
 msgid "Codepen Line"
 msgstr ""
 
-#: assets/js/admin.js:5946
+#: assets/js/admin.js:5183
 msgid "Copilot Fill"
 msgstr ""
 
-#: assets/js/admin.js:5949
+#: assets/js/admin.js:5186
 msgid "Copilot Line"
 msgstr ""
 
-#: assets/js/admin.js:5952
+#: assets/js/admin.js:5189
 msgid "CoreOS Fill"
 msgstr ""
 
-#: assets/js/admin.js:5955
+#: assets/js/admin.js:5192
 msgid "CoreOS Line"
 msgstr ""
 
-#: assets/js/admin.js:5958
+#: assets/js/admin.js:5195
 msgid "CSS3 Fill"
 msgstr ""
 
-#: assets/js/admin.js:5961
+#: assets/js/admin.js:5198
 msgid "CSS3 Line"
 msgstr ""
 
-#: assets/js/admin.js:5964
+#: assets/js/admin.js:5201
 msgid "Deepseek Fill"
 msgstr ""
 
-#: assets/js/admin.js:5967
+#: assets/js/admin.js:5204
 msgid "Deepseek Line"
 msgstr ""
 
-#: assets/js/admin.js:5970
+#: assets/js/admin.js:5207
 msgid "DingDing Fill"
 msgstr ""
 
-#: assets/js/admin.js:5973
+#: assets/js/admin.js:5210
 msgid "DingDing Line"
 msgstr ""
 
-#: assets/js/admin.js:5976
+#: assets/js/admin.js:5213
 msgid "Discord Fill"
 msgstr ""
 
-#: assets/js/admin.js:5979
+#: assets/js/admin.js:5216
 msgid "Discord Line"
 msgstr ""
 
-#: assets/js/admin.js:5982
+#: assets/js/admin.js:5219
 msgid "Disqus Fill"
 msgstr ""
 
-#: assets/js/admin.js:5985
+#: assets/js/admin.js:5222
 msgid "Disqus Line"
 msgstr ""
 
-#: assets/js/admin.js:5988
+#: assets/js/admin.js:5225
 msgid "Douban Fill"
 msgstr ""
 
-#: assets/js/admin.js:5991
+#: assets/js/admin.js:5228
 msgid "Douban Line"
 msgstr ""
 
-#: assets/js/admin.js:5994
+#: assets/js/admin.js:5231
 msgid "Dribbble Fill"
 msgstr ""
 
-#: assets/js/admin.js:5997
+#: assets/js/admin.js:5234
 msgid "Dribbble Line"
 msgstr ""
 
-#: assets/js/admin.js:6000
+#: assets/js/admin.js:5237
 msgid "Dropbox Fill"
 msgstr ""
 
-#: assets/js/admin.js:6003
+#: assets/js/admin.js:5240
 msgid "Dropbox Line"
 msgstr ""
 
-#: assets/js/admin.js:6006
+#: assets/js/admin.js:5243
 msgid "Edge Fill"
 msgstr ""
 
-#: assets/js/admin.js:6009
+#: assets/js/admin.js:5246
 msgid "Edge Line"
 msgstr ""
 
-#: assets/js/admin.js:6012
+#: assets/js/admin.js:5249
 msgid "Edge New Fill"
 msgstr ""
 
-#: assets/js/admin.js:6015
+#: assets/js/admin.js:5252
 msgid "Edge New Line"
 msgstr ""
 
-#: assets/js/admin.js:6018
+#: assets/js/admin.js:5255
 msgid "ETH Fill"
 msgstr ""
 
-#: assets/js/admin.js:6021
+#: assets/js/admin.js:5258
 msgid "ETH Line"
 msgstr ""
 
-#: assets/js/admin.js:6024
+#: assets/js/admin.js:5261
 msgid "Evernote Fill"
 msgstr ""
 
-#: assets/js/admin.js:6027
+#: assets/js/admin.js:5264
 msgid "Evernote Line"
 msgstr ""
 
-#: assets/js/admin.js:6030
+#: assets/js/admin.js:5267
 msgid "Facebook Box Fill"
 msgstr ""
 
-#: assets/js/admin.js:6033
+#: assets/js/admin.js:5270
 msgid "Facebook Box Line"
 msgstr ""
 
-#: assets/js/admin.js:6036
+#: assets/js/admin.js:5273
 msgid "Facebook Circle Fill"
 msgstr ""
 
-#: assets/js/admin.js:6039
+#: assets/js/admin.js:5276
 msgid "Facebook Circle Line"
 msgstr ""
 
-#: assets/js/admin.js:6042
+#: assets/js/admin.js:5279
 msgid "Facebook Fill"
 msgstr ""
 
-#: assets/js/admin.js:6045
+#: assets/js/admin.js:5282
 msgid "Facebook Line"
 msgstr ""
 
-#: assets/js/admin.js:6048
+#: assets/js/admin.js:5285
 msgid "Fediverse Fill"
 msgstr ""
 
-#: assets/js/admin.js:6051
+#: assets/js/admin.js:5288
 msgid "Fediverse Line"
 msgstr ""
 
-#: assets/js/admin.js:6054
+#: assets/js/admin.js:5291
 msgid "Figma Fill"
 msgstr ""
 
-#: assets/js/admin.js:6057
+#: assets/js/admin.js:5294
 msgid "Figma Line"
 msgstr ""
 
-#: assets/js/admin.js:6060
+#: assets/js/admin.js:5297
 msgid "Finder Fill"
 msgstr ""
 
-#: assets/js/admin.js:6063
+#: assets/js/admin.js:5300
 msgid "Finder Line"
 msgstr ""
 
-#: assets/js/admin.js:6066
+#: assets/js/admin.js:5303
 msgid "Firebase Fill"
 msgstr ""
 
-#: assets/js/admin.js:6069
+#: assets/js/admin.js:5306
 msgid "Firebase Line"
 msgstr ""
 
-#: assets/js/admin.js:6072
+#: assets/js/admin.js:5309
 msgid "Firefox Browser Fill"
 msgstr ""
 
-#: assets/js/admin.js:6075
+#: assets/js/admin.js:5312
 msgid "Firefox Browser Line"
 msgstr ""
 
-#: assets/js/admin.js:6078
+#: assets/js/admin.js:5315
 msgid "Firefox Fill"
 msgstr ""
 
-#: assets/js/admin.js:6081
+#: assets/js/admin.js:5318
 msgid "Firefox Line"
 msgstr ""
 
-#: assets/js/admin.js:6084
+#: assets/js/admin.js:5321
 msgid "Flickr Fill"
 msgstr ""
 
-#: assets/js/admin.js:6087
+#: assets/js/admin.js:5324
 msgid "Flickr Line"
 msgstr ""
 
-#: assets/js/admin.js:6090
+#: assets/js/admin.js:5327
 msgid "Flutter Fill"
 msgstr ""
 
-#: assets/js/admin.js:6093
+#: assets/js/admin.js:5330
 msgid "Flutter Line"
 msgstr ""
 
-#: assets/js/admin.js:6096
+#: assets/js/admin.js:5333
 msgid "Friendica Fill"
 msgstr ""
 
-#: assets/js/admin.js:6099
+#: assets/js/admin.js:5336
 msgid "Friendica Line"
 msgstr ""
 
-#: assets/js/admin.js:6102
+#: assets/js/admin.js:5339
 msgid "Gatsby Fill"
 msgstr ""
 
-#: assets/js/admin.js:6105
+#: assets/js/admin.js:5342
 msgid "Gatsby Line"
 msgstr ""
 
-#: assets/js/admin.js:6108
+#: assets/js/admin.js:5345
 msgid "Gemini Fill"
 msgstr ""
 
-#: assets/js/admin.js:6111
+#: assets/js/admin.js:5348
 msgid "Gemini Line"
 msgstr ""
 
-#: assets/js/admin.js:6114
+#: assets/js/admin.js:5351
 msgid "GitHub Fill"
 msgstr ""
 
-#: assets/js/admin.js:6117
+#: assets/js/admin.js:5354
 msgid "GitHub Line"
 msgstr ""
 
-#: assets/js/admin.js:6120
+#: assets/js/admin.js:5357
 msgid "GitLab Fill"
 msgstr ""
 
-#: assets/js/admin.js:6123
+#: assets/js/admin.js:5360
 msgid "GitLab Line"
 msgstr ""
 
-#: assets/js/admin.js:6126
+#: assets/js/admin.js:5363
 msgid "Google Fill"
 msgstr ""
 
-#: assets/js/admin.js:6129
+#: assets/js/admin.js:5366
 msgid "Google Line"
 msgstr ""
 
-#: assets/js/admin.js:6132
+#: assets/js/admin.js:5369
 msgid "Google Play Fill"
 msgstr ""
 
-#: assets/js/admin.js:6135
+#: assets/js/admin.js:5372
 msgid "Google Play Line"
 msgstr ""
 
-#: assets/js/admin.js:6138
+#: assets/js/admin.js:5375
 msgid "Honor of Kings Fill"
 msgstr ""
 
-#: assets/js/admin.js:6141
+#: assets/js/admin.js:5378
 msgid "Honor of Kings Line"
 msgstr ""
 
-#: assets/js/admin.js:6144
+#: assets/js/admin.js:5381
 msgid "HTML5 Fill"
 msgstr ""
 
-#: assets/js/admin.js:6147
+#: assets/js/admin.js:5384
 msgid "HTML5 Line"
 msgstr ""
 
-#: assets/js/admin.js:6150
+#: assets/js/admin.js:5387
 msgid "IE Fill"
 msgstr ""
 
-#: assets/js/admin.js:6153
+#: assets/js/admin.js:5390
 msgid "IE Line"
 msgstr ""
 
-#: assets/js/admin.js:6156
+#: assets/js/admin.js:5393
 msgid "Instagram Fill"
 msgstr ""
 
-#: assets/js/admin.js:6159
+#: assets/js/admin.js:5396
 msgid "Instagram Line"
 msgstr ""
 
-#: assets/js/admin.js:6162
+#: assets/js/admin.js:5399
 msgid "Invision Fill"
 msgstr ""
 
-#: assets/js/admin.js:6165
+#: assets/js/admin.js:5402
 msgid "Invision Line"
 msgstr ""
 
-#: assets/js/admin.js:6168
+#: assets/js/admin.js:5405
 msgid "Java Fill"
 msgstr ""
 
-#: assets/js/admin.js:6171
+#: assets/js/admin.js:5408
 msgid "Java Line"
 msgstr ""
 
-#: assets/js/admin.js:6174
+#: assets/js/admin.js:5411
 msgid "JavaScript Fill"
 msgstr ""
 
-#: assets/js/admin.js:6177
+#: assets/js/admin.js:5414
 msgid "JavaScript Line"
 msgstr ""
 
-#: assets/js/admin.js:6180
+#: assets/js/admin.js:5417
 msgid "Kakao Talk Fill"
 msgstr ""
 
-#: assets/js/admin.js:6183
+#: assets/js/admin.js:5420
 msgid "Kakao Talk Line"
 msgstr ""
 
-#: assets/js/admin.js:6186
+#: assets/js/admin.js:5423
 msgid "Kick Fill"
 msgstr ""
 
-#: assets/js/admin.js:6189
+#: assets/js/admin.js:5426
 msgid "Kick Line"
 msgstr ""
 
-#: assets/js/admin.js:6192
+#: assets/js/admin.js:5429
 msgid "Line Fill"
 msgstr ""
 
-#: assets/js/admin.js:6195
+#: assets/js/admin.js:5432
 msgid "Line Line"
 msgstr ""
 
-#: assets/js/admin.js:6198
+#: assets/js/admin.js:5435
 msgid "LinkedIn Box Fill"
 msgstr ""
 
-#: assets/js/admin.js:6201
+#: assets/js/admin.js:5438
 msgid "LinkedIn Box Line"
 msgstr ""
 
-#: assets/js/admin.js:6204
+#: assets/js/admin.js:5441
 msgid "LinkedIn Fill"
 msgstr ""
 
-#: assets/js/admin.js:6207
+#: assets/js/admin.js:5444
 msgid "LinkedIn Line"
 msgstr ""
 
-#: assets/js/admin.js:6210
+#: assets/js/admin.js:5447
 msgid "Mac Fill"
 msgstr ""
 
-#: assets/js/admin.js:6213
+#: assets/js/admin.js:5450
 msgid "Mac Line"
 msgstr ""
 
-#: assets/js/admin.js:6216
+#: assets/js/admin.js:5453
 msgid "Macbook Fill"
 msgstr ""
 
-#: assets/js/admin.js:6219
+#: assets/js/admin.js:5456
 msgid "Macbook Line"
 msgstr ""
 
-#: assets/js/admin.js:6222
+#: assets/js/admin.js:5459
 msgid "Mastercard Fill"
 msgstr ""
 
-#: assets/js/admin.js:6225
+#: assets/js/admin.js:5462
 msgid "Mastercard Line"
 msgstr ""
 
-#: assets/js/admin.js:6228
+#: assets/js/admin.js:5465
 msgid "Mastodon Fill"
 msgstr ""
 
-#: assets/js/admin.js:6231
+#: assets/js/admin.js:5468
 msgid "Mastodon Line"
 msgstr ""
 
-#: assets/js/admin.js:6234
+#: assets/js/admin.js:5471
 msgid "Medium Fill"
 msgstr ""
 
-#: assets/js/admin.js:6237
+#: assets/js/admin.js:5474
 msgid "Medium Line"
 msgstr ""
 
-#: assets/js/admin.js:6240
+#: assets/js/admin.js:5477
 msgid "Messenger Fill"
 msgstr ""
 
-#: assets/js/admin.js:6243
+#: assets/js/admin.js:5480
 msgid "Messenger Line"
 msgstr ""
 
-#: assets/js/admin.js:6246
+#: assets/js/admin.js:5483
 msgid "Meta Fill"
 msgstr ""
 
-#: assets/js/admin.js:6249
+#: assets/js/admin.js:5486
 msgid "Meta Line"
 msgstr ""
 
-#: assets/js/admin.js:6252
+#: assets/js/admin.js:5489
 msgid "Microsoft Fill"
 msgstr ""
 
-#: assets/js/admin.js:6255
+#: assets/js/admin.js:5492
 msgid "Microsoft Line"
 msgstr ""
 
-#: assets/js/admin.js:6258
+#: assets/js/admin.js:5495
 msgid "Microsoft Loop Fill"
 msgstr ""
 
-#: assets/js/admin.js:6261
+#: assets/js/admin.js:5498
 msgid "Microsoft Loop Line"
 msgstr ""
 
-#: assets/js/admin.js:6264
+#: assets/js/admin.js:5501
 msgid "Mixtral Fill"
 msgstr ""
 
-#: assets/js/admin.js:6267
+#: assets/js/admin.js:5504
 msgid "Mixtral Line"
 msgstr ""
 
-#: assets/js/admin.js:6270
+#: assets/js/admin.js:5507
 msgid "Netease Cloud Music Fill"
 msgstr ""
 
-#: assets/js/admin.js:6273
+#: assets/js/admin.js:5510
 msgid "Netease Cloud Music Line"
 msgstr ""
 
-#: assets/js/admin.js:6276
+#: assets/js/admin.js:5513
 msgid "Netflix Fill"
 msgstr ""
 
-#: assets/js/admin.js:6279
+#: assets/js/admin.js:5516
 msgid "Netflix Line"
 msgstr ""
 
-#: assets/js/admin.js:6282
+#: assets/js/admin.js:5519
 msgid "Next.js Fill"
 msgstr ""
 
-#: assets/js/admin.js:6285
+#: assets/js/admin.js:5522
 msgid "Next.js Line"
 msgstr ""
 
-#: assets/js/admin.js:6288
+#: assets/js/admin.js:5525
 msgid "Node.js Fill"
 msgstr ""
 
-#: assets/js/admin.js:6291
+#: assets/js/admin.js:5528
 msgid "Node.js Line"
 msgstr ""
 
-#: assets/js/admin.js:6294
+#: assets/js/admin.js:5531
 msgid "Notion Fill"
 msgstr ""
 
-#: assets/js/admin.js:6297
+#: assets/js/admin.js:5534
 msgid "Notion Line"
 msgstr ""
 
-#: assets/js/admin.js:6300
+#: assets/js/admin.js:5537
 msgid "NPM.js Fill"
 msgstr ""
 
-#: assets/js/admin.js:6303
+#: assets/js/admin.js:5540
 msgid "NPM.js Line"
 msgstr ""
 
-#: assets/js/admin.js:6306
+#: assets/js/admin.js:5543
 msgid "OpenAI Fill"
 msgstr ""
 
-#: assets/js/admin.js:6309
+#: assets/js/admin.js:5546
 msgid "OpenAI Line"
 msgstr ""
 
-#: assets/js/admin.js:6312
+#: assets/js/admin.js:5549
 msgid "Openbase Fill"
 msgstr ""
 
-#: assets/js/admin.js:6315
+#: assets/js/admin.js:5552
 msgid "Openbase Line"
 msgstr ""
 
-#: assets/js/admin.js:6318
+#: assets/js/admin.js:5555
 msgid "Opera Fill"
 msgstr ""
 
-#: assets/js/admin.js:6321
+#: assets/js/admin.js:5558
 msgid "Opera Line"
 msgstr ""
 
-#: assets/js/admin.js:6324
+#: assets/js/admin.js:5561
 msgid "Patreon Fill"
 msgstr ""
 
-#: assets/js/admin.js:6327
+#: assets/js/admin.js:5564
 msgid "Patreon Line"
 msgstr ""
 
-#: assets/js/admin.js:6330
+#: assets/js/admin.js:5567
 msgid "PayPal Fill"
 msgstr ""
 
-#: assets/js/admin.js:6333
+#: assets/js/admin.js:5570
 msgid "PayPal Line"
 msgstr ""
 
-#: assets/js/admin.js:6336
+#: assets/js/admin.js:5573
 msgid "Perplexity Fill"
 msgstr ""
 
-#: assets/js/admin.js:6339
+#: assets/js/admin.js:5576
 msgid "Perplexity Line"
 msgstr ""
 
-#: assets/js/admin.js:6342
+#: assets/js/admin.js:5579
 msgid "PHP Fill"
 msgstr ""
 
-#: assets/js/admin.js:6345
+#: assets/js/admin.js:5582
 msgid "PHP Line"
 msgstr ""
 
-#: assets/js/admin.js:6348
+#: assets/js/admin.js:5585
 msgid "Pinterest Fill"
 msgstr ""
 
-#: assets/js/admin.js:6351
+#: assets/js/admin.js:5588
 msgid "Pinterest Line"
 msgstr ""
 
-#: assets/js/admin.js:6354
+#: assets/js/admin.js:5591
 msgid "Pix Fill"
 msgstr ""
 
-#: assets/js/admin.js:6357
+#: assets/js/admin.js:5594
 msgid "Pix Line"
 msgstr ""
 
-#: assets/js/admin.js:6360
+#: assets/js/admin.js:5597
 msgid "Pixelfed Fill"
 msgstr ""
 
-#: assets/js/admin.js:6363
+#: assets/js/admin.js:5600
 msgid "Pixelfed Line"
 msgstr ""
 
-#: assets/js/admin.js:6366
+#: assets/js/admin.js:5603
 msgid "PlayStation Fill"
 msgstr ""
 
-#: assets/js/admin.js:6369
+#: assets/js/admin.js:5606
 msgid "PlayStation Line"
 msgstr ""
 
-#: assets/js/admin.js:6372
+#: assets/js/admin.js:5609
 msgid "Product Hunt Fill"
 msgstr ""
 
-#: assets/js/admin.js:6375
+#: assets/js/admin.js:5612
 msgid "Product Hunt Line"
 msgstr ""
 
-#: assets/js/admin.js:6378
+#: assets/js/admin.js:5615
 msgid "QQ Fill"
 msgstr ""
 
-#: assets/js/admin.js:6381
+#: assets/js/admin.js:5618
 msgid "QQ Line"
 msgstr ""
 
-#: assets/js/admin.js:6384
+#: assets/js/admin.js:5621
 msgid "ReactJS Fill"
 msgstr ""
 
-#: assets/js/admin.js:6387
+#: assets/js/admin.js:5624
 msgid "ReactJS Line"
 msgstr ""
 
-#: assets/js/admin.js:6390
+#: assets/js/admin.js:5627
 msgid "Reddit Fill"
 msgstr ""
 
-#: assets/js/admin.js:6393
+#: assets/js/admin.js:5630
 msgid "Reddit Line"
 msgstr ""
 
-#: assets/js/admin.js:6396
+#: assets/js/admin.js:5633
 msgid "Remixicon Fill"
 msgstr ""
 
-#: assets/js/admin.js:6399
+#: assets/js/admin.js:5636
 msgid "Remixicon Line"
 msgstr ""
 
-#: assets/js/admin.js:6402
+#: assets/js/admin.js:5639
 msgid "Remix Run Fill"
 msgstr ""
 
-#: assets/js/admin.js:6405
+#: assets/js/admin.js:5642
 msgid "Remix Run Line"
 msgstr ""
 
-#: assets/js/admin.js:6408
+#: assets/js/admin.js:5645
 msgid "Safari Fill"
 msgstr ""
 
-#: assets/js/admin.js:6411
+#: assets/js/admin.js:5648
 msgid "Safari Line"
 msgstr ""
 
-#: assets/js/admin.js:6414
+#: assets/js/admin.js:5651
 msgid "Skype Fill"
 msgstr ""
 
-#: assets/js/admin.js:6417
+#: assets/js/admin.js:5654
 msgid "Skype Line"
 msgstr ""
 
-#: assets/js/admin.js:6420
+#: assets/js/admin.js:5657
 msgid "Slack Fill"
 msgstr ""
 
-#: assets/js/admin.js:6423
+#: assets/js/admin.js:5660
 msgid "Slack Line"
 msgstr ""
 
-#: assets/js/admin.js:6426
+#: assets/js/admin.js:5663
 msgid "Snapchat Fill"
 msgstr ""
 
-#: assets/js/admin.js:6429
+#: assets/js/admin.js:5666
 msgid "Snapchat Line"
 msgstr ""
 
-#: assets/js/admin.js:6432
+#: assets/js/admin.js:5669
 msgid "SoundCloud Fill"
 msgstr ""
 
-#: assets/js/admin.js:6435
+#: assets/js/admin.js:5672
 msgid "SoundCloud Line"
 msgstr ""
 
-#: assets/js/admin.js:6438
+#: assets/js/admin.js:5675
 msgid "Spotify Fill"
 msgstr ""
 
-#: assets/js/admin.js:6441
+#: assets/js/admin.js:5678
 msgid "Spotify Line"
 msgstr ""
 
-#: assets/js/admin.js:6444
+#: assets/js/admin.js:5681
 msgid "Stack Overflow Fill"
 msgstr ""
 
-#: assets/js/admin.js:6447
+#: assets/js/admin.js:5684
 msgid "Stack Overflow Line"
 msgstr ""
 
-#: assets/js/admin.js:6450
+#: assets/js/admin.js:5687
 msgid "Stackshare Fill"
 msgstr ""
 
-#: assets/js/admin.js:6453
+#: assets/js/admin.js:5690
 msgid "Stackshare Line"
 msgstr ""
 
-#: assets/js/admin.js:6456
+#: assets/js/admin.js:5693
 msgid "Steam Fill"
 msgstr ""
 
-#: assets/js/admin.js:6459
+#: assets/js/admin.js:5696
 msgid "Steam Line"
 msgstr ""
 
-#: assets/js/admin.js:6462
+#: assets/js/admin.js:5699
 msgid "Supabase Fill"
 msgstr ""
 
-#: assets/js/admin.js:6465
+#: assets/js/admin.js:5702
 msgid "Supabase Line"
 msgstr ""
 
-#: assets/js/admin.js:6468
+#: assets/js/admin.js:5705
 msgid "Svelte Fill"
 msgstr ""
 
-#: assets/js/admin.js:6471
+#: assets/js/admin.js:5708
 msgid "Svelte Line"
 msgstr ""
 
-#: assets/js/admin.js:6474
+#: assets/js/admin.js:5711
 msgid "Tailwind CSS Fill"
 msgstr ""
 
-#: assets/js/admin.js:6477
+#: assets/js/admin.js:5714
 msgid "Tailwind CSS Line"
 msgstr ""
 
-#: assets/js/admin.js:6480
+#: assets/js/admin.js:5717
 msgid "Taobao Fill"
 msgstr ""
 
-#: assets/js/admin.js:6483
+#: assets/js/admin.js:5720
 msgid "Taobao Line"
 msgstr ""
 
-#: assets/js/admin.js:6486
+#: assets/js/admin.js:5723
 msgid "Telegram Fill"
 msgstr ""
 
-#: assets/js/admin.js:6489
+#: assets/js/admin.js:5726
 msgid "Telegram Line"
 msgstr ""
 
-#: assets/js/admin.js:6492
+#: assets/js/admin.js:5729
 msgid "Telegram 2 Fill"
 msgstr ""
 
-#: assets/js/admin.js:6495
+#: assets/js/admin.js:5732
 msgid "Telegram 2 Line"
 msgstr ""
 
-#: assets/js/admin.js:6501
+#: assets/js/admin.js:5738
 msgid "Threads Line"
 msgstr ""
 
-#: assets/js/admin.js:6504
+#: assets/js/admin.js:5741
 msgid "TikTok Fill"
 msgstr ""
 
-#: assets/js/admin.js:6507
+#: assets/js/admin.js:5744
 msgid "TikTok Line"
 msgstr ""
 
-#: assets/js/admin.js:6510
+#: assets/js/admin.js:5747
 msgid "Trello Fill"
 msgstr ""
 
-#: assets/js/admin.js:6513
+#: assets/js/admin.js:5750
 msgid "Trello Line"
 msgstr ""
 
-#: assets/js/admin.js:6516
+#: assets/js/admin.js:5753
 msgid "Tumblr Fill"
 msgstr ""
 
-#: assets/js/admin.js:6519
+#: assets/js/admin.js:5756
 msgid "Tumblr Line"
 msgstr ""
 
-#: assets/js/admin.js:6522
+#: assets/js/admin.js:5759
 msgid "Twitch Fill"
 msgstr ""
 
-#: assets/js/admin.js:6525
+#: assets/js/admin.js:5762
 msgid "Twitch Line"
 msgstr ""
 
-#: assets/js/admin.js:6528
+#: assets/js/admin.js:5765
 msgid "Twitter Fill"
 msgstr ""
 
-#: assets/js/admin.js:6531
+#: assets/js/admin.js:5768
 msgid "Twitter Line"
 msgstr ""
 
-#: assets/js/admin.js:6534
+#: assets/js/admin.js:5771
 msgid "Twitter X Fill"
 msgstr ""
 
-#: assets/js/admin.js:6537
+#: assets/js/admin.js:5774
 msgid "Twitter X Line"
 msgstr ""
 
-#: assets/js/admin.js:6540
+#: assets/js/admin.js:5777
 msgid "Ubuntu Fill"
 msgstr ""
 
-#: assets/js/admin.js:6543
+#: assets/js/admin.js:5780
 msgid "Ubuntu Line"
 msgstr ""
 
-#: assets/js/admin.js:6546
+#: assets/js/admin.js:5783
 msgid "Unsplash Fill"
 msgstr ""
 
-#: assets/js/admin.js:6549
+#: assets/js/admin.js:5786
 msgid "Unsplash Line"
 msgstr ""
 
-#: assets/js/admin.js:6552
+#: assets/js/admin.js:5789
 msgid "Vercel Fill"
 msgstr ""
 
-#: assets/js/admin.js:6555
+#: assets/js/admin.js:5792
 msgid "Vercel Line"
 msgstr ""
 
-#: assets/js/admin.js:6558
+#: assets/js/admin.js:5795
 msgid "Vimeo Fill"
 msgstr ""
 
-#: assets/js/admin.js:6561
+#: assets/js/admin.js:5798
 msgid "Vimeo Line"
 msgstr ""
 
-#: assets/js/admin.js:6564
+#: assets/js/admin.js:5801
 msgid "Visa Fill"
 msgstr ""
 
-#: assets/js/admin.js:6567
+#: assets/js/admin.js:5804
 msgid "Visa Line"
 msgstr ""
 
-#: assets/js/admin.js:6570
+#: assets/js/admin.js:5807
 msgid "VK Fill"
 msgstr ""
 
-#: assets/js/admin.js:6573
+#: assets/js/admin.js:5810
 msgid "VK Line"
 msgstr ""
 
-#: assets/js/admin.js:6576
+#: assets/js/admin.js:5813
 msgid "VueJS Fill"
 msgstr ""
 
-#: assets/js/admin.js:6579
+#: assets/js/admin.js:5816
 msgid "VueJS Line"
 msgstr ""
 
-#: assets/js/admin.js:6582
+#: assets/js/admin.js:5819
 msgid "WeChat Fill"
 msgstr ""
 
-#: assets/js/admin.js:6585
+#: assets/js/admin.js:5822
 msgid "WeChat Line"
 msgstr ""
 
-#: assets/js/admin.js:6588
+#: assets/js/admin.js:5825
 msgid "WeChat 2 Fill"
 msgstr ""
 
-#: assets/js/admin.js:6591
+#: assets/js/admin.js:5828
 msgid "WeChat 2 Line"
 msgstr ""
 
-#: assets/js/admin.js:6594
+#: assets/js/admin.js:5831
 msgid "WeChat Channels Fill"
 msgstr ""
 
-#: assets/js/admin.js:6597
+#: assets/js/admin.js:5834
 msgid "WeChat Channels Line"
 msgstr ""
 
-#: assets/js/admin.js:6600
+#: assets/js/admin.js:5837
 msgid "WeChat Pay Fill"
 msgstr ""
 
-#: assets/js/admin.js:6603
+#: assets/js/admin.js:5840
 msgid "WeChat Pay Line"
 msgstr ""
 
-#: assets/js/admin.js:6606
+#: assets/js/admin.js:5843
 msgid "Weibo Fill"
 msgstr ""
 
-#: assets/js/admin.js:6609
+#: assets/js/admin.js:5846
 msgid "Weibo Line"
 msgstr ""
 
-#: assets/js/admin.js:6612
+#: assets/js/admin.js:5849
 msgid "WhatsApp Fill"
 msgstr ""
 
-#: assets/js/admin.js:6615
+#: assets/js/admin.js:5852
 msgid "WhatsApp Line"
 msgstr ""
 
-#: assets/js/admin.js:6618
+#: assets/js/admin.js:5855
 msgid "Windows Fill"
 msgstr ""
 
-#: assets/js/admin.js:6621
+#: assets/js/admin.js:5858
 msgid "Windows Line"
 msgstr ""
 
-#: assets/js/admin.js:6624
+#: assets/js/admin.js:5861
 msgid "WordPress Fill"
 msgstr ""
 
-#: assets/js/admin.js:6627
+#: assets/js/admin.js:5864
 msgid "WordPress Line"
 msgstr ""
 
-#: assets/js/admin.js:6630
+#: assets/js/admin.js:5867
 msgid "Xbox Fill"
 msgstr ""
 
-#: assets/js/admin.js:6633
+#: assets/js/admin.js:5870
 msgid "Xbox Line"
 msgstr ""
 
-#: assets/js/admin.js:6636
+#: assets/js/admin.js:5873
 msgid "Xing Fill"
 msgstr ""
 
-#: assets/js/admin.js:6639
+#: assets/js/admin.js:5876
 msgid "Xing Line"
 msgstr ""
 
-#: assets/js/admin.js:6642
+#: assets/js/admin.js:5879
 msgid "XRP Fill"
 msgstr ""
 
-#: assets/js/admin.js:6645
+#: assets/js/admin.js:5882
 msgid "XRP Line"
 msgstr ""
 
-#: assets/js/admin.js:6648
+#: assets/js/admin.js:5885
 msgid "XTZ Fill"
 msgstr ""
 
-#: assets/js/admin.js:6651
+#: assets/js/admin.js:5888
 msgid "XTZ Line"
 msgstr ""
 
-#: assets/js/admin.js:6654
+#: assets/js/admin.js:5891
 msgid "YouTube Fill"
 msgstr ""
 
-#: assets/js/admin.js:6657
+#: assets/js/admin.js:5894
 msgid "YouTube Line"
 msgstr ""
 
-#: assets/js/admin.js:6660
+#: assets/js/admin.js:5897
 msgid "Yuque Fill"
 msgstr ""
 
-#: assets/js/admin.js:6663
+#: assets/js/admin.js:5900
 msgid "Yuque Line"
 msgstr ""
 
-#: assets/js/admin.js:6666
+#: assets/js/admin.js:5903
 msgid "Zcool Fill"
 msgstr ""
 
-#: assets/js/admin.js:6669
+#: assets/js/admin.js:5906
 msgid "Zcool Line"
 msgstr ""
 
-#: assets/js/admin.js:6672
+#: assets/js/admin.js:5909
 msgid "Zhihu Fill"
 msgstr ""
 
-#: assets/js/admin.js:6675
+#: assets/js/admin.js:5912
 msgid "Zhihu Line"
 msgstr ""
 
-#: assets/js/admin.js:6685
+#: assets/js/admin.js:5922
 msgid "Adobe"
 msgstr ""
 
-#: assets/js/admin.js:6688
+#: assets/js/admin.js:5925
 msgid "Adonis"
 msgstr ""
 
-#: assets/js/admin.js:6694
+#: assets/js/admin.js:5931
 msgid "Airtable"
 msgstr ""
 
-#: assets/js/admin.js:6697
+#: assets/js/admin.js:5934
 msgid "Alpinejs"
 msgstr ""
 
-#: assets/js/admin.js:6703
+#: assets/js/admin.js:5940
 msgid "Amazon Original"
 msgstr ""
 
-#: assets/js/admin.js:6712
+#: assets/js/admin.js:5949
 msgid "Amex"
 msgstr ""
 
-#: assets/js/admin.js:6718
+#: assets/js/admin.js:5955
 msgid "Android Old"
 msgstr ""
 
-#: assets/js/admin.js:6721
+#: assets/js/admin.js:5958
 msgid "Angellist"
 msgstr ""
 
-#: assets/js/admin.js:6730
+#: assets/js/admin.js:5967
 msgid "Apple Brand"
 msgstr ""
 
-#: assets/js/admin.js:6736
+#: assets/js/admin.js:5973
 msgid "Apple Music Alt"
 msgstr ""
 
-#: assets/js/admin.js:6742
+#: assets/js/admin.js:5979
 msgid "Arc Browser"
 msgstr ""
 
-#: assets/js/admin.js:6745
+#: assets/js/admin.js:5982
 msgid "Asana"
 msgstr ""
 
-#: assets/js/admin.js:6748
+#: assets/js/admin.js:5985
 msgid "Astro"
 msgstr ""
 
-#: assets/js/admin.js:6754
+#: assets/js/admin.js:5991
 msgid "Audi"
 msgstr ""
 
-#: assets/js/admin.js:6757
+#: assets/js/admin.js:5994
 msgid "Audi Alt"
 msgstr ""
 
-#: assets/js/admin.js:6763
+#: assets/js/admin.js:6000
 msgid "Azure"
 msgstr ""
 
-#: assets/js/admin.js:6778
+#: assets/js/admin.js:6015
 msgid "Bittorrent"
 msgstr ""
 
-#: assets/js/admin.js:6784
+#: assets/js/admin.js:6021
 msgid "Blogger Alt"
 msgstr ""
 
-#: assets/js/admin.js:6790
+#: assets/js/admin.js:6027
 msgid "Bluetooth Logo"
 msgstr ""
 
-#: assets/js/admin.js:6793
+#: assets/js/admin.js:6030
 msgid "BMW"
 msgstr ""
 
-#: assets/js/admin.js:6796
+#: assets/js/admin.js:6033
 msgid "Bootstrap 5"
 msgstr ""
 
-#: assets/js/admin.js:6799
+#: assets/js/admin.js:6036
 msgid "Bootstrap 5 Square"
 msgstr ""
 
-#: assets/js/admin.js:6808
+#: assets/js/admin.js:6045
 msgid "Canva"
 msgstr ""
 
-#: assets/js/admin.js:6820
+#: assets/js/admin.js:6057
 msgid "Cisco"
 msgstr ""
 
-#: assets/js/admin.js:6826
+#: assets/js/admin.js:6063
 msgid "Clickup"
 msgstr ""
 
-#: assets/js/admin.js:6832
+#: assets/js/admin.js:6069
 msgid "Codepen"
 msgstr ""
 
-#: assets/js/admin.js:6835
+#: assets/js/admin.js:6072
 msgid "Coinbase"
 msgstr ""
 
-#: assets/js/admin.js:6838
+#: assets/js/admin.js:6075
 msgid "Connectdevelop"
 msgstr ""
 
-#: assets/js/admin.js:6841
+#: assets/js/admin.js:6078
 msgid "Copilot"
 msgstr ""
 
-#: assets/js/admin.js:6844
+#: assets/js/admin.js:6081
 msgid "Coral"
 msgstr ""
 
-#: assets/js/admin.js:6847
+#: assets/js/admin.js:6084
 msgid "Cpanel"
 msgstr ""
 
-#: assets/js/admin.js:6856
+#: assets/js/admin.js:6093
 msgid "Deno"
 msgstr ""
 
-#: assets/js/admin.js:6862
+#: assets/js/admin.js:6099
 msgid "Dialogflow"
 msgstr ""
 
-#: assets/js/admin.js:6865
+#: assets/js/admin.js:6102
 msgid "Digitalocean"
 msgstr ""
 
-#: assets/js/admin.js:6868
+#: assets/js/admin.js:6105
 msgid "Diners Club"
 msgstr ""
 
-#: assets/js/admin.js:6874
+#: assets/js/admin.js:6111
 msgid "Discord Chat"
 msgstr ""
 
-#: assets/js/admin.js:6877
+#: assets/js/admin.js:6114
 msgid "Discover"
 msgstr ""
 
-#: assets/js/admin.js:6886
+#: assets/js/admin.js:6123
 msgid "Dribbble Symbol"
 msgstr ""
 
-#: assets/js/admin.js:6889
+#: assets/js/admin.js:6126
 msgid "Drizzle"
 msgstr ""
 
-#: assets/js/admin.js:6901
+#: assets/js/admin.js:6138
 msgid "Envato"
 msgstr ""
 
-#: assets/js/admin.js:6904
+#: assets/js/admin.js:6141
 msgid "Ethereum Logo"
 msgstr ""
 
-#: assets/js/admin.js:6907
+#: assets/js/admin.js:6144
 msgid "Expressjs"
 msgstr ""
 
-#: assets/js/admin.js:6916
+#: assets/js/admin.js:6153
 msgid "Facebook Rounded"
 msgstr ""
 
-#: assets/js/admin.js:6919
+#: assets/js/admin.js:6156
 msgid "Facebook Square"
 msgstr ""
 
-#: assets/js/admin.js:6922
+#: assets/js/admin.js:6159
 msgid "Facetime"
 msgstr ""
 
-#: assets/js/admin.js:6928
+#: assets/js/admin.js:6165
 msgid "Firebase"
 msgstr ""
 
-#: assets/js/admin.js:6934
+#: assets/js/admin.js:6171
 msgid "Fitbit"
 msgstr ""
 
-#: assets/js/admin.js:6943
+#: assets/js/admin.js:6180
 msgid "Ford"
 msgstr ""
 
-#: assets/js/admin.js:6946
+#: assets/js/admin.js:6183
 msgid "Framer"
 msgstr ""
 
-#: assets/js/admin.js:6949
+#: assets/js/admin.js:6186
 msgid "Gatsby"
 msgstr ""
 
-#: assets/js/admin.js:6952
+#: assets/js/admin.js:6189
 msgid "Gemini"
 msgstr ""
 
-#: assets/js/admin.js:6958
+#: assets/js/admin.js:6195
 msgid "Github"
 msgstr ""
 
-#: assets/js/admin.js:6961
+#: assets/js/admin.js:6198
 msgid "Go"
 msgstr ""
 
-#: assets/js/admin.js:6970
+#: assets/js/admin.js:6207
 msgid "Google Cloud"
 msgstr ""
 
-#: assets/js/admin.js:6976
+#: assets/js/admin.js:6213
 msgid "Google Meet"
 msgstr ""
 
-#: assets/js/admin.js:6985
+#: assets/js/admin.js:6222
 msgid "Grammarly"
 msgstr ""
 
-#: assets/js/admin.js:6997
+#: assets/js/admin.js:6234
 msgid "IBM"
 msgstr ""
 
-#: assets/js/admin.js:7006
+#: assets/js/admin.js:6243
 msgid "Instagram Logotype"
 msgstr ""
 
-#: assets/js/admin.js:7009
+#: assets/js/admin.js:6246
 msgid "Intel"
 msgstr ""
 
-#: assets/js/admin.js:7012
+#: assets/js/admin.js:6249
 msgid "iOS"
 msgstr ""
 
-#: assets/js/admin.js:7015
+#: assets/js/admin.js:6252
 msgid "Jaguar"
 msgstr ""
 
-#: assets/js/admin.js:7018
+#: assets/js/admin.js:6255
 msgid "Jamstack"
 msgstr ""
 
-#: assets/js/admin.js:7024
+#: assets/js/admin.js:6261
 msgid "Javascript"
 msgstr ""
 
-#: assets/js/admin.js:7027
+#: assets/js/admin.js:6264
 msgid "JCB"
 msgstr ""
 
-#: assets/js/admin.js:7036
+#: assets/js/admin.js:6273
 msgid "Kubernetes"
 msgstr ""
 
-#: assets/js/admin.js:7042
+#: assets/js/admin.js:6279
 msgid "Lemon Squeezy"
 msgstr ""
 
-#: assets/js/admin.js:7054
+#: assets/js/admin.js:6285
+msgid "Lineicons"
+msgstr ""
+
+#: assets/js/admin.js:6291
 msgid "Loom"
 msgstr ""
 
-#: assets/js/admin.js:7066
+#: assets/js/admin.js:6303
 msgid "Mastercard"
 msgstr ""
 
-#: assets/js/admin.js:7072
+#: assets/js/admin.js:6309
 msgid "Medium Alt"
 msgstr ""
 
-#: assets/js/admin.js:7075
+#: assets/js/admin.js:6312
 msgid "Mercedes"
 msgstr ""
 
-#: assets/js/admin.js:7081
+#: assets/js/admin.js:6318
 msgid "Meta Alt"
 msgstr ""
 
-#: assets/js/admin.js:7087
+#: assets/js/admin.js:6324
 msgid "Microsoft Edge"
 msgstr ""
 
-#: assets/js/admin.js:7093
+#: assets/js/admin.js:6330
 msgid "MongoDB"
 msgstr ""
 
-#: assets/js/admin.js:7096
+#: assets/js/admin.js:6333
 msgid "MySQL"
 msgstr ""
 
-#: assets/js/admin.js:7099
+#: assets/js/admin.js:6336
 msgid "NASA"
 msgstr ""
 
-#: assets/js/admin.js:7102
+#: assets/js/admin.js:6339
 msgid "Netflix"
 msgstr ""
 
-#: assets/js/admin.js:7105
+#: assets/js/admin.js:6342
 msgid "Netlify"
 msgstr ""
 
-#: assets/js/admin.js:7108
+#: assets/js/admin.js:6345
 msgid "Nextjs"
 msgstr ""
 
-#: assets/js/admin.js:7111
+#: assets/js/admin.js:6348
 msgid "Nike"
 msgstr ""
 
-#: assets/js/admin.js:7114
+#: assets/js/admin.js:6351
 msgid "Nissan"
 msgstr ""
 
-#: assets/js/admin.js:7117
+#: assets/js/admin.js:6354
 msgid "Nodejs"
 msgstr ""
 
-#: assets/js/admin.js:7120
+#: assets/js/admin.js:6357
 msgid "Nodejs Alt"
 msgstr ""
 
-#: assets/js/admin.js:7129
+#: assets/js/admin.js:6366
 msgid "Nuxt"
 msgstr ""
 
-#: assets/js/admin.js:7135
+#: assets/js/admin.js:6372
 msgid "Oculus"
 msgstr ""
 
-#: assets/js/admin.js:7141
+#: assets/js/admin.js:6378
 msgid "Opera Mini"
 msgstr ""
 
-#: assets/js/admin.js:7144
+#: assets/js/admin.js:6381
 msgid "Oracle"
 msgstr ""
 
-#: assets/js/admin.js:7147
+#: assets/js/admin.js:6384
 msgid "Paddle"
 msgstr ""
 
-#: assets/js/admin.js:7153
+#: assets/js/admin.js:6390
 msgid "Payoneer"
 msgstr ""
 
-#: assets/js/admin.js:7159
+#: assets/js/admin.js:6396
 msgid "Pepsi"
 msgstr ""
 
-#: assets/js/admin.js:7165
+#: assets/js/admin.js:6402
 msgid "Pimjo Logo"
 msgstr ""
 
-#: assets/js/admin.js:7168
+#: assets/js/admin.js:6405
 msgid "Pimjo Symbol"
 msgstr ""
 
-#: assets/js/admin.js:7174
+#: assets/js/admin.js:6411
 msgid "Plantscale"
 msgstr ""
 
-#: assets/js/admin.js:7177
+#: assets/js/admin.js:6414
 msgid "Play Store"
 msgstr ""
 
-#: assets/js/admin.js:7180
+#: assets/js/admin.js:6417
 msgid "Playstation"
 msgstr ""
 
-#: assets/js/admin.js:7183
+#: assets/js/admin.js:6420
 msgid "PNPM"
 msgstr ""
 
-#: assets/js/admin.js:7186
+#: assets/js/admin.js:6423
 msgid "PostgreSQL"
 msgstr ""
 
-#: assets/js/admin.js:7189
+#: assets/js/admin.js:6426
 msgid "Postman"
 msgstr ""
 
-#: assets/js/admin.js:7192
+#: assets/js/admin.js:6429
 msgid "Prisma"
 msgstr ""
 
-#: assets/js/admin.js:7195
+#: assets/js/admin.js:6432
 msgid "Producthunt"
 msgstr ""
 
-#: assets/js/admin.js:7198
+#: assets/js/admin.js:6435
 msgid "Proton Mail Logo"
 msgstr ""
 
-#: assets/js/admin.js:7201
+#: assets/js/admin.js:6438
 msgid "Proton Mail Symbol"
 msgstr ""
 
-#: assets/js/admin.js:7210
+#: assets/js/admin.js:6447
 msgid "Radis"
 msgstr ""
 
-#: assets/js/admin.js:7219
+#: assets/js/admin.js:6456
 msgid "Remix JS"
 msgstr ""
 
-#: assets/js/admin.js:7225
+#: assets/js/admin.js:6462
 msgid "Sanity"
 msgstr ""
 
-#: assets/js/admin.js:7228
+#: assets/js/admin.js:6465
 msgid "Signal App"
 msgstr ""
 
-#: assets/js/admin.js:7240
+#: assets/js/admin.js:6477
 msgid "Slideshare"
 msgstr ""
 
-#: assets/js/admin.js:7246
+#: assets/js/admin.js:6483
 msgid "Soundcloud"
 msgstr ""
 
-#: assets/js/admin.js:7249
+#: assets/js/admin.js:6486
 msgid "SpaceX"
 msgstr ""
 
-#: assets/js/admin.js:7255
+#: assets/js/admin.js:6492
 msgid "Spotify Alt"
 msgstr ""
 
-#: assets/js/admin.js:7261
+#: assets/js/admin.js:6498
 msgid "Stackoverflow"
 msgstr ""
 
-#: assets/js/admin.js:7264
+#: assets/js/admin.js:6501
 msgid "Statista"
 msgstr ""
 
-#: assets/js/admin.js:7273
+#: assets/js/admin.js:6510
 msgid "Stumbleupon"
 msgstr ""
 
-#: assets/js/admin.js:7276
+#: assets/js/admin.js:6513
 msgid "Supabase"
 msgstr ""
 
-#: assets/js/admin.js:7279
+#: assets/js/admin.js:6516
 msgid "Svelte"
 msgstr ""
 
-#: assets/js/admin.js:7285
+#: assets/js/admin.js:6522
 msgid "Tailwindcss"
 msgstr ""
 
-#: assets/js/admin.js:7291
+#: assets/js/admin.js:6528
 msgid "Tesla"
 msgstr ""
 
-#: assets/js/admin.js:7297
+#: assets/js/admin.js:6534
 msgid "TikTok Alt"
 msgstr ""
 
-#: assets/js/admin.js:7300
+#: assets/js/admin.js:6537
 msgid "Toyota"
 msgstr ""
 
-#: assets/js/admin.js:7309
+#: assets/js/admin.js:6546
 msgid "Turborepo"
 msgstr ""
 
-#: assets/js/admin.js:7315
+#: assets/js/admin.js:6552
 msgid "Twitter Old"
 msgstr ""
 
-#: assets/js/admin.js:7318
+#: assets/js/admin.js:6555
 msgid "Typescript"
 msgstr ""
 
-#: assets/js/admin.js:7324
+#: assets/js/admin.js:6561
 msgid "Uber Symbol"
 msgstr ""
 
-#: assets/js/admin.js:7333
+#: assets/js/admin.js:6570
 msgid "Vercel"
 msgstr ""
 
-#: assets/js/admin.js:7339
+#: assets/js/admin.js:6576
 msgid "Visa"
 msgstr ""
 
-#: assets/js/admin.js:7342
+#: assets/js/admin.js:6579
 msgid "Vite"
 msgstr ""
 
-#: assets/js/admin.js:7348
+#: assets/js/admin.js:6585
 msgid "VMware"
 msgstr ""
 
-#: assets/js/admin.js:7351
+#: assets/js/admin.js:6588
 msgid "Volkswagen"
 msgstr ""
 
-#: assets/js/admin.js:7354
+#: assets/js/admin.js:6591
 msgid "VS Code"
 msgstr ""
 
-#: assets/js/admin.js:7357
+#: assets/js/admin.js:6594
 msgid "Vuejs"
 msgstr ""
 
-#: assets/js/admin.js:7363
+#: assets/js/admin.js:6600
 msgid "Webhooks"
 msgstr ""
 
-#: assets/js/admin.js:7375
+#: assets/js/admin.js:6612
 msgid "Wise"
 msgstr ""
 
-#: assets/js/admin.js:7381
+#: assets/js/admin.js:6618
 msgid "X"
 msgstr ""
 
-#: assets/js/admin.js:7384
+#: assets/js/admin.js:6621
 msgid "XAMPP"
 msgstr ""
 
-#: assets/js/admin.js:7390
+#: assets/js/admin.js:6627
 msgid "XRP"
 msgstr ""
 
-#: assets/js/admin.js:7399
+#: assets/js/admin.js:6636
 msgid "YCombinator"
 msgstr ""
 
-#: assets/js/admin.js:7405
+#: assets/js/admin.js:6642
 msgid "YouTube Kids"
 msgstr ""
 
-#: assets/js/admin.js:7408
+#: assets/js/admin.js:6645
 msgid "YouTube Music"
 msgstr ""
 
-#: assets/js/admin.js:7411
+#: assets/js/admin.js:6648
 msgid "Zapier"
 msgstr ""
 
-#: assets/js/admin.js:7414
+#: assets/js/admin.js:6651
 msgid "Zoom"
 msgstr ""
 
-#: assets/js/admin.js:7425
+#: assets/js/admin.js:6662
 msgid "Sticky Social Icons Settings"
 msgstr ""
 
-#: assets/js/admin.js:7431
-#: assets/js/admin.js:11289
-#: assets/js/admin.js:11782
+#: assets/js/admin.js:6668
+#: assets/js/admin.js:8184
+#: assets/js/admin.js:8694
 msgid "Sticky Social Icons"
 msgstr ""
 
-#: assets/js/admin.js:7442
+#: assets/js/admin.js:6679
 msgid "Enable or disable the sticky social icons."
 msgstr ""
 
-#: assets/js/admin.js:7446
-msgid "Icons Type"
-msgstr ""
-
-#: assets/js/admin.js:7466
-#: assets/js/admin.js:7488
-#: assets/js/admin.js:7933
-#: assets/js/admin.js:9290
-#: assets/js/admin.js:9952
-#: assets/js/admin.js:10331
-#: assets/js/admin.js:10543
-#: assets/js/admin.js:10676
-#: assets/js/admin.js:10704
-#: assets/js/admin.js:10737
-#: assets/js/admin.js:10770
-msgid "Pro Feature"
-msgstr ""
-
-#: assets/js/admin.js:7469
-msgid "Select the social icons library."
-msgstr ""
-
-#: assets/js/admin.js:7473
-msgid "Icons Position"
-msgstr ""
-
-#: assets/js/admin.js:7493
-msgid "Select the social icons position on the frontend."
-msgstr ""
-
-#: assets/js/admin.js:7497
+#: assets/js/admin.js:6691
 msgid "Icons Style"
 msgstr ""
 
-#: assets/js/admin.js:7511
+#: assets/js/admin.js:6705
 msgid "Select the social icons style on the frontend."
 msgstr ""
 
-#: assets/js/admin.js:7515
-msgid "Display Location"
-msgstr ""
-
-#: assets/js/admin.js:7531
-#: assets/js/admin.js:7555
-msgid "Pro feature"
-msgstr ""
-
-#: assets/js/admin.js:7535
-msgid "set the social icon display location visibility on the frontend."
-msgstr ""
-
-#: assets/js/admin.js:7559
-msgid "set the social icon device visibility on the frontend."
-msgstr ""
-
-#: assets/js/admin.js:7563
+#: assets/js/admin.js:6717
 msgid "Social Icons"
 msgstr ""
 
-#: assets/js/admin.js:7592
+#: assets/js/admin.js:6746
 msgid "Enter URL"
 msgstr ""
 
-#: assets/js/admin.js:7643
-#: assets/js/admin.js:8766
+#: assets/js/admin.js:6797
 msgid "Add New"
 msgstr ""
 
-#: assets/js/admin.js:7647
+#: assets/js/admin.js:6801
 msgid "Icon Menu Background Color"
 msgstr ""
 
-#: assets/js/admin.js:7662
-#: assets/js/admin.js:8864
+#: assets/js/admin.js:6816
+#: assets/js/admin.js:7508
 msgid "Icon Color"
 msgstr ""
 
-#: assets/js/admin.js:7677
-msgid "Icon Hover Color"
-msgstr ""
-
-#: assets/js/admin.js:7696
+#: assets/js/admin.js:6831
 msgid "Icon Background Color"
 msgstr ""
 
-#: assets/js/admin.js:7711
-msgid "Icon Background Hover Color"
-msgstr ""
-
-#: assets/js/admin.js:7733
+#: assets/js/admin.js:6853
 msgid "Genaral"
 msgstr ""
 
-#: assets/js/admin.js:7776
-msgid "Long Banner"
-msgstr ""
-
-#: assets/js/admin.js:7780
-msgid "Floating Banner"
-msgstr ""
-
-#: assets/js/admin.js:7784
-msgid "Modal Banner"
-msgstr ""
-
-#: assets/js/admin.js:7791
-#: assets/js/admin.js:8534
-#: assets/js/admin.js:10005
-msgid "Bottom Left"
-msgstr ""
-
-#: assets/js/admin.js:7795
-#: assets/js/admin.js:8537
-#: assets/js/admin.js:10013
-msgid "Bottom Right"
-msgstr ""
-
-#: assets/js/admin.js:7840
-#: assets/js/admin.js:8195
+#: assets/js/admin.js:6907
+#: assets/js/admin.js:7185
 msgid "Accept Button"
 msgstr ""
 
-#: assets/js/admin.js:7845
-#: assets/js/admin.js:8231
+#: assets/js/admin.js:6912
+#: assets/js/admin.js:7221
 msgid "Reject Button"
 msgstr ""
 
-#: assets/js/admin.js:7880
+#: assets/js/admin.js:6947
 msgid "Sticky Cookie Consent Settings"
 msgstr ""
 
-#: assets/js/admin.js:7884
-#: assets/js/admin.js:8581
-#: assets/js/admin.js:9519
-#: assets/js/admin.js:10280
-#: assets/js/admin.js:11273
+#: assets/js/admin.js:6951
+#: assets/js/admin.js:7396
+#: assets/js/admin.js:7669
+#: assets/js/admin.js:8156
 msgid "General"
 msgstr ""
 
-#: assets/js/admin.js:7889
-#: assets/js/admin.js:11293
-#: assets/js/admin.js:11787
+#: assets/js/admin.js:6956
+#: assets/js/admin.js:8191
+#: assets/js/admin.js:8699
 msgid "Sticky Cookie Consent"
 msgstr ""
 
-#: assets/js/admin.js:7900
+#: assets/js/admin.js:6967
 msgid "Enable or disable the sticky cookie consent."
 msgstr ""
 
-#: assets/js/admin.js:7904
-#: assets/js/admin.js:10305
-msgid "Layout"
+#: assets/js/admin.js:6975
+msgid "Message"
 msgstr ""
 
-#: assets/js/admin.js:7999
+#: assets/js/admin.js:6989
 msgid "Cookie Expiry (days)"
 msgstr ""
 
-#: assets/js/admin.js:8011
+#: assets/js/admin.js:7001
 msgid "Set the number of days until the cookie consent expires."
 msgstr ""
 
-#: assets/js/admin.js:8015
+#: assets/js/admin.js:7005
 msgid "Reject Redirect"
 msgstr ""
 
-#: assets/js/admin.js:8026
+#: assets/js/admin.js:7016
 msgid "Redirect to a specific page/url when user reject cookie consent."
 msgstr ""
 
-#: assets/js/admin.js:8030
+#: assets/js/admin.js:7020
 msgid "Reject Redirect URL"
 msgstr ""
 
-#: assets/js/admin.js:8043
+#: assets/js/admin.js:7033
 msgid "Write the URL you want to redirect when user reject cookie consent."
 msgstr ""
 
-#: assets/js/admin.js:8047
-#: assets/js/admin.js:10477
+#: assets/js/admin.js:7037
 msgid "Close Button"
 msgstr ""
 
-#: assets/js/admin.js:8058
+#: assets/js/admin.js:7048
 msgid "Show or hide the close button on the cookie consent banner."
 msgstr ""
 
-#: assets/js/admin.js:8060
-#: assets/js/admin.js:8065
+#: assets/js/admin.js:7050
+#: assets/js/admin.js:7055
 msgid "Buttons"
 msgstr ""
 
-#: assets/js/admin.js:8129
+#: assets/js/admin.js:7119
 msgid "Set your cookie consent buttons."
 msgstr ""
 
-#: assets/js/admin.js:8131
-#: assets/js/admin.js:10962
+#: assets/js/admin.js:7121
 msgid "Styles"
 msgstr ""
 
-#: assets/js/admin.js:8136
+#: assets/js/admin.js:7126
 msgid "Banner Style"
 msgstr ""
 
-#: assets/js/admin.js:8159
-#: assets/js/admin.js:8216
-#: assets/js/admin.js:8252
-#: assets/js/admin.js:10995
+#: assets/js/admin.js:7149
+#: assets/js/admin.js:7206
+#: assets/js/admin.js:7242
 msgid "Text Color"
 msgstr ""
 
-#: assets/js/admin.js:8174
-#: assets/js/admin.js:11015
+#: assets/js/admin.js:7164
 msgid "Font Size"
 msgstr ""
 
-#: assets/js/admin.js:8177
+#: assets/js/admin.js:7167
 msgid "16px"
 msgstr ""
 
-#: assets/js/admin.js:8189
-#: assets/js/admin.js:11034
+#: assets/js/admin.js:7179
 msgid "Button Style"
 msgstr ""
 
-#: assets/js/admin.js:8296
+#: assets/js/admin.js:7284
 msgid "Fixed Widget Settings"
 msgstr ""
 
-#: assets/js/admin.js:8313
+#: assets/js/admin.js:7301
 msgid "Enable or disable the fixed widget."
 msgstr ""
 
-#: assets/js/admin.js:8317
+#: assets/js/admin.js:7305
 msgid "Fixed Widget Top Offset"
 msgstr ""
 
-#: assets/js/admin.js:8329
+#: assets/js/admin.js:7317
 msgid "Set the top offset when fixed the sticky widget. Example: 100. don't include px, rem, em etc."
 msgstr ""
 
-#: assets/js/admin.js:8372
+#: assets/js/admin.js:7358
 msgid "Support"
 msgstr ""
 
-#: assets/js/admin.js:8398
+#: assets/js/admin.js:7366
 msgid "Call Us Now"
 msgstr ""
 
-#: assets/js/admin.js:8400
-msgid "We're available!"
-msgstr ""
-
-#: assets/js/admin.js:8402
-msgid "Reach Us Directly"
-msgstr ""
-
-#: assets/js/admin.js:8404
-msgid "Choose how you'd like to connect"
-msgstr ""
-
-#: assets/js/admin.js:8406
-msgid "We're online – call now"
-msgstr ""
-
-#: assets/js/admin.js:8408
-msgid "Currently closed"
-msgstr ""
-
-#: assets/js/admin.js:8410
-msgid "We're currently closed. See our hours below."
-msgstr ""
-
-#: assets/js/admin.js:8412
-msgid "Response within 1 business day."
-msgstr ""
-
-#: assets/js/admin.js:8454
-msgid "Popup"
-msgstr ""
-
-#: assets/js/admin.js:8459
-msgid "Slide Panel"
-msgstr ""
-
-#: assets/js/admin.js:8464
-#: assets/js/admin.js:8961
-msgid "Badge"
-msgstr ""
-
-#: assets/js/admin.js:8469
-msgid "Dock"
-msgstr ""
-
-#: assets/js/admin.js:8474
-msgid "Toolbar"
-msgstr ""
-
-#: assets/js/admin.js:8479
-#: assets/js/admin.js:8787
-msgid "Inline"
-msgstr ""
-
-#: assets/js/admin.js:8484
-#: assets/js/admin.js:9326
-msgid "Card"
-msgstr ""
-
-#: assets/js/admin.js:8489
-#: assets/js/admin.js:9376
-msgid "Glass"
-msgstr ""
-
-#: assets/js/admin.js:8494
-msgid "Neumorphic"
-msgstr ""
-
-#: assets/js/admin.js:8499
-msgid "Skeuomorphic"
-msgstr ""
-
-#: assets/js/admin.js:8504
-msgid "Soft UI"
-msgstr ""
-
-#: assets/js/admin.js:8509
-msgid "High Contrast"
-msgstr ""
-
-#: assets/js/admin.js:8514
-msgid "Shadow UI"
-msgstr ""
-
-#: assets/js/admin.js:8519
-msgid "Flat"
-msgstr ""
-
-#: assets/js/admin.js:8525
+#: assets/js/admin.js:7368
 msgid "Top Left"
 msgstr ""
 
-#: assets/js/admin.js:8528
+#: assets/js/admin.js:7371
 msgid "Top Right"
 msgstr ""
 
-#: assets/js/admin.js:8531
+#: assets/js/admin.js:7374
 msgid "Top Center"
 msgstr ""
 
-#: assets/js/admin.js:8540
-#: assets/js/admin.js:10009
+#: assets/js/admin.js:7377
+msgid "Bottom Left"
+msgstr ""
+
+#: assets/js/admin.js:7380
+msgid "Bottom Right"
+msgstr ""
+
+#: assets/js/admin.js:7383
 msgid "Bottom Center"
 msgstr ""
 
-#: assets/js/admin.js:8544
-msgid "None"
-msgstr ""
-
-#: assets/js/admin.js:8547
-msgid "Ripple"
-msgstr ""
-
-#: assets/js/admin.js:8550
-#: assets/js/admin.js:10147
-msgid "Heartbeat"
-msgstr ""
-
-#: assets/js/admin.js:8553
-#: assets/js/admin.js:10132
-msgid "Bounce"
-msgstr ""
-
-#: assets/js/admin.js:8556
-#: assets/js/admin.js:10150
-msgid "Swing"
-msgstr ""
-
-#: assets/js/admin.js:8559
-#: assets/js/admin.js:10138
-msgid "Tada"
-msgstr ""
-
-#: assets/js/admin.js:8562
-msgid "Sonar"
-msgstr ""
-
-#: assets/js/admin.js:8565
-msgid "Rotate"
-msgstr ""
-
-#: assets/js/admin.js:8568
-msgid "Blob"
-msgstr ""
-
-#: assets/js/admin.js:8577
+#: assets/js/admin.js:7392
 msgid "Click to Call Settings"
 msgstr ""
 
-#: assets/js/admin.js:8586
-#: assets/js/admin.js:11277
-#: assets/js/admin.js:11757
+#: assets/js/admin.js:7401
+#: assets/js/admin.js:8163
+#: assets/js/admin.js:8669
 msgid "Click to Call"
 msgstr ""
 
-#: assets/js/admin.js:8597
+#: assets/js/admin.js:7412
 msgid "Enable or disable the sticky click to call."
 msgstr ""
 
-#: assets/js/admin.js:8660
-msgid "Select the device to show the click to call widget."
+#: assets/js/admin.js:7420
+#: assets/js/admin.js:7928
+msgid "Position"
 msgstr ""
 
-#: assets/js/admin.js:8678
+#: assets/js/admin.js:7434
 msgid "Select the position of the click to call widget."
 msgstr ""
 
-#: assets/js/admin.js:8685
+#: assets/js/admin.js:7441
 msgid "Phone Number"
 msgstr ""
 
-#: assets/js/admin.js:8685
+#: assets/js/admin.js:7441
 msgid "Add multiple lines with labels"
 msgstr ""
 
-#: assets/js/admin.js:8695
+#: assets/js/admin.js:7451
 msgid "ex: +8801512345678"
 msgstr ""
 
-#: assets/js/admin.js:8706
+#: assets/js/admin.js:7462
 msgid "ex: Call Now"
 msgstr ""
 
-#: assets/js/admin.js:8768
-#: assets/js/admin.js:9899
+#: assets/js/admin.js:7484
+#: assets/js/admin.js:7948
 msgid "Theme & Styling"
 msgstr ""
 
-#: assets/js/admin.js:8773
-msgid "Widget Type"
-msgstr ""
-
-#: assets/js/admin.js:8799
-msgid "Launcher"
-msgstr ""
-
-#: assets/js/admin.js:8801
-msgid "Select the widget type."
-msgstr ""
-
-#: assets/js/admin.js:8805
-#: assets/js/admin.js:10967
-msgid "Widget Style"
-msgstr ""
-
-#: assets/js/admin.js:8845
-msgid "Select a widget style. The chosen style will apply when multiple phone numbers."
-msgstr ""
-
-#: assets/js/admin.js:8860
+#: assets/js/admin.js:7504
 msgid "Set the background color of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8875
+#: assets/js/admin.js:7519
 msgid "Set the icon color of the widget."
 msgstr ""
 
-#: assets/js/admin.js:8882
-msgid "Animation"
-msgstr ""
-
-#: assets/js/admin.js:8913
-msgid "Select the animation for the widget appearance."
-msgstr ""
-
-#: assets/js/admin.js:8915
-msgid "Timing & Badges"
-msgstr ""
-
-#: assets/js/admin.js:8920
-#: assets/js/admin.js:10589
-msgid "Auto Open"
-msgstr ""
-
-#: assets/js/admin.js:8936
-msgid "Make the widget open automatically."
-msgstr ""
-
-#: assets/js/admin.js:8940
-msgid "Auto Open Delay"
-msgstr ""
-
-#: assets/js/admin.js:8957
-msgid "Set the auto open delay in seconds."
-msgstr ""
-
-#: assets/js/admin.js:8978
-msgid "Show a badge on the widget."
-msgstr ""
-
-#: assets/js/admin.js:8982
-msgid "Badge Count"
-msgstr ""
-
-#: assets/js/admin.js:8999
-msgid "Set the badge count."
-msgstr ""
-
-#: assets/js/admin.js:9003
-msgid "Show Chip"
-msgstr ""
-
-#: assets/js/admin.js:9019
-msgid "Show a chip (text) on the widget top."
-msgstr ""
-
-#: assets/js/admin.js:9023
-msgid "Show Chip Dot"
-msgstr ""
-
-#: assets/js/admin.js:9040
-msgid "Show an online/offline dot inside the chip based on the availability."
-msgstr ""
-
-#: assets/js/admin.js:9042
+#: assets/js/admin.js:7529
 msgid "Labels"
 msgstr ""
 
-#: assets/js/admin.js:9047
+#: assets/js/admin.js:7534
 msgid "CTA Text"
 msgstr ""
 
-#: assets/js/admin.js:9058
+#: assets/js/admin.js:7545
 msgid "Set the CTA text of the widget."
 msgstr ""
 
-#: assets/js/admin.js:9062
-msgid "Tooltip Text"
+#: assets/js/admin.js:7583
+msgid "Right"
 msgstr ""
 
-#: assets/js/admin.js:9078
-msgid "Set the tooltip text of the widget."
+#: assets/js/admin.js:7586
+msgid "Left"
 msgstr ""
 
-#: assets/js/admin.js:9082
-msgid "Title Text"
+#: assets/js/admin.js:7590
+msgid "Top"
 msgstr ""
 
-#: assets/js/admin.js:9098
-msgid "Set the title text of the widget."
+#: assets/js/admin.js:7593
+msgid "Bottom"
 msgstr ""
 
-#: assets/js/admin.js:9102
-msgid "Subtitle Text"
-msgstr ""
-
-#: assets/js/admin.js:9118
-msgid "Set the subtitle text of the widget."
-msgstr ""
-
-#: assets/js/admin.js:9122
-msgid "Online Message Text"
-msgstr ""
-
-#: assets/js/admin.js:9138
-msgid "Set the online message text of the widget."
-msgstr ""
-
-#: assets/js/admin.js:9142
-msgid "Closed Message Text"
-msgstr ""
-
-#: assets/js/admin.js:9158
-msgid "Set the closed message text of the widget."
-msgstr ""
-
-#: assets/js/admin.js:9162
-msgid "Offline Message Text"
-msgstr ""
-
-#: assets/js/admin.js:9178
-msgid "Set the offline message text of the widget."
-msgstr ""
-
-#: assets/js/admin.js:9182
-msgid "Footer Text"
-msgstr ""
-
-#: assets/js/admin.js:9198
-msgid "Set the footer text of the widget."
-msgstr ""
-
-#: assets/js/admin.js:9200
-#: assets/js/admin.js:9225
-msgid "Schedules"
-msgstr ""
-
-#: assets/js/admin.js:9205
-msgid "Show Hours"
-msgstr ""
-
-#: assets/js/admin.js:9221
-msgid "Enable or disable the show hours when schedules time not available."
-msgstr ""
-
-#: assets/js/admin.js:9287
-msgid "Set the schedules of the widget."
-msgstr ""
-
-#: assets/js/admin.js:9330
-msgid "Simple"
-msgstr ""
-
-#: assets/js/admin.js:9334
-msgid "Steps"
-msgstr ""
-
-#: assets/js/admin.js:9338
-msgid "Banner"
-msgstr ""
-
-#: assets/js/admin.js:9342
-msgid "Pills"
-msgstr ""
-
-#: assets/js/admin.js:9346
-msgid "Sticky Inline"
-msgstr ""
-
-#: assets/js/admin.js:9350
-msgid "Accordion"
-msgstr ""
-
-#: assets/js/admin.js:9354
-msgid "Two Column"
-msgstr ""
-
-#: assets/js/admin.js:9358
-msgid "Tracker"
-msgstr ""
-
-#: assets/js/admin.js:9362
-msgid "Tabs"
-msgstr ""
-
-#: assets/js/admin.js:9366
-msgid "Ghost"
-msgstr ""
-
-#: assets/js/admin.js:9371
-msgid "Default"
-msgstr ""
-
-#: assets/js/admin.js:9381
-msgid "Dark"
-msgstr ""
-
-#: assets/js/admin.js:9386
-msgid "Minimal"
-msgstr ""
-
-#: assets/js/admin.js:9391
-msgid "Neon"
-msgstr ""
-
-#: assets/js/admin.js:9396
-msgid "Frosted Dark"
-msgstr ""
-
-#: assets/js/admin.js:9401
-msgid "Newspaper"
-msgstr ""
-
-#: assets/js/admin.js:9406
-msgid "Outline"
-msgstr ""
-
-#: assets/js/admin.js:9411
-msgid "Slideout"
-msgstr ""
-
-#: assets/js/admin.js:9416
-msgid "Top Nav"
-msgstr ""
-
-#: assets/js/admin.js:9515
+#: assets/js/admin.js:7665
 msgid "Sticky Table of Contents Settings"
 msgstr ""
 
-#: assets/js/admin.js:9524
+#: assets/js/admin.js:7674
 msgid "Table of Contents"
 msgstr ""
 
-#: assets/js/admin.js:9535
+#: assets/js/admin.js:7685
 msgid "Enable or disable the table of contents."
 msgstr ""
 
-#: assets/js/admin.js:9539
+#: assets/js/admin.js:7689
 msgid "TOC Post Type"
 msgstr ""
 
-#: assets/js/admin.js:9556
-#: assets/js/admin.js:9592
+#: assets/js/admin.js:7706
+#: assets/js/admin.js:7726
 msgid "Heading text shown in both the inline block and the sidebar."
 msgstr ""
 
-#: assets/js/admin.js:9560
-#: assets/js/admin.js:9881
-msgid "Progress Bar"
-msgstr ""
-
-#: assets/js/admin.js:9576
-msgid "Display a thin reading-progress bar pinned to the very top of the page."
-msgstr ""
-
-#: assets/js/admin.js:9580
+#: assets/js/admin.js:7714
 msgid "TOC Title"
 msgstr ""
 
-#: assets/js/admin.js:9596
+#: assets/js/admin.js:7730
 msgid "Content Selector"
 msgstr ""
 
-#: assets/js/admin.js:9608
+#: assets/js/admin.js:7742
 msgid "CSS selector of the article wrapper table of contents will scan for headings."
 msgstr ""
 
-#: assets/js/admin.js:9610
+#: assets/js/admin.js:7744
 msgid "Content Parsing"
 msgstr ""
 
-#: assets/js/admin.js:9615
+#: assets/js/admin.js:7749
 msgid "Heading Levels"
 msgstr ""
 
-#: assets/js/admin.js:9627
+#: assets/js/admin.js:7761
 msgid "Which heading tags table of contents will detect. At least one must be selected."
 msgstr ""
 
-#: assets/js/admin.js:9631
+#: assets/js/admin.js:7765
 msgid "Max Depth"
 msgstr ""
 
-#: assets/js/admin.js:9634
+#: assets/js/admin.js:7768
 msgid "H2 Only"
 msgstr ""
 
-#: assets/js/admin.js:9637
+#: assets/js/admin.js:7771
 msgid "H2 + H3"
 msgstr ""
 
-#: assets/js/admin.js:9640
+#: assets/js/admin.js:7774
 msgid "H2 + H3 + H4"
 msgstr ""
 
-#: assets/js/admin.js:9654
+#: assets/js/admin.js:7788
 msgid "Maximum nesting depth visible in the TOC. Deeper headings are still given IDs but are hidden."
 msgstr ""
 
-#: assets/js/admin.js:9658
+#: assets/js/admin.js:7792
 msgid "Minimum Headings"
 msgstr ""
 
-#: assets/js/admin.js:9673
+#: assets/js/admin.js:7807
 msgid "Minimum number of headings required before any TOC is rendered."
 msgstr ""
 
-#: assets/js/admin.js:9677
+#: assets/js/admin.js:7811
 msgid "Section Numbers"
 msgstr ""
 
-#: assets/js/admin.js:9688
+#: assets/js/admin.js:7822
 msgid "Prepend nested numbers (e.g. \"1.\", \"1.2.\") before each TOC link."
 msgstr ""
 
-#: assets/js/admin.js:9692
+#: assets/js/admin.js:7826
 msgid "Scroll Offset (px)"
 msgstr ""
 
-#: assets/js/admin.js:9707
+#: assets/js/admin.js:7841
 msgid "Pixels subtracted from the scroll position to account for a sticky header."
 msgstr ""
 
-#: assets/js/admin.js:9711
+#: assets/js/admin.js:7845
 msgid "Scroll Behaviour"
 msgstr ""
 
-#: assets/js/admin.js:9714
+#: assets/js/admin.js:7848
 msgid "Smooth"
 msgstr ""
 
-#: assets/js/admin.js:9717
+#: assets/js/admin.js:7851
 msgid "Instant"
 msgstr ""
 
-#: assets/js/admin.js:9731
+#: assets/js/admin.js:7865
 msgid "Animation style when clicking a TOC link."
 msgstr ""
 
-#: assets/js/admin.js:9733
+#: assets/js/admin.js:7867
 msgid "Inline TOC Block"
 msgstr ""
 
-#: assets/js/admin.js:9738
+#: assets/js/admin.js:7872
 msgid "Show Inline Block"
 msgstr ""
 
-#: assets/js/admin.js:9749
+#: assets/js/admin.js:7883
 msgid "Inject a collapsible TOC block inside the article content (above the first paragraph)."
 msgstr ""
 
-#: assets/js/admin.js:9753
-#: assets/js/admin.js:9811
-msgid "Preset"
-msgstr ""
-
-#: assets/js/admin.js:9774
-msgid "Preset for the inline TOC block."
-msgstr ""
-
-#: assets/js/admin.js:9778
+#: assets/js/admin.js:7891
 msgid "Start Collapsed"
 msgstr ""
 
-#: assets/js/admin.js:9789
+#: assets/js/admin.js:7902
 msgid "Open the inline block collapsed by default. Visitors can expand it on click."
 msgstr ""
 
-#: assets/js/admin.js:9791
+#: assets/js/admin.js:7904
 msgid "Sticky Sidebar & Topnav"
 msgstr ""
 
-#: assets/js/admin.js:9796
+#: assets/js/admin.js:7909
 msgid "Sticky"
 msgstr ""
 
-#: assets/js/admin.js:9807
+#: assets/js/admin.js:7920
 msgid "Sticky sidebar or topnav."
 msgstr ""
 
-#: assets/js/admin.js:9836
-msgid "Visual style for the sticky sidebar. Choosing \"Top Nav\" switches to a floating navigation chip."
-msgstr ""
-
-#: assets/js/admin.js:9854
+#: assets/js/admin.js:7942
 msgid "Pin the topnav chip to the top or bottom of the viewport."
 msgstr ""
 
-#: assets/js/admin.js:9854
+#: assets/js/admin.js:7942
 msgid "Pin the sidebar to the left or right side of the viewport."
 msgstr ""
 
-#: assets/js/admin.js:9858
-msgid "Edge Gap (px)"
-msgstr ""
-
-#: assets/js/admin.js:9877
-msgid "Distance in pixels between the sidebar / topnav and the viewport edge."
-msgstr ""
-
-#: assets/js/admin.js:9897
-msgid "Show a mini reading-progress bar inside the sidebar header."
-msgstr ""
-
-#: assets/js/admin.js:9904
+#: assets/js/admin.js:7953
 msgid "Accent Color"
 msgstr ""
 
-#: assets/js/admin.js:9915
+#: assets/js/admin.js:7964
 msgid "Primary accent colour used for active links, progress bar, and highlights (CSS var --stoc-color)."
 msgstr ""
 
-#: assets/js/admin.js:9930
+#: assets/js/admin.js:7979
 msgid "Widget background colour (CSS var --stoc-color-bg). Leave as-is to follow the active preset."
 msgstr ""
 
-#: assets/js/admin.js:9934
+#: assets/js/admin.js:7983
 msgid "Border Radius (px)"
 msgstr ""
 
-#: assets/js/admin.js:9949
+#: assets/js/admin.js:7998
 msgid "Border radius of the widget (CSS var --stoc-border-radius)."
 msgstr ""
 
-#: assets/js/admin.js:9990
-msgid "Floating Button"
-msgstr ""
-
-#: assets/js/admin.js:9994
-msgid "Sticky Bar"
-msgstr ""
-
-#: assets/js/admin.js:9998
-msgid "Icon Only"
-msgstr ""
-
-#: assets/js/admin.js:10035
-msgid "Once Per Session"
-msgstr ""
-
-#: assets/js/admin.js:10039
-msgid "Time Based"
-msgstr ""
-
-#: assets/js/admin.js:10043
-msgid "Always Show"
-msgstr ""
-
-#: assets/js/admin.js:10050
-msgid "Minutes"
-msgstr ""
-
-#: assets/js/admin.js:10053
-msgid "Hours"
-msgstr ""
-
-#: assets/js/admin.js:10056
-msgid "Days"
-msgstr ""
-
-#: assets/js/admin.js:10062
-msgid "Default Form"
-msgstr ""
-
-#: assets/js/admin.js:10066
-msgid "Contact Forms"
-msgstr ""
-
-#: assets/js/admin.js:10074
-#: assets/js/admin.js:10257
-msgid "Contact Form 7"
-msgstr ""
-
-#: assets/js/admin.js:10082
-msgid "Other Forms"
-msgstr ""
-
-#: assets/js/admin.js:10087
-msgid "All Visitors"
-msgstr ""
-
-#: assets/js/admin.js:10091
-msgid "Logged In Users"
-msgstr ""
-
-#: assets/js/admin.js:10095
-msgid "Visitors Users"
-msgstr ""
-
-#: assets/js/admin.js:10108
-msgid "Blog"
-msgstr ""
-
-#: assets/js/admin.js:10112
-msgid "Single Posts"
-msgstr ""
-
-#: assets/js/admin.js:10116
-msgid "Pages"
-msgstr ""
-
-#: assets/js/admin.js:10120
-msgid "Archives"
-msgstr ""
-
-#: assets/js/admin.js:10124
-msgid "Search Results"
-msgstr ""
-
-#: assets/js/admin.js:10129
-msgid "Pulse"
-msgstr ""
-
-#: assets/js/admin.js:10135
-msgid "Shake"
-msgstr ""
-
-#: assets/js/admin.js:10141
-msgid "Wobble"
-msgstr ""
-
-#: assets/js/admin.js:10144
-msgid "Flash"
-msgstr ""
-
-#: assets/js/admin.js:10182
-msgid "Contact Us"
-msgstr ""
-
-#: assets/js/admin.js:10184
-msgid "Send us a Message"
-msgstr ""
-
-#: assets/js/admin.js:10186
-msgid "Fill out the form below and we'll get back to you."
-msgstr ""
-
-#: assets/js/admin.js:10188
-msgid "👋 Have a question? We usually reply within the hour."
-msgstr ""
-
-#: assets/js/admin.js:10200
-msgid "Thanks for reaching out. Someone from our team will get back to you within the hour."
-msgstr ""
-
-#: assets/js/admin.js:10248
-msgid "— Select a form —"
-msgstr ""
-
-#: assets/js/admin.js:10276
-msgid "Sticky Floating Forms Settings"
-msgstr ""
-
-#: assets/js/admin.js:10285
-msgid "Sticky Floating Forms"
-msgstr ""
-
-#: assets/js/admin.js:10301
-msgid "Enable or disable the sticky floating contact form."
-msgstr ""
-
-#: assets/js/admin.js:10327
-msgid "Coming soon"
-msgstr ""
-
-#: assets/js/admin.js:10381
-msgid "Hide on Scroll"
-msgstr ""
-
-#: assets/js/admin.js:10397
-msgid "Hide the floating button while scrolling down, and show it again when scrolling up. Turn off to keep it always visible."
-msgstr ""
-
-#: assets/js/admin.js:10417
-msgid "Text shown on the floating trigger button."
-msgstr ""
-
-#: assets/js/admin.js:10421
-msgid "Teaser Message"
-msgstr ""
-
-#: assets/js/admin.js:10437
-msgid "A short bubble message shown once, a few seconds after the page loads."
-msgstr ""
-
-#: assets/js/admin.js:10441
-msgid "Modal Title"
-msgstr ""
-
-#: assets/js/admin.js:10459
-msgid "Modal Subtitle"
-msgstr ""
-
-#: assets/js/admin.js:10493
-msgid "Show or hide the close (×) icon on the modal."
-msgstr ""
-
-#: assets/js/admin.js:10495
-msgid "Target & Trigger"
-msgstr ""
-
-#: assets/js/admin.js:10500
-msgid "Exit Intent Popup"
-msgstr ""
-
-#: assets/js/admin.js:10516
-msgid "Open the modal automatically when a visitor looks about to leave."
-msgstr ""
-
-#: assets/js/admin.js:10520
-msgid "Exit Intent Frequency"
-msgstr ""
-
-#: assets/js/admin.js:10546
-msgid "How often the same visitor can be shown the exit-intent popup. \"Always Show\" is intended for testing — it will repeatedly reopen the modal with no cooldown."
-msgstr ""
-
-#: assets/js/admin.js:10550
-msgid "Repeat Every"
-msgstr ""
-
-#: assets/js/admin.js:10585
-msgid "The same visitor won't see the exit-intent popup again until this interval has passed."
-msgstr ""
-
-#: assets/js/admin.js:10605
-msgid "Automatically open the modal a few seconds after the page loads, without waiting for exit intent."
-msgstr ""
-
-#: assets/js/admin.js:10609
-msgid "Delay (seconds)"
-msgstr ""
-
-#: assets/js/admin.js:10629
-msgid "How long to wait, in seconds, before automatically opening the modal."
-msgstr ""
-
-#: assets/js/admin.js:10633
-msgid "Respect Reduced Motion"
-msgstr ""
-
-#: assets/js/admin.js:10649
-msgid "Skip the pulse animation and exit-intent popup for visitors who request reduced motion."
-msgstr ""
-
-#: assets/js/admin.js:10653
-msgid "Display For"
-msgstr ""
-
-#: assets/js/admin.js:10681
-msgid "Display On"
-msgstr ""
-
-#: assets/js/admin.js:10707
-msgid "Forms"
-msgstr ""
-
-#: assets/js/admin.js:10712
-msgid "Form Type"
-msgstr ""
-
-#: assets/js/admin.js:10740
-msgid "Use the built-in demo fields (Name, Email, Message), or connect an existing form built with Contact Form 7, WPForms, or another form plugin."
-msgstr ""
-
-#: assets/js/admin.js:10744
-msgid "Contact Form Plugin"
-msgstr ""
-
-#: assets/js/admin.js:10773
-msgid "Choose which plugin the form below belongs to, so we can render it correctly."
-msgstr ""
-
-#: assets/js/admin.js:10777
-msgid "Form Shortcode"
-msgstr ""
-
-#: assets/js/admin.js:10794
-msgid "Paste the shortcode of the existing form you want to render inside the modal."
-msgstr ""
-
-#: assets/js/admin.js:10798
-msgid "Select Form"
-msgstr ""
-
-#: assets/js/admin.js:10818
-msgid "Pick an existing form — its shortcode will be inserted automatically."
-msgstr ""
-
-#: assets/js/admin.js:10822
-msgid "No"
-msgstr ""
-
-#: assets/js/admin.js:10822
-msgid "forms were found. Create a form in that plugin first, then come back here to select it."
-msgstr ""
-
-#: assets/js/admin.js:10826
-msgid "Send To"
-msgstr ""
-
-#: assets/js/admin.js:10844
-msgid "Where form submissions are emailed. Defaults to the site admin email — separate multiple addresses with commas."
-msgstr ""
-
-#: assets/js/admin.js:10848
-msgid "Honeypot field"
-msgstr ""
-
-#: assets/js/admin.js:10865
-msgid "If enabled, the form will not be submitted if the honeypot field is filled in. Prevent bot spam form submissions."
-msgstr ""
-
-#: assets/js/admin.js:10869
-msgid "Success message"
-msgstr ""
-
-#: assets/js/admin.js:10885
-msgid "Message to show when the form has been successfully submitted."
-msgstr ""
-
-#: assets/js/admin.js:10887
-msgid "Attention effects"
-msgstr ""
-
-#: assets/js/admin.js:10892
-msgid "Attention Effects"
-msgstr ""
-
-#: assets/js/admin.js:10909
-msgid "Turn individual attention effects on or off, and reorder them."
-msgstr ""
-
-#: assets/js/admin.js:10913
-msgid "Effects Type"
-msgstr ""
-
-#: assets/js/admin.js:10940
-msgid "Choose how the floating button should draw attention."
-msgstr ""
-
-#: assets/js/admin.js:10944
-msgid "Unread Badge"
-msgstr ""
-
-#: assets/js/admin.js:10960
-msgid "Show or hide the unread badge on the floating trigger button."
-msgstr ""
-
-#: assets/js/admin.js:11018
-msgid "15px"
-msgstr ""
-
-#: assets/js/admin.js:11042
-msgid "Submit Button Background Color"
-msgstr ""
-
-#: assets/js/admin.js:11062
-msgid "Submit Button Text Color"
-msgstr ""
-
-#: assets/js/admin.js:11084
-msgid "Close Button Background Color"
-msgstr ""
-
-#: assets/js/admin.js:11104
-msgid "Close Button Text Color"
-msgstr ""
-
-#: assets/js/admin.js:11174
+#: assets/js/admin.js:8052
 msgid "Dashboard Only"
 msgstr ""
 
-#: assets/js/admin.js:11185
+#: assets/js/admin.js:8055
+msgid "Everywhere"
+msgstr ""
+
+#: assets/js/admin.js:8063
 msgid "Sticky Notes Settings"
 msgstr ""
 
-#: assets/js/admin.js:11191
-#: assets/js/admin.js:11305
+#: assets/js/admin.js:8069
+#: assets/js/admin.js:8205
 msgid "Sticky Notes"
 msgstr ""
 
-#: assets/js/admin.js:11202
+#: assets/js/admin.js:8080
 msgid "Enable draggable, resizable sticky notes on the WordPress admin dashboard. Each logged-in user gets their own notes, and can show/hide them from the \"Sticky Notes\" button in the admin bar."
 msgstr ""
 
-#: assets/js/admin.js:11206
+#: assets/js/admin.js:8084
 msgid "Show Notes On"
 msgstr ""
 
-#: assets/js/admin.js:11220
+#: assets/js/admin.js:8098
 msgid "\"Dashboard Only\" shows notes just on the WordPress Dashboard screen. \"Everywhere\" shows them on every wp-admin screen."
 msgstr ""
 
-#: assets/js/admin.js:11224
+#: assets/js/admin.js:8102
 msgid "Default Font"
 msgstr ""
 
-#: assets/js/admin.js:11237
+#: assets/js/admin.js:8115
 msgid "The font used for newly created notes. Each note can still have its font changed individually from its own settings popover."
 msgstr ""
 
-#: assets/js/admin.js:11297
-msgid "Sticky Forms"
-msgstr ""
-
-#: assets/js/admin.js:11301
+#: assets/js/admin.js:8198
 msgid "Sticky Table of Content"
 msgstr ""
 
-#: assets/js/admin.js:11394
+#: assets/js/admin.js:8300
 msgid "Settings saved successfully."
 msgstr ""
 
-#: assets/js/admin.js:11405
+#: assets/js/admin.js:8311
 msgid "Settings Reset successfully."
 msgstr ""
 
-#: assets/js/admin.js:11462
-#: assets/js/admin.js:11866
+#: assets/js/admin.js:8368
+#: assets/js/admin.js:8778
 msgid "Basic Usage"
 msgstr ""
 
-#: assets/js/admin.js:11468
+#: assets/js/admin.js:8374
 msgid "You can easily create a click-to-call button using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
 msgstr ""
 
-#: assets/js/admin.js:11468
+#: assets/js/admin.js:8374
 msgid "1. Log in to your WordPress dashboard."
 msgstr ""
 
-#: assets/js/admin.js:11468
+#: assets/js/admin.js:8374
 msgid "2. From the left menu, go to Sticky Anything → Click to Call."
 msgstr ""
 
-#: assets/js/admin.js:11468
+#: assets/js/admin.js:8374
 msgid "3. Turn on the \"Click to Call\" option."
 msgstr ""
 
-#: assets/js/admin.js:11468
+#: assets/js/admin.js:8374
 msgid "4. Enter your phone number and adjust the settings as needed."
 msgstr ""
 
-#: assets/js/admin.js:11468
+#: assets/js/admin.js:8374
 msgid "5. Click the \"Save Changes\" button."
 msgstr ""
 
-#: assets/js/admin.js:11468
+#: assets/js/admin.js:8374
 msgid "6. Visit your website to see the click-to-call button in action."
 msgstr ""
 
-#: assets/js/admin.js:11474
+#: assets/js/admin.js:8380
 msgid "You can easily create a fixed (sticky) widget using the All-in-One WP Sticky Anything plugin. Just follow the steps below."
 msgstr ""
 
-#: assets/js/admin.js:11474
+#: assets/js/admin.js:8380
 msgid "1. Go to your WordPress Dashboard → Appearance → Widgets."
 msgstr ""
 
-#: assets/js/admin.js:11474
+#: assets/js/admin.js:8380
 msgid "2. If you are using the Block Editor, wrap the widget inside a Group block, then enable the Fixed Widget option from the Group settings in the right sidebar."
 msgstr ""
 
-#: assets/js/admin.js:11474
+#: assets/js/admin.js:8380
 msgid "3. If you are using the Classic Editor, simply enable the Fixed Widget option and click the Save button."
 msgstr ""
 
-#: assets/js/admin.js:11474
+#: assets/js/admin.js:8380
 msgid "4. Your sidebar widget will now remain fixed while scrolling."
 msgstr ""
 
-#: assets/js/admin.js:11480
+#: assets/js/admin.js:8386
 msgid "You can make Sticky Header easily by All-in-one WP Sticky Anyting. You need to do some step for it."
 msgstr ""
 
-#: assets/js/admin.js:11480
+#: assets/js/admin.js:8386
 msgid "1. Go to WordPress Dashboard > Sticky Anything > Settings > General"
 msgstr ""
 
-#: assets/js/admin.js:11480
+#: assets/js/admin.js:8386
 msgid "2. In the \"Sticky Class\" field, enter the CSS selector of your header. Must you need to provide a valid css class or id selector. example: .header"
 msgstr ""
 
-#: assets/js/admin.js:11480
+#: assets/js/admin.js:8386
 msgid "3. If sticky header z-index issue on scroll, then you need to configure the \"Z-index\" field. Write the max big integer value. ex: 9999999"
 msgstr ""
 
-#: assets/js/admin.js:11480
+#: assets/js/admin.js:8386
 msgid "4. Now you can click save button on the header."
 msgstr ""
 
-#: assets/js/admin.js:11486
+#: assets/js/admin.js:8392
 msgid "You can create a Sticky Header in Elementor without extra plugins. Just follow these steps:"
 msgstr ""
 
-#: assets/js/admin.js:11486
+#: assets/js/admin.js:8392
 msgid "1. Open any page with Elementor editor."
 msgstr ""
 
-#: assets/js/admin.js:11486
+#: assets/js/admin.js:8392
 msgid "2. Select the container or section you want to make sticky."
 msgstr ""
 
-#: assets/js/admin.js:11486
+#: assets/js/admin.js:8392
 msgid "3. Go to the \"Advanced\" tab in the Elementor panel."
 msgstr ""
 
-#: assets/js/admin.js:11486
+#: assets/js/admin.js:8392
 msgid "4. Scroll down to the \"Sticky Anything\" section and enable the \"Sticky\" option."
 msgstr ""
 
-#: assets/js/admin.js:11486
-#: assets/js/admin.js:11501
+#: assets/js/admin.js:8392
+#: assets/js/admin.js:8407
 msgid "6. Adjust \"Z-index\" if needed to control the stacking order."
 msgstr ""
 
-#: assets/js/admin.js:11486
+#: assets/js/admin.js:8392
 msgid "7. Update/Publish the page to apply the changes."
 msgstr ""
 
-#: assets/js/admin.js:11501
+#: assets/js/admin.js:8407
 msgid "You can create a Sticky Header via Customizer without any hussle. Just follow these steps:"
 msgstr ""
 
-#: assets/js/admin.js:11501
+#: assets/js/admin.js:8407
 msgid "1. Navigate Appearance > Customize."
 msgstr ""
 
-#: assets/js/admin.js:11501
+#: assets/js/admin.js:8407
 msgid "2. Navigate to the \"Sticky Anything\" section."
 msgstr ""
 
-#: assets/js/admin.js:11501
+#: assets/js/admin.js:8407
 msgid "3. Navigate to the \"Sticky Header\" section."
 msgstr ""
 
-#: assets/js/admin.js:11501
+#: assets/js/admin.js:8407
 msgid "4. Enable the \"Sticky Header\" option."
 msgstr ""
 
-#: assets/js/admin.js:11501
+#: assets/js/admin.js:8407
 msgid "7. Click the Publish bytton on the customizer."
 msgstr ""
 
-#: assets/js/admin.js:11516
-#: assets/js/admin.js:11522
+#: assets/js/admin.js:8422
+#: assets/js/admin.js:8428
 msgid "You can make Sticky Social Icons easily by All-in-one WP Sticky Anyting. You need to do some step for it."
 msgstr ""
 
-#: assets/js/admin.js:11516
+#: assets/js/admin.js:8422
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Social Icons."
 msgstr ""
 
-#: assets/js/admin.js:11516
+#: assets/js/admin.js:8422
 msgid "2. Enable the \"Sticky Social Icons\" option."
 msgstr ""
 
-#: assets/js/admin.js:11516
+#: assets/js/admin.js:8422
 msgid "3. Customize the social icons settings to your preference."
 msgstr ""
 
-#: assets/js/admin.js:11516
+#: assets/js/admin.js:8422
 msgid "4. Click \"Add Icon\" to insert social icons, then configure the icon and URL."
 msgstr ""
 
-#: assets/js/admin.js:11516
-#: assets/js/admin.js:11522
-#: assets/js/admin.js:11528
+#: assets/js/admin.js:8422
+#: assets/js/admin.js:8428
+#: assets/js/admin.js:8434
 msgid "5. Click the \"Save\" button at the top to apply your changes."
 msgstr ""
 
-#: assets/js/admin.js:11522
+#: assets/js/admin.js:8428
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Cookie Consent."
 msgstr ""
 
-#: assets/js/admin.js:11522
+#: assets/js/admin.js:8428
 msgid "2. Enable the \"Sticky Cookie Consent\" option."
 msgstr ""
 
-#: assets/js/admin.js:11522
+#: assets/js/admin.js:8428
 msgid "3. Customize the cookie consent message, button text & style."
 msgstr ""
 
-#: assets/js/admin.js:11528
-#: assets/js/admin.js:11793
+#: assets/js/admin.js:8434
+#: assets/js/admin.js:8705
 msgid "Display a sticky table of contents to help users navigate your content."
 msgstr ""
 
-#: assets/js/admin.js:11528
+#: assets/js/admin.js:8434
 msgid "1. Go to WordPress Dashboard → Sticky Anything → Settings → Sticky Table of Contents."
 msgstr ""
 
-#: assets/js/admin.js:11528
+#: assets/js/admin.js:8434
 msgid "2. Enable the \"Table of Contents\" option."
 msgstr ""
 
-#: assets/js/admin.js:11528
+#: assets/js/admin.js:8434
 msgid "3. Enable the \"Sticky\" option."
 msgstr ""
 
-#: assets/js/admin.js:11528
+#: assets/js/admin.js:8434
 msgid "4. Customize the table of contents settings to your preference."
 msgstr ""
 
-#: assets/js/admin.js:11534
+#: assets/js/admin.js:8440
 msgid "You can make any sticky element or sidebar easily on your WordPress website by All-in-one WP Sticky Anyting. Integration is super easy. You need add a class on your target element. ex: sticky."
 msgstr ""
 
-#: assets/js/admin.js:11540
+#: assets/js/admin.js:8446
 msgid "Setting up a sticky sidebar on your WordPress site is simple with the All-in-One WP Sticky Anything plugin. Just follow these steps to get started:"
 msgstr ""
 
-#: assets/js/admin.js:11540
+#: assets/js/admin.js:8446
 msgid "1. Go to your WordPress Dashboard. Navigate to: Sticky Anything > Settings > Sticky Sidebar."
 msgstr ""
 
-#: assets/js/admin.js:11540
+#: assets/js/admin.js:8446
 msgid "2. Enable the Sticky Sidebar. Toggle the option to enable the sticky sidebar functionality."
 msgstr ""
 
-#: assets/js/admin.js:11540
+#: assets/js/admin.js:8446
 msgid "3. Enter the Sidebar Selector. This is the class or ID of the sidebar you want to make sticky. Since it varies depending on your theme, right-click on your sidebar in the browser and select Inspect. Copy the relevant selector name (e.g., .sidebar or #secondary) and paste it into the Sidebar Selector field."
 msgstr ""
 
-#: assets/js/admin.js:11540
+#: assets/js/admin.js:8446
 msgid "4. Enter the Sidebar Container Selector. This is the outer container that holds the sidebar. Again, inspect the element in your browser and copy the correct selector. Paste it into the Sidebar Container Selector field."
 msgstr ""
 
-#: assets/js/admin.js:11540
+#: assets/js/admin.js:8446
 msgid "5. Adjust additonal settings based on your needs."
 msgstr ""
 
-#: assets/js/admin.js:11540
+#: assets/js/admin.js:8446
 msgid "6. Now you can click save button on the header."
 msgstr ""
 
-#: assets/js/admin.js:11546
-msgid "If needed, add custom CSS to fine-tune the appearance and behavior of the sticky header. Your custom css need to paste on the Custom CSS box and Click Save button."
+#: assets/js/admin.js:8456
+msgid "Plugin admin assets (SweetAlert2 and the settings stylesheet) no longer load on every admin screen."
 msgstr ""
 
-#: assets/js/admin.js:11555
+#: assets/js/admin.js:8456
+msgid "Colors, sizes and selectors printed into inline CSS (sticky header, social icons, cookie consent) are now validated against strict allowlists to prevent CSS injection."
+msgstr ""
+
+#: assets/js/admin.js:8456
+msgid "Sticky Notes table is now compatible with MySQL 5.5 and the install routine no longer runs on every admin page load."
+msgstr ""
+
+#: assets/js/admin.js:8457
+msgid "The Custom CSS option has been removed. Use Appearance > Customize > Additional CSS instead."
+msgstr ""
+
+#: assets/js/admin.js:8462
+msgid "Pro only settings are no longer restricted in the free plugin."
+msgstr ""
+
+#: assets/js/admin.js:8467
 msgid "Introduced the Sticky Scroll Offset setting for the Sticky Header."
 msgstr ""
 
-#: assets/js/admin.js:11555
+#: assets/js/admin.js:8467
 msgid "Introduced the Shrink Header on Sticky setting (Experimental) for the Sticky Header."
 msgstr ""
 
-#: assets/js/admin.js:11555
+#: assets/js/admin.js:8467
 msgid "Introduced the Logo Swap on Sticky setting for the Sticky Header."
 msgstr ""
 
-#: assets/js/admin.js:11559
+#: assets/js/admin.js:8471
 msgid "Sticky Header Background color, gradient (Pro), or image (Pro) added."
 msgstr ""
 
-#: assets/js/admin.js:11559
+#: assets/js/admin.js:8471
 msgid "\"Pick Header on Page\" — click your header on your live site to auto-fill the Sticky Class selector."
 msgstr ""
 
-#: assets/js/admin.js:11560
+#: assets/js/admin.js:8472
 msgid "Sticky header no longer lags/blinks while scrolling; removed the \"Fix Sticky\" toggle."
 msgstr ""
 
-#: assets/js/admin.js:11564
+#: assets/js/admin.js:8476
 msgid "Introduce Admin Sticky Notes"
 msgstr ""
 
-#: assets/js/admin.js:11569
+#: assets/js/admin.js:8481
 msgid "Disable Sticky on Mobile setting added on the General settings(PRO)."
 msgstr ""
 
-#: assets/js/admin.js:11569
+#: assets/js/admin.js:8481
 msgid "Introduce Sticky Forms (Pro)."
 msgstr ""
 
-#: assets/js/admin.js:11570
+#: assets/js/admin.js:8482
 msgid "Custom CSS containing quotes was being mangled on output."
 msgstr ""
 
-#: assets/js/admin.js:11574
+#: assets/js/admin.js:8486
 msgid "Delete Data on Uninstall."
 msgstr ""
 
-#: assets/js/admin.js:11578
+#: assets/js/admin.js:8490
 msgid "Click to call button style."
 msgstr ""
 
-#: assets/js/admin.js:11579
+#: assets/js/admin.js:8491
 msgid "Expiry and Reject Redirect settings added on the Cookie Consent."
 msgstr ""
 
-#: assets/js/admin.js:11583
+#: assets/js/admin.js:8495
 msgid "Introduce Sticky Table of Contents(toc)."
 msgstr ""
 
-#: assets/js/admin.js:11587
+#: assets/js/admin.js:8499
 msgid "Introduce Click to Call."
 msgstr ""
 
-#: assets/js/admin.js:11591
+#: assets/js/admin.js:8503
 msgid "Introduce Fixed Widget."
 msgstr ""
 
-#: assets/js/admin.js:11592
+#: assets/js/admin.js:8504
 msgid "Settings sync on the multiple devices."
 msgstr ""
 
-#: assets/js/admin.js:11596
+#: assets/js/admin.js:8508
 msgid "Introduce Sticky Cookie Consent."
 msgstr ""
 
-#: assets/js/admin.js:11597
+#: assets/js/admin.js:8509
 msgid "WordPress 6.9 Compatibility."
 msgstr ""
 
-#: assets/js/admin.js:11601
+#: assets/js/admin.js:8513
 msgid "Introduce Sticky Social Icons."
 msgstr ""
 
-#: assets/js/admin.js:11605
+#: assets/js/admin.js:8517
 msgid "Introduce Customizer support for Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra themes."
 msgstr ""
 
-#: assets/js/admin.js:11609
+#: assets/js/admin.js:8521
 msgid "Astra theme compatibility."
 msgstr ""
 
-#: assets/js/admin.js:11613
+#: assets/js/admin.js:8525
 msgid "Introduce Elementor Page Builder Sticky Option."
 msgstr ""
 
-#: assets/js/admin.js:11617
+#: assets/js/admin.js:8529
 msgid "New Option to Fix Sticky Header."
 msgstr ""
 
-#: assets/js/admin.js:11621
+#: assets/js/admin.js:8533
 msgid "Fixed close icon."
 msgstr ""
 
-#: assets/js/admin.js:11625
+#: assets/js/admin.js:8537
 msgid "Introduce Sticky Sidebar."
 msgstr ""
 
-#: assets/js/admin.js:11629
+#: assets/js/admin.js:8541
 msgid "Migrate old data."
 msgstr ""
 
-#: assets/js/admin.js:11633
+#: assets/js/admin.js:8545
+msgid "Custom CSS"
+msgstr ""
+
+#: assets/js/admin.js:8545
 msgid "Reset Settings"
 msgstr ""
 
-#: assets/js/admin.js:11634
+#: assets/js/admin.js:8546
 msgid "Improved Dashboard"
 msgstr ""
 
-#: assets/js/admin.js:11638
+#: assets/js/admin.js:8550
 msgid "Initial Version"
 msgstr ""
 
-#: assets/js/admin.js:11648
-#: assets/js/admin.js:11874
+#: assets/js/admin.js:8560
+#: assets/js/admin.js:8786
 msgid "Changelog"
 msgstr ""
 
-#: assets/js/admin.js:11650
+#: assets/js/admin.js:8562
 msgid "Check out the latest change logs."
 msgstr ""
 
-#: assets/js/admin.js:11664
+#: assets/js/admin.js:8576
 msgid "New Features"
 msgstr ""
 
-#: assets/js/admin.js:11672
+#: assets/js/admin.js:8584
 msgid "Fixs"
 msgstr ""
 
-#: assets/js/admin.js:11680
+#: assets/js/admin.js:8592
 msgid "Enhancements"
 msgstr ""
 
-#: assets/js/admin.js:11697
+#: assets/js/admin.js:8609
 msgid "Just use .sticky class."
 msgstr ""
 
-#: assets/js/admin.js:11700
+#: assets/js/admin.js:8612
 msgid "Open any page with Elementor → Select a container or section → Go to the `Advanced Tab` → `Sticky Anything` Settings."
 msgstr ""
 
-#: assets/js/admin.js:11703
+#: assets/js/admin.js:8615
 msgid "No."
 msgstr ""
 
-#: assets/js/admin.js:11706
+#: assets/js/admin.js:8618
 msgid "Popular classic themes such as Astra, Blocksy, GeneratePress, Kadence, Neve, OceanWP, Storefront, and Zakra provide seamless Sticky Header compatibility."
 msgstr ""
 
-#: assets/js/admin.js:11709
+#: assets/js/admin.js:8621
 msgid "Just remove class from settings."
 msgstr ""
 
-#: assets/js/admin.js:11726
-#: assets/js/admin.js:11870
+#: assets/js/admin.js:8638
+#: assets/js/admin.js:8782
 msgid "Help"
 msgstr ""
 
-#: assets/js/admin.js:11747
+#: assets/js/admin.js:8659
 msgid "Please use the support forum."
 msgstr ""
 
-#: assets/js/admin.js:11758
+#: assets/js/admin.js:8670
 msgid "Add a click-to-call button to your website to make it more user-friendly."
 msgstr ""
 
-#: assets/js/admin.js:11763
+#: assets/js/admin.js:8675
 msgid "Easily make your sidebar widgets sticky to enhance user engagement and accessibility."
 msgstr ""
 
-#: assets/js/admin.js:11767
+#: assets/js/admin.js:8679
 msgid "Sticky Element"
 msgstr ""
 
-#: assets/js/admin.js:11768
+#: assets/js/admin.js:8680
 msgid "Choose any element on your site to make it sticky as users scroll."
 msgstr ""
 
-#: assets/js/admin.js:11773
+#: assets/js/admin.js:8685
 msgid "Keep your header visible while scrolling for better navigation and branding."
 msgstr ""
 
-#: assets/js/admin.js:11778
+#: assets/js/admin.js:8690
 msgid "Make your sidebar stay in view as visitors scroll through your content."
 msgstr ""
 
-#: assets/js/admin.js:11783
+#: assets/js/admin.js:8695
 msgid "Display your social media icons on your site and make them sticky as users scroll."
 msgstr ""
 
-#: assets/js/admin.js:11788
+#: assets/js/admin.js:8700
 msgid "Make your cookie consent banner sticky to ensure compliance and visibility."
 msgstr ""
 
-#: assets/js/admin.js:11792
+#: assets/js/admin.js:8704
 msgid "Sticky Table of Contents"
 msgstr ""
 
-#: assets/js/admin.js:11797
+#: assets/js/admin.js:8709
 msgid "Admin Sticky Notes"
 msgstr ""
 
-#: assets/js/admin.js:11798
+#: assets/js/admin.js:8710
 msgid "Add sticky notes in the WordPress admin area to keep important information visible."
 msgstr ""
 
-#: assets/js/admin.js:11806
-#: assets/js/admin.js:11862
+#: assets/js/admin.js:8718
+#: assets/js/admin.js:8774
 msgid "Introduction"
 msgstr ""
 
-#: assets/js/admin.js:11906
+#: assets/js/admin.js:8818
 msgid "All-in-One WP Sticky Anything on Scroll plugin allows to you make any elements sticky or sticky Header on your website."
 msgstr ""
 

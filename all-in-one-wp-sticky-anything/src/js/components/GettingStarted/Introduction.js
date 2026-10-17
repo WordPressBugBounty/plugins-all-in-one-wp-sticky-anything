@@ -92,7 +92,7 @@ export default function Introduction() {
                         <p>{wp.i18n.__('The Sticky Anything WordPress plugin is a versatile tool designed to help you make any element on your website sticky as users scroll. It\'s particularly useful for keeping important content like headers, menus, or call-to-action buttons visible, no matter where users are on your page.', 'all-in-one-sticky-anything')}</p>
                     </div>
                     <div class="settings-col">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/Y2IEuGCVu0Y?si=fLPBh9a8_C641LMF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/vH4RnLXz0G8?si=fLPBh9a8_C641LMF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
                 {/* quick overview stop here */}

@@ -62,6 +62,15 @@ final class Main {
     }
 
     /**
+     * Whether the current admin screen belongs to this plugin.
+     *
+     * @return bool
+     */
+    private function is_plugin_screen() {
+        return class_exists(Admin::class) && Admin::is_plugin_screen();
+    }
+
+    /**
      * Admin notice
      *
      * @return void
@@ -69,8 +78,8 @@ final class Main {
      *
      */
     public function print_notices() {
-        // Only show to admins
-        if (!current_user_can('manage_options')) {
+        // Only show to admins, and only on this plugin's own screens.
+        if (!current_user_can('manage_options') || !$this->is_plugin_screen()) {
             return;
         }
 
@@ -86,7 +95,10 @@ final class Main {
     }
 
     public function review_notice() {
-        if (!current_user_can('manage_options')) return;
+        // Only show to admins, and only on this plugin's own screens: the
+        // dismiss handler ships in the plugin's admin bundle, which loads
+        // there only.
+        if (!current_user_can('manage_options') || !$this->is_plugin_screen()) return;
 
         // Check if user dismissed already
         if (get_option('ai1wpsa_review_dismissed')) return;

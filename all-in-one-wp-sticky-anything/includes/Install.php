@@ -12,6 +12,31 @@ if (!defined('ABSPATH')) {
  */
 class Install {
     /**
+     * Sticky Notes table schema version. Bump whenever the CREATE TABLE
+     * statement in create_notes_table() changes.
+     */
+    const NOTES_DB_VERSION = '1.2.1';
+
+    /**
+     * Run the install/upgrade routine only when something actually changed:
+     * the stored plugin version differs from the running code, or the notes
+     * table schema is out of date. Hooked on admin_init, so it must be cheap
+     * on every other request.
+     *
+     * @since 1.2.1
+     */
+    public static function maybe_upgrade() {
+        if (
+            version_compare((string) get_option('ai1wpsa_version'), AI1WPSA_VERSION, '>=')
+            && get_option('ai1wpsa_notes_db_version') === self::NOTES_DB_VERSION
+        ) {
+            return;
+        }
+
+        self::activate();
+    }
+
+    /**
      * Plugin activation stuffs
      *
      * @since 1.0.1
@@ -55,10 +80,12 @@ class Install {
     }
 
     /**
-     * Create (or upgrade) the Sticky Notes table. Safe to call on every
-     * request — it no-ops unless NOTES_DB_VERSION has changed since the
-     * last run (this runs on every admin_init via Admin::migrate_data(),
-     * not just on activation).
+     * Create (or upgrade) the Sticky Notes table. Runs on activation and,
+     * via maybe_upgrade(), only when NOTES_DB_VERSION has changed.
+     *
+     * The timestamp columns have no DEFAULT CURRENT_TIMESTAMP (that needs
+     * MySQL 5.6.5+, while WordPress supports 5.5.5); they are set from PHP
+     * in the notes AJAX handlers instead.
      *
      * @since 1.1.7
      */
@@ -84,13 +111,15 @@ class Install {
             height INT(11) NOT NULL DEFAULT 250,
             postop INT(11) NOT NULL DEFAULT 60,
             posleft INT(11) NOT NULL DEFAULT 200,
-            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            created_at DATETIME NULL,
+            updated_at DATETIME NULL,
             PRIMARY KEY  (id),
             KEY id_user (id_user)
         ) $charset_collate;";
 
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         dbDelta($sql);
+
+        update_option('ai1wpsa_notes_db_version', self::NOTES_DB_VERSION);
     }
 }

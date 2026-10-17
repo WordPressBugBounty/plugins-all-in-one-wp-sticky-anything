@@ -56,7 +56,7 @@ class Enqueue
         wp_register_script(
             'ai1wpsa-frontend', AI1WPSA_ASSETS . '/js/frontend.min.js', [
             'jquery',
-            'wp-plupload',
+            'wp-hooks',
             'wp-util',
             ], AI1WPSA_VERSION, true
         );
@@ -112,19 +112,42 @@ class Enqueue
      */
     public function admin_scripts($hook)
     {
-        // Only load on our plugin settings page
-        // if ('toplevel_page_all-in-one-wp-sticky-anything' !== $hook && 'sticky-anything_page_sticky-anything-getting-started' !== $hook) {
-        //     return;
-        // }
+        // The plugin's own screens (Settings + Getting Started), resolved from
+        // the hooks captured at menu registration (a submenu's hook is derived
+        // from the parent menu title, not its slug).
+        $is_plugin_page = class_exists(Admin::class) && Admin::is_plugin_screen($hook);
+
+        // Sticky Notes are designed to float over wp-admin, so their
+        // self-contained assets load wherever a note can appear. They must not
+        // drag in the settings app or SweetAlert2, which belong to the plugin's
+        // own screens only.
+        $sticky_notes = (bool) ai1wpsa_get_settings('stickyNotes', false);
+
+        if ($sticky_notes) {
+            wp_enqueue_style('ai1wpsa-sticky-notes', AI1WPSA_URL . '/assets/css/sticky-notes.min.css', array(), AI1WPSA_VERSION);
+
+            // On the plugin screens the settings app already localizes
+            // `ai1wpsa`; anywhere else the notes bundle carries its own copy.
+            $notes_deps = $is_plugin_page ? array('ai1wpsa-admin') : array('wp-i18n');
+
+            wp_enqueue_script('ai1wpsa-sticky-notes', AI1WPSA_URL . '/assets/js/sticky-notes.min.js', $notes_deps, AI1WPSA_VERSION, true);
+
+            if (! $is_plugin_page) {
+                wp_localize_script('ai1wpsa-sticky-notes', 'ai1wpsa', $this->get_localize_data($hook));
+            }
+        }
+
+        // Everything below is the plugin's own settings app. Keeping it off
+        // every other admin screen stops its stylesheet (and SweetAlert2) from
+        // leaking into the rest of the dashboard.
+        if (! $is_plugin_page) {
+            return;
+        }
 
         // Styles
         $style_deps = array('wp-components',);
 
-        if ('toplevel_page_all-in-one-wp-sticky-anything' == $hook) {
-            $style_deps[] = 'wp-codemirror';
-        }
-
-        wp_enqueue_style('ai1wpsa-swal', AI1WPSA_URL . '/assets/vendor/sweetalert2/sweetalert2.min.css', $style_deps, '11.12.4');
+        wp_enqueue_style('ai1wpsa-swal', AI1WPSA_URL . '/assets/vendor/sweetalert2/sweetalert2.min.css', $style_deps, '11.26.25');
 
         wp_enqueue_style('ai1wpsa-admin', AI1WPSA_URL . '/assets/css/admin.min.css', $style_deps, AI1WPSA_VERSION);
 
@@ -141,29 +164,14 @@ class Enqueue
         );
 
         if ('toplevel_page_all-in-one-wp-sticky-anything' == $hook) {
-            wp_enqueue_script('wp-theme-plugin-editor');
-
-            wp_enqueue_code_editor(
-                array(
-                'type'  => 'text/css',
-                )
-            );
-
             // Media Library modal — used by the Sticky Header Background
             wp_enqueue_media();
         }
 
-		$sticky_notes = (bool) ai1wpsa_get_settings('stickyNotes', false);
-
-        wp_enqueue_script('ai1wpsa-swal', AI1WPSA_URL . '/assets/vendor/sweetalert2/sweetalert2.min.js', $deps, '11.12.4', true);
+        wp_enqueue_script('ai1wpsa-swal', AI1WPSA_URL . '/assets/vendor/sweetalert2/sweetalert2.min.js', $deps, '11.26.25', true);
 
         wp_enqueue_script('ai1wpsa-admin', AI1WPSA_URL . '/assets/js/admin.min.js', $deps, AI1WPSA_VERSION, true);
         wp_localize_script('ai1wpsa-admin', 'ai1wpsa', $this->get_localize_data($hook));
-
-		if( $sticky_notes ) {
-			wp_enqueue_style( 'ai1wpsa-sticky-notes', AI1WPSA_URL . '/assets/css/sticky-notes.min.css', array(), AI1WPSA_VERSION );
-			wp_enqueue_script( 'ai1wpsa-sticky-notes', AI1WPSA_URL . '/assets/js/sticky-notes.min.js', array('ai1wpsa-admin'), AI1WPSA_VERSION, true );
-		}
     }
 
     /**
@@ -209,11 +217,6 @@ class Enqueue
             $settings = [];
         }
 
-        // Downgrade any Premium-only values before this ever reaches the browser —
-        // several pro features (Click to Call, Sticky TOC, parts of Sticky Forms)
-        // are driven entirely client-side from this localized object.
-        $settings = ai1wpsa_sanitize_pro_settings($settings);
-
         $ai1wpsa_sticky_header     = get_option('ai1wpsa_sticky_header');
         $ai1wpsa_z_index        = get_option('ai1wpsa_z_index', 9999);
 
@@ -225,7 +228,7 @@ class Enqueue
 
         $data = [
 			'nonce'         => wp_create_nonce('ai1wpsa'),
-			'isPro'         => ai1wpsa_is_pro() ? true : false,
+			'isPro'         => false,
 			'isLoggedIn'    => is_user_logged_in(),
 			'settings'      => $settings,
 			'ajaxUrl'       => admin_url('admin-ajax.php'),

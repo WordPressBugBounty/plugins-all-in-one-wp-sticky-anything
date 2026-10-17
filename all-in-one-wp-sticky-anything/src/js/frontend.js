@@ -1,5 +1,7 @@
 ; (function ($) {
 
+    const { applyFilters } = wp.hooks;
+
     const app = {
         init: () => {
             const { settings } = ai1wpsa;
@@ -19,7 +21,6 @@
                 stickyClass,
                 stickyZIndex,
                 fixDefaultSticky,
-                stickyDisableMobile,
                 stickyHeader,
                 stickySidebar,
                 stickyCookieConsent,
@@ -29,9 +30,10 @@
             const topOffset = isLoggedIn ? 32 : 0;
             const elementorStickyHeader = $('.elementor-element.ai1wpsa-yes');
 
-            // Sticky header behavior is skipped entirely on mobile-sized screens when disabled.
-            const isMobileViewport = window.innerWidth <= 767;
-            const stickyHeaderEnabled = !(stickyDisableMobile && isMobileViewport);
+            // Whether the sticky header runs at all. The Premium add-on can
+            // turn this off (e.g. on mobile-sized screens, via its "Disable
+            // Sticky on Mobile" option); the free plugin always keeps it on.
+            const stickyHeaderEnabled = applyFilters('ai1wpsa_sticky_header_enabled', true);
 
             if (stickyHeaderEnabled) {
 
@@ -347,51 +349,35 @@
                 clicktoCallPhones = [
                     { label: 'Support', number: '+8801512345678' }
                 ],
-                clicktoCallStyleType = 'launcher',
-                clicktoCallStyle = 'popup',
                 clicktoCallBgColor = '#004bcb',
                 clicktoCallIconColor = '#ffffff',
-                clicktoCallDevice = 'all',
-                clicktoCallAnimation = 'none',
-                clicktoCallAutoOpen = false,
-                clicktoCallAutoOpenDelay = 0,
-                clicktoCallBadge = false,
-                clicktoCallBadgeCount = 0,
-                clicktoCallshowHours = false,
-                clicktoCallShowChip = false,
-                clicktoCallshowChipDot = false,
-                clicktoCallSchedules = {
-                    Monday: { on: true, open: '00:00', close: '23:59' },
-                    Tuesday: { on: true, open: '00:00', close: '23:59' },
-                    Wednesday: { on: true, open: '00:00', close: '23:59' },
-                    Thursday: { on: true, open: '00:00', close: '23:59' },
-                    Friday: { on: true, open: '00:00', close: '23:59' },
-                    Saturday: { on: true, open: '00:00', close: '23:59' },
-                    Sunday: { on: true, open: '00:00', close: '23:59' }
-                }
             } = ai1wpsa?.settings ?? {};
 
             if (!clicktoCall) return;
 
-            CTC.init({
+            // Free-tier widget options. The Premium add-on appends the
+            // premium ones (widget style, device targeting, animation,
+            // auto-open, badge, chip, schedules, …) through this filter.
+            const options = applyFilters('ai1wpsa_click_to_call_options', {
                 phones: clicktoCallPhones,
-                style: clicktoCallStyle,
-
+                style: 'popup',
                 theme: {
                     '--ctc-bg': clicktoCallBgColor,
                     '--ctc-icon': clicktoCallIconColor,
                 },
                 labels: {},
-                showHours: clicktoCallshowHours,
-                showChip: clicktoCallShowChip,
-                showChipDot: clicktoCallshowChipDot,
+                showHours: false,
+                showChip: false,
+                showChipDot: false,
                 position: clicktoCallPosition,
-                display: clicktoCallDevice,
-                animation: clicktoCallAnimation,
-                autoOpen: clicktoCallAutoOpen ? clicktoCallAutoOpenDelay : 0,
-                badge: clicktoCallBadge ? clicktoCallBadgeCount : 0,
-                schedule: clicktoCallSchedules,
+                display: 'all',
+                animation: 'none',
+                autoOpen: 0,
+                badge: 0,
+                schedule: {},
             });
+
+            CTC.init(options);
         },
 
         handleStickyToc: () => {
@@ -409,18 +395,11 @@
 
                 // Inline TOC block
                 stickyTocShowInline = true,
-                stickyTocInlinePreset = 'card',
                 stickyTocStartCollapsed = false,
 
                 // Sidebar
                 stickyTocSidebar = false,
-                stickyTocSidebarPreset = 'default',
                 stickyTocSidebarPosition = 'right',
-                stickyTocSidebarEdgeGap = 24,
-                stickyTocSidebarShowProgress = false,
-
-                // Progress bar
-                stickyTocShowProgressBar = false,
 
                 // Scroll behaviour
                 stickyTocScrollBehavior = 'smooth',
@@ -431,7 +410,10 @@
                 stickyTocRadius = 0,
             } = settings;
 
-            new SmartTOC({
+            // Free-tier TOC options. The Premium add-on appends the premium
+            // ones (inline / sidebar presets, sidebar edge gap, progress
+            // bars) through this filter.
+            const options = applyFilters('ai1wpsa_sticky_toc_options', {
                 target: stickyTocTarget,
                 minHeadings: stickyTocMinHeadings,
                 title: stickyTocTitle,
@@ -441,18 +423,18 @@
                 showNumbers: stickyTocShowNumbers,
                 inline: {
                     show: stickyTocShowInline,
-                    preset: stickyTocInlinePreset,
+                    preset: 'card',
                     collapsed: stickyTocStartCollapsed,
                     injectInto: 'auto',
                 },
                 sidebar: {
                     enabled: stickyTocSidebar,
-                    preset: stickyTocSidebarPreset,
+                    preset: 'default',
                     position: stickyTocSidebarPosition,
-                    edgeGap: stickyTocSidebarEdgeGap,
-                    progress: stickyTocSidebarShowProgress,
+                    edgeGap: 24,
+                    progress: false,
                 },
-                showProgressBar: stickyTocShowProgressBar,
+                showProgressBar: false,
                 vars: {
                     '--stoc-color': stickyTocAccentColor,
                     '--stoc-color-bg': stickyTocBgColor,
@@ -461,13 +443,19 @@
                 scrollBehavior: stickyTocScrollBehavior,
                 onInit: null,
                 onActivate: null,
-            }).init();
+            });
+
+            new SmartTOC(options).init();
 
         },
     }
 
-    app.init();
-
-    $(document).ready(app.ready);
+    // Run on DOM ready so every wp.hooks filter the Premium add-on registers
+    // (in its own footer script, which loads after this one but before
+    // DOMContentLoaded) is in place before we build the widget options.
+    $(document).ready(() => {
+        app.init();
+        app.ready();
+    });
 
 })(jQuery);

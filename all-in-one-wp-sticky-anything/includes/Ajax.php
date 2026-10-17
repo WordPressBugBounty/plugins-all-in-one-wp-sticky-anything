@@ -69,7 +69,7 @@ class Ajax {
             wp_send_json_error(__('You do not have permission to get tables', 'all-in-one-wp-sticky-anything'));
         }
 
-        $data = ! empty($_POST['data']) ? ai1wpsa_sanitize_array(wp_unslash($_POST['data'])) : [];
+        $data = ! empty($_POST['data']) ? ai1wpsa_sanitize_css_settings(ai1wpsa_sanitize_array(wp_unslash($_POST['data']))) : [];
 
         if (empty($data)) {
             wp_send_json_error();
@@ -140,9 +140,11 @@ class Ajax {
             'height'      => 250,
             'postop'      => $top,
             'posleft'     => $left,
+            'created_at'  => current_time('mysql'),
+            'updated_at'  => current_time('mysql'),
         );
 
-        $formats = array('%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d');
+        $formats = array('%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%s', '%s');
 
         $inserted = $wpdb->insert($table, $data, $formats);
 
@@ -198,12 +200,13 @@ class Ajax {
                 'postop'      => $top,
                 'posleft'     => $left,
                 'z_index'     => $z_index,
+                'updated_at'  => current_time('mysql'),
             ),
             array(
                 'id' => $id,
                 'id_user'         => get_current_user_id(),
             ),
-            array('%s', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d'),
+            array('%s', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%s'),
             array('%d', '%d')
         );
 
@@ -292,9 +295,11 @@ class Ajax {
             'height'      => absint($source['height']),
             'postop'      => absint($source['postop']) + 24,
             'posleft'     => absint($source['posleft']) + 24,
+            'created_at'  => current_time('mysql'),
+            'updated_at'  => current_time('mysql'),
         );
 
-        $formats  = array('%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d');
+        $formats  = array('%s', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%s', '%s');
         $inserted = $wpdb->insert($table, $data, $formats);
 
         if (false === $inserted) {
@@ -327,12 +332,12 @@ class Ajax {
 
         $updated = $wpdb->update(
             $table,
-            array('status' => 1),
+            array('status' => 1, 'updated_at' => current_time('mysql')),
             array(
                 'id' => $id,
                 'id_user'         => get_current_user_id(),
             ),
-            array('%d'),
+            array('%d', '%s'),
             array('%d', '%d')
         );
 
